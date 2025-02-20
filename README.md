@@ -15,9 +15,9 @@
 
 ## Sommaire
 1. [Introduction](#1-introduction)
-2. [Tools, Environment, and Deployment](#2-tools-environment-and-deployment)
-3. [System Architecture & Design](#3-system-architecture--design)
-
+2. [Outils, environnement et déploiement](#2-outils-environnement-et-déploiement)
+3. [Architecture et conception du système](#3-architecture-et-conception-du-système)
+4. [Performances et optimisation](#4-performances-et-optimisation)
 
 
 
@@ -120,5 +120,14 @@ Ce moteur est conçu pour les jeux avec un rendu ultra détaillé ce qui le rend
 Exemple différence de graphisme sur un jeu (Infinity Nikki) développé sur Unreal entre le mobile et le pc:
 ![Image d'Infinity Nikki pour démontrer la différence de graphisme entre mobile et pc](/docs/image.png)
 ---
-
+## 4. Performances et optimisation
+### 4.1 Performance Goals
+Étant donné que le jeu est destiné aux appareils mobiles, plusieurs optimisations sont nécessaires pour garantir une fluidité à 60 FPS, une consommation minimale de batterie, et une stabilité sur une large gamme de téléphones (entrée de gamme à haut de gamme).
+### 4.2 Profiling and Benchmarking
+- Integrate profiling tools such as Valgrind or Visual Studio Profiler.
+- Include benchmarking tests as part of the TDD suite.
+### 4.3 Optimization Techniques
+- Use object pooling and memory management best practices.
+- Implement batching and frustum culling in the rendering process.
+---
 
