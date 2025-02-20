@@ -20,8 +20,8 @@
 4. [Performances et optimisation](#4-performances-et-optimisation)
 5. [Gestion des Erreurs et Stabilité](#5-gestion-des-erreurs-et-stabilité)
 6. [Interface Design](#6-interface-design)
-7. [Feedback](#6-feedback)
-
+7. [Features](#7-features)
+8. [Technique](#8-technique)
 
 
 ---
@@ -199,4 +199,34 @@ Chaque classe affecte les compétences disponibles lors des montées de niveau.
 ### 7.5 HUD
 - Barre de vie : Située sous le joueur, elle indique son état de santé. Si elle se vide, il perd la partie et doit recommencer.
 - Barre d’expérience : Affichée en haut de l’écran, elle permet de visualiser la progression jusqu’au prochain niveau.
-
+## 8. Technique
+### 8.1 Inputs
+- Le système d’inputs utilisé sera l’Input System de Unity, qui offre une gestion plus flexible et moderne des contrôles par rapport à l'ancien système (Input Manager). Il permet de mieux gérer les entrées multi-dispositifs, comme l’écran tactile pour les mobiles, les manettes ou encore le clavier et la souris pour d’éventuelles adaptations futures.
+- Dans ce jeu, l’Input System sera principalement utilisé pour :
+    * Gérer le stick virtuel qui permet au joueur de se déplacer en touchant l’écran.
+    * Détecter les interactions et les éventuels menus du jeu.
+### 8.2 Audio
+- Le jeu utilisera différents formats audio pour optimiser la qualité et la performance:
+    * Les fichiers .wav seront employés pour les effets sonores et les bruitages. Ce format est non compressé, ce qui garantit une haute qualité sonore, idéale pour les sons courts comme les impacts, les coups ou les bruits d’ennemis.
+    * Les fichiers .mp3 seront utilisés pour la musique du jeu, car ce format compressé permet de réduire la taille des fichiers tout en conservant une bonne qualité audio.
+- Unity intégrera ces fichiers via AudioSource et AudioClip, avec un Audio Mixer pour ajuster les volumes des différents éléments sonores (musique, effets, interface).
+### 8.3 Physique
+- Le moteur physique de Unity sera utilisé pour gérer les collisions et les interactions entre les objets du jeu.
+- **Rigidbody**: Chaque entité dynamique (joueur, ennemis, projectiles) possédera un Rigidbody pour être affectée par la physique du jeu.
+- **Colliders**: Les objets auront des colliders adaptés (BoxCollider, SphereCollider, CapsuleCollider) afin de détecter les contacts et déclencher les interactions (dégâts, ramassage de gemmes).
+- **Layers & Triggers**: Une optimisation sera faite en définissant des layers spécifiques pour limiter les calculs de collisions inutiles et en utilisant des triggers pour les interactions (comme ramasser une gemme sans collision physique réelle).
+### 8.4 Rendering
+- Le moteur de rendu de Unity sera utilisé pour afficher les éléments du jeu:
+- **Modèles 3D**: Le joueur, les ennemis et le décor seront modélisés en 3D et rendus en temps réel.
+- **Sprites & UI**: Les éléments de l’interface utilisateur (HUD, barres de vie et d’expérience, menus) seront affichés via le système UI Canvas de Unity.
+- **Éclairage**: Un éclairage simple sera utilisé pour optimiser les performances sur mobile, avec éventuellement des Lightmaps pour pré-calculer certaines ombres et alléger le rendu.
+- **Effets visuels**: Des Particle Systems pourront être ajoutés pour des effets comme des explosions, des impacts ou des auras d’expérience autour des gemmes.
+### 8.5 Shader
+- A compléter
+### 8.6 Sauvegarde des Scores & Progression
+- PlayerPrefs pour stocker le meilleur score et les paramètres de jeu.
+- Fichiers JSON pour sauvegarder: 
+    * Personnage et classe choisis.
+    * Niveau atteint, compétences débloquées.
+    * Meilleur score et statistiques de partie.
+- Cloud Save (optionnel) avec Google Play Games ou iCloud pour sauvegarder en ligne
