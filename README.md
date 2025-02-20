@@ -77,11 +77,10 @@ Ce TDD détaille la conception, les interactions des modules et les stratégies 
 - ---
 ## 3. Architecture et conception du système
 ### 3.1 Répartition des modules
-- **Rendering Module:** Handles shaders, textures, and communicates with the GPU.
-- **Physics Module:** Implements collision detection and rigid body dynamics.
-- **Audio Module:** Interfaces with audio libraries (e.g., OpenAL).
-- **Input Module:** Abstracts device-specific input.
-- **Game Logic Module:** Manages scripting and event coordination.
+- **Rendering Module:** Le moteur de rendu de Unity sera utilisé pour afficher les éléments du jeu.
+- **Physics Module:** Le moteur physique de Unity sera utilisé pour gérer les collisions et les interactions entre les objets du jeu.
+- **Audio Module:** Le jeu utilisera différents formats audio pour optimiser la qualité et la performance.
+- **Input Module:** Le système d’inputs utilisé sera l’Input System de Unity, qui offre une gestion plus flexible et moderne des contrôles par rapport à l'ancien système (Input Manager). Il permet de mieux gérer les         entrées multi-dispositifs, comme l’écran tactile pour les mobiles, les manettes ou encore le clavier et la souris pour d’éventuelles adaptations futures.
 ### 3.2 Diagrammes d'interaction
 #### Main Loop
 ```mermaid
@@ -100,11 +99,8 @@ graph TD;
     B --> C[Gagner en niveau];
     C --> D[Amélioration];
 ```
-### 3.3 Décisions de conception et justification
-- **Choix de langue :** C# pour Unity.
-- **Modular Design:** Supports isolated testing and independent module development.
-- **TDD:** Ensures high code quality and early bug detection.
-### 3.4 Pourquoi Unity
+
+### 3.3 Pourquoi Unity
 - **Compatibilité multiplateforme**: Unity permet d’exporter facilement un jeu sur Android, iOS et d’autres plateformes sans devoir réécrire le code. Cela facilite le développement cross-platform, réduisant le temps et les coûts.
 - **Optimisation des performances**: Unity propose des outils avancés comme Adaptive Performance pour ajuster la qualité graphique en fonction du matériel.
 Le Scriptable Render Pipeline (URP) permet d’optimiser les graphismes pour les appareils mobiles.
@@ -118,6 +114,11 @@ Unity propose un éditeur intuitif avec du drag & drop et des outils comme Timel
 - **Support et communauté**: Grande communauté avec beaucoup de tutoriels et forums d’entraide.
 Documentation bien fournie et mises à jour régulières avec les dernières technologies mobiles.
 - **Gestion de la monétisation**: Unity Ads et Unity IAP (In-App Purchases) sont directement intégrés, facilitant la monétisation des jeux mobiles.
+- ### 3.4 Pourquoi pas Unreal
+Ce moteur est conçu pour les jeux avec un rendu ultra détaillé ce qui le rend moins optimisé pour le marché du jeu mobile à cause des performances plus basses des téléphones.
+
+Exemple différence de graphisme sur un jeu (Infinity Nikki) développé sur Unreal entre le mobile et le pc:
+
 ---
 
 
