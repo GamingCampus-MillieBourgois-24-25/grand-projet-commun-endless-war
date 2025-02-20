@@ -15,6 +15,7 @@
 
 ## Sommaire
 1. [Introduction](#1-introduction)
+2. [Tools, Environment, and Deployment](#2-tools-environment-and-deployment)
 
 
 
@@ -45,5 +46,16 @@ Ce document décrit la conception technique du projet en C# Unity, détaillant s
 ### 1.5 Aperçu du document 
 Ce TDD détaille la conception, les interactions des modules et les stratégies de test du jeu, garantissant ainsi la clarté de l'architecture de haut niveau aux détails d'implémentation de bas niveau.
 ---
+## 2. Outils, environnement et déploiement
+### 2.1 Outils de développement et IDE
+- IDE recommandés: Visual Studio or VSCode.
+- Éditeurs de code prenant en charge les fonctionnalités C#.
+- Moteur: Unity 2022.3
+### 2.2 Contrôle des versions
+- Utilisez Github pour le contrôle de version.
+- Adoptez une stratégie de branchement claire pour le développement de fonctionnalités.
+### 2.3 Environnement de déploiement
+- Plateformes cibles: Android, IOS.
+- Fournissez des instructions de déploiement et des guides de configuration de l'environnement.
 
 
