@@ -19,7 +19,8 @@
 3. [Architecture et conception du système](#3-architecture-et-conception-du-système)
 4. [Performances et optimisation](#4-performances-et-optimisation)
 5. [Gestion des Erreurs et Stabilité](#5-gestion-des-erreurs-et-stabilité)
-
+6. [Interface Design](#6-interface-design)
+7. [Feedback](#6-feedback)
 
 
 
@@ -151,22 +152,21 @@ Exemple différence de graphisme sur un jeu (Infinity Nikki) développé sur Unr
 ## 5. Gestion des Erreurs et Stabilité
 Un jeu mobile doit être robuste et éviter les crashs ou bugs frustrants.
 ### 5.1 Gestion des Erreurs Critiques
-Try/Catch pour éviter les crashs imprévus, notamment lors des chargements de fichiers JSON.
-Vérification des données sauvegardées avant leur chargement (éviter les fichiers corrompus).
+- Try/Catch pour éviter les crashs imprévus, notamment lors des chargements de fichiers JSON.
+- Vérification des données sauvegardées avant leur chargement (éviter les fichiers corrompus).
 ### 5.2 Gestion de la Mémoire et du Garbage Collector
-Pooling des objets pour éviter les allocations mémoire inutiles.
-Éviter les grosses allocations en temps réel :
-Privilégier les listes pré-allouées (List<T>.Capacity).
-Pas de string qui s’additionnent dans des boucles (StringBuilder plutôt que +=).
+- Pooling des objets pour éviter les allocations mémoire inutiles.
+- Éviter les grosses allocations en temps réel :
+- Privilégier les listes pré-allouées (List<T>.Capacity).
+- Pas de string qui s’additionnent dans des boucles (StringBuilder plutôt que +=).
 ### 5.3 Gestion des Crashes et Reporting d'Erreurs
-Utilisation de Unity Cloud Diagnostics pour suivre les erreurs et crashs sur les téléphones des joueurs.
-Logs et fichiers de debug pour comprendre les causes de bugs récurrents.
+- Utilisation de Unity Cloud Diagnostics pour suivre les erreurs et crashs sur les téléphones des joueurs.
+- Logs et fichiers de debug pour comprendre les causes de bugs récurrents.
 ### 5.4 Adaptabilité & Compatibilité Mobile
-Détection de la puissance du téléphone pour adapter les graphismes :
-Qualité basse sur téléphones bas de gamme (moins de particules, textures réduites).
-Qualité haute sur les modèles performants.
-Support du mode avion et perte de connexion :
-Vérification de l’état réseau si des fonctionnalités en ligne sont prévues (leaderboard, cloud save).
+- Détection de la puissance du téléphone pour adapter les graphismes :Qualité basse sur téléphones bas de gamme (moins de particules, textures réduites).
+- Qualité haute sur les modèles performants.
+- Support du mode avion et perte de connexion :Vérification de l’état réseau si des fonctionnalités en ligne sont prévues (leaderboard, cloud save).
+
 ---
 ## 6. Interface Design
 ### 6.1 Interfaces internes
@@ -176,3 +176,27 @@ Vérification de l’état réseau si des fonctionnalités en ligne sont prévue
 ### 6.3 Interface utilisateur (le cas échéant)
 - Développez une interface utilisateur de débogage pour la surveillance et les diagnostics des performances en temps réel.
 ---
+## 7. Features
+### 7.1 3C
+- Le jeu adopte une vue du dessus, avec une caméra qui suit le joueur en permanence, le maintenant au centre de l’écran.
+- Au début de chaque partie, le joueur choisit:
+  * **Son personnage**: Chaque personnage a ses propres statistiques de base.
+  * **Sa classe**: Les classes influencent le style de jeu avec des compétences passives uniques et des bonus spécifiques.
+Chaque classe affecte les compétences disponibles lors des montées de niveau.
+### 7.2 Terrain
+- Le terrain est une surface texturée sur laquelle le joueur et les ennemis peuvent se déplacer librement.
+### 7.3 Joueur
+- Le joueur évolue en 3D sur un vaste terrain et peut se déplacer librement. Son attaque est automatique, au corps à corps ou à distance selon son équipement.
+- Pour se déplacer, l’utilisateur pose son doigt sur l’écran, faisant apparaître un stick virtuel qu’il peut bouger à sa guise.
+- En éliminant des ennemis, le joueur gagne de l’expérience. À chaque montée de niveau, il peut choisir parmi une liste de compétences, lui permettant d’améliorer ses statistiques ou d’obtenir de nouvelles armes pour diversifier son arsenal.
+- La partie prend fin si les points de vie du joueur tombent à zéro.
+### 7.4 Ennemis
+- Les ennemis en 3D se déplacent vers le joueur et lui infligent des dégâts au contact. Leur comportement est simple et prévisible, mais leur nombre croissant les rend rapidement menaçants. Leur résistance augmente progressivement, rendant leur élimination de plus en plus difficile.
+- Ils apparaissent à une certaine distance autour du joueur, tentant de l’encercler pour limiter ses possibilités d’évasion.
+- À mesure que le joueur progresse, le nombre d’ennemis augmente pour maintenir un niveau de défi constant.
+- Périodiquement, un boss redoutable fait son apparition, intensifiant le combat et représentant une menace plus grande.
+- Lorsqu’ils sont vaincus, les ennemis laissent derrière eux une gemme d’expérience. La valeur de cette gemme dépend de la dangerosité de l’ennemi éliminé.
+### 7.5 HUD
+- Barre de vie : Située sous le joueur, elle indique son état de santé. Si elle se vide, il perd la partie et doit recommencer.
+- Barre d’expérience : Affichée en haut de l’écran, elle permet de visualiser la progression jusqu’au prochain niveau.
+
