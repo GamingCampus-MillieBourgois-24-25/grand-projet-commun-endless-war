@@ -121,13 +121,29 @@ Exemple différence de graphisme sur un jeu (Infinity Nikki) développé sur Unr
 ![Image d'Infinity Nikki pour démontrer la différence de graphisme entre mobile et pc](/docs/image.png)
 ---
 ## 4. Performances et optimisation
-### 4.1 Performance Goals
+### 4.1 Objectifs de performance
 Étant donné que le jeu est destiné aux appareils mobiles, plusieurs optimisations sont nécessaires pour garantir une fluidité à 60 FPS, une consommation minimale de batterie, et une stabilité sur une large gamme de téléphones (entrée de gamme à haut de gamme).
-### 4.2 Profiling and Benchmarking
-- Integrate profiling tools such as Valgrind or Visual Studio Profiler.
-- Include benchmarking tests as part of the TDD suite.
-### 4.3 Optimization Techniques
-- Use object pooling and memory management best practices.
-- Implement batching and frustum culling in the rendering process.
+### 4.2 Optimisation Graphique
+- **LOD (Level of Detail)**: Réduction des détails des modèles 3D lorsque la caméra est éloignée.
+- **Sprites et UI optimisés**: Utilisation de Sprite Atlases pour limiter les appels de rendu.
+- **Shaders mobiles**: Privilégier des shaders simples et optimisés pour réduire l’impact sur le GPU.
+- **Pas d’ombres dynamiques sur mobile**: Utilisation de Lightmaps pour alléger le calcul d’éclairage.
+- **Effets visuels légers**: Particle Systems limités en nombre et optimisés en durée de vie et nombre de particules.
+### 4.3 Optimisation des Physiques et des Collisions
+- Désactiver les collisions inutiles avec des Layers dédiés (éviter que les projectiles et ennemis testent les collisions entre eux).
+- Rigidbody en mode Kinematic lorsque la physique n’est pas nécessaire (ex : ennemis qui se déplacent vers le joueur sans interaction avec le décor).
+- Triggers plutôt que collisions physiques pour la détection des gemmes et attaques à distance.
+### 4.4 Gestion des Spawns et Optimisation des Ennemis
+- **Pooling des ennemis et projectiles**: nAu lieu d’instancier et détruire en boucle, on réutilise les objets via un Object Pool pour éviter le garbage collection fréquent.
+- **Suppression des ennemis hors écran**: Désactivation automatique des ennemis trop éloignés du joueur pour alléger le CPU.
+- **IA simplifiée**: Pas de pathfinding complexe, les ennemis se contentent d’un déplacement basique vers le joueur.
+### 4.5 Optimisation des Scripts et du CPU
+- **Moins d'Update()**: Éviter d’utiliser Update() dans chaque script. Favoriser les événements et coroutines pour exécuter du code seulement quand c’est nécessaire.
+- **FixedUpdate pour la physique uniquement**: Réduire la fréquence de FixedUpdate (Time.fixedDeltaTime) pour économiser du CPU.
+- **Utilisation de Jobs et Burst Compiler (optionnel)**: Si des calculs lourds sont nécessaires (ex : gestion massive des ennemis), utiliser Unity DOTS (Data-Oriented Tech Stack).
+### 4.6 Optimisation Audio
+- Limiter les AudioSources actives en simultané.
+- **Compresser les sons**: Effets sonores en Vorbis (Ogg) au lieu de WAV pour réduire la taille.
+- Musiques en MP3 avec un débit limité.
 ---
 
