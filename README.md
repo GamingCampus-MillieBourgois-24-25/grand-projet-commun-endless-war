@@ -48,32 +48,41 @@ Ce TDD détaille la conception, les interactions des modules et les stratégies 
 ---
 ## 2. Outils, environnement et déploiement
 ### 2.1 Outils de développement et IDE
-- IDE recommandés: Visual Studio or VSCode.
 - Éditeurs de code prenant en charge les fonctionnalités C#.
-- Moteur: Unity 2022.3
-### 2.2 Contrôle des versions
+- **IDE recommandés**: Visual Studio or VSCode.
+- **Moteur de jeu**: Unity 2022.3
+- **Processeur**: Intel Core i5 10ᵉ génération / AMD Ryzen 5 ou supérieur
+- **Nombre de cœurs CPU**: 4 minimum (8 recommandé)
+- **Mémoire RAM**: 8 Go minimum (16 Go recommandé)
+- **Carte Graphique(GPU)**: Minimum : Nvidia GTX 1050 / AMD Radeon RX 560
+- **Stockage**: 10 Go d’espace libre (SSD recommandé pour de meilleures performances)
+- **Système d’exploitation**: Windows 10/11
+### 2.2 Logiciels et API nécessaires
+- **Moteur de jeu**: Unity (version LTS recommandée, ex. Unity 2022 LTS)
+- **SDK Android**: Android SDK installé via Unity Hub
+- **API graphique**: OpenGL ES 3.1 / Vulkan 1.1
+- **Outil de développement**: Unity Remote
+### 2.3 Contrôle des versions
 - Utilisez Github pour le contrôle de version.
 - Adoptez une stratégie de branchement claire pour le développement de fonctionnalités.
-### 2.3 Environnement de déploiement
-- Plateformes cibles: Android, IOS.
-- Système d’exploitation : Android 7.0 (Nougat) ou supérieur
-- Processeur : Qualcomm Snapdragon 665 / Mediatek Helio P60 ou équivalent
-- Nombre de cœurs CPU : 4 minimum
-- Mémoire RAM : 3 Go
-- GPU : Adreno 610 / Mali-G72 MP3 ou équivalent
-- Stockage libre : 1,5 Go
-- Écran : 720p minimum
+### 2.4 Environnement de déploiement
+- **Plateformes cibles**: Android, IOS.
+- **Système d’exploitation**: Android 7.0 (Nougat) ou supérieur
+- **Processeur**: Qualcomm Snapdragon 665 / Mediatek Helio P60 ou équivalent
+- **Nombre de cœurs CPU**: 4 minimum
+- **Mémoire RAM**: 3 Go
+- **GPU**: Adreno 610 / Mali-G72 MP3 ou équivalent
+- **Stockage libre**: 1,5 Go
+- **Écran**: 720p minimum
 - ---
 ## 3. Architecture et conception du système
-### 3.1 Aperçu architectural
-The engine employs a component-based architecture. Each module has well-defined interfaces, ensuring loose coupling and isolated development.
-### 3.2 Répartition des modules
+### 3.1 Répartition des modules
 - **Rendering Module:** Handles shaders, textures, and communicates with the GPU.
 - **Physics Module:** Implements collision detection and rigid body dynamics.
 - **Audio Module:** Interfaces with audio libraries (e.g., OpenAL).
 - **Input Module:** Abstracts device-specific input.
 - **Game Logic Module:** Manages scripting and event coordination.
-### 3.3 Diagrammes d'interaction
+### 3.2 Diagrammes d'interaction
 #### Main Loop
 ```mermaid
 graph TD;
@@ -91,11 +100,24 @@ graph TD;
     B --> C[Gagner en niveau];
     C --> D[Amélioration];
 ```
-### 3.4 Décisions de conception et justification
+### 3.3 Décisions de conception et justification
 - **Choix de langue :** C# pour Unity.
-- **Choix du moteur :** Unity car plus performant pour produire un jeu mobile.
 - **Modular Design:** Supports isolated testing and independent module development.
 - **TDD:** Ensures high code quality and early bug detection.
+### 3.4 Pourquoi Unity
+- **Compatibilité multiplateforme**: Unity permet d’exporter facilement un jeu sur Android, iOS et d’autres plateformes sans devoir réécrire le code. Cela facilite le développement cross-platform, réduisant le temps et les coûts.
+- **Optimisation des performances**: Unity propose des outils avancés comme Adaptive Performance pour ajuster la qualité graphique en fonction du matériel.
+Le Scriptable Render Pipeline (URP) permet d’optimiser les graphismes pour les appareils mobiles.
+Support de Vulkan et OpenGL ES 3.1, offrant de meilleures performances graphiques sur Android.
+- **Taille et gestion des ressources**: Unity propose des compressions avancées (ex. ASTC, ETC2) pour réduire la taille du jeu sans trop impacter la qualité.
+Le Addressables System optimise le chargement des assets pour éviter une consommation excessive de mémoire.
+- **Large choix d’outils et de plugins**: Unity dispose du Unity Asset Store, qui propose des plugins pour l'UI, l'animation, l’IA et bien plus encore.
+Intégration facile avec des SDK populaires comme Google Play Services, Firebase, AdMob et Facebook SDK pour la monétisation et l’analyse.
+- **Facilité de développement**: C# est un langage accessible et performant pour les jeux mobiles.
+Unity propose un éditeur intuitif avec du drag & drop et des outils comme Timeline pour l’animation et Cinemachine pour les caméras.
+- **Support et communauté**: Grande communauté avec beaucoup de tutoriels et forums d’entraide.
+Documentation bien fournie et mises à jour régulières avec les dernières technologies mobiles.
+- **Gestion de la monétisation**: Unity Ads et Unity IAP (In-App Purchases) sont directement intégrés, facilitant la monétisation des jeux mobiles.
 ---
 
 
