@@ -65,6 +65,7 @@ Ce TDD détaille la conception, les interactions des modules et les stratégies 
 - **Outil de développement**: Unity Remote
 ### 2.3 Contrôle des versions
 - Utilisez Github pour le contrôle de version.
+- Utilisation de Github Desktop pour gérer le projet plus facilement
 - Adoptez une stratégie de branchement claire pour le développement de fonctionnalités.
 ### 2.4 Environnement de déploiement
 - **Plateformes cibles**: Android, IOS.
@@ -166,4 +167,12 @@ Qualité basse sur téléphones bas de gamme (moins de particules, textures réd
 Qualité haute sur les modèles performants.
 Support du mode avion et perte de connexion :
 Vérification de l’état réseau si des fonctionnalités en ligne sont prévues (leaderboard, cloud save).
-
+---
+## 6. Interface Design
+### 6.1 Interfaces internes
+- Définissez des API claires entre les modules à l'aide de classes ou d'interfaces abstraites.
+### 6.2 API externes et formats de fichiers
+- Prise en charge des formats de fichiers standards: CS (scripts), FBX (models), JPEG  (textures), MP3 (audio).
+### 6.3 Interface utilisateur (le cas échéant)
+- Développez une interface utilisateur de débogage pour la surveillance et les diagnostics des performances en temps réel.
+---
