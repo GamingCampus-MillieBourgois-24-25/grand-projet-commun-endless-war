@@ -18,6 +18,7 @@
 2. [Outils, environnement et déploiement](#2-outils-environnement-et-déploiement)
 3. [Architecture et conception du système](#3-architecture-et-conception-du-système)
 4. [Performances et optimisation](#4-performances-et-optimisation)
+5. [Gestion des Erreurs et Stabilité](#5-gestion-des-erreurs-et-stabilité)
 
 
 
@@ -146,4 +147,23 @@ Exemple différence de graphisme sur un jeu (Infinity Nikki) développé sur Unr
 - **Compresser les sons**: Effets sonores en Vorbis (Ogg) au lieu de WAV pour réduire la taille.
 - Musiques en MP3 avec un débit limité.
 ---
+## 5. Gestion des Erreurs et Stabilité
+Un jeu mobile doit être robuste et éviter les crashs ou bugs frustrants.
+### 5.1 Gestion des Erreurs Critiques
+Try/Catch pour éviter les crashs imprévus, notamment lors des chargements de fichiers JSON.
+Vérification des données sauvegardées avant leur chargement (éviter les fichiers corrompus).
+### 5.2 Gestion de la Mémoire et du Garbage Collector
+Pooling des objets pour éviter les allocations mémoire inutiles.
+Éviter les grosses allocations en temps réel :
+Privilégier les listes pré-allouées (List<T>.Capacity).
+Pas de string qui s’additionnent dans des boucles (StringBuilder plutôt que +=).
+### 5.3 Gestion des Crashes et Reporting d'Erreurs
+Utilisation de Unity Cloud Diagnostics pour suivre les erreurs et crashs sur les téléphones des joueurs.
+Logs et fichiers de debug pour comprendre les causes de bugs récurrents.
+### 5.4 Adaptabilité & Compatibilité Mobile
+Détection de la puissance du téléphone pour adapter les graphismes :
+Qualité basse sur téléphones bas de gamme (moins de particules, textures réduites).
+Qualité haute sur les modèles performants.
+Support du mode avion et perte de connexion :
+Vérification de l’état réseau si des fonctionnalités en ligne sont prévues (leaderboard, cloud save).
 
