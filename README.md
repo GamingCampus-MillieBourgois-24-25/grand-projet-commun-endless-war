@@ -41,3 +41,9 @@ Ce document décrit la conception technique du projet en C# Unity, détaillant s
 - [Documentation Unity](https://docs.unity3d.com/2022.3/Documentation/Manual/index.html)
 - [Documentation Visual Studio](https://learn.microsoft.com/fr-fr/visualstudio/windows/?view=vs-2022)
 - [Documentation Github](https://docs.github.com/en)
+
+### 1.5 Aperçu du document 
+Ce TDD détaille la conception, les interactions des modules et les stratégies de test du jeu, garantissant ainsi la clarté de l'architecture de haut niveau aux détails d'implémentation de bas niveau.
+---
+
+
