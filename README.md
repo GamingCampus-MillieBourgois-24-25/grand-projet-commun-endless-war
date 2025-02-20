@@ -22,7 +22,7 @@
 6. [Interface Design](#6-interface-design)
 7. [Features](#7-features)
 8. [Technique](#8-technique)
-
+9. [Timeline du projet](9#-timeline-du-projet)
 
 ---
 ## 1. Introduction
@@ -199,6 +199,7 @@ Chaque classe affecte les compétences disponibles lors des montées de niveau.
 ### 7.5 HUD
 - Barre de vie : Située sous le joueur, elle indique son état de santé. Si elle se vide, il perd la partie et doit recommencer.
 - Barre d’expérience : Affichée en haut de l’écran, elle permet de visualiser la progression jusqu’au prochain niveau.
+  ---
 ## 8. Technique
 ### 8.1 Inputs
 - Le système d’inputs utilisé sera l’Input System de Unity, qui offre une gestion plus flexible et moderne des contrôles par rapport à l'ancien système (Input Manager). Il permet de mieux gérer les entrées multi-dispositifs, comme l’écran tactile pour les mobiles, les manettes ou encore le clavier et la souris pour d’éventuelles adaptations futures.
@@ -230,3 +231,11 @@ Chaque classe affecte les compétences disponibles lors des montées de niveau.
     * Niveau atteint, compétences débloquées.
     * Meilleur score et statistiques de partie.
 - Cloud Save (optionnel) avec Google Play Games ou iCloud pour sauvegarder en ligne
+---
+
+## 9. Timeline du projet
+- **Étape 1:** Préprod
+- **Étape 2:** Prototype du projet
+- **Étape 3:** Alpha-test
+- **Étape 4:** Amélioration des features
+- **Étape 5:** Bêta-test
