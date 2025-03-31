@@ -2852,7 +2852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 10
-  damage: 10
+  damage: 20
   attackCooldown: 4
   enemyLayer:
     serializedVersion: 2
