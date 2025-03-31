@@ -22,7 +22,10 @@ public class Axe : MonoBehaviour
 
     void Update()
     {
-        RotateAxe();
+        if (player!= null)
+        {
+            RotateAxe();
+        }
     }
 
     private void RotateAxe()
