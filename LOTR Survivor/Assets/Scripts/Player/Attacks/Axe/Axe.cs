@@ -26,6 +26,10 @@ public class Axe : MonoBehaviour
         {
             RotateAxe();
         }
+        else
+        {
+            DestroyAxe();
+        }
     }
 
     private void RotateAxe()
