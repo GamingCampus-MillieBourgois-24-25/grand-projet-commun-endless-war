@@ -5,11 +5,11 @@ using UnityEngine;
 public class HealthBehaviour : MonoBehaviour
 {
     [Header("Parameters")]
-    [SerializeField] private int maxHealth;
-    [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] protected int maxHealth;
+    [SerializeField] protected float flashDuration = 0.1f;
     [SerializeField] private Color flashColor = Color.red;
 
-    private int health;
+    protected int health;
     private Renderer objectRenderer;
     private Color originalColor;
 
@@ -22,14 +22,13 @@ public class HealthBehaviour : MonoBehaviour
         {
             originalColor = objectRenderer.material.color;
         }
+
+        OnHealthInitialized();
     }
 
-    void Update()
-    {
+    protected virtual void OnHealthInitialized() { }
 
-    }
-
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         health -= damage;
 

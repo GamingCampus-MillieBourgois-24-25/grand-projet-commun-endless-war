@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5115014837667913195}
   - component: {fileID: 5989390546084529064}
   - component: {fileID: 6331806316904506457}
-  - component: {fileID: 7396154915508640266}
   - component: {fileID: 2707981049250061997}
   - component: {fileID: 8518051523068739836}
+  - component: {fileID: 5306658004099684226}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -156,21 +156,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &7396154915508640266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2631856925981760766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1405b1c3c146437408f1ff5ab7676270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  flashDuration: 0.1
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &2707981049250061997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +200,19 @@ MonoBehaviour:
   axeSpeed: 220
   range: 6
   maxRotation: 405
+--- !u!114 &5306658004099684226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631856925981760766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204074ed7c823f64d8e235107207ab65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  flashDuration: 0.1
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  healthBarCanvas: {fileID: 0}
