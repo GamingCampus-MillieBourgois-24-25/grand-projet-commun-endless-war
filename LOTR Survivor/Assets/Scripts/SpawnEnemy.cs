@@ -1,56 +1,91 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs; // Array of enemy prefabs
     public Transform player; // Assign the player object in the Inspector
     public float spawnRadius = 10f; // Radius around the player to spawn enemies
-    public float spawnRate = 1f; // How often enemies spawn
-    public int enemiesPerWave = 5; // Number of enemies per wave
+    public float despawnDistance = 30f; // Distance at which enemies despawn
     public float navMeshCheckRadius = 2f; // How far to check for a valid NavMesh position
+    public float timerBetweenWaves = 20f;
+    public EnemyWave[] waves; // Array of enemy waves
+    private List<GameObject> activeEnemies = new List<GameObject>();
+    private int currentWaveIndex = 0;
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(ManageWaves());
     }
 
-    private IEnumerator SpawnEnemies()
+    private IEnumerator ManageWaves()
     {
-        while (true)
+        while (currentWaveIndex < waves.Length)
         {
-            for (int i = 0; i < enemiesPerWave; i++)
-            {
-                SpawnEnemy();
-            }
-            yield return new WaitForSeconds(spawnRate);
+            EnemyWave wave = waves[currentWaveIndex];
+            yield return StartCoroutine(SpawnWave(wave));
+            yield return new WaitForSeconds(timerBetweenWaves); // Wait for next wave
+            currentWaveIndex++;
         }
     }
 
-    private void SpawnEnemy()
+    private IEnumerator SpawnWave(EnemyWave wave)
     {
-        if (enemyPrefabs.Length == 0) return; // Ensure there are enemy prefabs
+        while (GetActiveEnemyCount() < wave.minEnemies)
+        {
+            SpawnEnemy(wave);
+            yield return new WaitForSeconds(wave.spawnInterval);
+        }
+    }
 
-        // Get a random enemy prefab from the array
-        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+    private void SpawnEnemy(EnemyWave wave)
+    {
+        if (wave.enemyPrefabs.Length == 0) return;
 
-        // Get a random angle in radians
+        GameObject enemyPrefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
         float angle = Random.Range(0f, Mathf.PI * 2);
-
-        // Calculate spawn position using sine and cosine
         Vector3 spawnPosition = new Vector3(
             player.position.x + Mathf.Cos(angle) * spawnRadius,
             player.position.y,
             player.position.z + Mathf.Sin(angle) * spawnRadius
         );
 
-        // Check if the position is on the NavMesh
         if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit hit, navMeshCheckRadius, NavMesh.AllAreas))
         {
-            spawnPosition = hit.position; // Adjust position to be on the NavMesh
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            spawnPosition = hit.position;
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            activeEnemies.Add(enemy);
         }
+    }
+
+    private void Update()
+    {
+        DespawnDistantEnemies();
+    }
+
+    private void DespawnDistantEnemies()
+    {
+        for (int i = activeEnemies.Count - 1; i >= 0; i--)
+        {
+            if (activeEnemies[i] == null) // Check if the enemy has already been destroyed
+            {
+                activeEnemies.RemoveAt(i);
+                continue;
+            }
+
+            if (Vector3.Distance(player.position, activeEnemies[i].transform.position) > despawnDistance)
+            {
+                Destroy(activeEnemies[i]);
+                activeEnemies.RemoveAt(i);
+            }
+        }
+    }
+
+    private int GetActiveEnemyCount()
+    {
+        activeEnemies.RemoveAll(enemy => enemy == null); // Cleanup destroyed enemies
+        return activeEnemies.Count;
     }
 
     private void OnDrawGizmos()
@@ -59,6 +94,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(player.position, spawnRadius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(player.position, despawnDistance);
         }
     }
 }

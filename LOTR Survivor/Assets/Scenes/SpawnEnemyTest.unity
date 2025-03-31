@@ -1599,13 +1599,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6079d1659ffd4a7408e2b384b746c149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 7466036329059886502, guid: f6b148bb2e7862346995c1aea207e01f, type: 3}
   player: {fileID: 1598884556}
   spawnRadius: 50
-  spawnRate: 10
-  enemiesPerWave: 5
+  despawnDistance: 60
   navMeshCheckRadius: 50
+  timerBetweenWaves: 5
+  waves:
+  - enemyPrefabs:
+    - {fileID: 7466036329059886502, guid: f6b148bb2e7862346995c1aea207e01f, type: 3}
+    minEnemies: 10
+    spawnInterval: 1
+  - enemyPrefabs:
+    - {fileID: 7466036329059886502, guid: b625923a92fe85a47ade35549cc14196, type: 3}
+    minEnemies: 15
+    spawnInterval: 1
 --- !u!1 &1753304710
 GameObject:
   m_ObjectHideFlags: 0
