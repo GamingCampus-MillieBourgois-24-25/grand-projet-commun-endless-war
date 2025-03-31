@@ -6,6 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -23,20 +24,25 @@ public class PlayerInput : MonoBehaviour
     private Finger MovementFinger;
     private Vector2 MovementAmount;
 
-    private void OnEnable()
+    private void Awake()
     {
         EnhancedTouchSupport.Enable();
-        ETouch.Touch.onFingerDown += HandleFingerDown;
-        ETouch.Touch.onFingerUp += HandleFingerUp;
-        ETouch.Touch.onFingerMove += HandleFingerMove;
+    }
+
+    private void OnEnable()
+    {
+        TouchSimulation.Enable();
+        Touch.onFingerDown += HandleFingerDown;
+        Touch.onFingerUp += HandleFingerUp;
+        Touch.onFingerMove += HandleFingerMove;
     }
 
     private void OnDisable()
     {
-        ETouch.Touch.onFingerDown -= HandleFingerDown;
-        ETouch.Touch.onFingerUp -= HandleFingerUp;
-        ETouch.Touch.onFingerMove -= HandleFingerMove;
-        EnhancedTouchSupport.Disable();
+        Touch.onFingerDown -= HandleFingerDown;
+        Touch.onFingerUp -= HandleFingerUp;
+        Touch.onFingerMove -= HandleFingerMove;
+        TouchSimulation.Disable();
     }
 
     private void HandleFingerMove(Finger MovedFinger)
@@ -45,7 +51,7 @@ public class PlayerInput : MonoBehaviour
         {
             Vector2 knobPosition;
             float maxMovement = JoystickSize.x / 2f;
-            ETouch.Touch currentTouch = MovedFinger.currentTouch;
+            Touch currentTouch = MovedFinger.currentTouch;
 
             if (Vector2.Distance(currentTouch.screenPosition, Joystick.RectTransform.anchoredPosition) > maxMovement)
             {
@@ -106,6 +112,7 @@ public class PlayerInput : MonoBehaviour
 
         return StartPosition;
     }
+
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(MovementAmount.x, 0, MovementAmount.y) * speed;
@@ -114,8 +121,12 @@ public class PlayerInput : MonoBehaviour
 
         if (movement != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-            PlayerRb.rotation = Quaternion.Slerp(PlayerRb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+            //Pour une rotation réaliste
+            //Quaternion targetRotation = Quaternion.LookRotation(movement);
+            //PlayerRb.rotation = Quaternion.Slerp(PlayerRb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+
+            //Pour une rotation instantanée
+            PlayerRb.rotation = Quaternion.LookRotation(movement);
         }
     }
 
