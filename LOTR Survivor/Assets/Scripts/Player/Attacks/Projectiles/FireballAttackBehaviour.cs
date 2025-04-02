@@ -27,12 +27,21 @@ public class FireballAttackBehaviour : AttackBehaviour
 
     protected void ShootFireball(GameObject target)
     {
-        GameObject fireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+        GameObject fireball;
+        if (ObjectPool.Instance != null)
+        {
+            fireball = ObjectPool.Instance.Spawn(fireballPrefab, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            fireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+        }
+
         Fireball fireballScript = fireball.GetComponent<Fireball>();
 
         if (fireballScript != null)
         {
-            fireballScript.Initialize(target, damage, fireballSpeed);
+            fireballScript.Initialize(target, damage, fireballSpeed, fireballPrefab);
         }
     }
 

@@ -63,6 +63,14 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
     private void DestroyEnemy()
     {
-        Destroy(gameObject);
+        if (ObjectPool.Instance != null)
+        {
+            ObjectPool.Instance.Despawn(gameObject, enemyData.prefab);
+        }
+        else
+        {
+            Debug.Log("ObjectPool Instance is not present in the scene!");
+            Destroy(gameObject);
+        }
     }
 }
