@@ -34,7 +34,7 @@ public class Fireball : MonoBehaviour
 
     private void HitTarget()
     {
-        if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour health))
+        if (target.TryGetComponent<EnemyHealthBehaviour>(out EnemyHealthBehaviour health))
         {
             health.TakeDamage(damage);
         }

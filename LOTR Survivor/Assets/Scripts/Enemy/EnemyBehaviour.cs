@@ -5,11 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [Header("Parameters")]
-    [SerializeField]
-    private float attackRange = 2f;
-    [SerializeField] private int damage = 5;
-    [SerializeField] private float attackCooldown = 1f;
+    [Header("Enemy Data")]
+    [SerializeField] private EnemySO enemyData;
 
     private GameObject player;
     private NavMeshAgent agent;
@@ -23,13 +20,22 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Initialize()
     {
+        if (enemyData == null)
+        {
+            Debug.LogError("Enemy Data non assigné sur " + gameObject.name);
+            return;
+        }
+
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
 
         if (agent == null)
         {
             Debug.LogError("NavMeshAgent manquant sur " + gameObject.name);
+            return;
         }
+
+        agent.speed = enemyData.speed;
     }
 
     void Update()
@@ -45,7 +51,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        if (!isInRange)
+        if (!isInRange && agent != null)
         {
             agent.SetDestination(player.transform.position);
         }
@@ -54,14 +60,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void CheckDistanceToPlayer()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        if (distanceToPlayer <= attackRange)
-        {
-            isInRange = true;
-        }
-        else
-        {
-            isInRange = false;
-        }
+        isInRange = distanceToPlayer <= enemyData.aggroRange;
     }
 
     private void UpdateTimer()
@@ -71,11 +70,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Attack()
     {
-        if (isInRange && attackTimer >= attackCooldown)
+        if (isInRange && attackTimer >= enemyData.attackCooldown)
         {
-            if (player.TryGetComponent<HealthBehaviour>(out HealthBehaviour health))
+            if (player.TryGetComponent<IHealth>(out IHealth health))
             {
-                health.TakeDamage(damage);
+                health.TakeDamage(enemyData.attackPower);
                 attackTimer = 0f;
             }
         }

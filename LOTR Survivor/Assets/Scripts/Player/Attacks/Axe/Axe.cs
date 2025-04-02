@@ -58,7 +58,7 @@ public class Axe : MonoBehaviour
 
     private void DealDamage(Collider collider)
     {
-        HealthBehaviour enemy = collider.GetComponent<HealthBehaviour>();
+        EnemyHealthBehaviour enemy = collider.GetComponent<EnemyHealthBehaviour>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
