@@ -114,18 +114,18 @@ public class PlayerInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(MovementAmount.x, 0, MovementAmount.y) * speed;
+        Vector3 movement = new Vector3(MovementAmount.x, 0, MovementAmount.y);
 
-        PlayerRb.velocity = new Vector3(movement.x, PlayerRb.velocity.y, movement.z);
+        PlayerRb.MovePosition(transform.position + movement * speed * Time.deltaTime);
 
         if (movement != Vector3.zero)
         {
-            //Pour une rotation réaliste
-            //Quaternion targetRotation = Quaternion.LookRotation(movement);
-            //PlayerRb.rotation = Quaternion.Slerp(PlayerRb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+            if (movement != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(movement);
 
-            //Pour une rotation instantanée
-            PlayerRb.rotation = Quaternion.LookRotation(movement);
+                PlayerRb.MoveRotation(targetRotation);
+            }
         }
     }
 

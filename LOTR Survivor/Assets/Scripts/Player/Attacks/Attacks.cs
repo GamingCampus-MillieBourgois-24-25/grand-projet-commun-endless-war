@@ -13,9 +13,13 @@ public abstract class Attack : MonoBehaviour
         this.damage = damage;
         this.speed = speed;
         this.attackPrefab = prefab;
+
+        ResetAttack();
     }
 
     protected abstract void UpdateAttack();
+
+    protected virtual void ResetAttack() { }
 
     protected void DestroyAttack()
     {

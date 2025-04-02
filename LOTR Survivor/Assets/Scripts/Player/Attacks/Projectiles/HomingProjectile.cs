@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : Attack
+public class HomingProjectile : Attack
 {
     private GameObject target;
 

@@ -13,7 +13,7 @@ public class FireballAttackBehaviour : AttackBehaviour
         {
             GameObject fireball = SpawnOrInstantiate(fireballPrefab, transform.position, Quaternion.identity);
 
-            Fireball fireballScript = fireball.GetComponent<Fireball>();
+            HomingProjectile fireballScript = fireball.GetComponent<HomingProjectile>();
             if (fireballScript != null)
             {
                 fireballScript.Initialize(nearestEnemy, damage, fireballSpeed, fireballPrefab);

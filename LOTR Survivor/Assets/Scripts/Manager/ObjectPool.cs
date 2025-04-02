@@ -37,6 +37,12 @@ public class ObjectPool : MonoBehaviour
 
     public void Despawn(GameObject obj, GameObject prefab)
     {
+        if (prefab == null)
+        {
+            Debug.Log("Prefab is null in Despawn method");
+            return;
+        }
+
         if (!pool.ContainsKey(prefab))
         {
             pool[prefab] = new Queue<GameObject>();
