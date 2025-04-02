@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 {
     [Header("Enemy Data")]
-    [SerializeField] private EnemySO enemyData;
+    [SerializeField] public EnemySO enemyData;
 
     private int health;
     private Renderer objectRenderer;
@@ -36,6 +36,12 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     }
 
     public void OnHealthInitialized() { }
+
+    public void Initialize(EnemySO enemySO)
+    {
+        this.enemyData = enemySO;
+        Health = MaxHealth;
+    }
 
     public void TakeDamage(int damage)
     {

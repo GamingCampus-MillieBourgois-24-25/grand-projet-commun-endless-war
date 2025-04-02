@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 5102446194780928564}
   - component: {fileID: 3321119355655359760}
   - component: {fileID: 56370005108763215}
-  - component: {fileID: 3965936577384380029}
+  - component: {fileID: -8733627933483121239}
   - component: {fileID: 4420957439939387608}
+  - component: {fileID: -2964207982311063904}
   m_Layer: 6
   m_Name: Enemy 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,10 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1405b1c3c146437408f1ff5ab7676270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  flashDuration: 0.1
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &3965936577384380029
+  enemyData: {fileID: 11400000, guid: bd96020d61a5418489c55cb672bc8bba, type: 2}
+--- !u!114 &-8733627933483121239
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,12 +133,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7466036329059886502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf13cf9f8ee55d242946d1196140282c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f494e72fd648ac4ca00b07fd0ee2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1
-  damage: 5
-  attackCooldown: 1
+  enemyData: {fileID: 11400000, guid: bd96020d61a5418489c55cb672bc8bba, type: 2}
 --- !u!195 &4420957439939387608
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -162,3 +159,30 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &-2964207982311063904
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466036329059886502}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
