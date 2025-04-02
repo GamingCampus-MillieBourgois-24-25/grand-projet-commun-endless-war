@@ -1,53 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireballAttackBehaviour : AttackBehaviour
 {
-    [SerializeField] protected GameObject fireballPrefab;
-    [SerializeField] protected float fireballSpeed = 10f;
+    [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private float fireballSpeed = 10f;
 
-    protected override void Update()
+    protected override void Attack()
     {
-        base.Update();
-
-        if (!CanAttack())
-        {
-            return;
-        }
-
         GameObject nearestEnemy = FindNearestEnemy();
 
         if (nearestEnemy != null)
         {
-            ShootFireball(nearestEnemy);
-            attackTimer = 0;
-        }
-    }
+            GameObject fireball = SpawnOrInstantiate(fireballPrefab, transform.position, Quaternion.identity);
 
-    protected void ShootFireball(GameObject target)
-    {
-        GameObject fireball;
-        if (ObjectPool.Instance != null)
-        {
-            fireball = ObjectPool.Instance.Spawn(fireballPrefab, transform.position, Quaternion.identity);
+            Fireball fireballScript = fireball.GetComponent<Fireball>();
+            if (fireballScript != null)
+            {
+                fireballScript.Initialize(nearestEnemy, damage, fireballSpeed, fireballPrefab);
+            }
         }
-        else
-        {
-            fireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
-        }
-
-        Fireball fireballScript = fireball.GetComponent<Fireball>();
-
-        if (fireballScript != null)
-        {
-            fireballScript.Initialize(target, damage, fireballSpeed, fireballPrefab);
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

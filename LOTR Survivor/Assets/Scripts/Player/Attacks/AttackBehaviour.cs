@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBehaviour : MonoBehaviour
+public abstract class AttackBehaviour : MonoBehaviour
 {
     [Header("Paramètres")]
     [SerializeField] protected float attackRange = 10f;
@@ -15,6 +15,12 @@ public class AttackBehaviour : MonoBehaviour
     protected virtual void Update()
     {
         attackTimer += Time.deltaTime;
+
+        if (CanAttack())
+        {
+            Attack();
+            attackTimer = 0f;
+        }
     }
 
     protected bool CanAttack()
@@ -43,4 +49,18 @@ public class AttackBehaviour : MonoBehaviour
 
         return nearestEnemy.gameObject;
     }
+
+    protected GameObject SpawnOrInstantiate(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        if (ObjectPool.Instance != null)
+        {
+            return ObjectPool.Instance.Spawn(prefab, position, rotation);
+        }
+        else
+        {
+            return Instantiate(prefab, position, rotation);
+        }
+    }
+
+    protected abstract void Attack();
 }

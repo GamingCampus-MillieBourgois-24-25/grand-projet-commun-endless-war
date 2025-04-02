@@ -1,44 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AxeAttackBehaviour : AttackBehaviour
 {
-    [SerializeField] protected GameObject axePrefab;
+    [SerializeField] private GameObject axePrefab;
     [SerializeField] private float axeSpeed = 230f;
     [SerializeField] private float range = 8f;
     [SerializeField] private float maxRotation = 360f;
 
-    protected override void Update()
-    {
-        base.Update();
-
-        if (!CanAttack())
-        {
-            return;
-        }
-
-        ShootAxe();
-    }
-
-    protected void ShootAxe()
+    protected override void Attack()
     {
         Vector3 axePosition = new Vector3(0f, 0f, range);
-        GameObject axe;
-        if (ObjectPool.Instance != null)
-        {
-            axe = ObjectPool.Instance.Spawn(axePrefab, transform.position + axePosition, Quaternion.identity);
-        }
-        else
-        {
-            axe = axe = Instantiate(axePrefab, transform.position + axePosition, Quaternion.identity);
-        }
+        GameObject axe = SpawnOrInstantiate(axePrefab, transform.position + axePosition, Quaternion.identity);
 
         Axe axeScript = axe.GetComponent<Axe>();
         if (axeScript != null)
         {
-            axeScript.Initialize(damage, axeSpeed, maxRotation,this.transform, axePrefab);
+            axeScript.Initialize(damage, axeSpeed, maxRotation, this.transform, axePrefab);
         }
-        attackTimer = 0;
     }
 }
