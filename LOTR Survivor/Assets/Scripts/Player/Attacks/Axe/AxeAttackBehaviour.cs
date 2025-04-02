@@ -24,12 +24,20 @@ public class AxeAttackBehaviour : AttackBehaviour
     protected void ShootAxe()
     {
         Vector3 axePosition = new Vector3(0f, 0f, range);
-        GameObject axe = Instantiate(axePrefab, transform.position + axePosition, Quaternion.identity);
+        GameObject axe;
+        if (ObjectPool.Instance != null)
+        {
+            axe = ObjectPool.Instance.Spawn(axePrefab, transform.position + axePosition, Quaternion.identity);
+        }
+        else
+        {
+            axe = axe = Instantiate(axePrefab, transform.position + axePosition, Quaternion.identity);
+        }
 
         Axe axeScript = axe.GetComponent<Axe>();
         if (axeScript != null)
         {
-            axeScript.Initialize(damage, axeSpeed, maxRotation,this.transform);
+            axeScript.Initialize(damage, axeSpeed, maxRotation,this.transform, axePrefab);
         }
         attackTimer = 0;
     }

@@ -2,19 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : Attack
 {
     private GameObject target;
-    private int damage;
-    private float speed;
-    private GameObject fireballPrefab;
 
     public void Initialize(GameObject target, int damage, float speed, GameObject prefab)
     {
+        base.Initialize(damage, speed, prefab);
         this.target = target;
-        this.damage = damage;
-        this.speed = speed;
-        this.fireballPrefab = prefab;
     }
 
     void Update()
@@ -25,6 +20,11 @@ public class Fireball : MonoBehaviour
             return;
         }
 
+        UpdateAttack();
+    }
+
+    protected override void UpdateAttack()
+    {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
 
@@ -42,18 +42,5 @@ public class Fireball : MonoBehaviour
         }
 
         DestroyAttack();
-    }
-
-    private void DestroyAttack()
-    {
-        if (ObjectPool.Instance != null)
-        {
-            ObjectPool.Instance.Despawn(gameObject, fireballPrefab);
-        }
-        else
-        {
-            Debug.Log("ObjectPool Instance is not present in the scene!");
-            Destroy(gameObject);
-        }
     }
 }

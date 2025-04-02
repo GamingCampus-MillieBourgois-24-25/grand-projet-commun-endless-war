@@ -2,37 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Axe : MonoBehaviour
+public class Axe : Attack
 {
-    private int damage;
-    private float speed;
     private Transform player;
     private float rotationAngle = 0f;
     private float maxRotation = 360f;
     private float initialDistance;
 
-    public void Initialize(int damage, float speed, float rotation, Transform player)
+    public void Initialize(int damage, float speed, float rotation, Transform player, GameObject prefab)
     {
-        this.damage = damage;
-        this.speed = speed;
-        maxRotation = rotation;
+        rotationAngle = 0f;
+        base.Initialize(damage, speed, prefab);
+        this.maxRotation = rotation;
         this.player = player;
         initialDistance = Vector3.Distance(transform.position, player.position);
     }
 
     void Update()
     {
-        if (player!= null)
+        if (player != null)
         {
-            RotateAxe();
+            UpdateAttack();
         }
         else
         {
-            DestroyAxe();
+            DestroyAttack();
         }
     }
 
-    private void RotateAxe()
+    protected override void UpdateAttack()
     {
         float angleThisFrame = speed * Time.deltaTime;
         rotationAngle += angleThisFrame;
@@ -44,7 +42,7 @@ public class Axe : MonoBehaviour
 
         if (rotationAngle >= maxRotation)
         {
-            DestroyAxe();
+            DestroyAttack();
         }
     }
 
@@ -63,10 +61,5 @@ public class Axe : MonoBehaviour
         {
             enemy.TakeDamage(damage);
         }
-    }
-
-    private void DestroyAxe()
-    {
-        Destroy(gameObject);
     }
 }

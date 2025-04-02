@@ -9996,8 +9996,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2707981049250061997, guid: 50a803225c6101b4e90e35a6cada4a83,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707981049250061997, guid: 50a803225c6101b4e90e35a6cada4a83,
+        type: 3}
       propertyPath: attackCooldown
-      value: 0.1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3426604554303229719, guid: 50a803225c6101b4e90e35a6cada4a83,
         type: 3}
