@@ -15,13 +15,15 @@ public class PlayerInput : MonoBehaviour
     private FloatingJoyStick Joystick;
     [SerializeField]
     private Rigidbody PlayerRb;
-    [SerializeField] 
+    [SerializeField]
     private float speed = 5f;
-    [SerializeField] 
+    [SerializeField]
     private float rotationSpeed = 10f;
 
-    private Finger MovementFinger;
-    private Vector2 MovementAmount;
+    private Finger movementFinger;
+    private Vector2 movementAmount;
+
+    private bool isInputEnabled = true;
 
     private void Awake()
     {
@@ -34,6 +36,9 @@ public class PlayerInput : MonoBehaviour
         Touch.onFingerDown += HandleFingerDown;
         Touch.onFingerUp += HandleFingerUp;
         Touch.onFingerMove += HandleFingerMove;
+
+        GamePauseManager.Instance.OnGamePaused += DisableInput;
+        GamePauseManager.Instance.OnGameResumed += EnableInput;
     }
 
     private void OnDisable()
@@ -42,91 +47,100 @@ public class PlayerInput : MonoBehaviour
         Touch.onFingerUp -= HandleFingerUp;
         Touch.onFingerMove -= HandleFingerMove;
         TouchSimulation.Disable();
+
+        GamePauseManager.Instance.OnGamePaused -= DisableInput;
+        GamePauseManager.Instance.OnGameResumed -= EnableInput;
     }
 
-    private void HandleFingerMove(Finger MovedFinger)
+    private void HandleFingerDown(Finger touchedFinger)
     {
-        if (MovedFinger == MovementFinger)
-        {
-            Vector2 knobPosition;
-            float maxMovement = JoystickSize.x / 2f;
-            Touch currentTouch = MovedFinger.currentTouch;
+        if (movementFinger != null || !isInputEnabled) return;
 
-            if (Vector2.Distance(currentTouch.screenPosition, Joystick.RectTransform.anchoredPosition) > maxMovement)
-            {
-                knobPosition = (currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition).normalized * maxMovement;
-            }
-            else
-            {
-                knobPosition = currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition;
-            }
-
-            Joystick.Knob.anchoredPosition = knobPosition;
-            MovementAmount = knobPosition / maxMovement;
-        }
+        movementFinger = touchedFinger;
+        movementAmount = Vector2.zero;
+        ActivateJoystick(touchedFinger.screenPosition);
     }
 
-    private void HandleFingerUp(Finger LostFinger)
+    private void HandleFingerMove(Finger movedFinger)
     {
-        if (LostFinger == MovementFinger)
-        {
-            MovementFinger = null;
-            Joystick.Knob.anchoredPosition = Vector2.zero;
-            Joystick.gameObject.SetActive(false);
-            MovementAmount = Vector2.zero;
-        }
+        if (movedFinger != movementFinger || !isInputEnabled) return;
+
+        Vector2 knobPosition = CalculateKnobPosition(movedFinger);
+        Joystick.Knob.anchoredPosition = knobPosition;
+        movementAmount = knobPosition / (JoystickSize.x / 2f);
     }
 
-    private void HandleFingerDown(Finger TouchedFinger)
+    private void HandleFingerUp(Finger lostFinger)
     {
-        if (MovementFinger == null)
-        {
-            MovementFinger = TouchedFinger;
-            MovementAmount = Vector2.zero;
-            Joystick.gameObject.SetActive(true);
-            Joystick.RectTransform.sizeDelta = JoystickSize;
-            Joystick.RectTransform.anchoredPosition = ClampStartPosition(TouchedFinger.screenPosition);
-        }
-    }
+        if (lostFinger != movementFinger || !isInputEnabled) return;
 
-    private Vector2 ClampStartPosition(Vector2 StartPosition)
-    {
-        if (StartPosition.x < JoystickSize.x / 2)
-        {
-            StartPosition.x = JoystickSize.x / 2;
-        }
-        else if (StartPosition.x > Screen.width - JoystickSize.x / 2)
-        {
-            StartPosition.x = Screen.width - JoystickSize.x / 2;
-        }
-
-        if (StartPosition.y < JoystickSize.y / 2)
-        {
-            StartPosition.y = JoystickSize.y / 2;
-        }
-        else if (StartPosition.y > Screen.height - JoystickSize.y / 2)
-        {
-            StartPosition.y = Screen.height - JoystickSize.y / 2;
-        }
-
-        return StartPosition;
+        ResetJoystick();
     }
 
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(MovementAmount.x, 0, MovementAmount.y);
+        if (!isInputEnabled) return;
 
-        PlayerRb.MovePosition(transform.position + movement * speed * Time.deltaTime);
-
+        Vector3 movement = new Vector3(movementAmount.x, 0, movementAmount.y);
         if (movement != Vector3.zero)
         {
-            if (movement != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(movement);
-
-                PlayerRb.MoveRotation(targetRotation);
-            }
+            MovePlayer(movement);
         }
+    }
+
+    private void ActivateJoystick(Vector2 startPosition)
+    {
+        Joystick.gameObject.SetActive(true);
+        Joystick.RectTransform.sizeDelta = JoystickSize;
+        Joystick.RectTransform.anchoredPosition = ClampStartPosition(startPosition);
+    }
+
+    private void ResetJoystick()
+    {
+        movementFinger = null;
+        Joystick.Knob.anchoredPosition = Vector2.zero;
+        Joystick.gameObject.SetActive(false);
+        movementAmount = Vector2.zero;
+    }
+
+    private Vector2 ClampStartPosition(Vector2 startPosition)
+    {
+        float x = Mathf.Clamp(startPosition.x, JoystickSize.x / 2, Screen.width - JoystickSize.x / 2);
+        float y = Mathf.Clamp(startPosition.y, JoystickSize.y / 2, Screen.height - JoystickSize.y / 2);
+        return new Vector2(x, y);
+    }
+
+    private Vector2 CalculateKnobPosition(Finger movedFinger)
+    {
+        Vector2 currentPosition = movedFinger.currentTouch.screenPosition;
+        Vector2 joystickPosition = Joystick.RectTransform.anchoredPosition;
+        float maxMovement = JoystickSize.x / 2f;
+
+        Vector2 offset = currentPosition - joystickPosition;
+        if (offset.magnitude > maxMovement)
+        {
+            offset = offset.normalized * maxMovement;
+        }
+
+        return offset;
+    }
+
+    private void MovePlayer(Vector3 movement)
+    {
+        PlayerRb.MovePosition(transform.position + movement * speed * Time.deltaTime);
+        Quaternion targetRotation = Quaternion.LookRotation(movement);
+        PlayerRb.MoveRotation(targetRotation);
+    }
+
+    private void DisableInput()
+    {
+        isInputEnabled = false;
+        ResetJoystick();
+    }
+
+    private void EnableInput()
+    {
+        isInputEnabled = true;
     }
 
     private void OnGUI()
@@ -139,16 +153,27 @@ public class PlayerInput : MonoBehaviour
                 textColor = Color.white
             }
         };
-        if (MovementFinger != null)
+
+        if (movementFinger != null)
         {
-            GUI.Label(new Rect(10, 35, 500, 20), $"Finger Start Position: {MovementFinger.currentTouch.startScreenPosition}", labelStyle);
-            GUI.Label(new Rect(10, 65, 500, 20), $"Finger Current Position: {MovementFinger.currentTouch.screenPosition}", labelStyle);
+            DisplayFingerPositions(labelStyle);
         }
         else
         {
             GUI.Label(new Rect(10, 35, 500, 20), "No Current Movement Touch", labelStyle);
         }
 
+        DisplayScreenSize(labelStyle);
+    }
+
+    private void DisplayFingerPositions(GUIStyle labelStyle)
+    {
+        GUI.Label(new Rect(10, 35, 500, 20), $"Finger Start Position: {movementFinger.currentTouch.startScreenPosition}", labelStyle);
+        GUI.Label(new Rect(10, 65, 500, 20), $"Finger Current Position: {movementFinger.currentTouch.screenPosition}", labelStyle);
+    }
+
+    private void DisplayScreenSize(GUIStyle labelStyle)
+    {
         GUI.Label(new Rect(10, 10, 500, 20), $"Screen Size ({Screen.width}, {Screen.height})", labelStyle);
     }
 }

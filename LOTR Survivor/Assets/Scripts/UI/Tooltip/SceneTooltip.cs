@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class SceneTooltip : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class SceneTooltip : MonoBehaviour
     private void Start()
     {
         TooltipManager.Instance.OnTooltipClosed += OnTipClosed;
+        StartCoroutine(ShowTooltipsWithDelay());
+    }
+
+    private IEnumerator ShowTooltipsWithDelay()
+    {
+        yield return new WaitForSeconds(1f);
+
         ShowRulesTip();
         ShowHealthTip();
     }

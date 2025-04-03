@@ -6,13 +6,17 @@ using DG.Tweening;
 
 public class TooltipManager : MonoBehaviour
 {
+    [Header("Singleton")]
     public static TooltipManager Instance;
 
+    [Header("Tooltip UI Elements")]
     [SerializeField] private CanvasGroup tipPanel;
     [SerializeField] private RectTransform tipTransform;
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text contentText;
-    [SerializeField] private float animationDuration = 0.3f;
+
+    [Header("Animation Settings")]
+    [SerializeField] private float animationDuration = 0.7f;
     [SerializeField] private TooltipState tooltipState;
 
     private Tween currentTween;
@@ -50,23 +54,23 @@ public class TooltipManager : MonoBehaviour
             return;
         }
 
-        if (!isAnimating)
-        {
-            DisplayTooltip(tooltipData);
-            tooltipState.MarkTooltipAsSeen(tooltipData.tooltipID);
-        }
-        else
+        if (isAnimating)
         {
             tooltipQueue.Enqueue(tooltipData);
             Debug.Log("Tooltip added to queue.");
+        }
+        else
+        {
+            GamePauseManager.Instance.PauseGame();
+
+            DisplayTooltip(tooltipData);
+            tooltipState.MarkTooltipAsSeen(tooltipData.tooltipID);
         }
     }
 
     public void HideTip()
     {
         currentTween?.Kill();
-
-        isAnimating = true;
 
         currentTween = tipTransform.DOScale(Vector3.zero, animationDuration)
             .SetEase(Ease.InBack)
@@ -79,6 +83,7 @@ public class TooltipManager : MonoBehaviour
     private void DisplayTooltip(TooltipData tooltipData)
     {
         Debug.Log("Showing new tip");
+        isAnimating = true;
 
         titleText.text = tooltipData.title;
         contentText.text = tooltipData.content;
@@ -92,8 +97,6 @@ public class TooltipManager : MonoBehaviour
         currentTween = tipTransform.DOScale(Vector3.one, animationDuration)
             .SetEase(Ease.OutBack)
             .SetUpdate(true);
-
-        Time.timeScale = 0f;
     }
 
     private void OnTipHidden()
@@ -104,7 +107,7 @@ public class TooltipManager : MonoBehaviour
         titleText.text = "";
         contentText.text = "";
 
-        Time.timeScale = 1f;
+        GamePauseManager.Instance.ResumeGame();
 
         isAnimating = false;
 
