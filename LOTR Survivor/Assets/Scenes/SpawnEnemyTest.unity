@@ -439,6 +439,50 @@ Transform:
   - {fileID: 2100570343}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &293481545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293481546}
+  - component: {fileID: 293481547}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293481546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293481545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1051054699}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293481547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293481545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a5f4d6bc4e9f540a66815a82d86afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525118141
 GameObject:
   m_ObjectHideFlags: 3
@@ -805,7 +849,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: d19e1a2aa0f5d3649b7a51342defc531, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: fd534be390186f3498c9fbb98bccbd01, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1038918187
 Transform:
@@ -852,6 +896,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1737260510}
+  - {fileID: 293481546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327230635
@@ -1321,6 +1366,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2707981049250061997, guid: 50a803225c6101b4e90e35a6cada4a83,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5989390546084529064, guid: 50a803225c6101b4e90e35a6cada4a83,
         type: 3}
       propertyPath: Joystick
@@ -1488,19 +1538,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1453967412}
-  spawnRadius: 50
-  despawnDistance: 60
+  spawnRadius: 20
+  despawnDistance: 75
   navMeshCheckRadius: 50
-  timerBetweenWaves: 5
   waves:
-  - enemyPrefabs:
-    - {fileID: 7466036329059886502, guid: f6b148bb2e7862346995c1aea207e01f, type: 3}
-    minEnemies: 10
-    spawnInterval: 1
-  - enemyPrefabs:
-    - {fileID: 7466036329059886502, guid: b625923a92fe85a47ade35549cc14196, type: 3}
-    minEnemies: 15
-    spawnInterval: 1
+  - {fileID: 11400000, guid: d271d05f8225a3a48b6a0286eac4d0c1, type: 2}
+  - {fileID: 11400000, guid: 6c71d56ef0e4e2f47b60c39750e5e8fd, type: 2}
 --- !u!1 &1753304710
 GameObject:
   m_ObjectHideFlags: 0
