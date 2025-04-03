@@ -7,14 +7,24 @@ using TMPro;
 public class MenuManager : MonoBehaviour
 {
     //Serialize//
+
+    //~~ Button ~~//
     [SerializeField] private Button playButton;
     [SerializeField] private Button optionButton;
+    [SerializeField] private Button quitMenu;
+
+    //~~ Text ~~//
     [SerializeField] private TMP_Text playText;
+    [SerializeField] private TMP_Text volumeText;
+
+    //~~ GameObject ~~//
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionMenu;
+
+
     [SerializeField] private Slider musicSlider;
-    [SerializeField] private TMP_Text volumeText;
     [SerializeField] private AudioSource musicBackground;
+
     private bool isVisible = false;
 
     void Start()
@@ -23,6 +33,7 @@ public class MenuManager : MonoBehaviour
         optionMenu.SetActive(false);
         StartCoroutine(FadeTextRoutine());
         playButton.onClick.AddListener(ChangeScene);
+        quitMenu.onClick.AddListener(ReturnMenu);
         optionButton.onClick.AddListener(OptionMenu);
         musicSlider.onValueChanged.AddListener(delegate { AdjustMusicVolume(); });
 
@@ -76,5 +87,11 @@ public class MenuManager : MonoBehaviour
     void UpdateVolumeText()
     {
         volumeText.text = Mathf.RoundToInt(musicSlider.value * 100) + "%";
+    }
+
+    void ReturnMenu()
+    {
+        mainMenu.SetActive(true);
+        optionMenu.SetActive(false);
     }
 }
