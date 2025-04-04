@@ -5,11 +5,21 @@ using UnityEngine;
 public class HomingProjectile : Attack
 {
     private GameObject target;
+    private ProjectileSettings settings;
+    private AudioSource audioSource;
 
     public void Initialize(GameObject target, int damage, float speed, GameObject prefab)
     {
         base.Initialize(damage, speed, prefab);
         this.target = target;
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void SetSettings(ProjectileSettings projectileSettings)
+    {
+        settings = projectileSettings;
+        damage = projectileSettings.Damage;
+        speed = projectileSettings.Speed;
     }
 
     void Update()
@@ -42,5 +52,23 @@ public class HomingProjectile : Attack
         }
 
         DestroyAttack();
+    }
+
+    protected override void PlayFX()
+    {
+        base.PlayFX();
+
+        if (settings.explosionPrefab != null)
+        {
+            GameObject fx = Instantiate(settings.explosionPrefab, transform.position, Quaternion.identity);
+            ParticleSystem system = fx.GetComponent<ParticleSystem>();
+            var main = system.main;
+            main.stopAction = ParticleSystemStopAction.Destroy;
+        }
+
+        if (settings.explosionSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(settings.explosionSound);
+        }
     }
 }

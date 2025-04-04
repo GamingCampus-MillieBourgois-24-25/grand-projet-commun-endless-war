@@ -23,6 +23,7 @@ public abstract class Attack : MonoBehaviour
 
     protected void DestroyAttack()
     {
+        PlayFX();
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, attackPrefab);
@@ -33,4 +34,6 @@ public abstract class Attack : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    protected virtual void PlayFX() { }
 }

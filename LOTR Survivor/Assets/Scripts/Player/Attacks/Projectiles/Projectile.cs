@@ -7,6 +7,8 @@ public class Projectile : Attack
     private Vector3 direction;
     private float range;
     private Vector3 startPosition;
+    private ProjectileSettings settings;
+    private AudioSource audioSource;
 
     public void Initialize(Vector3 direction, float range, int damage, float speed, GameObject prefab)
     {
@@ -14,6 +16,11 @@ public class Projectile : Attack
         this.direction = direction.normalized;
         this.range = range;
         startPosition = transform.position;
+        audioSource = GetComponent<AudioSource>();
+    }
+    public void SetSettings(ProjectileSettings projectileSettings)
+    {
+        settings = projectileSettings;
     }
 
     void Update()

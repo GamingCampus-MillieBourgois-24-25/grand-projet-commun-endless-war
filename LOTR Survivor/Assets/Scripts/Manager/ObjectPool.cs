@@ -17,7 +17,6 @@ public class ObjectPool : MonoBehaviour
         if (!pool.ContainsKey(prefab))
         {
             pool[prefab] = new Queue<GameObject>();
-            Debug.Log("Création de la pool : " +  prefab.name);
         }
 
         if (pool[prefab].Count > 0)
@@ -25,12 +24,10 @@ public class ObjectPool : MonoBehaviour
             GameObject obj = pool[prefab].Dequeue();
             obj.transform.SetPositionAndRotation(position, rotation);
             obj.SetActive(true);
-            Debug.Log("La pool contient : " + prefab.name);
             return obj;
         }
         else
         {
-            Debug.Log("La pool ne contient pas : " + prefab.name);
             return Instantiate(prefab, position, rotation);
         }
     }
@@ -50,6 +47,5 @@ public class ObjectPool : MonoBehaviour
 
         obj.SetActive(false);
         pool[prefab].Enqueue(obj);
-        Debug.Log("Adding " + obj.name + " to the pool : " + prefab.name);
     }
 }

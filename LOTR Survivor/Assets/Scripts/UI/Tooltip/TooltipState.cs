@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class TooltipEntry
 {
-    public string tooltipID;
+    public int tooltipID;
     public bool seen;
 }
 
@@ -14,7 +14,7 @@ public class TooltipState : ScriptableObject
     [SerializeField]
     private List<TooltipEntry> seenTooltips = new List<TooltipEntry>();
 
-    public bool HasSeenTooltip(string tooltipID)
+    public bool HasSeenTooltip(int tooltipID)
     {
         foreach (var entry in seenTooltips)
         {
@@ -26,7 +26,7 @@ public class TooltipState : ScriptableObject
         return false;
     }
 
-    public void MarkTooltipAsSeen(string tooltipID)
+    public void MarkTooltipAsSeen(int tooltipID)
     {
         var entry = seenTooltips.Find(e => e.tooltipID == tooltipID);
         if (entry == null)

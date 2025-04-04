@@ -3,8 +3,7 @@ using System.Collections;
 
 public class SceneTooltip : MonoBehaviour
 {
-    [SerializeField] private TooltipData rulesTip;
-    [SerializeField] private TooltipData healthTip;
+    [SerializeField] private TooltipData[] tips;
 
     private void Start()
     {
@@ -16,19 +15,23 @@ public class SceneTooltip : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        ShowRulesTip();
-        ShowHealthTip();
+        ShowTip(0);
+        ShowTip(1);
     }
 
-    private void ShowRulesTip()
+    private void ShowTip(int id)
     {
-        TooltipManager.Instance.ShowTip(rulesTip);
+        TooltipData tooltip = System.Array.Find(tips, tip => tip.tooltipID == id);
+
+        if (tooltip == null)
+        {
+            Debug.LogWarning($"Aucun tooltip trouvé avec l'ID : {id}");
+            return;
+        }
+
+        TooltipManager.Instance.ShowTip(tooltip);
     }
 
-    private void ShowHealthTip()
-    {
-        TooltipManager.Instance.ShowTip(healthTip);
-    }
 
     public void OnTipClosed()
     {
