@@ -67,4 +67,17 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
             objectRenderer.material.color = originalColor;
         }
     }
+
+    public void Heal(int amount)
+    {
+        Health += amount;
+        Health = Mathf.Clamp(Health, 0, MaxHealth);
+
+        Debug.Log("Le joueur s'est heal.");
+
+        if (healthBarCanvas != null)
+        {
+            healthBarCanvas.UpdateUI(Health, MaxHealth);
+        }
+    }
 }
