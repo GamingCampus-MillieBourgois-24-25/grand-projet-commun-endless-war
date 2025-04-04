@@ -11,7 +11,7 @@ public class FireballAttackBehaviour : AttackBehaviour
     }
     protected override void Attack()
     {
-        GameObject nearestEnemy = FindNearestEnemy();
+        GameObject nearestEnemy = ProjectileUtils.FindNearestEnemy(transform.position, attackRange, enemyLayer);
 
         if (nearestEnemy != null)
         {

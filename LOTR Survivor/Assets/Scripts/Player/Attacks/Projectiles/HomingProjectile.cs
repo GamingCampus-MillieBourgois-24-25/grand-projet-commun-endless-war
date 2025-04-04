@@ -7,12 +7,16 @@ public class HomingProjectile : Attack
     private GameObject target;
     private ProjectileSettings settings;
     private AudioSource audioSource;
+    private float attackRange = 5f;
+    private LayerMask enemyLayer;
+    private string enemyLayerName = "Enemy";
 
     public void Initialize(GameObject target, int damage, float speed, GameObject prefab)
     {
         base.Initialize(damage, speed, prefab);
         this.target = target;
         audioSource = GetComponent<AudioSource>();
+        enemyLayer = LayerMask.GetMask(enemyLayerName);
     }
 
     public void SetSettings(ProjectileSettings projectileSettings)
@@ -26,8 +30,12 @@ public class HomingProjectile : Attack
     {
         if (target == null || !target.activeSelf)
         {
-            DestroyAttack();
-            return;
+            target = ProjectileUtils.FindNearestEnemy(transform.position, attackRange, enemyLayer);
+            if (target == null)
+            {
+                DestroyAttack();
+                return;
+            }
         }
 
         UpdateAttack();

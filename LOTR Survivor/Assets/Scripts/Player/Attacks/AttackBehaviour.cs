@@ -28,28 +28,6 @@ public abstract class AttackBehaviour : MonoBehaviour
         return attackTimer >= attackCooldown;
     }
 
-    protected GameObject FindNearestEnemy()
-    {
-        Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
-
-        if (enemiesInRange.Length == 0) return null;
-
-        Collider nearestEnemy = enemiesInRange[0];
-        float shortestDistance = Vector3.Distance(transform.position, nearestEnemy.transform.position);
-
-        foreach (Collider enemy in enemiesInRange)
-        {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < shortestDistance)
-            {
-                nearestEnemy = enemy;
-                shortestDistance = distance;
-            }
-        }
-
-        return nearestEnemy.gameObject;
-    }
-
     protected GameObject SpawnOrInstantiate(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         if (ObjectPool.Instance != null)
