@@ -491,6 +491,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 4
       addedObject: {fileID: 1505287508}
+    - targetCorrespondingSourceObject: {fileID: 2631856925981760766, guid: 50a803225c6101b4e90e35a6cada4a83,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1505287515}
   m_SourcePrefab: {fileID: 100100000, guid: 50a803225c6101b4e90e35a6cada4a83, type: 3}
 --- !u!1001 &75736721
 PrefabInstance:
@@ -3103,7 +3107,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.69
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4626,9 +4630,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0.69
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6844,6 +6848,22 @@ MonoBehaviour:
   munitionNumber: 20
   munitionRadius: 45
   range: 10
+--- !u!114 &1505287515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505287503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260ed3e91ee7fb1499b85e9595dcffe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xPBarCanvas: {fileID: 2097593516}
+  maxXP: 10
+  currentXP: 0
+  xpPerPickup: 1
 --- !u!1001 &1511198952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10005,6 +10025,7 @@ GameObject:
   - component: {fileID: 2097593513}
   - component: {fileID: 2097593512}
   - component: {fileID: 2097593515}
+  - component: {fileID: 2097593516}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -10091,6 +10112,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 1954951883}
+  transitionDuration: 1
+--- !u!114 &2097593516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097593510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0eda5710662beb40b5f5dd37e3c5966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpSlider: {fileID: 1016523839}
   transitionDuration: 1
 --- !u!1 &2100570342
 GameObject:
