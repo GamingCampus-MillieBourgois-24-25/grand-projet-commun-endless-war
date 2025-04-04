@@ -6,6 +6,7 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 {
     [Header("Enemy Data")]
     [SerializeField] public EnemySO enemyData;
+    [SerializeField] public GameObject xpPrefab;
 
     private int health;
     private Renderer objectRenderer;
@@ -69,6 +70,10 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
     private void DestroyEnemy()
     {
+        if (xpPrefab != null)
+        {
+            Instantiate(xpPrefab, transform.position, Quaternion.identity);
+        }
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, enemyData.prefab);
