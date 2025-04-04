@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class AxeAttackBehaviour : AttackBehaviour
 {
-    [SerializeField] private float maxRotation = 360f;
-
     protected override void Attack()
     {
         Vector3 axePosition = transform.forward * attackSettings.Range;
