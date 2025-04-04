@@ -6,16 +6,13 @@ public class Axe : Attack
 {
     private Transform player;
     private float rotationAngle = 0f;
-    private float maxRotation = 360f;
     private float initialDistance;
 
-    public void Initialize(int damage, float speed, float rotation, Transform player, GameObject prefab)
+    public void Initialize(Transform newPlayer)
     {
-        rotationAngle = 0f;
-        base.Initialize(damage, speed, prefab);
-        this.maxRotation = rotation;
-        this.player = player;
+        player = newPlayer;
         initialDistance = Vector3.Distance(transform.position, player.position);
+        rotationAngle = 0;
     }
 
     void Update()
@@ -32,15 +29,15 @@ public class Axe : Attack
 
     protected override void UpdateAttack()
     {
-        float angleThisFrame = speed * Time.deltaTime;
+        float angleThisFrame = attackSettings.Speed * Time.deltaTime;
         rotationAngle += angleThisFrame;
 
-        transform.RotateAround(player.position, Vector3.up, speed * Time.deltaTime);
+        transform.RotateAround(player.position, Vector3.up, attackSettings.Speed * Time.deltaTime);
 
         Vector3 directionFromPlayer = (transform.position - player.position).normalized;
         transform.position = player.position + directionFromPlayer * initialDistance;
 
-        if (rotationAngle >= maxRotation)
+        if (rotationAngle >= attackSettings.MaxRotation)
         {
             DestroyAttack();
         }
@@ -59,7 +56,7 @@ public class Axe : Attack
         EnemyHealthBehaviour enemy = collider.GetComponent<EnemyHealthBehaviour>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(attackSettings.Damage);
         }
     }
 }

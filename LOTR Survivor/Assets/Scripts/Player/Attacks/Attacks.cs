@@ -4,17 +4,17 @@ using UnityEngine;
 
 public abstract class Attack : MonoBehaviour
 {
-    protected int damage;
-    protected float speed;
-    protected GameObject attackPrefab;
+    protected AttackSettings attackSettings;
+    protected AudioSource audioSource;
 
-    public virtual void Initialize(int damage, float speed, GameObject prefab)
+    protected void Awake()
     {
-        this.damage = damage;
-        this.speed = speed;
-        this.attackPrefab = prefab;
+        audioSource = GetComponent<AudioSource>();
+    }
 
-        ResetAttack();
+    public void SetSettings(AttackSettings newProjectileSettings)
+    {
+        attackSettings = newProjectileSettings;
     }
 
     protected abstract void UpdateAttack();
@@ -23,10 +23,10 @@ public abstract class Attack : MonoBehaviour
 
     protected void DestroyAttack()
     {
-        PlayFX();
+        PlayHitFX();
         if (ObjectPool.Instance != null)
         {
-            ObjectPool.Instance.Despawn(gameObject, attackPrefab);
+            ObjectPool.Instance.Despawn(gameObject, attackSettings.prefab);
         }
         else
         {
@@ -35,5 +35,20 @@ public abstract class Attack : MonoBehaviour
         }
     }
 
-    protected virtual void PlayFX() { }
+    protected virtual void PlayHitFX() 
+    {
+        if (attackSettings.hitPrefab != null)
+        {
+            GameObject fx = Instantiate(attackSettings.hitPrefab, transform.position, Quaternion.identity);
+            ParticleSystem system = fx.GetComponent<ParticleSystem>();
+            var main = system.main;
+            main.stopAction = ParticleSystemStopAction.Destroy;
+            main.loop = false;
+        }
+
+        if (attackSettings.hitSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(attackSettings.hitSound);
+        }
+    }
 }

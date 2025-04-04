@@ -5,22 +5,12 @@ using UnityEngine;
 public class Projectile : Attack
 {
     private Vector3 direction;
-    private float range;
     private Vector3 startPosition;
-    private ProjectileSettings settings;
-    private AudioSource audioSource;
 
-    public void Initialize(Vector3 direction, float range, int damage, float speed, GameObject prefab)
+    public void Initialize(Vector3 newDirection)
     {
-        base.Initialize(damage, speed, prefab);
-        this.direction = direction.normalized;
-        this.range = range;
+        direction = newDirection.normalized;
         startPosition = transform.position;
-        audioSource = GetComponent<AudioSource>();
-    }
-    public void SetSettings(ProjectileSettings projectileSettings)
-    {
-        settings = projectileSettings;
     }
 
     void Update()
@@ -30,9 +20,9 @@ public class Projectile : Attack
 
     protected override void UpdateAttack()
     {
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        transform.Translate(direction * attackSettings.Speed * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(startPosition, transform.position) >= range)
+        if (Vector3.Distance(startPosition, transform.position) >= attackSettings.Range)
         {
             DestroyAttack();
         }
@@ -62,7 +52,7 @@ public class Projectile : Attack
         EnemyHealthBehaviour enemy = collider.GetComponent<EnemyHealthBehaviour>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(attackSettings.Damage);
         }
     }
 }

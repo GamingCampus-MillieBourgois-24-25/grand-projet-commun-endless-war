@@ -2,36 +2,23 @@ using UnityEngine;
 
 public class FireballAttackBehaviour : AttackBehaviour
 {
-    [SerializeField] private ProjectileSettings projectileSettings;
-    [SerializeField] private float fireballSpeed = 10f;
-
-    void Start()
-    {
-        attackCooldown = projectileSettings.Cooldown;
-    }
     protected override void Attack()
     {
-        GameObject nearestEnemy = ProjectileUtils.FindNearestEnemy(transform.position, attackRange, enemyLayer);
+        GameObject nearestEnemy = ProjectileUtils.FindNearestEnemy(transform.position, attackSettings.Range, enemyLayer);
 
         if (nearestEnemy != null)
         {
-            GameObject fireball = SpawnOrInstantiate(projectileSettings.prefab, transform.position, Quaternion.identity);
+            GameObject fireball = SpawnOrInstantiate(attackSettings.prefab, transform.position, Quaternion.identity);
 
             HomingProjectile fireballScript = fireball.GetComponent<HomingProjectile>();
             if (fireballScript != null)
             {
-                fireballScript.Initialize(nearestEnemy, damage, fireballSpeed, projectileSettings.prefab);
-                if (projectileSettings != null)
+                fireballScript.Initialize(nearestEnemy);
+                if (attackSettings != null)
                 {
-                    fireballScript.SetSettings(projectileSettings);
+                    fireballScript.SetSettings(attackSettings);
                 }
             }
         }
-    }
-
-    public void SetProjectileSettings(ProjectileSettings newProjectileSettings)
-    {
-        projectileSettings = newProjectileSettings;
-        attackCooldown = newProjectileSettings.Cooldown;
     }
 }

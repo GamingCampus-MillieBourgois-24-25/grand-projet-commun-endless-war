@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Attack/Projectile Settings", fileName = "NewProjectileSettings")]
-public class ProjectileSettings : ScriptableObject
+public class AttackSettings : ScriptableObject
 {
     [Tooltip("Damage")]
     public int Damage = 10;
@@ -14,13 +14,22 @@ public class ProjectileSettings : ScriptableObject
     [Tooltip("Cooldown")]
     public float Cooldown = 1f;
 
+    [Tooltip("Range")]
+    public float Range = 10f;
+
+    [Tooltip("AimRange")]
+    public float AimRange = 5f;
+
+    [Tooltip("MaxRotation")]
+    public float MaxRotation = 360f;
+
     [Tooltip("Prefab")]
     public GameObject prefab;
 
-    [Header("Explosion")]
-    [Tooltip("Prefab explosion")]
-    public GameObject explosionPrefab;
+    [Header("Hit")]
+    [Tooltip("Prefab Hit")]
+    public GameObject hitPrefab;
 
-    [Tooltip("Sound explosion")]
-    public AudioClip explosionSound;
+    [Tooltip("Sound hit")]
+    public AudioClip hitSound;
 }

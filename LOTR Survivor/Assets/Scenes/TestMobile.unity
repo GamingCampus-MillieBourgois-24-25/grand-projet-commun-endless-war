@@ -373,6 +373,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2707981049250061997, guid: 50a803225c6101b4e90e35a6cada4a83,
         type: 3}
+      propertyPath: attackSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 10102ed7923a54f4081c59875bc60ea1,
+        type: 2}
+    - target: {fileID: 2707981049250061997, guid: 50a803225c6101b4e90e35a6cada4a83,
+        type: 3}
       propertyPath: fireballPrefab
       value: 
       objectReference: {fileID: 754821637487049960, guid: f2999c7a918c15541943e10ad92c0d3e,
@@ -491,8 +497,20 @@ PrefabInstance:
     - target: {fileID: 8518051523068739836, guid: 50a803225c6101b4e90e35a6cada4a83,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8518051523068739836, guid: 50a803225c6101b4e90e35a6cada4a83,
+        type: 3}
+      propertyPath: attackSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 597a73ca7d5ab494f9079642b8476f5a,
+        type: 2}
+    - target: {fileID: 8518051523068739836, guid: 50a803225c6101b4e90e35a6cada4a83,
+        type: 3}
+      propertyPath: projectileSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 597a73ca7d5ab494f9079642b8476f5a,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 4011554835815555449, guid: 50a803225c6101b4e90e35a6cada4a83, type: 3}
     - {fileID: 3743204863425755629, guid: 50a803225c6101b4e90e35a6cada4a83, type: 3}
@@ -6857,23 +6875,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505287503}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6c609b6a84bf5947855aafe73ffa0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 10
-  damage: 30
-  attackCooldown: 2
+  attackSettings: {fileID: 11400000, guid: 4c7ead0c279a0f44aa80a6c74f2e346e, type: 2}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   munitionPrefab: {fileID: 6205814297656451098, guid: a4f3efdb888da164ab2ef8dfa20a30c3,
     type: 3}
-  munitionSpeed: 10
   munitionNumber: 20
   munitionRadius: 45
-  range: 10
 --- !u!114 &1505287515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6886,14 +6900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c805141fef802f4bbda0346a74238ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 10
-  damage: 10
-  attackCooldown: 1
+  attackSettings: {fileID: 11400000, guid: 802afbddf674b964395265c41cf9539b, type: 2}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  projectileSettings: {fileID: 11400000, guid: 802afbddf674b964395265c41cf9539b, type: 2}
-  fireballSpeed: 10
 --- !u!114 &1505287516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,14 +6916,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c805141fef802f4bbda0346a74238ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 10
-  damage: 10
-  attackCooldown: 1
+  attackSettings: {fileID: 11400000, guid: 99dd15356e27d03408687cbadd61903d, type: 2}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  projectileSettings: {fileID: 11400000, guid: 10102ed7923a54f4081c59875bc60ea1, type: 2}
-  fireballSpeed: 10
 --- !u!1001 &1511198952
 PrefabInstance:
   m_ObjectHideFlags: 0

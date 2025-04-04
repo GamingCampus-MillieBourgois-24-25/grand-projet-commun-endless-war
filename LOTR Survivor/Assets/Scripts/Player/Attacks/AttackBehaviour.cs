@@ -5,13 +5,15 @@ using UnityEngine;
 public abstract class AttackBehaviour : MonoBehaviour
 {
     [Header("Paramètres")]
-    [SerializeField] protected float attackRange = 10f;
-    [SerializeField] protected int damage = 10;
-    [SerializeField] protected float attackCooldown = 1f;
+    [SerializeField] protected AttackSettings attackSettings;
     [SerializeField] protected LayerMask enemyLayer;
 
     protected float attackTimer;
 
+    private void Start()
+    {
+        
+    }
     protected virtual void Update()
     {
         attackTimer += Time.deltaTime;
@@ -22,10 +24,14 @@ public abstract class AttackBehaviour : MonoBehaviour
             attackTimer = 0f;
         }
     }
+    public void SetProjectileSettings(AttackSettings newProjectileSettings)
+    {
+        attackSettings = newProjectileSettings;
+    }
 
     protected bool CanAttack()
     {
-        return attackTimer >= attackCooldown;
+        return attackTimer >= attackSettings.Cooldown;
     }
 
     protected GameObject SpawnOrInstantiate(GameObject prefab, Vector3 position, Quaternion rotation)
