@@ -64,6 +64,7 @@ public class HomingProjectile : Attack
             ParticleSystem system = fx.GetComponent<ParticleSystem>();
             var main = system.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
+            main.loop = false;
         }
 
         if (settings.explosionSound != null && audioSource != null)

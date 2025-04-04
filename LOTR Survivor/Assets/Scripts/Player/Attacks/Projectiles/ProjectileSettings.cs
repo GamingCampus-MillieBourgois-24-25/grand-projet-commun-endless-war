@@ -11,6 +11,9 @@ public class ProjectileSettings : ScriptableObject
     [Tooltip("Speed")]
     public float Speed = 10f;
 
+    [Tooltip("Cooldown")]
+    public float Cooldown = 1f;
+
     [Tooltip("Prefab")]
     public GameObject prefab;
 

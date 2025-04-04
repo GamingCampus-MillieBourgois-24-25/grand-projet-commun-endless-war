@@ -5,6 +5,10 @@ public class FireballAttackBehaviour : AttackBehaviour
     [SerializeField] private ProjectileSettings projectileSettings;
     [SerializeField] private float fireballSpeed = 10f;
 
+    void Start()
+    {
+        attackCooldown = projectileSettings.Cooldown;
+    }
     protected override void Attack()
     {
         GameObject nearestEnemy = FindNearestEnemy();
@@ -28,5 +32,6 @@ public class FireballAttackBehaviour : AttackBehaviour
     public void SetProjectileSettings(ProjectileSettings newProjectileSettings)
     {
         projectileSettings = newProjectileSettings;
+        attackCooldown = newProjectileSettings.Cooldown;
     }
 }

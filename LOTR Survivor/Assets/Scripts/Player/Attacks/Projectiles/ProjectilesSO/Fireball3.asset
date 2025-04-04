@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
-  m_Name: Fireball
+  m_Name: Fireball3
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 5
   Speed: 10
-  Cooldown: 1
-  prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
-  explosionPrefab: {fileID: 952961124639765284, guid: 1095a5c9f65bfbe4383f63d5d1886c65,
+  Cooldown: 0.3
+  prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
+  explosionPrefab: {fileID: 4386588507499592971, guid: 48e196c36363e814bad43a44c92dc11b,
     type: 3}
   explosionSound: {fileID: 0}

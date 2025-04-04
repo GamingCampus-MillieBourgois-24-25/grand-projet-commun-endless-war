@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: Fireball2
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 15
   Speed: 10
+  Cooldown: 1.4
   prefab: {fileID: 754821637487049960, guid: f2999c7a918c15541943e10ad92c0d3e, type: 3}
   explosionPrefab: {fileID: 5435998012328932994, guid: d8703a33a4eb0b84a875202fde23e8f7,
     type: 3}

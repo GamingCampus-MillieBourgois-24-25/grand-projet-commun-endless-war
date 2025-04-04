@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6183180421772357085}
   - component: {fileID: 8614191687123656612}
   m_Layer: 0
-  m_Name: vfx_Fireball
+  m_Name: vfx_Fireball3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.202214, y: 1.0430433, z: -12.460124}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6531834534062491113}
   - {fileID: 3564787783525160635}
@@ -217,8 +217,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.061854143, b: 0, a: 0.5176471}
-      key1: {r: 1, g: 0.47008726, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0.617527, a: 0.5176471}
+      key1: {r: 0.6698113, g: 0.015797434, b: 0.25085425, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -480,7 +480,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.39462644, b: 0, a: 1}
+      maxColor: {r: 1, g: 0, b: 0.61178017, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -544,7 +544,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.7
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5368,7 +5368,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6320754, g: 0.16897066, b: 0, a: 1}
+      maxColor: {r: 0.6313726, g: 0, b: 0.09253559, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5432,7 +5432,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 0.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
