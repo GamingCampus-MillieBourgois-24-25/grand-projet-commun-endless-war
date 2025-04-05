@@ -12,6 +12,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     private Renderer objectRenderer;
     private Color originalColor;
+    private Animator animator;
 
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public int Health { get; set; }
@@ -22,6 +23,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     {
         Health = MaxHealth;
         objectRenderer = GetComponent<Renderer>();
+        animator = GetComponent<Animator>();
 
         if (objectRenderer != null)
         {
@@ -43,18 +45,18 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     {
         Health -= damage;
 
+        if (healthBarCanvas != null)
+        {
+            healthBarCanvas.UpdateUI(Health, MaxHealth);
+        }
+
         if (Health <= 0)
         {
-            Destroy(gameObject);
+            PlayDeathAnimation();
         }
         else
         {
             StartCoroutine(FlashRed());
-
-            if (healthBarCanvas != null)
-            {
-                healthBarCanvas.UpdateUI(Health, MaxHealth);
-            }
         }
     }
 
@@ -66,5 +68,18 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
             yield return new WaitForSeconds(FlashDuration);
             objectRenderer.material.color = originalColor;
         }
+    }
+
+    private void PlayDeathAnimation()
+    {
+        GamePauseManager.Instance.PauseGame();
+        StartCoroutine(WaitAndPlayDeathAnimation());
+    }
+
+    IEnumerator WaitAndPlayDeathAnimation()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        animator.SetTrigger("Die");
+        CinemachineShake.Instance.ShakeCamera(5f,2f);
     }
 }

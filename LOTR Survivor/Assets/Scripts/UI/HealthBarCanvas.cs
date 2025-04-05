@@ -11,6 +11,8 @@ public class HealthBarCanvas : MonoBehaviour
     {
         healthSlider.maxValue = maxHealth;
 
-        healthSlider.DOValue(health, transitionDuration).SetEase(Ease.OutCubic);
+        healthSlider.DOValue(health, transitionDuration)
+            .SetEase(Ease.OutCubic)
+            .SetUpdate(true);
     }
 }
