@@ -86,7 +86,22 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     private void Die()
     {
+        StartCoroutine(SlowmoThenDeath());
+    }
+
+    private IEnumerator SlowmoThenDeath()
+    {
+        Time.timeScale = 0.1f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale; 
+
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
         OnPlayerDeath?.Invoke();
+
         GetComponent<PlayerInput>().enabled = false;
     }
+
 }
