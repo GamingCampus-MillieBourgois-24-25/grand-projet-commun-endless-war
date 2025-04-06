@@ -7354,8 +7354,6 @@ MonoBehaviour:
   startingSkills:
   - {fileID: 11400000, guid: 2c6f0abc0082df148a46885847097db6, type: 2}
   - {fileID: 11400000, guid: ed107d576c912cc48b39340fda50e9b0, type: 2}
-  - {fileID: 11400000, guid: e6370d2570a300148925608be95ebf3f, type: 2}
-  - {fileID: 11400000, guid: 34b1148d4acc3f94790a2994860ac1b4, type: 2}
   - {fileID: 11400000, guid: 94fb333367546434bbecbd33c6529b28, type: 2}
 --- !u!1001 &1511198952
 PrefabInstance:
