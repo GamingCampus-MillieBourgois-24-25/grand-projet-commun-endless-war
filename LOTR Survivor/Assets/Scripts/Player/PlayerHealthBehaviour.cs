@@ -11,15 +11,15 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     [Header("Invulnerability")]
     [SerializeField] private float invulnerabilityDuration = 2f;
-    [SerializeField] private float blinkSpeed = 0.2f;
-
-    private Renderer objectRenderer;
 
     private bool isInvulnerable;
     private float invulnerabilityTimer;
 
     public event Action OnPlayerDeath;
     public event Action OnPlayerDamaged;
+
+    public event Action OnInvulnerabilityStart;
+    public event Action OnInvulnerabilityEnd;
 
     public int MaxHealth { get => maxHealth; set => maxHealth = Mathf.Max(1, value); }
 
@@ -35,7 +35,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     private void Awake()
     {
-        objectRenderer = GetComponentInChildren<Renderer>();
+
     }
 
     private void Start()
@@ -49,6 +49,13 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
             HandleInvulnerability();
     }
 
+    private void StartInvulnerability()
+    {
+        isInvulnerable = true;
+        invulnerabilityTimer = invulnerabilityDuration;
+        OnInvulnerabilityStart?.Invoke();
+    }
+
     private void HandleInvulnerability()
     {
         invulnerabilityTimer -= Time.deltaTime;
@@ -56,11 +63,8 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         if (invulnerabilityTimer <= 0f)
         {
             isInvulnerable = false;
-            objectRenderer.enabled = true;
-            return;
+            OnInvulnerabilityEnd?.Invoke();
         }
-
-        objectRenderer.enabled = Mathf.PingPong(Time.time, 2 * blinkSpeed) > blinkSpeed;
     }
 
     public void TakeDamage(int damage)
@@ -80,15 +84,8 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         }
     }
 
-    private void StartInvulnerability()
-    {
-        isInvulnerable = true;
-        invulnerabilityTimer = invulnerabilityDuration;
-    }
-
     private void Die()
     {
-        OnPlayerDeath?.Invoke();
         GetComponent<PlayerInput>().enabled = false;
     }
 }

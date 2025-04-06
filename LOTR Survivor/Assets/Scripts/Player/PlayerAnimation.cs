@@ -11,12 +11,14 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private Color flashColor = Color.red;
     [SerializeField] private GameObject deathParticle;
+    [SerializeField] private float blinkSpeed = 0.1f;
 
     private PlayerHealthBehaviour playerHealth;
 
     private Renderer objectRenderer;
     private CinemachineImpulseSource impulseSource;
     private Color originalColor;
+    private bool isInvulnerable;
 
     private void Awake()
     {
@@ -33,6 +35,13 @@ public class PlayerAnimation : MonoBehaviour
         {
             playerHealth.OnPlayerDeath += HandlePlayerDeath;
             playerHealth.OnPlayerDamaged += HandleDamageAnimations;
+
+            playerHealth.OnInvulnerabilityStart += () => isInvulnerable = true;
+            playerHealth.OnInvulnerabilityEnd += () => {
+                isInvulnerable = false;
+                if (objectRenderer != null)
+                    objectRenderer.enabled = true;
+            };
         }
     }
 
@@ -41,6 +50,11 @@ public class PlayerAnimation : MonoBehaviour
         if (playerHealth.Health > 0)
         {
             HandleMovementAnimations();
+        }
+
+        if (isInvulnerable && objectRenderer != null)
+        {
+            objectRenderer.enabled = Mathf.PingPong(Time.time, 2 * blinkSpeed) > blinkSpeed;
         }
     }
 
@@ -74,7 +88,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(1f);
         playerAnimator.SetTrigger("Die");
     }
 

@@ -10607,6 +10607,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 94fb333367546434bbecbd33c6529b28,
         type: 2}
+    - target: {fileID: 3546374202348477930, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: slowmoDuration
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4126265438597834433, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: m_Name
@@ -10667,6 +10672,11 @@ PrefabInstance:
       propertyPath: Joystick
       value: 
       objectReference: {fileID: 1015441580}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: slowmoDuration
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
