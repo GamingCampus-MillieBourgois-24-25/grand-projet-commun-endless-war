@@ -86,6 +86,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     private void Die()
     {
+        OnPlayerDeath?.Invoke();
         GetComponent<PlayerInput>().enabled = false;
     }
 }
