@@ -12,6 +12,11 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     [Header("Invulnerability")]
     [SerializeField] private float invulnerabilityDuration = 2f;
 
+    [SerializeField] private float slowmoScale = 0.1f;
+    [SerializeField] private float slowmoDuration = 1.5f;
+
+    private bool isDead = false;
+
     private bool isInvulnerable;
     private float invulnerabilityTimer;
 
@@ -69,7 +74,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     public void TakeDamage(int damage)
     {
-        if (isInvulnerable) return;
+        if (isInvulnerable || isDead) return;
 
         Health -= damage;
 
@@ -86,15 +91,16 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     private void Die()
     {
+        isDead = true;
         StartCoroutine(SlowmoThenDeath());
     }
 
     private IEnumerator SlowmoThenDeath()
     {
-        Time.timeScale = 0.1f;
+        Time.timeScale = slowmoScale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale; 
 
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(slowmoDuration);
 
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;

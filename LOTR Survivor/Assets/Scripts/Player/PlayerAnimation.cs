@@ -88,7 +88,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         playerAnimator.SetTrigger("Die");
     }
 
@@ -106,5 +106,11 @@ public class PlayerAnimation : MonoBehaviour
         Instantiate(deathParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
         Debug.LogError("yuo explod");
+    }
+
+    private void OnGUI()
+    {
+        // Affiche Time.timeScale en haut à droite de l'écran
+        GUI.Label(new Rect(Screen.width - 150, 10, 150, 30), "Time Scale: " + Time.timeScale.ToString("F2"));
     }
 }
