@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class SkillsManager : MonoBehaviour
 {
-    [SerializeField] PlayerHealthBehaviour healthBehaviour;
+    [SerializeField] private PlayerHealthBehaviour healthBehaviour;
 
     [Header("Skills Setup")]
     [SerializeField] private SkillSettings[] startingSkills;
 
-    private List<ActiveSkill> activeSkills = new List<ActiveSkill>();
+    private readonly List<ActiveSkill> activeSkills = new();
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         foreach (var skillData in startingSkills)
         {
@@ -28,39 +28,66 @@ public class SkillsManager : MonoBehaviour
 
     public void AddSkill(SkillSettings skillData)
     {
-        if (skillData != null && skillData.skillBehaviour != null)
+        if (!IsValidSkill(skillData))
         {
-            GameObject skillInstance = Instantiate(skillData.skillBehaviour, transform);
+            Debug.LogWarning("Les données de compétence ou le prefab sont manquants.");
+            return;
+        }
 
-            AttackBehaviour skillBehaviour = skillInstance.GetComponent<AttackBehaviour>();
-            if (skillBehaviour != null)
-            {
-                activeSkills.Add(new ActiveSkill(skillData, skillBehaviour));
-                skillBehaviour.SetAttackSettings(skillData.attackSettings);
-            }
-            else
-            {
-                Debug.LogWarning("Le prefab de compétence n'a pas de script AttackBehaviour.");
-            }
+        var existingSkill = GetSkillByName(skillData.skillName);
+        if (existingSkill != null)
+        {
+            Debug.Log($"Skill '{skillData.skillName}' déjà existant, upgrade...");
+            existingSkill.Behaviour.Upgrade();
+            return;
+        }
+
+        GameObject skillInstance = Instantiate(skillData.skillBehaviour, transform);
+        AttackBehaviour skillBehaviour = skillInstance.GetComponent<AttackBehaviour>();
+
+        if (skillBehaviour != null)
+        {
+            skillBehaviour.SetAttackSettings(skillData.attackSettings);
+            activeSkills.Add(new ActiveSkill(skillData, skillBehaviour));
+            Debug.Log($"Skill '{skillData.skillName}' ajouté avec succès.");
         }
         else
         {
-            Debug.LogWarning("Les données de compétence ou le prefab sont manquants.");
+            Debug.LogWarning("Le prefab de compétence n'a pas de script AttackBehaviour.");
         }
     }
 
-    public void RemoveSkillBySettings(SkillSettings skillSettings)
+    public ActiveSkill GetSkillByName(string skillName)
     {
-        ActiveSkill skillToRemove = activeSkills.Find(skill => skill.skillSettings == skillSettings);
+        return activeSkills.Find(skill => skill.SkillSettings.skillName == skillName);
+    }
 
-        if (skillToRemove != null)
+    public bool HasSkill(string skillName)
+    {
+        return GetSkillByName(skillName) != null;
+    }
+
+    public void UpgradeSkill(string skillName)
+    {
+        var skill = GetSkillByName(skillName);
+        if (skill != null)
         {
-            activeSkills.Remove(skillToRemove);
-            Destroy(skillToRemove.attackBehaviour.gameObject);
+            skill.Behaviour.Upgrade();
+            Debug.Log($"Skill '{skillName}' upgradé !");
+        }
+    }
+
+    public void RemoveSkillBySettings(SkillSettings settings)
+    {
+        var skill = activeSkills.Find(s => s.SkillSettings == settings);
+        if (skill != null)
+        {
+            activeSkills.Remove(skill);
+            skill.Destroy();
         }
         else
         {
-            Debug.LogWarning("Aucune compétence trouvée avec ces SkillSettings.");
+            Debug.LogWarning("Aucune compétence trouvée correspondant aux paramètres fournis.");
         }
     }
 
@@ -68,7 +95,8 @@ public class SkillsManager : MonoBehaviour
     {
         foreach (var skill in activeSkills)
         {
-            skill.attackBehaviour.enabled = false;
+            if (skill?.Behaviour != null)
+                skill.Disable();
         }
     }
 
@@ -76,19 +104,31 @@ public class SkillsManager : MonoBehaviour
     {
         foreach (var skill in activeSkills)
         {
-            skill.attackBehaviour.enabled = true;
+            if (skill?.Behaviour != null)
+                skill.Enable();
         }
     }
+
+    private bool IsValidSkill(SkillSettings skillData)
+    {
+        return skillData != null && skillData.skillBehaviour != null;
+    }
 }
+
 
 public class ActiveSkill
 {
-    public SkillSettings skillSettings;
-    public AttackBehaviour attackBehaviour;
+    public SkillSettings SkillSettings { get; }
+    public AttackBehaviour Behaviour { get; }
 
-    public ActiveSkill(SkillSettings skillSettings, AttackBehaviour attackBehaviour)
+    public ActiveSkill(SkillSettings settings, AttackBehaviour behaviour)
     {
-        this.skillSettings = skillSettings;
-        this.attackBehaviour = attackBehaviour;
+        SkillSettings = settings;
+        Behaviour = behaviour;
     }
+
+    public void Enable() => Behaviour.enabled = true;
+    public void Disable() => Behaviour.enabled = false;
+    public void Destroy() => Object.Destroy(Behaviour.gameObject);
 }
+

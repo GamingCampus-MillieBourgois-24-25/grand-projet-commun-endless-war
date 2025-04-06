@@ -9,6 +9,7 @@ public abstract class AttackBehaviour : MonoBehaviour
     [SerializeField] protected LayerMask enemyLayer;
 
     protected float attackTimer;
+    protected int skillLevel = 1;
 
     private void Start()
     {
@@ -47,4 +48,9 @@ public abstract class AttackBehaviour : MonoBehaviour
     }
 
     protected abstract void Attack();
+
+    public virtual void Upgrade()
+    {
+        Debug.Log($"{name} has been upgraded! New damage: {attackSettings.Damage}");
+    }
 }

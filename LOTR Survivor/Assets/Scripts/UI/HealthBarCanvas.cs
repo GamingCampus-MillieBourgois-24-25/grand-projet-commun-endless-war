@@ -36,12 +36,12 @@ public class HealthBarCanvas : MonoBehaviour
         }
         else
         {
-            healthSlider.DOValue(health, transitionDuration * 0.5f)
-                .SetEase(Ease.OutCubic)
+            healthSlider.DOValue(health, transitionDuration)
+                .SetEase(Ease.Linear)
                 .SetUpdate(true);
 
             healthDepleteSlider.DOValue(health, transitionDuration)
-                .SetEase(Ease.OutCubic)
+                .SetEase(Ease.Linear)
                 .SetUpdate(true);
         }
     }
