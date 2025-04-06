@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealthBehaviour : MonoBehaviour, IHealth
@@ -10,13 +10,29 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     private int health;
     private Renderer objectRenderer;
     private Color originalColor;
+    private bool isDead;
 
-    public int MaxHealth { get => enemyData != null ? (int)enemyData.maxHealth : 100; set => enemyData.maxHealth = value; }
-    public int Health { get => health; set => health = value; }
-    public float FlashDuration { get => enemyData != null ? enemyData.flashDuration : 0.1f; set => enemyData.flashDuration = value; }
-    public Color FlashColor { get => enemyData != null ? enemyData.flashColor : Color.red; set => enemyData.flashColor = value; }
+    public static event Action<EnemyHealthBehaviour> OnEnemyDied;
 
-    void Start()
+    public int MaxHealth
+    {
+        get => (int)enemyData.maxHealth;
+        set { }
+    }
+    public int Health
+    {
+        get => health;
+        set => health = Mathf.Clamp(value, 0, MaxHealth);
+    }
+
+    private void Awake()
+    {
+        objectRenderer = GetComponent<Renderer>();
+        if (objectRenderer != null)
+            originalColor = objectRenderer.material.color;
+    }
+
+    private void Start()
     {
         if (enemyData == null)
         {
@@ -25,58 +41,48 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
         }
 
         Health = MaxHealth;
-        objectRenderer = GetComponent<Renderer>();
-
-        if (objectRenderer != null)
-        {
-            originalColor = objectRenderer.material.color;
-        }
-
-        OnHealthInitialized();
     }
-
-    public void OnHealthInitialized() { }
 
     public void Initialize(EnemySO enemySO)
     {
-        this.enemyData = enemySO;
+        enemyData = enemySO;
         Health = MaxHealth;
     }
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
+
         Health -= damage;
 
         if (Health <= 0)
         {
+            isDead = true;
             DestroyEnemy();
         }
         else
         {
-            StartCoroutine(FlashRed());
+            StartCoroutine(FlashFeedback());
         }
     }
 
-    private IEnumerator FlashRed()
+    private IEnumerator FlashFeedback()
     {
         if (objectRenderer != null)
         {
-            objectRenderer.material.color = FlashColor;
-            yield return new WaitForSeconds(FlashDuration);
+            objectRenderer.material.color = enemyData.flashColor;
+            yield return new WaitForSeconds(enemyData.flashDuration);
             objectRenderer.material.color = originalColor;
         }
     }
 
     private void DestroyEnemy()
     {
+        OnEnemyDied?.Invoke(this);
+
         if (ObjectPool.Instance != null)
-        {
             ObjectPool.Instance.Despawn(gameObject, enemyData.prefab);
-        }
         else
-        {
-            Debug.Log("ObjectPool Instance is not present in the scene!");
             Destroy(gameObject);
-        }
     }
 }

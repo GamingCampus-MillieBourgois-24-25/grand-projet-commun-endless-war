@@ -24,9 +24,9 @@ public abstract class AttackBehaviour : MonoBehaviour
             attackTimer = 0f;
         }
     }
-    public void SetProjectileSettings(AttackSettings newProjectileSettings)
+    public void SetAttackSettings(AttackSettings newAttackSettings)
     {
-        attackSettings = newProjectileSettings;
+        attackSettings = newAttackSettings;
     }
 
     protected bool CanAttack()

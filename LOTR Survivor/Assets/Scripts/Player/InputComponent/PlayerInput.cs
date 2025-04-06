@@ -50,7 +50,9 @@ public class PlayerInput : MonoBehaviour
 
         GamePauseManager.Instance.OnGamePaused -= DisableInput;
         GamePauseManager.Instance.OnGameResumed -= EnableInput;
-    }
+
+        ResetJoystick()
+;    }
 
     private void HandleFingerDown(Finger touchedFinger)
     {

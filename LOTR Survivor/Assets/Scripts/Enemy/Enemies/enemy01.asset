@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
   m_Name: enemy01
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 40
   attackPower: 4
   attackCooldown: 1.5
-  speed: 2
+  speed: 1
   aggroRange: 1
   prefab: {fileID: 7466036329059886502, guid: f6b148bb2e7862346995c1aea207e01f, type: 3}
   flashDuration: 0.1

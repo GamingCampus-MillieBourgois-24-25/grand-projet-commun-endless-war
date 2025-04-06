@@ -36,6 +36,12 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         agent.speed = enemyData.speed;
+
+        PlayerHealthBehaviour playerHealth = player.GetComponent<PlayerHealthBehaviour>();
+        if (playerHealth != null)
+        {
+            playerHealth.OnPlayerDeath += HandlePlayerDeath;
+        }
     }
 
     void Update()
@@ -79,4 +85,36 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
     }
+
+    private void StopMoving()
+    {
+        if (agent != null && agent.isActiveAndEnabled)
+        {
+            agent.isStopped = true;
+            agent.SetDestination(transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("NavMeshAgent is not active when trying to stop movement.");
+        }
+    }
+
+
+    private void HandlePlayerDeath()
+    {
+        StopMoving();
+    }
+
+    void OnDestroy()
+    {
+        if (player != null)
+        {
+            PlayerHealthBehaviour playerHealth = player.GetComponent<PlayerHealthBehaviour>();
+            if (playerHealth != null)
+            {
+                playerHealth.OnPlayerDeath -= HandlePlayerDeath;
+            }
+        }
+    }
+
 }

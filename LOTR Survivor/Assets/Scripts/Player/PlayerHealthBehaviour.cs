@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
@@ -5,60 +6,47 @@ using UnityEngine;
 public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 {
     [Header("Health Parameters")]
-    [SerializeField] private int maxHealth;
+    [SerializeField] private int maxHealth = 100;
     [SerializeField] private int health;
 
-    [Header("Flash Parameters")]
-    [SerializeField] private float flashDuration = 0.1f;
-    [SerializeField] private Color flashColor = Color.red;
-
-    [Header("Invulnerability Settings")]
+    [Header("Invulnerability")]
     [SerializeField] private float invulnerabilityDuration = 2f;
     [SerializeField] private float blinkSpeed = 0.2f;
 
-    [Header("Visual & Effects")]
-    [SerializeField] private HealthBarCanvas healthBarCanvas;
-    [SerializeField] private GameObject deathParticle;
-
     private Renderer objectRenderer;
-    private Color originalColor;
-    private Animator animator;
-    private CinemachineImpulseSource impulseSource;
 
     private bool isInvulnerable;
     private float invulnerabilityTimer;
 
-    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public int Health { get => health; set => health = value; }
+    public event Action OnPlayerDeath;
+    public event Action OnPlayerDamaged;
 
-    public float FlashDuration { get => flashDuration; set => flashDuration = value; }
-    public Color FlashColor { get => flashColor; set => flashColor = value; }
+    public int MaxHealth { get => maxHealth; set => maxHealth = Mathf.Max(1, value); }
+
+    public int Health
+    {
+        get => health;
+        set
+        {
+            health = Mathf.Clamp(value, 0, MaxHealth);
+            HealthEvents.RaiseHealthChanged(health, MaxHealth); 
+        }
+    }
+
+    private void Awake()
+    {
+        objectRenderer = GetComponentInChildren<Renderer>();
+    }
 
     private void Start()
     {
         Health = MaxHealth;
-        InitializeComponents();
-        OnHealthInitialized();
-    }
-
-    private void InitializeComponents()
-    {
-        objectRenderer = GetComponentInChildren<Renderer>();
-        animator = GetComponent<Animator>();
-        impulseSource = GetComponent<CinemachineImpulseSource>();
-
-        if (objectRenderer != null)
-        {
-            originalColor = objectRenderer.material.color;
-        }
     }
 
     private void Update()
     {
         if (isInvulnerable)
-        {
             HandleInvulnerability();
-        }
     }
 
     private void HandleInvulnerability()
@@ -72,19 +60,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
             return;
         }
 
-        if (Mathf.PingPong(Time.time, 2 * blinkSpeed) > blinkSpeed)
-        {
-            objectRenderer.enabled = true;
-        }
-        else
-        {
-            objectRenderer.enabled = false;
-        }
-    }
-
-    public void OnHealthInitialized()
-    {
-        healthBarCanvas?.UpdateUI(Health, MaxHealth);
+        objectRenderer.enabled = Mathf.PingPong(Time.time, 2 * blinkSpeed) > blinkSpeed;
     }
 
     public void TakeDamage(int damage)
@@ -93,16 +69,13 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
         Health -= damage;
 
-        CameraShakeManager.instance.CameraShake(impulseSource);
-        healthBarCanvas?.UpdateUI(Health, MaxHealth);
-
         if (Health <= 0)
         {
-            PlayDeathAnimation();
+            Die();
         }
         else
         {
-            StartCoroutine(FlashRed());
+            OnPlayerDamaged?.Invoke();
             StartInvulnerability();
         }
     }
@@ -113,33 +86,9 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         invulnerabilityTimer = invulnerabilityDuration;
     }
 
-    private IEnumerator FlashRed()
+    private void Die()
     {
-        objectRenderer.material.SetColor("_Color", flashColor);
-        objectRenderer.material.SetFloat("_Damaged", 1f);
-        yield return new WaitForSeconds(FlashDuration);
-        objectRenderer.material.SetFloat("_Damaged", 0f);
-        objectRenderer.material.SetColor("_Color", originalColor);
-    }
-
-
-
-    private void PlayDeathAnimation()
-    {
-        GamePauseManager.Instance.PauseGame();
-        StartCoroutine(WaitAndPlayDeathAnimation());
-    }
-
-    private IEnumerator WaitAndPlayDeathAnimation()
-    {
-        yield return new WaitForSecondsRealtime(1f);
-        animator.SetTrigger("Die");
-    }
-
-    private void Explode()
-    {
-        Instantiate(deathParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-        Debug.LogError("you explod");
+        OnPlayerDeath?.Invoke();
+        GetComponent<PlayerInput>().enabled = false;
     }
 }

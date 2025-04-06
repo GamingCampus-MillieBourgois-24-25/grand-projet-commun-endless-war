@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class TooltipEntry
@@ -12,35 +12,56 @@ public class TooltipEntry
 public class TooltipState : ScriptableObject
 {
     [SerializeField]
-    private List<TooltipEntry> seenTooltips = new List<TooltipEntry>();
+    private List<TooltipEntry> tooltipEntries = new List<TooltipEntry>();
+
+    private Dictionary<int, bool> seenTooltips = new Dictionary<int, bool>();
+
+    private void OnEnable()
+    {
+        seenTooltips.Clear();
+        foreach (var entry in tooltipEntries)
+        {
+            seenTooltips[entry.tooltipID] = entry.seen;
+        }
+    }
 
     public bool HasSeenTooltip(int tooltipID)
     {
-        foreach (var entry in seenTooltips)
-        {
-            if (entry.tooltipID == tooltipID)
-            {
-                return entry.seen;
-            }
-        }
-        return false;
+        return seenTooltips.ContainsKey(tooltipID) && seenTooltips[tooltipID];
     }
 
     public void MarkTooltipAsSeen(int tooltipID)
     {
-        var entry = seenTooltips.Find(e => e.tooltipID == tooltipID);
-        if (entry == null)
+        if (!seenTooltips.ContainsKey(tooltipID))
         {
-            seenTooltips.Add(new TooltipEntry { tooltipID = tooltipID, seen = true });
+            seenTooltips.Add(tooltipID, true);
         }
         else
         {
-            entry.seen = true;
+            seenTooltips[tooltipID] = true;
         }
+
+        UpdateTooltipList();
     }
 
     public void ResetTooltips()
     {
         seenTooltips.Clear();
+
+        foreach (var entry in tooltipEntries)
+        {
+            entry.seen = false;
+        }
+
+        UpdateTooltipList();
+    }
+
+    private void UpdateTooltipList()
+    {
+        tooltipEntries.Clear();
+        foreach (var kvp in seenTooltips)
+        {
+            tooltipEntries.Add(new TooltipEntry { tooltipID = kvp.Key, seen = kvp.Value });
+        }
     }
 }

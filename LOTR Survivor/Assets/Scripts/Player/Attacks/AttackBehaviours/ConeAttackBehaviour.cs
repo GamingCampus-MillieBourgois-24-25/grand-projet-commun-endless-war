@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ConeAttackBehaviour : AttackBehaviour
 {
-    [SerializeField] private GameObject munitionPrefab;
     [SerializeField] private int munitionNumber = 10;
     [SerializeField] private float munitionRadius = 90f;
 
@@ -36,7 +35,7 @@ public class ConeAttackBehaviour : AttackBehaviour
     private GameObject CreateMunition(float angle, Vector3 forward)
     {
         Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
-        return SpawnOrInstantiate(munitionPrefab, transform.position, rotation);
+        return SpawnOrInstantiate(attackSettings.prefab, transform.position, rotation);
     }
 
     private void InitializeProjectile(GameObject munition, float angle, Vector3 forward)

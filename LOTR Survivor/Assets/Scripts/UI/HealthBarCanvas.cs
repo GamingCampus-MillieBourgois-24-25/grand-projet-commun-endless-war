@@ -5,14 +5,44 @@ using DG.Tweening;
 public class HealthBarCanvas : MonoBehaviour
 {
     [SerializeField] private Slider healthSlider;
+    [SerializeField] private Slider healthDepleteSlider;
     [SerializeField] private float transitionDuration = 1f;
 
-    public void UpdateUI(float health, float maxHealth)
+    private void OnEnable()
     {
-        healthSlider.maxValue = maxHealth;
+        HealthEvents.OnHealthChanged += UpdateUI;
+    }
 
-        healthSlider.DOValue(health, transitionDuration)
-            .SetEase(Ease.OutCubic)
-            .SetUpdate(true);
+    private void OnDisable()
+    {
+        HealthEvents.OnHealthChanged -= UpdateUI;
+    }
+
+    private void UpdateUI(int current, int max)
+    {
+        healthSlider.maxValue = max;
+        healthDepleteSlider.maxValue = max;
+
+        float health = current;
+
+        if (health < healthSlider.value)
+        {
+            healthSlider.value = health;
+
+            healthDepleteSlider.DOKill();
+            healthDepleteSlider.DOValue(health, transitionDuration)
+                .SetEase(Ease.OutCubic)
+                .SetUpdate(true);
+        }
+        else
+        {
+            healthSlider.DOValue(health, transitionDuration * 0.5f)
+                .SetEase(Ease.OutCubic)
+                .SetUpdate(true);
+
+            healthDepleteSlider.DOValue(health, transitionDuration)
+                .SetEase(Ease.OutCubic)
+                .SetUpdate(true);
+        }
     }
 }
