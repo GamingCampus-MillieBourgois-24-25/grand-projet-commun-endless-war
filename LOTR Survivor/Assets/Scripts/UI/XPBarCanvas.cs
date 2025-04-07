@@ -31,7 +31,7 @@ public class XPBarCanvas : MonoBehaviour
 
         xpSlider
             .DOValue(currentXP, transitionDuration)
-            .SetEase(Ease.OutCubic);
+            .SetEase(Ease.Linear);
     }
 }
 

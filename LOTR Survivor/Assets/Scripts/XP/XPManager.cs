@@ -9,10 +9,9 @@ public class XPManager : MonoBehaviour
     [SerializeField] private int maxXP = 10;
 
     public int currentXP = 0;
-    public int xpPerPickup = 1;
+    private int pendingXp = 0;
 
     private bool isLevelingUp = false;
-    private int pendingXp = 0;
     public int CurrentLevel { get; private set; } = 1;
 
     public int CurrentXP
@@ -25,6 +24,8 @@ public class XPManager : MonoBehaviour
 
             if (currentXP >= maxXP && !isLevelingUp)
             {
+                isLevelingUp = true;
+                pendingXp += currentXP - maxXP;
                 LevelUp();
             }
         }
