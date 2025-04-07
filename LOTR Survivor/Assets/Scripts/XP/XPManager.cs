@@ -6,15 +6,30 @@ public class XPManager : MonoBehaviour
     public static XPManager Instance;
 
     [Header("Parameters")]
-    [SerializeField] XPBarCanvas xPBarCanvas;
     [SerializeField] private int maxXP = 10;
 
     public int currentXP = 0;
-    public int xpPerPickup = 1;
+    private int pendingXp = 0;
 
     private bool isLevelingUp = false;
+    public int CurrentLevel { get; private set; } = 1;
 
-    private int pendingXp = 0;
+    public int CurrentXP
+    {
+        get => currentXP;
+        set
+        {
+            currentXP = Mathf.Clamp(value, 0, maxXP);
+            XPEvents.RaiseXPChanged(currentXP, maxXP);
+
+            if (currentXP >= maxXP && !isLevelingUp)
+            {
+                isLevelingUp = true;
+                pendingXp += currentXP - maxXP;
+                LevelUp();
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -26,17 +41,20 @@ public class XPManager : MonoBehaviour
         Instance = this;
     }
 
-    public int CurrentLevel { get; private set; } = 1;
-
-    private void Start()
+    private void OnEnable()
     {
-        xPBarCanvas.SetMaxXp(maxXP);
+        XPEvents.OnXPPicked += AddXP;
     }
 
-    private void TriggerLevelUp()
+    private void OnDisable()
+    {
+        XPEvents.OnXPPicked -= AddXP;
+    }
+
+    private void LevelUp()
     {
         Debug.Log("Niveau atteint ! Choix d’un buff...");
-        LevelUpUiManager.Instance.ShowBuffUi();
+        //LevelUpUiManager.Instance.ShowBuffUi();
     }
 
     public void AddXP(int amount)
@@ -47,23 +65,7 @@ public class XPManager : MonoBehaviour
             return;
         }
         
-        currentXP += amount;
-
-        if (currentXP >= maxXP)
-        {
-            currentXP = maxXP;
-            isLevelingUp = true;
-
-            xPBarCanvas.UpdateXP(currentXP, () =>
-            {
-                TriggerLevelUp();
-            });
-        }
-
-        else
-        {
-            xPBarCanvas.UpdateXP(currentXP);
-        }
+        CurrentXP += amount;
     }
 
     public void OnLevelUpBuffSelected()
@@ -72,10 +74,9 @@ public class XPManager : MonoBehaviour
         // Simule un choix de buff : +1 à une stat bidon
         Debug.Log("Buff choisi : +1 à BidonStat");
 
-        currentXP = 0;
-        xPBarCanvas.UpdateXP(currentXP);
         CurrentLevel++;
-
+        maxXP = Mathf.RoundToInt(1.2f * maxXP);
+        CurrentXP = 0;
         isLevelingUp = false;
 
         Debug.Log("Niveau actuel : " + CurrentLevel);

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.PlayerLoop;
 
 public class XPBarCanvas : MonoBehaviour
 {
@@ -9,25 +10,28 @@ public class XPBarCanvas : MonoBehaviour
     [SerializeField] private float transitionDuration = 1f;
 
     private Tween xpTween;
-
-    public void SetMaxXp(int maxXp)
+    private void OnEnable()
     {
-        xpSlider.maxValue = maxXp;
-        xpSlider.value = 0;
+        XPEvents.OnXPChanged += UpdateXP;
     }
 
-    public void UpdateXP(int currentXP, Action onCompleteCallback = null)
+    private void OnDisable()
+    {
+        XPEvents.OnXPChanged -= UpdateXP;
+    }
+
+    public void UpdateXP(int currentXP, int maxXP)
     {
         if (xpTween != null && xpTween.IsActive())
         {
             xpTween.Kill();
         }
 
+        xpSlider.maxValue = maxXP;
 
         xpSlider
             .DOValue(currentXP, transitionDuration)
-            .SetEase(Ease.OutCubic)
-            .OnComplete(() => onCompleteCallback?.Invoke());
+            .SetEase(Ease.Linear);
     }
 }
 

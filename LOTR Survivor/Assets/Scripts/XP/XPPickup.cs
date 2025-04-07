@@ -8,7 +8,7 @@ public class XPPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            XPManager.Instance.AddXP(xpValue);
+            XPEvents.PickXP(xpValue);
             Destroy(gameObject);
         }
     }
