@@ -66,7 +66,10 @@ public class PlayerAnimation : MonoBehaviour
     private void HandleDamageAnimations()
     {
         StartCoroutine(FlashFeedback());
-        CameraShakeManager.instance.CameraShake(impulseSource);
+        if (CameraShakeManager.instance != null)
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
     }
 
     private void HandlePlayerDeath()
