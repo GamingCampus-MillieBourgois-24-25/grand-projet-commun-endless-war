@@ -82,7 +82,10 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
         if (xpPrefab != null)
         {
-            Instantiate(xpPrefab, transform.position, Quaternion.identity);
+            if (ObjectPool.Instance != null)
+            {
+                GameObject xp = ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity);
+            }
         }
         if (killCounter % killsForHealthPickup == 0 && healthPrefab != null)
         {
