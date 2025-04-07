@@ -18,7 +18,7 @@ public class HealthBarCanvas : MonoBehaviour
         HealthEvents.OnHealthChanged -= UpdateUI;
     }
 
-    private void UpdateUI(int current, int max)
+    public void UpdateUI(int current, int max)
     {
         healthSlider.maxValue = max;
         healthDepleteSlider.maxValue = max;
