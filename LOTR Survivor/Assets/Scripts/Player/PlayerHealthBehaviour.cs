@@ -1,113 +1,83 @@
-using System;
 using System.Collections;
-using Cinemachine;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 {
-    [Header("Health Parameters")]
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int health;
+    [Header("Parameters")]
+    [SerializeField] protected int maxHealth;
+    [SerializeField] protected float flashDuration = 0.1f;
+    [SerializeField] private Color flashColor = Color.red;
+    [SerializeField] HealthBarCanvas healthBarCanvas;
 
-    [Header("Invulnerability")]
-    [SerializeField] private float invulnerabilityDuration = 2f;
+    private Renderer objectRenderer;
+    private Color originalColor;
 
-    [SerializeField] private float slowmoScale = 0.1f;
-    [SerializeField] private float slowmoDuration = 1.5f;
+    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public int Health { get; set; }
+    public float FlashDuration { get => flashDuration; set => flashDuration = value; }
+    public Color FlashColor { get => flashColor; set => flashColor = value; }
 
-    private bool isDead = false;
-
-    private bool isInvulnerable;
-    private float invulnerabilityTimer;
-
-    public event Action OnPlayerDeath;
-    public event Action OnPlayerDamaged;
-
-    public event Action OnInvulnerabilityStart;
-    public event Action OnInvulnerabilityEnd;
-
-    public int MaxHealth { get => maxHealth; set => maxHealth = Mathf.Max(1, value); }
-
-    public int Health
-    {
-        get => health;
-        set
-        {
-            health = Mathf.Clamp(value, 0, MaxHealth);
-            HealthEvents.RaiseHealthChanged(health, MaxHealth); 
-        }
-    }
-
-    private void Awake()
-    {
-
-    }
-
-    private void Start()
+    void Start()
     {
         Health = MaxHealth;
-    }
+        objectRenderer = GetComponent<Renderer>();
 
-    private void Update()
-    {
-        if (isInvulnerable)
-            HandleInvulnerability();
-    }
-
-    private void StartInvulnerability()
-    {
-        isInvulnerable = true;
-        invulnerabilityTimer = invulnerabilityDuration;
-        OnInvulnerabilityStart?.Invoke();
-    }
-
-    private void HandleInvulnerability()
-    {
-        invulnerabilityTimer -= Time.deltaTime;
-
-        if (invulnerabilityTimer <= 0f)
+        if (objectRenderer != null)
         {
-            isInvulnerable = false;
-            OnInvulnerabilityEnd?.Invoke();
+            originalColor = objectRenderer.material.color;
+        }
+
+        OnHealthInitialized();
+    }
+
+    public void OnHealthInitialized()
+    {
+        if (healthBarCanvas != null)
+        {
+            healthBarCanvas.UpdateUI(Health, MaxHealth);
         }
     }
 
     public void TakeDamage(int damage)
     {
-        if (isInvulnerable || isDead) return;
-
         Health -= damage;
 
         if (Health <= 0)
         {
-            Die();
+            Destroy(gameObject);
         }
         else
         {
-            OnPlayerDamaged?.Invoke();
-            StartInvulnerability();
+            StartCoroutine(FlashRed());
+
+            if (healthBarCanvas != null)
+            {
+                healthBarCanvas.UpdateUI(Health, MaxHealth);
+            }
         }
     }
 
-    private void Die()
+    private IEnumerator FlashRed()
     {
-        isDead = true;
-        StartCoroutine(SlowmoThenDeath());
+        if (objectRenderer != null)
+        {
+            objectRenderer.material.color = flashColor;
+            yield return new WaitForSeconds(FlashDuration);
+            objectRenderer.material.color = originalColor;
+        }
     }
 
-    private IEnumerator SlowmoThenDeath()
+    public void Heal(int amount)
     {
-        Time.timeScale = slowmoScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale; 
+        Health += amount;
+        Health = Mathf.Clamp(Health, 0, MaxHealth);
 
-        yield return new WaitForSecondsRealtime(slowmoDuration);
+        Debug.Log("Le joueur s'est heal.");
 
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
-
-        OnPlayerDeath?.Invoke();
-
-        GetComponent<PlayerInput>().enabled = false;
+        if (healthBarCanvas != null)
+        {
+            healthBarCanvas.UpdateUI(Health, MaxHealth);
+        }
     }
-
 }

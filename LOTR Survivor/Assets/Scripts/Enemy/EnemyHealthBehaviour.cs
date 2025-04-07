@@ -6,11 +6,19 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 {
     [Header("Enemy Data")]
     [SerializeField] public EnemySO enemyData;
+
+    [Header("XP Pickup")]
     [SerializeField] public GameObject xpPrefab;
+
+    [Header("Health Pickup")]
+    [SerializeField] public GameObject healthPrefab;
 
     private int health;
     private Renderer objectRenderer;
     private Color originalColor;
+
+    private static int killCounter = 0;
+    private static int killsForHealthPickup = 15;
 
     public int MaxHealth { get => enemyData != null ? (int)enemyData.maxHealth : 100; set => enemyData.maxHealth = value; }
     public int Health { get => health; set => health = value; }
@@ -70,10 +78,18 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
     private void DestroyEnemy()
     {
+        killCounter++;
+
         if (xpPrefab != null)
         {
             Instantiate(xpPrefab, transform.position, Quaternion.identity);
         }
+        if (killCounter % killsForHealthPickup == 0 && healthPrefab != null)
+        {
+            Instantiate(healthPrefab, transform.position, Quaternion.identity);
+        }
+
+
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, enemyData.prefab);
