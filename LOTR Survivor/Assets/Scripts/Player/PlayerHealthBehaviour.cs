@@ -1,83 +1,118 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 {
-    [Header("Parameters")]
-    [SerializeField] protected int maxHealth;
-    [SerializeField] protected float flashDuration = 0.1f;
-    [SerializeField] private Color flashColor = Color.red;
-    [SerializeField] HealthBarCanvas healthBarCanvas;
+    [Header("Health Parameters")]
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int health;
 
-    private Renderer objectRenderer;
-    private Color originalColor;
+    [Header("Invulnerability")]
+    [SerializeField] private float invulnerabilityDuration = 2f;
 
-    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public int Health { get; set; }
-    public float FlashDuration { get => flashDuration; set => flashDuration = value; }
-    public Color FlashColor { get => flashColor; set => flashColor = value; }
+    [SerializeField] private float slowmoScale = 0.1f;
+    [SerializeField] private float slowmoDuration = 1.5f;
 
-    void Start()
+    private bool isDead = false;
+
+    private bool isInvulnerable;
+    private float invulnerabilityTimer;
+
+    public event Action OnPlayerDeath;
+    public event Action OnPlayerDamaged;
+
+    public event Action OnInvulnerabilityStart;
+    public event Action OnInvulnerabilityEnd;
+
+    public int MaxHealth { get => maxHealth; set => maxHealth = Mathf.Max(1, value); }
+
+    public int Health
     {
-        Health = MaxHealth;
-        objectRenderer = GetComponent<Renderer>();
-
-        if (objectRenderer != null)
+        get => health;
+        set
         {
-            originalColor = objectRenderer.material.color;
+            health = Mathf.Clamp(value, 0, MaxHealth);
+            HealthEvents.RaiseHealthChanged(health, MaxHealth);
         }
-
-        OnHealthInitialized();
     }
 
-    public void OnHealthInitialized()
+    private void Awake()
     {
-        if (healthBarCanvas != null)
+
+    }
+
+    private void Start()
+    {
+        Health = MaxHealth;
+    }
+
+    private void Update()
+    {
+        if (isInvulnerable)
+            HandleInvulnerability();
+    }
+
+    private void StartInvulnerability()
+    {
+        isInvulnerable = true;
+        invulnerabilityTimer = invulnerabilityDuration;
+        OnInvulnerabilityStart?.Invoke();
+    }
+
+    private void HandleInvulnerability()
+    {
+        invulnerabilityTimer -= Time.deltaTime;
+
+        if (invulnerabilityTimer <= 0f)
         {
-            healthBarCanvas.UpdateUI(Health, MaxHealth);
+            isInvulnerable = false;
+            OnInvulnerabilityEnd?.Invoke();
         }
     }
 
     public void TakeDamage(int damage)
     {
+        if (isInvulnerable || isDead) return;
+
         Health -= damage;
 
         if (Health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
         else
         {
-            StartCoroutine(FlashRed());
-
-            if (healthBarCanvas != null)
-            {
-                healthBarCanvas.UpdateUI(Health, MaxHealth);
-            }
+            OnPlayerDamaged?.Invoke();
+            StartInvulnerability();
         }
     }
 
-    private IEnumerator FlashRed()
+    private void Die()
     {
-        if (objectRenderer != null)
-        {
-            objectRenderer.material.color = flashColor;
-            yield return new WaitForSeconds(FlashDuration);
-            objectRenderer.material.color = originalColor;
-        }
+        isDead = true;
+        StartCoroutine(SlowmoThenDeath());
+    }
+
+    private IEnumerator SlowmoThenDeath()
+    {
+        Time.timeScale = slowmoScale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        yield return new WaitForSecondsRealtime(slowmoDuration);
+
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
+        OnPlayerDeath?.Invoke();
+
+        GetComponent<PlayerInput>().enabled = false;
     }
 
     public void Heal(int amount)
     {
         Health += amount;
         Health = Mathf.Clamp(Health, 0, MaxHealth);
-
-        Debug.Log("Le joueur s'est heal.");
-
-        if (healthBarCanvas != null)
-        {
-            healthBarCanvas.UpdateUI(Health, MaxHealth);
-        }
     }
 }
