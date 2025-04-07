@@ -100,8 +100,11 @@ public class PlayerInput : MonoBehaviour
     private void ResetJoystick()
     {
         movementFinger = null;
-        Joystick.Knob.anchoredPosition = Vector2.zero;
-        Joystick.gameObject.SetActive(false);
+        if (Joystick != null)
+        {
+            Joystick.Knob.anchoredPosition = Vector2.zero;
+            Joystick.gameObject.SetActive(false);
+        }
         movementAmount = Vector2.zero;
     }
 

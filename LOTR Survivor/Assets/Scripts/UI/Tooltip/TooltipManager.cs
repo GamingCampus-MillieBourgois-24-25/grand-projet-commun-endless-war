@@ -36,7 +36,10 @@ public class TooltipManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    private void Start()
+    {
         HideTip();
     }
 
