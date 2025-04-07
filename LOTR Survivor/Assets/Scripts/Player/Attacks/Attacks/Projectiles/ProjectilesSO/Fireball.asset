@@ -15,7 +15,9 @@ MonoBehaviour:
   Damage: 10
   Speed: 10
   Cooldown: 1
+  Range: 10
+  AimRange: 5
+  MaxRotation: 360
   prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
-  explosionPrefab: {fileID: 952961124639765284, guid: 1095a5c9f65bfbe4383f63d5d1886c65,
-    type: 3}
-  explosionSound: {fileID: 0}
+  hitPrefab: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}

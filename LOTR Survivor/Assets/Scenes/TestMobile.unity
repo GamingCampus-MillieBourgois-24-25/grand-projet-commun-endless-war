@@ -8268,7 +8268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxXP: 10
   currentXP: 0
-  xpPerPickup: 1
 --- !u!4 &1799378598
 Transform:
   m_ObjectHideFlags: 0
@@ -9353,7 +9352,7 @@ PrefabInstance:
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}

@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9599c92bd838efe44a4a220df5f2ae97, type: 3}
-  m_Name: Wave02
+  m_Name: WaveNain
   m_EditorClassIdentifier: 
   enemySOs:
-  - {fileID: 11400000, guid: bd96020d61a5418489c55cb672bc8bba, type: 2}
+  - {fileID: 11400000, guid: ee539f3e9c56c564fabe1ff367563811, type: 2}
+  - {fileID: 11400000, guid: 7187b41047f427946a142d8b6efbb6d5, type: 2}
+  - {fileID: 11400000, guid: c0337cc66ac6a834b9bbd2eb2b453a4a, type: 2}
   minEnemies: 15
   spawnInterval: 1
   waveCooldown: 5

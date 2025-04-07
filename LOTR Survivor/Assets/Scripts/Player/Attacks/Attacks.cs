@@ -34,8 +34,7 @@ public abstract class Attack : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    protected virtual void PlayHitFX() 
+    protected virtual void PlayHitFX()
     {
         if (attackSettings.hitPrefab != null)
         {
@@ -46,9 +45,9 @@ public abstract class Attack : MonoBehaviour
             main.loop = false;
         }
 
-        if (attackSettings.hitSound != null && audioSource != null)
+        if (attackSettings.hitSound != null)
         {
-            audioSource.PlayOneShot(attackSettings.hitSound);
+            OneShotAudio.PlayClip(attackSettings.hitSound, transform.position);
         }
     }
 }

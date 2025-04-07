@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
-  m_Name: enemy02
+  m_Name: Range_Elf
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  attackPower: 4
-  attackCooldown: 1.5
-  speed: 2.5
+  maxHealth: 40
+  attackPower: 15
+  attackCooldown: 0.8
+  speed: 2
   aggroRange: 1
-  prefab: {fileID: 7466036329059886502, guid: b625923a92fe85a47ade35549cc14196, type: 3}
+  prefab: {fileID: 7466036329059886502, guid: 59ab7041fe805f44fbe687a8f400f3de, type: 3}
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 

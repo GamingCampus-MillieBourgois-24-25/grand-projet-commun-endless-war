@@ -17,6 +17,7 @@ MonoBehaviour:
   Cooldown: 3.9
   Range: 6
   AimRange: 0
+  MaxRotation: 360
   prefab: {fileID: 7575841542315212930, guid: ce1de233deb0b8c4e949404bb4b7ead8, type: 3}
-  explosionPrefab: {fileID: 0}
-  explosionSound: {fileID: 0}
+  hitPrefab: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: e8c6088ca2e133a44a905278f905f99b, type: 3}
