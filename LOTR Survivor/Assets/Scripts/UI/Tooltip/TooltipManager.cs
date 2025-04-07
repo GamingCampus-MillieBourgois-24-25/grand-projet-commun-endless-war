@@ -15,7 +15,7 @@ public class TooltipManager : MonoBehaviour
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text contentText;
 
-    [Header("Animation Settings")]
+    [Header("Animation Settings haha")]
     [SerializeField] private float animationDuration = 0.7f;
     [SerializeField] private TooltipState tooltipState;
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class XPManager : MonoBehaviour
@@ -21,15 +22,43 @@ public class XPManager : MonoBehaviour
         Instance = this;
     }
 
+    public int CurrentLevel { get; private set; } = 1;
+
+    private void Start()
+    {
+        xPBarCanvas.SetMaxXp(maxXP);
+    }
+
+    private void TriggerLevelUp()
+    {
+        Debug.Log("Niveau atteint ! Choix d’un buff...");
+        LevelUpUiManager.Instance.ShowBuffUi();
+    }
+
     public void AddXP(int amount)
     {
         currentXP += amount;
 
-        currentXP = Mathf.Clamp(currentXP, 0, maxXP);
+        if (currentXP >= maxXP)
+        {
+            currentXP = maxXP;
+            TriggerLevelUp();
+        }
 
         xPBarCanvas.UpdateXP(currentXP);
-
-        Debug.Log("XP Actuelle : " + currentXP);
-        // Tu peux ici mettre à jour une jauge UI par exemple
     }
+
+    public void OnLevelUpBuffSelected()
+    {
+
+        // Simule un choix de buff : +1 à une stat bidon
+        Debug.Log("Buff choisi : +1 à BidonStat");
+
+        CurrentLevel++;
+        currentXP = 0;
+        xPBarCanvas.UpdateXP(currentXP);
+
+        Debug.Log("Niveau actuel : " + CurrentLevel);
+    }
+
 }
