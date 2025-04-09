@@ -13,7 +13,7 @@ public class VolumeManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);  // Keep this object between scene changes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -24,7 +24,6 @@ public class VolumeManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         musicVolume = volume;
-        // Optionally update the music source here if needed
     }
 
     public void SetSFXVolume(float volume)

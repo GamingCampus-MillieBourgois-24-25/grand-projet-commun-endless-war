@@ -7,28 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    //~~ Button ~~//
     [SerializeField] private Button playButton;
     [SerializeField] private Button optionButton;
     [SerializeField] private Button quitMenu;
 
-    //~~ Text ~~//
     [SerializeField] private TMP_Text playText;
     [SerializeField] private TMP_Text musicVolumeText;
     [SerializeField] private TMP_Text sfxVolumeText;
 
-    //~~ GameObject ~~//
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionMenu;
 
-    //~~ Sliders ~~//
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
-    //~~ Audio Sources ~~//
     [SerializeField] private AudioSource musicSource;
 
     [SerializeField] private string nextScene;
+
+    [SerializeField] private MusicManager musicManager;
 
     private void Start()
     {
@@ -98,7 +95,12 @@ public class MenuManager : MonoBehaviour
     void AdjustMusicVolume()
     {
         VolumeManager.Instance.SetMusicVolume(musicSlider.value);
-        musicSource.volume = musicSlider.value;
+
+        if (musicManager != null)
+        {
+            musicManager.UpdateMusicVolume(musicSlider.value);
+        }
+
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
         UpdateVolumeTexts();
     }
