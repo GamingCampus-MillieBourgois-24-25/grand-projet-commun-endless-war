@@ -380,8 +380,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../FMOD/endlesswar/endlesswar.fspro
-  sourceBankPath: ../../FMOD/endlesswar/Build
+  sourceProjectPath: ../../fmod_endlesswar/endlesswar.fspro
+  sourceBankPath: ../../fmod_endlesswar/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
