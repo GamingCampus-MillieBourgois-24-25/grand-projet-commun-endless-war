@@ -33,4 +33,7 @@ public class AttackSettings : ScriptableObject
     [Header("Audio")]
     [Tooltip("Spawn Sound")]
     public AudioClip spawnClip;
+
+    [Tooltip("Hit Sound")]
+    public AudioClip hitClip;
 }

@@ -11,7 +11,6 @@ public abstract class Attack : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-
         TryPlaySpawnSound();
     }
 
@@ -30,12 +29,22 @@ public abstract class Attack : MonoBehaviour
         }
     }
 
+    private void TryPlayHitSound()
+    {
+        if (attackSettings != null && attackSettings.hitClip != null)
+        {
+            OneShotAudio.PlayClip(attackSettings.hitClip, transform.position);
+        }
+    }
+
     protected abstract void UpdateAttack();
 
     protected virtual void ResetAttack() { }
 
     protected void DestroyAttack()
     {
+
+        TryPlayHitSound();
         PlayHitFX();
 
         if (ObjectPool.Instance != null)
