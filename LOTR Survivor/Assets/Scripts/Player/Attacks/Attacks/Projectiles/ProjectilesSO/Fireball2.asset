@@ -21,3 +21,4 @@ MonoBehaviour:
   prefab: {fileID: 754821637487049960, guid: f2999c7a918c15541943e10ad92c0d3e, type: 3}
   hitPrefab: {fileID: 0}
   spawnClip: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}
+  hitClip: {fileID: 0}
