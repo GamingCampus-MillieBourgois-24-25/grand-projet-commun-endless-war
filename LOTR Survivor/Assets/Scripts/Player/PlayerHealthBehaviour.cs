@@ -20,9 +20,6 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     private bool isInvulnerable;
     private float invulnerabilityTimer;
 
-    public event Action OnPlayerDeath;
-    public event Action OnPlayerDamaged;
-
     public event Action OnInvulnerabilityStart;
     public event Action OnInvulnerabilityEnd;
 
@@ -84,7 +81,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         }
         else
         {
-            OnPlayerDamaged?.Invoke();
+            HealthEvents.PlayerDamagedEvent(damage);
             StartInvulnerability();
         }
     }
@@ -105,14 +102,24 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;
 
-        OnPlayerDeath?.Invoke();
+        HealthEvents.PlayerDeathEvent();
 
         GetComponent<PlayerInput>().enabled = false;
     }
 
     public void Heal(int amount)
     {
+        if (isDead) return;
         Health += amount;
         Health = Mathf.Clamp(Health, 0, MaxHealth);
+    }
+
+    public void Revive(float amount)
+    {
+        isDead = false;
+        GetComponent<PlayerInput>().enabled = true;
+        Heal(Mathf.RoundToInt(maxHealth * amount));
+        HealthEvents.Revive(transform);
+        StartInvulnerability();
     }
 }

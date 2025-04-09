@@ -8,10 +8,26 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("Enemy Data")]
     [SerializeField] private EnemySO enemyData;
 
-    private GameObject player;
+    private Transform player;
     private NavMeshAgent agent;
     private float attackTimer;
     private bool isInRange = false;
+
+    private void OnEnable()
+    {
+        HealthEvents.OnRevive += SetPlayer;
+    }
+
+    private void OnDisable()
+    {
+        HealthEvents.OnRevive -= SetPlayer;
+
+        if (player != null)
+        {
+            PlayerHealthBehaviour playerHealth = player.GetComponent<PlayerHealthBehaviour>();
+            HealthEvents.OnPlayerDeath -= HandlePlayerDeath;
+        }
+    }
 
     void Start()
     {
@@ -26,7 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
             return;
         }
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
         if (agent == null)
@@ -38,10 +54,7 @@ public class EnemyBehaviour : MonoBehaviour
         agent.speed = enemyData.speed;
 
         PlayerHealthBehaviour playerHealth = player.GetComponent<PlayerHealthBehaviour>();
-        if (playerHealth != null)
-        {
-            playerHealth.OnPlayerDeath += HandlePlayerDeath;
-        }
+        HealthEvents.OnPlayerDeath += HandlePlayerDeath;
     }
 
     void Update()
@@ -55,17 +68,28 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    private void SetPlayer(Transform playerTransform)
+    {
+        if (playerTransform == null)
+        {
+            Debug.LogWarning("SetPlayer called with a null transform.");
+            return;
+        }
+        player = playerTransform;
+        agent.isStopped = false;
+    }
+
     private void MoveTowardsPlayer()
     {
         if (!isInRange && agent != null)
         {
-            agent.SetDestination(player.transform.position);
+            agent.SetDestination(player.position);
         }
     }
 
     private void CheckDistanceToPlayer()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         isInRange = distanceToPlayer <= enemyData.aggroRange;
     }
 
@@ -103,17 +127,5 @@ public class EnemyBehaviour : MonoBehaviour
     private void HandlePlayerDeath()
     {
         StopMoving();
-    }
-
-    void OnDestroy()
-    {
-        if (player != null)
-        {
-            PlayerHealthBehaviour playerHealth = player.GetComponent<PlayerHealthBehaviour>();
-            if (playerHealth != null)
-            {
-                playerHealth.OnPlayerDeath -= HandlePlayerDeath;
-            }
-        }
     }
 }
