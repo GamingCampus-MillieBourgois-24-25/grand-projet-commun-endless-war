@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,30 +7,16 @@ public class XPManager : MonoBehaviour
     public static XPManager Instance;
 
     [Header("Parameters")]
-    [SerializeField] private int maxXP = 10;
+    private int maxXP = 0;
+    private int currentXP = 0;
 
-    public int currentXP = 0;
+    [SerializeField] private int baseXP = 10;
+    [SerializeField] private float xpGrowthFactor = 1.2f;
+
     private int pendingXp = 0;
 
     private bool isLevelingUp = false;
-    public int CurrentLevel { get; private set; } = 1;
-
-    public int CurrentXP
-    {
-        get => currentXP;
-        set
-        {
-            currentXP = Mathf.Clamp(value, 0, maxXP);
-            XPEvents.RaiseXPChanged(currentXP, maxXP);
-
-            if (currentXP >= maxXP && !isLevelingUp)
-            {
-                isLevelingUp = true;
-                pendingXp += currentXP - maxXP;
-                LevelUp();
-            }
-        }
-    }
+    private int currentLevel = 1;
 
     private void Awake()
     {
@@ -51,10 +38,16 @@ public class XPManager : MonoBehaviour
         XPEvents.OnXPPicked -= AddXP;
     }
 
-    private void LevelUp()
+    private void Start()
     {
-        Debug.Log("Niveau atteint ! Choix d’un buff...");
-        //LevelUpUiManager.Instance.ShowBuffUi();
+        maxXP = ComputeMaxXPForLevel(currentLevel);
+        XPEvents.RaiseXPChanged(currentXP, maxXP);
+    }
+
+    public void LevelUp()
+    {
+        isLevelingUp = true;
+        XPEvents.RaiseLevelChanged(currentLevel);
     }
 
     public void AddXP(int amount)
@@ -65,21 +58,35 @@ public class XPManager : MonoBehaviour
             return;
         }
         
-        CurrentXP += amount;
+        currentXP += amount;
+        CheckLevelUP();
+    }
+
+    private void CheckLevelUP()
+    {
+        if (currentXP >= maxXP)
+        {
+            pendingXp += currentXP - maxXP;
+            currentXP = maxXP;
+            LevelUp();
+        }
+        XPEvents.RaiseXPChanged(currentXP, maxXP);
+    }
+
+    private int ComputeMaxXPForLevel(int level)
+    {
+        return Mathf.RoundToInt(baseXP * Mathf.Pow(xpGrowthFactor, level - 1));
     }
 
     public void OnLevelUpBuffSelected()
     {
-
-        // Simule un choix de buff : +1 à une stat bidon
-        Debug.Log("Buff choisi : +1 à BidonStat");
-
-        CurrentLevel++;
-        maxXP = Mathf.RoundToInt(1.2f * maxXP);
-        CurrentXP = 0;
+        currentLevel++;
+        maxXP = ComputeMaxXPForLevel(currentLevel);
+        currentXP = 0;
         isLevelingUp = false;
 
-        Debug.Log("Niveau actuel : " + CurrentLevel);
+        XPEvents.RaiseXPChanged(currentXP, maxXP);
+        Debug.Log("Niveau actuel : " + currentLevel);
 
         if (pendingXp > 0)
         {

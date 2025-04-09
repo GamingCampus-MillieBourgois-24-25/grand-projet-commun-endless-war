@@ -7,7 +7,7 @@ using UnityEngine.PlayerLoop;
 public class XPBarCanvas : MonoBehaviour
 {
     [SerializeField] private Slider xpSlider;
-    [SerializeField] private float transitionDuration = 1f;
+    [SerializeField] private float transitionDuration = 0.5f;
 
     private Tween xpTween;
     private void OnEnable()
@@ -22,16 +22,22 @@ public class XPBarCanvas : MonoBehaviour
 
     public void UpdateXP(int currentXP, int maxXP)
     {
+        xpSlider.maxValue = maxXP;
+        if (currentXP == 0)
+        {
+            xpSlider.value = 0;
+            return;
+        }
+
         if (xpTween != null && xpTween.IsActive())
         {
             xpTween.Kill();
         }
 
-        xpSlider.maxValue = maxXP;
-
         xpSlider
             .DOValue(currentXP, transitionDuration)
-            .SetEase(Ease.Linear);
+            .SetEase(Ease.Linear)
+            .SetUpdate(true);
     }
 }
 

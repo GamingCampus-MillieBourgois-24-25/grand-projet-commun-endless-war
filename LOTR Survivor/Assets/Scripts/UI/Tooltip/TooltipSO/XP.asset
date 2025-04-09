@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8d63286678f1c4fad6923ba6757ea6, type: 3}
+  m_Name: XP
+  m_EditorClassIdentifier: 
+  tooltipID: 3
+  title: XP
+  content: You killed guy you got XP. Take all XP. Look XP bar. XP bar is cool. Level
+    up when XP bar is full.
