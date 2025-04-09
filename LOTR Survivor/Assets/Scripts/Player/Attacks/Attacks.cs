@@ -7,14 +7,27 @@ public abstract class Attack : MonoBehaviour
     protected AttackSettings attackSettings;
     protected AudioSource audioSource;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+
+        TryPlaySpawnSound();
     }
 
     public void SetSettings(AttackSettings newProjectileSettings)
     {
         attackSettings = newProjectileSettings;
+
+        TryPlaySpawnSound();
+    }
+
+    private void TryPlaySpawnSound()
+    {
+        if (attackSettings != null && attackSettings.spawnClip != null)
+        {
+            OneShotAudio.PlayClip(attackSettings.spawnClip, transform.position);
+        }
     }
 
     protected abstract void UpdateAttack();
@@ -24,6 +37,7 @@ public abstract class Attack : MonoBehaviour
     protected void DestroyAttack()
     {
         PlayHitFX();
+
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, attackSettings.prefab);
@@ -34,6 +48,7 @@ public abstract class Attack : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     protected virtual void PlayHitFX()
     {
         if (attackSettings.hitPrefab != null)
@@ -43,11 +58,6 @@ public abstract class Attack : MonoBehaviour
             var main = system.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
             main.loop = false;
-        }
-
-        if (attackSettings.hitSound != null)
-        {
-            OneShotAudio.PlayClip(attackSettings.hitSound, transform.position);
         }
     }
 }

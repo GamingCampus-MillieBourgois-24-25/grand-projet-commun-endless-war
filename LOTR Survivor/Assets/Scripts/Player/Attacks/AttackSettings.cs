@@ -30,6 +30,7 @@ public class AttackSettings : ScriptableObject
     [Tooltip("Prefab Hit")]
     public GameObject hitPrefab;
 
-    [Tooltip("Sound hit")]
-    public AudioClip hitSound;
+    [Header("Audio")]
+    [Tooltip("Spawn Sound")]
+    public AudioClip spawnClip;
 }
