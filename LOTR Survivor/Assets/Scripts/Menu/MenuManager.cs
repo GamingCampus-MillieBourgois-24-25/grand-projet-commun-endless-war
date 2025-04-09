@@ -85,7 +85,7 @@ public class MenuManager : MonoBehaviour
 
     void ChangeScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+        Loader.Load(Loader.Scene.HubScene);
     }
 
     void OptionMenu()
