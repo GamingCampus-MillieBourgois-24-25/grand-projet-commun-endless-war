@@ -25,7 +25,8 @@ public abstract class Attack : MonoBehaviour
     {
         if (attackSettings != null && attackSettings.spawnClip != null)
         {
-            OneShotAudio.PlayClip(attackSettings.spawnClip, transform.position);
+            float sfxVolume = VolumeManager.Instance.GetSFXVolume();
+            OneShotAudio.PlayClip(attackSettings.spawnClip, transform.position, sfxVolume);
         }
     }
 
@@ -33,7 +34,8 @@ public abstract class Attack : MonoBehaviour
     {
         if (attackSettings != null && attackSettings.hitClip != null)
         {
-            OneShotAudio.PlayClip(attackSettings.hitClip, transform.position);
+            float sfxVolume = VolumeManager.Instance.GetSFXVolume();
+            OneShotAudio.PlayClip(attackSettings.hitClip, transform.position, sfxVolume);
         }
     }
 
@@ -67,6 +69,14 @@ public abstract class Attack : MonoBehaviour
             var main = system.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
             main.loop = false;
+
+
+            AudioSource fxAudioSource = fx.GetComponent<AudioSource>();
+            if (fxAudioSource != null)
+            {
+                fxAudioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+            }
         }
     }
+
 }

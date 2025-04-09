@@ -7,6 +7,6 @@ public class OneShotAudio
         if (clip == null)
             return;
 
-        AudioSource.PlayClipAtPoint(clip, position, Mathf.Clamp01(volume));
+        AudioSource.PlayClipAtPoint(clip, position, volume);
     }
 }
