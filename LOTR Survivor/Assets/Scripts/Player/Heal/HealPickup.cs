@@ -4,6 +4,7 @@ public class HealPickup : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private AudioClip pickupClip;
     public int healAmount = 20;
     private bool picked = false;
 
@@ -16,11 +17,12 @@ public class HealPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && !picked)
         {
+            picked = true;
             PlayerHealthBehaviour playerHealth = other.GetComponent<PlayerHealthBehaviour>();
             if (playerHealth != null)
             {
-                picked = true;
                 playerHealth.Heal(healAmount);
+                TryPlayPickupSound();
 
                 if (animator != null)
                 {
@@ -34,11 +36,24 @@ public class HealPickup : MonoBehaviour
         }
     }
 
+    private void TryPlayPickupSound()
+    {
+        if (pickupClip != null)
+        {
+            float sfxVolume = VolumeManager.Instance.GetSFXVolume();
+            OneShotAudio.PlayClip(pickupClip, transform.position, sfxVolume);
+        }
+    }
+
     private void Delete()
     {
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, prefab);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4781580464105356964}
   - component: {fileID: 6170703301683456004}
-  - component: {fileID: 8025465050314230277}
   - component: {fileID: 5065267480938379001}
+  - component: {fileID: 2151149374098715739}
   m_Layer: 0
   m_Name: Heal
   m_TagString: Untagged
@@ -49,28 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5065267480938379001}
   prefab: {fileID: 1498014835702131830}
+  pickupClip: {fileID: 8300000, guid: 33c22667d5f8e8b4e9c786c858436a60, type: 3}
   healAmount: 20
---- !u!65 &8025465050314230277
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498014835702131830}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2.1988242, z: 1}
-  m_Center: {x: 0, y: 1.0170685, z: 0}
 --- !u!95 &5065267480938379001
 Animator:
   serializedVersion: 5
@@ -92,6 +72,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &2151149374098715739
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498014835702131830}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5535999645890621670
 GameObject:
   m_ObjectHideFlags: 0
