@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(PlayerHealthBehaviour))]
-public class Health : Editor
+[CustomEditor(typeof(AttackBehaviour), true)]
+public class Attack : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        PlayerHealthBehaviour player = (PlayerHealthBehaviour)target;
+        AttackBehaviour attack = (AttackBehaviour)target;
 
         if (!Application.isPlaying)
         {
@@ -19,10 +19,10 @@ public class Health : Editor
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
 
-        if (GUILayout.Button("Die"))
+        if (GUILayout.Button("Upgrade"))
         {
-            player.Die();
-            Debug.Log("Mort déclenchée.");
+            attack.Upgrade();
+            Debug.Log("Attaque améliorée.");
         }
     }
 }

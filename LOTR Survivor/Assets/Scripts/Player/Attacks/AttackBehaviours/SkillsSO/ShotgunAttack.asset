@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: Fireball2
+  m_Name: ShotgunAttack
   m_EditorClassIdentifier: 
-  skillName: Fireball2
-  skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
+  skillName: Shotgun
+  skillBehaviour: {fileID: 3117057591713310481, guid: cfa34fb1aef408744be865e151678535,
     type: 3}
-  attackSettings: {fileID: 11400000, guid: 802afbddf674b964395265c41cf9539b, type: 2}
+  attackSettings: {fileID: 11400000, guid: 4c7ead0c279a0f44aa80a6c74f2e346e, type: 2}
