@@ -33,8 +33,9 @@ public class PlayerAnimation : MonoBehaviour
 
         if (playerHealth != null)
         {
-            playerHealth.OnPlayerDeath += HandlePlayerDeath;
-            playerHealth.OnPlayerDamaged += HandleDamageAnimations;
+            HealthEvents.OnPlayerDeath += HandlePlayerDeath;
+            HealthEvents.OnPlayerDamaged += HandleDamageAnimations;
+            HealthEvents.OnRevive += HandlePlayerRevive;
 
             playerHealth.OnInvulnerabilityStart += () => isInvulnerable = true;
             playerHealth.OnInvulnerabilityEnd += () => {
@@ -63,7 +64,7 @@ public class PlayerAnimation : MonoBehaviour
         
     }
 
-    private void HandleDamageAnimations()
+    private void HandleDamageAnimations(int amount)
     {
         StartCoroutine(FlashFeedback());
         if (CameraShakeManager.instance != null)
@@ -75,6 +76,11 @@ public class PlayerAnimation : MonoBehaviour
     private void HandlePlayerDeath()
     {
         StartCoroutine(PlayDeathAnimation());
+    }
+
+    private void HandlePlayerRevive(Transform player)
+    {
+        playerAnimator.SetTrigger("Revive");
     }
 
     private IEnumerator FlashFeedback()
@@ -95,20 +101,12 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetTrigger("Die");
     }
 
-    private void OnDestroy()
-    {
-        if (playerHealth != null)
-        {
-            playerHealth.OnPlayerDeath -= HandlePlayerDeath;
-            playerHealth.OnPlayerDamaged -= HandleDamageAnimations;
-        }
-    }
-
     private void Explode()
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         Debug.LogError("yuo explod");
+        HealthEvents.GameOver();
     }
 
     private void OnGUI()
