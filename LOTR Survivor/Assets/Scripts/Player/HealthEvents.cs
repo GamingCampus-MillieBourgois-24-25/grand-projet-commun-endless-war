@@ -5,6 +5,7 @@ public class HealthEvents
 {
     public static event Action<int, int> OnHealthChanged;
     public static event Action<Transform> OnRevive;
+    public static event Action<Transform> OnReviveComplete;
     public static event Action OnPlayerDeath;
     public static event Action<int> OnPlayerDamaged;
 
@@ -19,6 +20,11 @@ public class HealthEvents
     public static void Revive(Transform player)
     {
         OnRevive?.Invoke(player);
+    }
+
+    public static void ReviveFinished(Transform player)
+    {
+        OnReviveComplete?.Invoke(player);
     }
 
     public static void PlayerDeathEvent()

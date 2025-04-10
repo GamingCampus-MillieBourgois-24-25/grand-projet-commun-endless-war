@@ -17,6 +17,9 @@ public class AttackSettings : ScriptableObject
     [Tooltip("Range")]
     public float Range = 10f;
 
+    [Tooltip("Scale")]
+    public float Scale = 10f;
+
     [Tooltip("AimRange")]
     public float AimRange = 5f;
 

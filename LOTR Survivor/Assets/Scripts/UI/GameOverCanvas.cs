@@ -34,6 +34,7 @@ public class GameOverCanvas : MonoBehaviour
 
     public void DisplayUI()
     {
+        GamePauseManager.Instance.PauseGame();
         gameOverPanel.gameObject.SetActive(true);
 
         gameOverPanel.anchoredPosition = originalPosition + Vector2.up * startYOffset;

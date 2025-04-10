@@ -13,7 +13,7 @@ public class SkillsManager : MonoBehaviour
     private void Awake()
     {
         HealthEvents.OnPlayerDeath += DisableAllSkills;
-        HealthEvents.OnRevive += EnableAllSkills;
+        HealthEvents.OnReviveComplete += EnableAllSkills;
     }
 
     private void Start()
