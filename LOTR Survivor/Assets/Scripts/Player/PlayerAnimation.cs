@@ -110,6 +110,7 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetTrigger("Revive");
         yield return new WaitForSecondsRealtime(2f);
         HealthEvents.ReviveFinished(transform);
+        GetComponent<PlayerInput>().enabled = true;
         isReviving = false;
     }
 
