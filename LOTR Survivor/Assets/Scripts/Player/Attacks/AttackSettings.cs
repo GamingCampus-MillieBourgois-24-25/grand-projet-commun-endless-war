@@ -6,7 +6,6 @@ using UnityEngine;
 public class AttackSettings : ScriptableObject
 {
     [Header("Base Stats")]
-    [Header("Base Stats")]
     [Tooltip("Damage")]
     public int BaseDamage = 10;
 
