@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class LevelUpManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class LevelUpManager : MonoBehaviour
     [SerializeField] private float animationDuration = 0.8f;
     [SerializeField] private float startYOffset = 800f;
     [SerializeField] private Ease animationEase = Ease.OutBounce;
+    [SerializeField] private int skillNumber = 4;
+
+    [SerializeField] private GridLayoutGroup layoutGroup;
+    [SerializeField] private GameObject skillHolder;
 
     private Vector2 originalPosition;
 
@@ -41,6 +46,9 @@ public class LevelUpManager : MonoBehaviour
         levelUpPanel.gameObject.SetActive(true);
         GamePauseManager.Instance.PauseGame();
 
+        RemoveExistingSkillHolders();
+        AddSkillHolders(skillNumber);
+
         levelUpPanel.anchoredPosition = originalPosition + Vector2.up * startYOffset;
 
         levelUpPanel.DOAnchorPos(originalPosition, animationDuration)
@@ -61,5 +69,39 @@ public class LevelUpManager : MonoBehaviour
         GamePauseManager.Instance.ResumeGame();
         levelUpPanel.gameObject.SetActive(false);
         XPManager.Instance.OnLevelUpBuffSelected();
+    }
+
+    private void AddSkillHolders(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            GameObject newSkillHolder = Instantiate(skillHolder, layoutGroup.transform);
+
+            newSkillHolder.name = "SkillHolder_" + i;
+
+            SkillSettings randomSkill = SkillLibrary.Instance.GetRandomSkill();
+
+            if (randomSkill != null)
+            {
+                SkillHolderBehaviour skillHolderBehaviour = newSkillHolder.GetComponent<SkillHolderBehaviour>();
+
+                if (skillHolderBehaviour != null)
+                {
+                    skillHolderBehaviour.UpdateData(randomSkill);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Skill is null, unable to update skill holder.");
+            }
+        }
+    }
+
+    private void RemoveExistingSkillHolders()
+    {
+        foreach (Transform child in layoutGroup.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }

@@ -13,8 +13,9 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
+
     protected virtual void Update()
     {
         attackTimer += Time.deltaTime;
@@ -28,6 +29,7 @@ public abstract class AttackBehaviour : MonoBehaviour
     public void SetAttackSettings(AttackSettings newAttackSettings)
     {
         attackSettings = newAttackSettings;
+        attackSettings.Reset();
     }
 
     protected bool CanAttack()
@@ -49,8 +51,17 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected abstract void Attack();
 
-    public virtual void Upgrade()
+    public virtual void Upgrade(AttackSettings newAttackSettings = null)
     {
-        Debug.Log($"{name} has been upgraded! New damage: {attackSettings.Damage}");
+        if (newAttackSettings != null)
+        {
+            SetAttackSettings(newAttackSettings);
+            skillLevel = 1;
+        }
+        else
+        {
+            skillLevel++;
+            attackSettings = attackSettings.Upgrade(skillLevel);
+        }
     }
 }

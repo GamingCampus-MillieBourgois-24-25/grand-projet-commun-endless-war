@@ -90,7 +90,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         }
     }
 
-    private void Die()
+    public void Die()
     {
         isDead = true;
         StartCoroutine(SlowmoThenDeath());
@@ -121,7 +121,6 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     public void Revive(float amount)
     {
         isDead = false;
-        GetComponent<PlayerInput>().enabled = true;
         Heal(Mathf.RoundToInt(maxHealth * amount));
         HealthEvents.Revive(transform);
         StartInvulnerability(true);
