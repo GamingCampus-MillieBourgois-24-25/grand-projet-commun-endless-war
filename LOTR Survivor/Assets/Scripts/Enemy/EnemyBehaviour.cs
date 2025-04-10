@@ -15,12 +15,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        HealthEvents.OnRevive += SetPlayer;
+        HealthEvents.OnReviveComplete += SetPlayer;
+        HealthEvents.OnPlayerDeath += HandlePlayerDeath;
     }
 
     private void OnDisable()
     {
-        HealthEvents.OnRevive -= SetPlayer;
+        HealthEvents.OnReviveComplete -= SetPlayer;
 
         if (player != null)
         {

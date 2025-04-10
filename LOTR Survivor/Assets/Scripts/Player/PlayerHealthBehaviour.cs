@@ -51,10 +51,14 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
             HandleInvulnerability();
     }
 
-    private void StartInvulnerability()
+    private void StartInvulnerability(bool revive = false)
     {
         isInvulnerable = true;
         invulnerabilityTimer = invulnerabilityDuration;
+        if (revive)
+        {
+            invulnerabilityTimer *= 4f;
+        }
         OnInvulnerabilityStart?.Invoke();
     }
 
@@ -120,6 +124,6 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         GetComponent<PlayerInput>().enabled = true;
         Heal(Mathf.RoundToInt(maxHealth * amount));
         HealthEvents.Revive(transform);
-        StartInvulnerability();
+        StartInvulnerability(true);
     }
 }
