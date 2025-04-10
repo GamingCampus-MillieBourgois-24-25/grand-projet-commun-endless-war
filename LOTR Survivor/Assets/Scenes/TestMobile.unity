@@ -136,6 +136,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -296,6 +302,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -386,6 +398,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -784,6 +802,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -1030,6 +1054,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -1272,6 +1302,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -1564,6 +1600,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -2177,6 +2219,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -2255,6 +2303,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -2339,6 +2393,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -2467,6 +2527,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -2545,6 +2611,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3004,6 +3076,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3082,6 +3160,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3166,6 +3250,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3244,6 +3334,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3403,6 +3499,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3481,6 +3583,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3559,6 +3667,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3637,6 +3751,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3812,6 +3932,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -3890,6 +4016,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -4019,6 +4151,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -4097,6 +4235,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -4256,6 +4400,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -4334,6 +4484,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -4418,6 +4574,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -4496,6 +4658,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -4629,6 +4797,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -5210,6 +5384,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -5288,6 +5468,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -5378,6 +5564,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -5462,6 +5654,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -5592,6 +5790,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -5765,6 +5969,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -5849,6 +6059,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -6024,6 +6240,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -6108,6 +6330,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -6403,6 +6631,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -6493,6 +6727,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -6704,6 +6944,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -52186,6 +52432,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -52397,6 +52649,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -52475,6 +52733,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -52634,6 +52898,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -52718,6 +52988,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -52929,6 +53205,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -53007,6 +53289,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -53189,6 +53477,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -53373,6 +53667,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -53451,6 +53751,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -53709,6 +54015,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -53793,6 +54105,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -53920,6 +54238,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -54004,6 +54328,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -54170,6 +54500,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -54381,6 +54717,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -54459,6 +54801,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -54555,6 +54903,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -54672,6 +55026,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -54750,6 +55110,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -55307,6 +55673,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -55385,6 +55757,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -55602,6 +55980,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -55770,6 +56154,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -55854,6 +56244,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -56149,6 +56545,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -56227,6 +56629,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -56305,6 +56713,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
+        type: 3}
+      propertyPath: xpMagnetPrefab
+      value: 
+      objectReference: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+        type: 3}
     - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Speed
@@ -56905,34 +57319,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896403220}
     m_Modifications:
-    - target: {fileID: 3321119355655359760, guid: f6b148bb2e7862346995c1aea207e01f,
+    - target: {fileID: 56370005108763215, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321119355655359760, guid: f6b148bb2e7862346995c1aea207e01f,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321119355655359760, guid: f6b148bb2e7862346995c1aea207e01f,
-        type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420957439939387608, guid: f6b148bb2e7862346995c1aea207e01f,
-        type: 3}
-      propertyPath: m_Speed
-      value: 2
+      propertyPath: xpMagnetDropChance
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7466036329059886502, guid: f6b148bb2e7862346995c1aea207e01f,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7466036329059886502, guid: f6b148bb2e7862346995c1aea207e01f,
-        type: 3}
-      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8096261302854734990, guid: f6b148bb2e7862346995c1aea207e01f,

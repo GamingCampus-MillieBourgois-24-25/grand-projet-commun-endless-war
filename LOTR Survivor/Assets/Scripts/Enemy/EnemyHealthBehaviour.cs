@@ -13,6 +13,10 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     [Header("Health Pickup")]
     [SerializeField] public GameObject healthPrefab;
 
+    [Header("XP Magnet Pickup")]
+    [SerializeField] private GameObject xpMagnetPrefab;
+    [SerializeField, Range(0f, 1f)] private float xpMagnetDropChance = 0.1f;
+
     private int health;
     private Renderer objectRenderer;
     private Color originalColor;
@@ -80,18 +84,20 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     {
         killCounter++;
 
-        if (xpPrefab != null)
+        if (xpPrefab != null && ObjectPool.Instance != null)
         {
-            if (ObjectPool.Instance != null)
-            {
-                GameObject xp = ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity);
-            }
+            ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity);
         }
+
         if (killCounter % killsForHealthPickup == 0 && healthPrefab != null)
         {
             Instantiate(healthPrefab, transform.position, Quaternion.identity);
         }
 
+        if (xpMagnetPrefab != null && Random.value < xpMagnetDropChance)
+        {
+            Instantiate(xpMagnetPrefab, transform.position, Quaternion.identity);
+        }
 
         if (ObjectPool.Instance != null)
         {
