@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class SkillLibrary : MonoBehaviour
 {
-    [SerializeField]
-    static SkillSettings[] skillSettings;
-    static SkillSettings startingSkill;
+    public static SkillLibrary Instance { get; private set; }
 
-    public static SkillSettings GetRandomSkill()
+    [SerializeField]
+    private SkillSettings[] skillSettings;
+
+    private SkillSettings startingSkill;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public SkillSettings GetRandomSkill()
     {
         if (skillSettings != null && skillSettings.Length > 0)
         {
             int randomIndex = Random.Range(0, skillSettings.Length);
-
             return skillSettings[randomIndex];
         }
         else
@@ -23,12 +37,12 @@ public class SkillLibrary : MonoBehaviour
         }
     }
 
-    public static SkillSettings GetStartingSkill()
+    public SkillSettings GetStartingSkill()
     {
         return startingSkill;
     }
 
-    public static void InitializeSkillSettings(SkillSettings[] newSkillSettings)
+    public void InitializeSkillSettings(SkillSettings[] newSkillSettings)
     {
         skillSettings = newSkillSettings;
     }

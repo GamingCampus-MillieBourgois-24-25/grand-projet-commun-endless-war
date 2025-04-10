@@ -12,14 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: Respawn
   m_EditorClassIdentifier: 
+  BaseDamage: 100
+  BaseSpeed: 0
+  BaseCooldown: 1
+  BaseRange: 10
+  Scale: 2.5
+  BaseAimRange: 0
+  BaseMaxRotation: 0
+  prefab: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
+  hitPrefab: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c,
+    type: 3}
+  spawnClip: {fileID: 0}
+  hitClip: {fileID: 0}
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 0.1
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
   Damage: 100
   Speed: 0
   Cooldown: 1
   Range: 10
-  Scale: 2.5
   AimRange: 0
   MaxRotation: 0
-  prefab: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
-  hitPrefab: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c,
-    type: 3}
-  hitSound: {fileID: 0}
