@@ -4,13 +4,13 @@ using System.Collections;
 public class SceneTooltip : MonoBehaviour
 {
     [SerializeField] private TooltipData[] tips;
-    [SerializeField] private PlayerHealthBehaviour healthBehaviour;
 
     private void Start()
     {
         TooltipManager.Instance.OnTooltipClosed += OnTipClosed;
         StartCoroutine(ShowTooltipsWithDelay());
-        healthBehaviour.OnPlayerDeath += HandleDeathTip;
+        HealthEvents.OnPlayerDeath += HandleDeathTip;
+        HealthEvents.OnReviveComplete += HandleReviveTip;
         XPEvents.OnXPPicked += HandleXPTip;
     }
 
@@ -44,6 +44,11 @@ public class SceneTooltip : MonoBehaviour
     {
         XPEvents.OnXPPicked -= HandleXPTip;
         StartCoroutine(ShowTipWithDelay(3, 0.5f));
+    }
+
+    private void HandleReviveTip(Transform player)
+    {
+        ShowTip(4);
     }
 
     private IEnumerator ShowTipWithDelay(int id, float delay)

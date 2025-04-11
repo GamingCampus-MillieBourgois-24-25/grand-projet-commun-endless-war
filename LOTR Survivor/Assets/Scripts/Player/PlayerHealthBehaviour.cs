@@ -20,9 +20,6 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     private bool isInvulnerable;
     private float invulnerabilityTimer;
 
-    public event Action OnPlayerDeath;
-    public event Action OnPlayerDamaged;
-
     public event Action OnInvulnerabilityStart;
     public event Action OnInvulnerabilityEnd;
 
@@ -54,10 +51,14 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
             HandleInvulnerability();
     }
 
-    private void StartInvulnerability()
+    private void StartInvulnerability(bool revive = false)
     {
         isInvulnerable = true;
         invulnerabilityTimer = invulnerabilityDuration;
+        if (revive)
+        {
+            invulnerabilityTimer *= 4f;
+        }
         OnInvulnerabilityStart?.Invoke();
     }
 
@@ -84,12 +85,12 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         }
         else
         {
-            OnPlayerDamaged?.Invoke();
+            HealthEvents.PlayerDamagedEvent(damage);
             StartInvulnerability();
         }
     }
 
-    private void Die()
+    public void Die()
     {
         isDead = true;
         StartCoroutine(SlowmoThenDeath());
@@ -105,14 +106,23 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;
 
-        OnPlayerDeath?.Invoke();
+        HealthEvents.PlayerDeathEvent();
 
         GetComponent<PlayerInput>().enabled = false;
     }
 
     public void Heal(int amount)
     {
+        if (isDead) return;
         Health += amount;
         Health = Mathf.Clamp(Health, 0, MaxHealth);
+    }
+
+    public void Revive(float amount)
+    {
+        isDead = false;
+        Heal(Mathf.RoundToInt(maxHealth * amount));
+        HealthEvents.Revive(transform);
+        StartInvulnerability(true);
     }
 }

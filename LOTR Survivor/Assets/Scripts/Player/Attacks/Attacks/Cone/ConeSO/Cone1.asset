@@ -12,12 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: Cone1
   m_EditorClassIdentifier: 
+  BaseDamage: 30
+  BaseSpeed: 10
+  BaseCooldown: 2.2
+  BaseRange: 10
+  Scale: 10
+  BaseAimRange: 5
+  BaseMaxRotation: 360
+  prefab: {fileID: 6205814297656451098, guid: a4f3efdb888da164ab2ef8dfa20a30c3, type: 3}
+  hitPrefab: {fileID: 0}
+  spawnClip: {fileID: 0}
+  hitClip: {fileID: 0}
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 0.1
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
   Damage: 30
   Speed: 10
   Cooldown: 2.2
   Range: 10
   AimRange: 0
   MaxRotation: 0
-  prefab: {fileID: 6205814297656451098, guid: a4f3efdb888da164ab2ef8dfa20a30c3, type: 3}
-  hitPrefab: {fileID: 0}
-  hitSound: {fileID: 0}

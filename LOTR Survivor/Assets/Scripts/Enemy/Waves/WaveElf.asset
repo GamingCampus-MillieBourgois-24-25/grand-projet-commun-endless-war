@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9599c92bd838efe44a4a220df5f2ae97, type: 3}
+  m_Name: WaveElf
+  m_EditorClassIdentifier: 
+  enemySOs:
+  - {fileID: 11400000, guid: 2d27bc1227acd654d8b088961e3b152d, type: 2}
+  - {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
+  - {fileID: 11400000, guid: 68529f2ccf4deb4478410bdd5b2a9af0, type: 2}
+  minEnemies: 15
+  spawnInterval: 1
+  waveCooldown: 5

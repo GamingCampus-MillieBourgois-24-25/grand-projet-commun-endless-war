@@ -7,14 +7,36 @@ public abstract class Attack : MonoBehaviour
     protected AttackSettings attackSettings;
     protected AudioSource audioSource;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+        TryPlaySpawnSound();
     }
 
     public void SetSettings(AttackSettings newProjectileSettings)
     {
         attackSettings = newProjectileSettings;
+
+        TryPlaySpawnSound();
+    }
+
+    private void TryPlaySpawnSound()
+    {
+        if (attackSettings != null && attackSettings.spawnClip != null)
+        {
+            float sfxVolume = VolumeManager.Instance.GetSFXVolume();
+            OneShotAudio.PlayClip(attackSettings.spawnClip, transform.position, sfxVolume);
+        }
+    }
+
+    private void TryPlayHitSound()
+    {
+        if (attackSettings != null && attackSettings.hitClip != null)
+        {
+            float sfxVolume = VolumeManager.Instance.GetSFXVolume();
+            OneShotAudio.PlayClip(attackSettings.hitClip, transform.position, sfxVolume);
+        }
     }
 
     protected abstract void UpdateAttack();
@@ -23,7 +45,10 @@ public abstract class Attack : MonoBehaviour
 
     protected void DestroyAttack()
     {
+
+        TryPlayHitSound();
         PlayHitFX();
+
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, attackSettings.prefab);
@@ -35,7 +60,7 @@ public abstract class Attack : MonoBehaviour
         }
     }
 
-    protected virtual void PlayHitFX() 
+    protected virtual void PlayHitFX()
     {
         if (attackSettings.hitPrefab != null)
         {
@@ -44,11 +69,14 @@ public abstract class Attack : MonoBehaviour
             var main = system.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
             main.loop = false;
-        }
 
-        if (attackSettings.hitSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(attackSettings.hitSound);
+
+            AudioSource fxAudioSource = fx.GetComponent<AudioSource>();
+            if (fxAudioSource != null)
+            {
+                fxAudioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+            }
         }
     }
+
 }

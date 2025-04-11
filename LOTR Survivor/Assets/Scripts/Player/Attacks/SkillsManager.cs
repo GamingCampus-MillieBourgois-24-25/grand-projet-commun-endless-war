@@ -12,10 +12,8 @@ public class SkillsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (healthBehaviour != null)
-        {
-            healthBehaviour.OnPlayerDeath += DisableAllSkills;
-        }
+        HealthEvents.OnPlayerDeath += DisableAllSkills;
+        HealthEvents.OnReviveComplete += EnableAllSkills;
     }
 
     private void Start()
@@ -100,7 +98,7 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
-    public void EnableAllSkills()
+    public void EnableAllSkills(Transform player)
     {
         foreach (var skill in activeSkills)
         {

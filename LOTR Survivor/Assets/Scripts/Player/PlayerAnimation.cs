@@ -11,9 +11,11 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private Color flashColor = Color.red;
     [SerializeField] private GameObject deathParticle;
+    [SerializeField] private GameObject reviveParticle;
     [SerializeField] private float blinkSpeed = 0.1f;
 
     private PlayerHealthBehaviour playerHealth;
+    private bool isReviving = false;
 
     private Renderer objectRenderer;
     private CinemachineImpulseSource impulseSource;
@@ -33,8 +35,9 @@ public class PlayerAnimation : MonoBehaviour
 
         if (playerHealth != null)
         {
-            playerHealth.OnPlayerDeath += HandlePlayerDeath;
-            playerHealth.OnPlayerDamaged += HandleDamageAnimations;
+            HealthEvents.OnPlayerDeath += HandlePlayerDeath;
+            HealthEvents.OnPlayerDamaged += HandleDamageAnimations;
+            HealthEvents.OnRevive += HandlePlayerRevive;
 
             playerHealth.OnInvulnerabilityStart += () => isInvulnerable = true;
             playerHealth.OnInvulnerabilityEnd += () => {
@@ -52,7 +55,7 @@ public class PlayerAnimation : MonoBehaviour
             HandleMovementAnimations();
         }
 
-        if (isInvulnerable && objectRenderer != null)
+        if (isInvulnerable && objectRenderer != null && !isReviving)
         {
             objectRenderer.enabled = Mathf.PingPong(Time.time, 2 * blinkSpeed) > blinkSpeed;
         }
@@ -63,7 +66,7 @@ public class PlayerAnimation : MonoBehaviour
         
     }
 
-    private void HandleDamageAnimations()
+    private void HandleDamageAnimations(int amount)
     {
         StartCoroutine(FlashFeedback());
         if (CameraShakeManager.instance != null)
@@ -75,6 +78,11 @@ public class PlayerAnimation : MonoBehaviour
     private void HandlePlayerDeath()
     {
         StartCoroutine(PlayDeathAnimation());
+    }
+
+    private void HandlePlayerRevive(Transform player)
+    {
+        StartCoroutine(PlayReviveAnimation());
     }
 
     private IEnumerator FlashFeedback()
@@ -95,20 +103,23 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetTrigger("Die");
     }
 
-    private void OnDestroy()
+    private IEnumerator PlayReviveAnimation()
     {
-        if (playerHealth != null)
-        {
-            playerHealth.OnPlayerDeath -= HandlePlayerDeath;
-            playerHealth.OnPlayerDamaged -= HandleDamageAnimations;
-        }
+        isReviving = true;
+        Instantiate(reviveParticle, transform.position, Quaternion.identity);
+        playerAnimator.SetTrigger("Revive");
+        yield return new WaitForSecondsRealtime(2f);
+        HealthEvents.ReviveFinished(transform);
+        GetComponent<PlayerInput>().enabled = true;
+        isReviving = false;
     }
 
     private void Explode()
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         Debug.LogError("yuo explod");
+        HealthEvents.GameOver();
     }
 
     private void OnGUI()

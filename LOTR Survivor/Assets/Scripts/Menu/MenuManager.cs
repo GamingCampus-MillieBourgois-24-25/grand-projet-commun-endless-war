@@ -7,29 +7,26 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    //~~ Button ~~//
     [SerializeField] private Button playButton;
     [SerializeField] private Button optionButton;
     [SerializeField] private Button quitMenu;
 
-    //~~ Text ~~//
     [SerializeField] private TMP_Text playText;
     [SerializeField] private TMP_Text musicVolumeText;
     [SerializeField] private TMP_Text sfxVolumeText;
 
-    //~~ GameObject ~~//
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionMenu;
 
-    //~~ Sliders ~~//
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
-    //~~ Audio Sources ~~//
     [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource sfxSource;
 
     [SerializeField] private string nextScene;
+
+    [SerializeField] private MusicManager musicManager;
+
     private void Start()
     {
         mainMenu.SetActive(true);
@@ -44,18 +41,13 @@ public class MenuManager : MonoBehaviour
         musicSlider.onValueChanged.AddListener(delegate { AdjustMusicVolume(); });
         sfxSlider.onValueChanged.AddListener(delegate { AdjustSFXVolume(); });
 
-        // Set sliders to current volumes
         if (musicSource != null)
         {
-            musicSlider.value = musicSource.volume;
+            musicSlider.value = VolumeManager.Instance.GetMusicVolume();
             musicSource.Play();
         }
 
-        if (sfxSource != null)
-        {
-            sfxSlider.value = sfxSource.volume;
-        }
-
+        sfxSlider.value = VolumeManager.Instance.GetSFXVolume();
         UpdateVolumeTexts();
     }
 
@@ -85,7 +77,7 @@ public class MenuManager : MonoBehaviour
 
     void ChangeScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+        Loader.Load(Loader.Scene.HubScene);
     }
 
     void OptionMenu()
@@ -102,24 +94,31 @@ public class MenuManager : MonoBehaviour
 
     void AdjustMusicVolume()
     {
-        if (musicSource != null)
+        VolumeManager.Instance.SetMusicVolume(musicSlider.value);
+
+        if (musicManager != null)
         {
-            musicSource.volume = musicSlider.value;
-            PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);  // Save music volume setting
-            UpdateVolumeTexts();
+            musicManager.UpdateMusicVolume(musicSlider.value);
         }
+
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        UpdateVolumeTexts();
     }
 
     void AdjustSFXVolume()
     {
-        if (sfxSource != null)
-        {
-            sfxSource.volume = sfxSlider.value;
-            PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);  // Save SFX volume setting
-            UpdateVolumeTexts();
-        }
-    }
+        VolumeManager.Instance.SetSFXVolume(sfxSlider.value);
 
+        AudioSource[] allSFXSources = FindObjectsOfType<AudioSource>();
+        foreach (var sfxSource in allSFXSources)
+        {
+            if (sfxSource != musicSource)
+                sfxSource.volume = sfxSlider.value;
+        }
+
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+        UpdateVolumeTexts();
+    }
 
     void UpdateVolumeTexts()
     {

@@ -12,11 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: Axe1
   m_EditorClassIdentifier: 
+  BaseDamage: 20
+  BaseSpeed: 220
+  BaseCooldown: 3.9
+  BaseRange: 6
+  Scale: 10
+  BaseAimRange: 0
+  BaseMaxRotation: 405
+  prefab: {fileID: 7575841542315212930, guid: ce1de233deb0b8c4e949404bb4b7ead8, type: 3}
+  hitPrefab: {fileID: 0}
+  spawnClip: {fileID: 8300000, guid: e8c6088ca2e133a44a905278f905f99b, type: 3}
+  hitClip: {fileID: 8300000, guid: 0375900ac66d55c47a9252a91303d811, type: 3}
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 0.1
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
   Damage: 20
   Speed: 220
   Cooldown: 3.9
   Range: 6
   AimRange: 0
-  prefab: {fileID: 7575841542315212930, guid: ce1de233deb0b8c4e949404bb4b7ead8, type: 3}
-  explosionPrefab: {fileID: 0}
-  explosionSound: {fileID: 0}
+  MaxRotation: 405
