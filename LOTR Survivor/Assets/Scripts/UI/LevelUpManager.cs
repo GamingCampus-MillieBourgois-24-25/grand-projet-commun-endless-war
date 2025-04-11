@@ -16,6 +16,9 @@ public class LevelUpManager : MonoBehaviour
 
     [SerializeField] private GridLayoutGroup layoutGroup;
     [SerializeField] private GameObject skillHolder;
+    [SerializeField] private SkillsManager skillManager;
+
+    private SkillSettings currentSkillSettings;
 
     private Vector2 originalPosition;
 
@@ -30,16 +33,33 @@ public class LevelUpManager : MonoBehaviour
         Instance = this;
         originalPosition = levelUpPanel.anchoredPosition;
         levelUpPanel.gameObject.SetActive(false);
+        skillManager = GameObject.FindGameObjectWithTag("Player").GetComponent<SkillsManager>();
+
     }
 
     private void OnEnable()
     {
         XPEvents.OnLevelUP += DisplayPanel;
+        SkillHolderBehaviour.OnSkillSelected += HandleSkillSelected;
     }
 
     private void OnDisable()
     {
         XPEvents.OnLevelUP -= DisplayPanel;
+        SkillHolderBehaviour.OnSkillSelected -= HandleSkillSelected;
+    }
+
+    private void HandleSkillSelected(SkillHolderBehaviour selected)
+    {
+        currentSkillSettings = selected._skillSettings;
+        foreach (Transform child in layoutGroup.transform)
+        {
+            if (child.TryGetComponent(out SkillHolderBehaviour holder))
+            {
+                if (holder != selected)
+                    holder.Unselect();
+            }
+        }
     }
 
     public void DisplayPanel(int level)
@@ -60,10 +80,17 @@ public class LevelUpManager : MonoBehaviour
 
     public void HidePanel()
     {
+        if (currentSkillSettings == null)
+        {
+            return;
+        }
+
         levelUpPanel.DOAnchorPos(originalPosition + Vector2.down * startYOffset, 0.5f)
             .SetEase(Ease.InBack)
             .SetUpdate(true)
             .OnComplete(OnHideComplete);
+        skillManager.AddSkill(currentSkillSettings);
+        currentSkillSettings = null;
     }
 
     private void OnHideComplete()
@@ -102,8 +129,6 @@ public class LevelUpManager : MonoBehaviour
             }
         }
     }
-
-
 
     private void RemoveExistingSkillHolders()
     {
