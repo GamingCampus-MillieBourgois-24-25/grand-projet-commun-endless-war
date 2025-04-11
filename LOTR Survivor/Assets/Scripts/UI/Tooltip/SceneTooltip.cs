@@ -7,11 +7,27 @@ public class SceneTooltip : MonoBehaviour
 
     private void Start()
     {
-        TooltipManager.Instance.OnTooltipClosed += OnTipClosed;
         StartCoroutine(ShowTooltipsWithDelay());
+    }
+
+    private void OnEnable()
+    {
+        if (TooltipManager.Instance != null)
+            TooltipManager.Instance.OnTooltipClosed += OnTipClosed;
+
         HealthEvents.OnPlayerDeath += HandleDeathTip;
         HealthEvents.OnReviveComplete += HandleReviveTip;
         XPEvents.OnXPPicked += HandleXPTip;
+    }
+
+    private void OnDisable()
+    {
+        if (TooltipManager.Instance != null)
+            TooltipManager.Instance.OnTooltipClosed -= OnTipClosed;
+
+        HealthEvents.OnPlayerDeath -= HandleDeathTip;
+        HealthEvents.OnReviveComplete -= HandleReviveTip;
+        XPEvents.OnXPPicked -= HandleXPTip;
     }
 
     private IEnumerator ShowTooltipsWithDelay()

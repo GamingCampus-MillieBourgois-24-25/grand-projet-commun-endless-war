@@ -18,10 +18,20 @@ public class GameOverCanvas : MonoBehaviour
 
     private void Awake()
     {
-        HealthEvents.OnGameOver += DisplayUI;
         originalPosition = gameOverPanel.anchoredPosition;
         gameOverPanel.gameObject.SetActive(false);
     }
+
+    private void OnEnable()
+    {
+        HealthEvents.OnGameOver += DisplayUI;
+    }
+
+    private void OnDisable()
+    {
+        HealthEvents.OnGameOver -= DisplayUI;
+    }
+
     public void QuitToHub()
     {
         Loader.Load(Loader.Scene.HubScene);

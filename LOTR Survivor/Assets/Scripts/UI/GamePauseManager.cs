@@ -22,6 +22,11 @@ public class GamePauseManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        ResumeGame();
+    }
+
     public void PauseGame()
     {
         if (!IsGamePaused)

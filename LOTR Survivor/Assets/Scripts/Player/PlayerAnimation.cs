@@ -32,20 +32,44 @@ public class PlayerAnimation : MonoBehaviour
         {
             originalColor = objectRenderer.material.color;
         }
+    }
 
+    private void OnEnable()
+    {
         if (playerHealth != null)
         {
             HealthEvents.OnPlayerDeath += HandlePlayerDeath;
             HealthEvents.OnPlayerDamaged += HandleDamageAnimations;
             HealthEvents.OnRevive += HandlePlayerRevive;
 
-            playerHealth.OnInvulnerabilityStart += () => isInvulnerable = true;
-            playerHealth.OnInvulnerabilityEnd += () => {
-                isInvulnerable = false;
-                if (objectRenderer != null)
-                    objectRenderer.enabled = true;
-            };
+            playerHealth.OnInvulnerabilityStart += OnInvulnerabilityStart;
+            playerHealth.OnInvulnerabilityEnd += OnInvulnerabilityEnd;
         }
+    }
+
+    private void OnDisable()
+    {
+        if (playerHealth != null)
+        {
+            HealthEvents.OnPlayerDeath -= HandlePlayerDeath;
+            HealthEvents.OnPlayerDamaged -= HandleDamageAnimations;
+            HealthEvents.OnRevive -= HandlePlayerRevive;
+
+            playerHealth.OnInvulnerabilityStart -= OnInvulnerabilityStart;
+            playerHealth.OnInvulnerabilityEnd -= OnInvulnerabilityEnd;
+        }
+    }
+
+    private void OnInvulnerabilityStart()
+    {
+        isInvulnerable = true;
+    }
+
+    private void OnInvulnerabilityEnd()
+    {
+        isInvulnerable = false;
+        if (objectRenderer != null)
+            objectRenderer.enabled = true;
     }
 
     private void Update()
