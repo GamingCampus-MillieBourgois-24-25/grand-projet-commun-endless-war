@@ -62,6 +62,7 @@ public abstract class AttackBehaviour : MonoBehaviour
         {
             skillLevel++;
             attackSettings = attackSettings.Upgrade(skillLevel);
+            Debug.Log("New level : " + skillLevel);
         }
     }
 }
