@@ -34,7 +34,6 @@ public class LevelUpManager : MonoBehaviour
         originalPosition = levelUpPanel.anchoredPosition;
         levelUpPanel.gameObject.SetActive(false);
         skillManager = GameObject.FindGameObjectWithTag("Player").GetComponent<SkillsManager>();
-
     }
 
     private void OnEnable()
@@ -89,7 +88,7 @@ public class LevelUpManager : MonoBehaviour
             .SetEase(Ease.InBack)
             .SetUpdate(true)
             .OnComplete(OnHideComplete);
-        skillManager.AddSkill(currentSkillSettings);
+        ApplySkill(currentSkillSettings);
         currentSkillSettings = null;
     }
 
@@ -115,9 +114,20 @@ public class LevelUpManager : MonoBehaviour
                 .SetDelay(delay)
                 .SetUpdate(true);
 
-            SkillSettings skill = i == 0
-                ? SkillLibrary.Instance.GetStartingSkill()
-                : SkillLibrary.Instance.GetRandomSkill();
+            SkillSettings skill = null;
+
+            if (i == 0)
+            {
+                skill = SkillLibrary.Instance.GetStartingSkill();
+            }
+            else if (i == 1)
+            {
+                skill = SkillLibrary.Instance.GetRandomBuffSkill();
+            }
+            else
+            {
+                skill = SkillLibrary.Instance.GetRandomSkill();
+            }
 
             if (skill != null && holder.TryGetComponent(out SkillHolderBehaviour behaviour))
             {
@@ -130,11 +140,25 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
+
     private void RemoveExistingSkillHolders()
     {
         foreach (Transform child in layoutGroup.transform)
         {
             Destroy(child.gameObject);
+        }
+    }
+
+    private void ApplySkill(SkillSettings skill)
+    {
+        if (skill.skillType == SkillType.Attack || skill.skillType == SkillType.Starting)
+        {
+            skillManager.AddSkill(skill);
+        }
+        else if (skill.skillType == SkillType.Buff)
+        {
+            PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
+            player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * skill.healAmount);
         }
     }
 }

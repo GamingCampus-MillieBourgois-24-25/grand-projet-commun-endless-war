@@ -5,9 +5,22 @@ public class SkillSettings : ScriptableObject
 {
     [Header("Skill Details")]
     public string skillName;
-    public GameObject skillBehaviour;
     public Sprite skillSprite;
+    public SkillType skillType;
+
+    [Header("Logic Prefab")]
+    public GameObject skillBehaviour;
 
     [Header("Attack Settings")]
     public AttackSettings attackSettings;
+
+    [Header("Heal/Buff Skill")]
+    public float healAmount;
+}
+
+public enum SkillType
+{
+    Attack,
+    Starting,
+    Buff
 }

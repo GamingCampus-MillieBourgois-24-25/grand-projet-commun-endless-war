@@ -7,7 +7,10 @@ public class SkillLibrary : MonoBehaviour
     public static SkillLibrary Instance { get; private set; }
 
     [SerializeField]
-    private SkillSettings[] skillSettings;
+    private SkillSettings[] attackSkillSettings;
+
+    [SerializeField]
+    private SkillSettings[] buffSkillSettings;
 
     [SerializeField]
     private SkillSettings startingSkill;
@@ -26,10 +29,24 @@ public class SkillLibrary : MonoBehaviour
 
     public SkillSettings GetRandomSkill()
     {
-        if (skillSettings != null && skillSettings.Length > 0)
+        if (attackSkillSettings != null && attackSkillSettings.Length > 0)
         {
-            int randomIndex = Random.Range(0, skillSettings.Length);
-            return skillSettings[randomIndex];
+            int randomIndex = Random.Range(0, attackSkillSettings.Length);
+            return attackSkillSettings[randomIndex];
+        }
+        else
+        {
+            Debug.LogWarning("Skill settings array is empty or null.");
+            return null;
+        }
+    }
+
+    public SkillSettings GetRandomBuffSkill()
+    {
+        if (buffSkillSettings != null && buffSkillSettings.Length > 0)
+        {
+            int randomIndex = Random.Range(0, buffSkillSettings.Length);
+            return buffSkillSettings[randomIndex];
         }
         else
         {
@@ -45,6 +62,6 @@ public class SkillLibrary : MonoBehaviour
 
     public void InitializeSkillSettings(SkillSettings[] newSkillSettings)
     {
-        skillSettings = newSkillSettings;
+        attackSkillSettings = newSkillSettings;
     }
 }

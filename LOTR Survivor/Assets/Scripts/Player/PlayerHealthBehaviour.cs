@@ -23,7 +23,14 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     public event Action OnInvulnerabilityStart;
     public event Action OnInvulnerabilityEnd;
 
-    public int MaxHealth { get => maxHealth; set => maxHealth = Mathf.Max(1, value); }
+    public int MaxHealth { get => maxHealth;
+        set {
+            int current = MaxHealth;
+            maxHealth = Mathf.Max(1, value);
+            HealthEvents.RaiseHealthChanged(health, MaxHealth);
+            Health += maxHealth - current;
+        }
+    }
 
     public int Health
     {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cone1
   m_EditorClassIdentifier: 
   BaseDamage: 30
-  BaseSpeed: 5
+  BaseSpeed: 8
   BaseCooldown: 2.2
   BaseRange: 5
   Scale: 10
@@ -36,8 +36,8 @@ MonoBehaviour:
   MaxAimRange: 30
   MaxMaxRotation: 360
   Damage: 30
-  Speed: 10.368002
-  Cooldown: 0.90112007
-  Range: 10.368002
+  Speed: 5
+  Cooldown: 2.2
+  Range: 5
   AimRange: 5
   MaxRotation: 360

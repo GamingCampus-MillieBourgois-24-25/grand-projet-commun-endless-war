@@ -142,13 +142,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-        Debug.LogError("yuo explod");
         HealthEvents.GameOver();
     }
 
     private void OnGUI()
     {
-        // Affiche Time.timeScale en haut à droite de l'écran
         GUI.Label(new Rect(Screen.width - 150, 10, 150, 30), "Time Scale: " + Time.timeScale.ToString("F2"));
     }
 }
