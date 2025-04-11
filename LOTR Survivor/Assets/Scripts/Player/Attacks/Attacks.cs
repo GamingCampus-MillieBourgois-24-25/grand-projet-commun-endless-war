@@ -1,41 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public abstract class Attack : MonoBehaviour
 {
     protected AttackSettings attackSettings;
-    protected AudioSource audioSource;
 
     protected virtual void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-
         TryPlaySpawnSound();
     }
 
     public void SetSettings(AttackSettings newProjectileSettings)
     {
         attackSettings = newProjectileSettings;
-
         TryPlaySpawnSound();
     }
 
     private void TryPlaySpawnSound()
     {
-        if (attackSettings != null && attackSettings.spawnClip != null)
+        if (attackSettings != null && attackSettings.spawnEvent.IsNull == false)
         {
-            float sfxVolume = VolumeManager.Instance.GetSFXVolume();
-            OneShotAudio.PlayClip(attackSettings.spawnClip, transform.position, sfxVolume);
+            OneShotAudio.Play(attackSettings.spawnEvent, transform.position);
         }
     }
 
     private void TryPlayHitSound()
     {
-        if (attackSettings != null && attackSettings.hitClip != null)
+        if (attackSettings != null && attackSettings.hitEvent.IsNull == false)
         {
-            float sfxVolume = VolumeManager.Instance.GetSFXVolume();
-            OneShotAudio.PlayClip(attackSettings.hitClip, transform.position, sfxVolume);
+            OneShotAudio.Play(attackSettings.hitEvent, transform.position);
         }
     }
 
@@ -45,7 +38,6 @@ public abstract class Attack : MonoBehaviour
 
     protected void DestroyAttack()
     {
-
         TryPlayHitSound();
         PlayHitFX();
 
@@ -69,14 +61,6 @@ public abstract class Attack : MonoBehaviour
             var main = system.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
             main.loop = false;
-
-
-            AudioSource fxAudioSource = fx.GetComponent<AudioSource>();
-            if (fxAudioSource != null)
-            {
-                fxAudioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
-            }
         }
     }
-
 }

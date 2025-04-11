@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2066370306061851540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Attacks/FireballAttackSFX
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Attacks/FireballAttackSFX
+  Guid:
+    Data1: 1885606483
+    Data2: 1074512131
+    Data3: 633662388
+    Data4: -1754126082
+  Banks:
+  - {fileID: -1144181471619147985}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1512
+--- !u!114 &-1144181471619147985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../fmod_endlesswar/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638799912538728691
+  FileSizes:
+  - Name: Desktop
+    Value: 1188480
+  Exists: 1
+--- !u!114 &-835819410261806320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../fmod_endlesswar/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638799912538748661
+  FileSizes:
+  - Name: Desktop
+    Value: 1228
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +79,155 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
+  EditorBanks:
+  - {fileID: -835819410261806320}
+  - {fileID: -1144181471619147985}
+  EditorEvents:
+  - {fileID: 3167947770592615185}
+  - {fileID: 3424188972387244118}
+  - {fileID: 413456256179853346}
+  - {fileID: 6381943241029238833}
+  - {fileID: -2066370306061851540}
+  - {fileID: 7805076577356533742}
   EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
-  cacheTime: 0
+  MasterBanks:
+  - {fileID: -1144181471619147985}
+  StringsBanks:
+  - {fileID: -835819410261806320}
+  cacheTime: 638799912538748661
   cacheVersion: 131624
+--- !u!114 &413456256179853346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Objects/Heal_Pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Objects/Heal_Pickup
+  Guid:
+    Data1: -1412863432
+    Data2: 1229582332
+    Data3: -2006828888
+    Data4: -586274155
+  Banks:
+  - {fileID: -1144181471619147985}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1296
+--- !u!114 &3167947770592615185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/master_music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/master_music
+  Guid:
+    Data1: 1047340773
+    Data2: 1117543052
+    Data3: -1729460832
+    Data4: -91619815
+  Banks:
+  - {fileID: -1144181471619147985}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 86909
+--- !u!114 &3424188972387244118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Attacks/AxeAttackSFX
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Attacks/AxeAttackSFX
+  Guid:
+    Data1: 399496207
+    Data2: 1191826948
+    Data3: -1897709893
+    Data4: -841258679
+  Banks:
+  - {fileID: -1144181471619147985}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1584
+--- !u!114 &6381943241029238833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Objects/XPMagnet_PickUp
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Objects/XPMagnet_PickUp
+  Guid:
+    Data1: 1418279231
+    Data2: 1086940900
+    Data3: 1996883372
+    Data4: 1635410059
+  Banks:
+  - {fileID: -1144181471619147985}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2040
+--- !u!114 &7805076577356533742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Attacks/ConeAttackSFX
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Attacks/ConeAttackSFX
+  Guid:
+    Data1: -818180942
+    Data2: 1280782466
+    Data3: -152128110
+    Data4: -836384059
+  Banks:
+  - {fileID: -1144181471619147985}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1802

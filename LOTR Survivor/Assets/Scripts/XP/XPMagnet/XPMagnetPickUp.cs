@@ -1,11 +1,12 @@
 using UnityEngine;
+using FMODUnity;
 
 public class XPPickupMagnetPickup : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject prefab;
     [SerializeField] private float magnetRadius = 15f;
-    [SerializeField] private AudioClip magnetSound;
+    [SerializeField] private EventReference magnetSoundEvent;
 
     private bool picked = false;
 
@@ -22,28 +23,21 @@ public class XPPickupMagnetPickup : MonoBehaviour
 
             XPMagnetEvents.Trigger(transform.position, magnetRadius);
 
-            if (magnetSound != null)
-            {
-                float sfxVolume = VolumeManager.Instance.GetSFXVolume();
-                OneShotAudio.PlayClip(magnetSound, transform.position, sfxVolume);
-            }
+            if (!magnetSoundEvent.IsNull)
+                OneShotAudio.Play(magnetSoundEvent, transform.position);
 
             if (animator != null)
-            {
                 animator.SetTrigger("Picked");
-            }
             else
-            {
                 Delete();
-            }
         }
     }
 
     private void Delete()
     {
         if (ObjectPool.Instance != null)
-        {
             ObjectPool.Instance.Despawn(gameObject, prefab);
-        }
+        else
+            Destroy(gameObject);
     }
 }
