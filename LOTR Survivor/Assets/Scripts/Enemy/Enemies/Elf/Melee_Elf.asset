@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Melee_Elf
   m_EditorClassIdentifier: 
   maxHealth: 20
-  attackPower: 6
+  attackPower: 4
   attackCooldown: 1.5
   speed: 2
   aggroRange: 2

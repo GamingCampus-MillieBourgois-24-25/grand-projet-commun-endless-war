@@ -18,6 +18,7 @@ public class SceneTooltip : MonoBehaviour
         HealthEvents.OnPlayerDeath += HandleDeathTip;
         HealthEvents.OnReviveComplete += HandleReviveTip;
         XPEvents.OnXPPicked += HandleXPTip;
+        XPEvents.OnLevelUP += HandleLevelTip;
     }
 
     private void OnDisable()
@@ -28,6 +29,7 @@ public class SceneTooltip : MonoBehaviour
         HealthEvents.OnPlayerDeath -= HandleDeathTip;
         HealthEvents.OnReviveComplete -= HandleReviveTip;
         XPEvents.OnXPPicked -= HandleXPTip;
+        XPEvents.OnLevelUP -= HandleLevelTip;
     }
 
     private IEnumerator ShowTooltipsWithDelay()
@@ -65,6 +67,11 @@ public class SceneTooltip : MonoBehaviour
     private void HandleReviveTip(Transform player)
     {
         ShowTip(4);
+    }
+
+    private void HandleLevelTip(int level)
+    {
+        ShowTip(5);
     }
 
     private IEnumerator ShowTipWithDelay(int id, float delay)

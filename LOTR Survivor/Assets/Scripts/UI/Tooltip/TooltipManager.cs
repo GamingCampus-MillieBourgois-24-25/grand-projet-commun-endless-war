@@ -22,6 +22,7 @@ public class TooltipManager : MonoBehaviour
     private Tween currentTween;
     private bool isAnimating = false;
     private Queue<TooltipData> tooltipQueue = new Queue<TooltipData>();
+    private bool pausedByTooltip = false;
 
     public event System.Action OnTooltipClosed;
 
@@ -64,8 +65,11 @@ public class TooltipManager : MonoBehaviour
         }
         else
         {
-            GamePauseManager.Instance.PauseGame();
-
+            if (!GamePauseManager.Instance.IsGamePaused)
+            {
+                GamePauseManager.Instance.PauseGame();
+                pausedByTooltip = true;
+            }
             DisplayTooltip(tooltipData);
             tooltipState.MarkTooltipAsSeen(tooltipData.tooltipID);
         }
@@ -110,7 +114,11 @@ public class TooltipManager : MonoBehaviour
         titleText.text = "";
         contentText.text = "";
 
-        GamePauseManager.Instance.ResumeGame();
+        if (pausedByTooltip)
+        {
+            GamePauseManager.Instance.ResumeGame();
+            pausedByTooltip = false;
+        }
 
         isAnimating = false;
 
