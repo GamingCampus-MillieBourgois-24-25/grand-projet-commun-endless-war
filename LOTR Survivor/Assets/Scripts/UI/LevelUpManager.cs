@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -49,6 +50,7 @@ public class LevelUpManager : MonoBehaviour
         RemoveExistingSkillHolders();
         AddSkillHolders(skillNumber);
 
+        levelUpPanel.DOKill();
         levelUpPanel.anchoredPosition = originalPosition + Vector2.up * startYOffset;
 
         levelUpPanel.DOAnchorPos(originalPosition, animationDuration)
@@ -75,27 +77,33 @@ public class LevelUpManager : MonoBehaviour
     {
         for (int i = 0; i < number; i++)
         {
-            GameObject newSkillHolder = Instantiate(skillHolder, layoutGroup.transform);
+            GameObject holder = Instantiate(skillHolder, layoutGroup.transform);
+            holder.name = i == 0 ? "SkillHolder_Starting" : $"SkillHolder_{i}";
 
-            newSkillHolder.name = "SkillHolder_" + i;
+            holder.transform.localScale = Vector3.zero;
 
-            SkillSettings randomSkill = SkillLibrary.Instance.GetRandomSkill();
+            float delay = 0.6f + 0.3f * i;
+            holder.transform.DOScale(Vector3.one, 0.5f)
+                .SetEase(Ease.OutBack)
+                .SetDelay(delay)
+                .SetUpdate(true);
 
-            if (randomSkill != null)
+            SkillSettings skill = i == 0
+                ? SkillLibrary.Instance.GetStartingSkill()
+                : SkillLibrary.Instance.GetRandomSkill();
+
+            if (skill != null && holder.TryGetComponent(out SkillHolderBehaviour behaviour))
             {
-                SkillHolderBehaviour skillHolderBehaviour = newSkillHolder.GetComponent<SkillHolderBehaviour>();
-
-                if (skillHolderBehaviour != null)
-                {
-                    skillHolderBehaviour.UpdateData(randomSkill);
-                }
+                behaviour.UpdateData(skill);
             }
             else
             {
-                Debug.LogWarning("Skill is null, unable to update skill holder.");
+                Debug.LogWarning("Skill is null or component missing for " + holder.name);
             }
         }
     }
+
+
 
     private void RemoveExistingSkillHolders()
     {

@@ -91,7 +91,17 @@ public class EnemyBehaviour : MonoBehaviour
     private void CheckDistanceToPlayer()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        bool wasInRange = isInRange;
         isInRange = distanceToPlayer <= enemyData.aggroRange;
+
+        if (isInRange && !wasInRange)
+        {
+            StopMoving();
+        }
+        else if (!isInRange && wasInRange)
+        {
+            ResumeMoving();
+        }
     }
 
     private void UpdateTimer()
@@ -121,6 +131,14 @@ public class EnemyBehaviour : MonoBehaviour
         else
         {
             Debug.LogWarning("NavMeshAgent is not active when trying to stop movement.");
+        }
+    }
+
+    private void ResumeMoving()
+    {
+        if (agent != null && agent.isActiveAndEnabled)
+        {
+            agent.isStopped = false;
         }
     }
 

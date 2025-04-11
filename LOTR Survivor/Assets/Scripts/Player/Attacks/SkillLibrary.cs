@@ -9,6 +9,7 @@ public class SkillLibrary : MonoBehaviour
     [SerializeField]
     private SkillSettings[] skillSettings;
 
+    [SerializeField]
     private SkillSettings startingSkill;
 
     private void Awake()
