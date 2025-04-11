@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11ca25d3bcf49b743b627f87f6c1d078, type: 3}
-  m_Name: Player1
+  m_Name: Cell
   m_EditorClassIdentifier: 
-  characterName: C17
-  imageCharacter: {fileID: 21300000, guid: ec04137feea85e14e9c56888131d8bb2, type: 3}
-  race: 1
-  classe: 2
-  niveau: 0
-  experience: 0
-  pointsDeVie: 0
-  pointsDeMana: 0
-  force: 0
-  agilite: 0
-  intelligence: 0
-  defense: 0
-  vitesseDeDeplacement: 0
-  vitesseDAttaque: 0
-  golds: 2000
+  characterName: Cell
+  imageCharacter: {fileID: 21300000, guid: c761692ccc9024243bc218b35598cdc3, type: 3}
+  characterPrefab: {fileID: 5536098667953476755, guid: 78b0c54f1fd31874ca17365d7886d4f8,
+    type: 3}
+  race: 0
+  classe: 0
+  pointsDeVie: 6000
+  attacksBase: []
+  vitesseDeDeplacement: 1.2

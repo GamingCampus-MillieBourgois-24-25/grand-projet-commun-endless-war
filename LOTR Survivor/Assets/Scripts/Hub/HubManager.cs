@@ -20,7 +20,7 @@ public class HubManager : MonoBehaviour
     [SerializeField] private Button nextCharacter;
     [SerializeField] private Button previousCharacter;
 
-    [SerializeField] private PlayerDatabaseSO playerDatabase; // Ajout de la database
+    [SerializeField] private PlayerDatabaseSO playerDatabase;
     private int currentCharacterIndex = 0;
 
     //~~ World Selection ~~\\
@@ -37,13 +37,12 @@ public class HubManager : MonoBehaviour
             return;
         }
 
-        startButton.onClick.AddListener(GameScene);
+        startButton.onClick.AddListener(ChangeScene);
         nextCharacter.onClick.AddListener(NextCharacter);
         previousCharacter.onClick.AddListener(PreviousCharacter);
         nextWorld.onClick.AddListener(NextWorld);
         previousWorld.onClick.AddListener(PreviousWorld);
 
-        //  Affiche le 1er personnage au lancement
         if (playerDatabase != null && playerDatabase.allCharacters.Count > 0)
         {
             currentCharacterIndex = 0;
@@ -55,12 +54,12 @@ public class HubManager : MonoBehaviour
         }
     }
 
-    void GameScene()
+    void ChangeScene()
     {
+        SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
         SceneManager.LoadScene(nextScene);
     }
 
-    //~~ CHARACTER ~~\\
     void PreviousCharacter()
     {
         if (playerDatabase == null || playerDatabase.allCharacters.Count == 0) return;
@@ -86,14 +85,18 @@ public class HubManager : MonoBehaviour
     void DisplayCharacter(int index)
     {
         var character = playerDatabase.allCharacters[index];
+
+        if (character.imageCharacter == null)
+        {
+            Debug.LogError($"Aucune image pour le personnage {character.characterName}");
+        }
+
         characterImage.sprite = character.imageCharacter;
         characterName.text = character.characterName;
-
-        // Optionnel : afficher gold, race, classe, etc.
-        textGold.text = "{character.golds}";
+        textGold.text = $"PV : {character.pointsDeVie} - Classe : {character.classe}";
     }
 
-    //~~ WORLD ~~\\
+
     void NextWorld()
     {
         // à implémenter
