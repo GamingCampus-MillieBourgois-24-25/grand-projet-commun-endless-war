@@ -19,17 +19,23 @@ public class ObjectPool : MonoBehaviour
             pool[prefab] = new Queue<GameObject>();
         }
 
+        GameObject obj;
         if (pool[prefab].Count > 0)
         {
-            GameObject obj = pool[prefab].Dequeue();
+            obj = pool[prefab].Dequeue();
             obj.transform.SetPositionAndRotation(position, rotation);
             obj.SetActive(true);
-            return obj;
         }
         else
         {
-            return Instantiate(prefab, position, rotation);
+            obj = Instantiate(prefab, position, rotation);
         }
+
+        /*var health = obj.GetComponent<EnemyHealthBehaviour>();
+        if (health != null)
+            health.OnEnable();*/
+
+        return obj;
     }
 
     public void Despawn(GameObject obj, GameObject prefab)

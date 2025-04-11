@@ -103,4 +103,61 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
             Destroy(gameObject);
         }
     }
+
+    public void OnEnable()
+    {
+        Debug.Log($"{gameObject.name} -> OnEnable()");
+        if (BombEvent.Instance != null)
+        {
+            //BombEvent.Instance.OnKillAllVisibleEnemies += KillIfVisible;
+            BombEvent.Instance.OnKillAllEnemies += KillFromEvent;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (BombEvent.Instance != null)
+            //BombEvent.Instance.OnKillAllVisibleEnemies -= KillIfVisible;
+            BombEvent.Instance.OnKillAllEnemies += KillFromEvent;
+    }
+
+    private void KillFromEvent()
+    {
+        DestroyEnemy();
+    }
+
+    //Système non fonctionnel pour kill que les ennemies présent sur l'écran
+    /*private void KillIfVisible()
+    {
+        if (IsVisibleByMainCamera())
+            DestroyEnemy();
+    }
+
+    private bool IsVisibleByMainCamera()
+    {
+        if(Camera.main == null)
+        {
+            Debug.LogWarning("Camera.main est null !");
+            return false;
+        }
+            
+
+        var renderer = GetComponent<Renderer>();
+        if(renderer == null)
+        {
+            Debug.LogWarning("Pas de Renderer sur " + gameObject.name);
+            return false;
+        }
+
+        if(!renderer.isVisible)
+        {
+            Debug.Log($"{gameObject.name} : Renderer pas visible (hors champ)");
+            return false;
+        }
+
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        bool isVisible = GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+        Debug.Log($"{gameObject.name} visible dans le frustum ? {isVisible}");
+        return isVisible;
+    }*/
 }
