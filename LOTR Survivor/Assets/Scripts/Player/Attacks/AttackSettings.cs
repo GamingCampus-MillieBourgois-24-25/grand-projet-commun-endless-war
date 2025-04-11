@@ -55,12 +55,12 @@ public class AttackSettings : ScriptableObject
     public float MaxAimRange = 30f;
     public float MaxMaxRotation = 360f;
 
-    [HideInInspector] public int Damage;
-    [HideInInspector] public float Speed;
-    [HideInInspector] public float Cooldown;
-    [HideInInspector] public float Range;
-    [HideInInspector] public float AimRange;
-    [HideInInspector] public float MaxRotation;
+    public int Damage;
+    public float Speed;
+    public float Cooldown;
+    public float Range;
+    public float AimRange;
+    public float MaxRotation;
 
     public int GetDamage(int level)
     {
