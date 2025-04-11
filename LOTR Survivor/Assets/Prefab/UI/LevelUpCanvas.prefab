@@ -175,7 +175,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 300, y: 300}
-  m_Spacing: {x: 10, y: 10}
+  m_Spacing: {x: 20, y: 20}
   m_Constraint: 2
   m_ConstraintCount: 2
 --- !u!1 &2956674014779412680
@@ -297,6 +297,9 @@ MonoBehaviour:
   animationDuration: 0.7
   startYOffset: 800
   animationEase: 30
+  skillNumber: 4
+  layoutGroup: {fileID: 0}
+  skillHolder: {fileID: 0}
 --- !u!1 &3745080723059895459
 GameObject:
   m_ObjectHideFlags: 0

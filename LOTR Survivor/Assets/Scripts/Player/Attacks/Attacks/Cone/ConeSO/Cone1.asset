@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Cone1
   m_EditorClassIdentifier: 
   BaseDamage: 30
-  BaseSpeed: 10
+  BaseSpeed: 5
   BaseCooldown: 2.2
-  BaseRange: 10
+  BaseRange: 5
   Scale: 10
   BaseAimRange: 5
   BaseMaxRotation: 360
@@ -24,9 +24,9 @@ MonoBehaviour:
   spawnClip: {fileID: 0}
   hitClip: {fileID: 0}
   DamageUpgrade: 1
-  SpeedUpgrade: 1
-  CooldownUpgrade: 1
-  RangeUpgrade: 1
+  SpeedUpgrade: 1.2
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.2
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   MaxDamage: 999

@@ -23,9 +23,9 @@ MonoBehaviour:
   hitPrefab: {fileID: 0}
   spawnClip: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}
   hitClip: {fileID: 0}
-  DamageUpgrade: 1
+  DamageUpgrade: 1.2
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
+  CooldownUpgrade: 0.8
   RangeUpgrade: 1
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1

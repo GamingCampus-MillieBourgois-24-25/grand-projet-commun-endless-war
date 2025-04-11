@@ -31,13 +31,13 @@ MonoBehaviour:
   MaxRotationUpgrade: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 0.1
+  MinCooldown: 0.3
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 999
+  Damage: 10
   Speed: 10
-  Cooldown: 0.1
+  Cooldown: 1
   Range: 10
   AimRange: 5
   MaxRotation: 360
