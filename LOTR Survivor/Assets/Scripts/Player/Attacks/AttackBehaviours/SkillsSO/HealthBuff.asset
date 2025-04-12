@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealthBuff
   m_EditorClassIdentifier: 
   skillName: Health
-  skillSprite: {fileID: 0}
+  skillSprite: {fileID: 21300000, guid: e6c57ca0639b8894a91d344fc6bbca6f, type: 3}
   skillType: 2
   skillBehaviour: {fileID: 0}
   attackSettings: {fileID: 0}

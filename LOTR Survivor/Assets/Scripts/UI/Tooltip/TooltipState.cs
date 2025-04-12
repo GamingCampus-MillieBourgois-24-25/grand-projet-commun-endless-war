@@ -56,7 +56,7 @@ public class TooltipState
     }
 
     public List<TooltipEntry> ToList()
-    {
+    {   
         return new List<TooltipEntry>(tooltipEntries);
     }
 

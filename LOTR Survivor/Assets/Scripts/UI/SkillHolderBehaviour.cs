@@ -12,6 +12,7 @@ public class SkillHolderBehaviour : MonoBehaviour
 
     [SerializeField] Image selectImage;
     [SerializeField] Image skillHolderImage;
+    [SerializeField] Image skillImage;
 
     [SerializeField] Color startingSkillColor;
     [SerializeField] Color skillColor;
@@ -36,6 +37,7 @@ public class SkillHolderBehaviour : MonoBehaviour
 
         _skillSettings = skillSettings;
         text.text = skillSettings.skillName;
+        skillImage.sprite = skillSettings.skillSprite;
 
         switch (skillSettings.skillType)
         {

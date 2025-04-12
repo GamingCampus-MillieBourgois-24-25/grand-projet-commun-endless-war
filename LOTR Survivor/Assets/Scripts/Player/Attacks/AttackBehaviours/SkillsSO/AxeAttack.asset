@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: AxeAttack
   m_EditorClassIdentifier: 
   skillName: ClassicAxe
+  skillSprite: {fileID: 21300000, guid: 5ca2a30ffb06df346b6ee99d751c75ca, type: 3}
+  skillType: 0
   skillBehaviour: {fileID: 7148583446655471519, guid: 28b60579655fad7448439786e44a710c,
     type: 3}
   attackSettings: {fileID: 11400000, guid: 597a73ca7d5ab494f9079642b8476f5a, type: 2}
+  healAmount: 0
