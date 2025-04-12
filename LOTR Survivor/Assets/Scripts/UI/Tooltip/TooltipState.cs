@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class TooltipEntry
@@ -8,16 +7,26 @@ public class TooltipEntry
     public bool seen;
 }
 
-[CreateAssetMenu(fileName = "TooltipState", menuName = "Game/TooltipState")]
-public class TooltipState : ScriptableObject
+public class TooltipState
 {
-    [SerializeField]
-    private List<TooltipEntry> tooltipEntries = new List<TooltipEntry>();
-
-    private Dictionary<int, bool> seenTooltips = new Dictionary<int, bool>();
-
-    private void OnEnable()
+    private static TooltipState _instance;
+    public static TooltipState Instance
     {
+        get
+        {
+            _instance ??= new TooltipState();
+            return _instance;
+        }
+    }
+
+    private List<TooltipEntry> tooltipEntries = new();
+    private Dictionary<int, bool> seenTooltips = new();
+
+    private TooltipState() { }
+
+    public void Initialize(List<TooltipEntry> initialEntries)
+    {
+        tooltipEntries = new List<TooltipEntry>(initialEntries);
         seenTooltips.Clear();
         foreach (var entry in tooltipEntries)
         {
@@ -27,33 +36,28 @@ public class TooltipState : ScriptableObject
 
     public bool HasSeenTooltip(int tooltipID)
     {
-        return seenTooltips.ContainsKey(tooltipID) && seenTooltips[tooltipID];
+        return seenTooltips.TryGetValue(tooltipID, out bool seen) && seen;
     }
 
     public void MarkTooltipAsSeen(int tooltipID)
     {
-        if (!seenTooltips.ContainsKey(tooltipID))
-        {
-            seenTooltips.Add(tooltipID, true);
-        }
-        else
-        {
-            seenTooltips[tooltipID] = true;
-        }
-
+        seenTooltips[tooltipID] = true;
         UpdateTooltipList();
     }
 
     public void ResetTooltips()
     {
         seenTooltips.Clear();
-
         foreach (var entry in tooltipEntries)
         {
             entry.seen = false;
         }
-
         UpdateTooltipList();
+    }
+
+    public List<TooltipEntry> ToList()
+    {
+        return new List<TooltipEntry>(tooltipEntries);
     }
 
     private void UpdateTooltipList()

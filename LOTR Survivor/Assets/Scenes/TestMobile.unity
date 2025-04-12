@@ -53592,6 +53592,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!1 &1589613929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589613931}
+  - component: {fileID: 1589613930}
+  m_Layer: 0
+  m_Name: TooltipStateViewer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1589613930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589613929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d869aaa85b8f3e34399812ce128531a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: []
+--- !u!4 &1589613931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589613929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1594107210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8096261302854734990, guid: f6b148bb2e7862346995c1aea207e01f,
@@ -54570,7 +54615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260ed3e91ee7fb1499b85e9595dcffe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseXP: 10
+  baseXP: 20
   xpGrowthFactor: 1.2
 --- !u!4 &1799378598
 Transform:
@@ -57658,3 +57703,4 @@ SceneRoots:
   - {fileID: 173186762}
   - {fileID: 843944407}
   - {fileID: 1194285967}
+  - {fileID: 1589613931}

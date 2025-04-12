@@ -17,7 +17,6 @@ public class TooltipManager : MonoBehaviour
 
     [Header("Animation Settings haha")]
     [SerializeField] private float animationDuration = 0.7f;
-    [SerializeField] private TooltipState tooltipState;
 
     private Tween currentTween;
     private bool isAnimating = false;
@@ -71,7 +70,7 @@ public class TooltipManager : MonoBehaviour
                 pausedByTooltip = true;
             }
             DisplayTooltip(tooltipData);
-            tooltipState.MarkTooltipAsSeen(tooltipData.tooltipID);
+            TooltipState.Instance.MarkTooltipAsSeen(tooltipData.tooltipID);
         }
     }
 
@@ -133,6 +132,6 @@ public class TooltipManager : MonoBehaviour
 
     private bool IsTooltipSeen(TooltipData tooltipData)
     {
-        return tooltipState.HasSeenTooltip(tooltipData.tooltipID);
+        return TooltipState.Instance.HasSeenTooltip(tooltipData.tooltipID);
     }
 }
