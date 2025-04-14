@@ -23,12 +23,13 @@ MonoBehaviour:
   hitPrefab: {fileID: 0}
   spawnClip: {fileID: 0}
   hitClip: {fileID: 0}
-  DamageUpgrade: 1
+  DamageUpgrade: 2
   SpeedUpgrade: 1.2
-  CooldownUpgrade: 0.8
+  CooldownUpgrade: 0.9
   RangeUpgrade: 1.2
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
+  HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 100
   MinCooldown: 0.9
@@ -36,7 +37,7 @@ MonoBehaviour:
   MaxAimRange: 30
   MaxMaxRotation: 360
   Damage: 30
-  Speed: 5
+  Speed: 8
   Cooldown: 2.2
   Range: 5
   AimRange: 5

@@ -25,10 +25,11 @@ MonoBehaviour:
   hitClip: {fileID: 0}
   DamageUpgrade: 1.2
   SpeedUpgrade: 1
-  CooldownUpgrade: 0.8
+  CooldownUpgrade: 0.6
   RangeUpgrade: 1
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
+  HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 100
   MinCooldown: 0.1

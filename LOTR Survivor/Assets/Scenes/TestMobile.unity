@@ -2103,6 +2103,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelUpCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2965193289225465265, guid: 9fff293862cf85a4ea353263c8ab8ab1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965193289225465265, guid: 9fff293862cf85a4ea353263c8ab8ab1,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965193289225465265, guid: 9fff293862cf85a4ea353263c8ab8ab1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965193289225465265, guid: 9fff293862cf85a4ea353263c8ab8ab1,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965193289225465265, guid: 9fff293862cf85a4ea353263c8ab8ab1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965193289225465265, guid: 9fff293862cf85a4ea353263c8ab8ab1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3439315713535875544, guid: 9fff293862cf85a4ea353263c8ab8ab1,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -54793,7 +54823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1784559972
 MonoBehaviour:
   m_ObjectHideFlags: 0

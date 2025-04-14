@@ -18,5 +18,4 @@ MonoBehaviour:
   skillDescription: ' Increases your max health, letting you endure more in the heat
     of battle.'
   skillBehaviour: {fileID: 0}
-  attackSettings: {fileID: 0}
-  healAmount: 1.2
+  attackSettings: {fileID: 11400000, guid: faa74de713a3db346918abcba0e4a959, type: 2}
