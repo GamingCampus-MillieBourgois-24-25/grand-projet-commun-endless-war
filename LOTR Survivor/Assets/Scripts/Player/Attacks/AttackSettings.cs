@@ -46,6 +46,7 @@ public class AttackSettings : ScriptableObject
     public float RangeUpgrade = 1f;
     public float AimRangeUpgrade = 1f;
     public float MaxRotationUpgrade = 1f;
+    public float HealthBoost = 1f;
 
     [Header("Upgrade Limits")]
     public int MaxDamage = 999;

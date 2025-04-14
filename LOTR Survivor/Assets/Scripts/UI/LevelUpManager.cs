@@ -163,7 +163,7 @@ public class LevelUpManager : MonoBehaviour
         else if (skill.skillType == SkillType.Buff)
         {
             PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
-            player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * skill.healAmount);
+            player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * skill.attackSettings.HealthBoost);
         }
     }
 

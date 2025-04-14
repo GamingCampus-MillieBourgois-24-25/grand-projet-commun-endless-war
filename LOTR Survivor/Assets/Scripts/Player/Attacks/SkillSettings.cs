@@ -7,6 +7,8 @@ public class SkillSettings : ScriptableObject
     public string skillName;
     public Sprite skillSprite;
     public SkillType skillType;
+
+    [TextArea(3, 10)]
     public string skillDescription;
 
     [Header("Logic Prefab")]
@@ -14,9 +16,6 @@ public class SkillSettings : ScriptableObject
 
     [Header("Attack Settings")]
     public AttackSettings attackSettings;
-
-    [Header("Heal/Buff Skill")]
-    public float healAmount;
 }
 
 public enum SkillType

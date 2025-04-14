@@ -15,6 +15,8 @@ MonoBehaviour:
   skillName: Shotgun
   skillSprite: {fileID: 21300000, guid: 06a56855c4ae053448ef8dac220c8baa, type: 3}
   skillType: 0
+  skillDescription: Fire a cone-shaped wave of projectiles, blasting enemies in front
+    of you with a powerful spread.
   skillBehaviour: {fileID: 3117057591713310481, guid: cfa34fb1aef408744be865e151678535,
     type: 3}
   attackSettings: {fileID: 11400000, guid: 4c7ead0c279a0f44aa80a6c74f2e346e, type: 2}

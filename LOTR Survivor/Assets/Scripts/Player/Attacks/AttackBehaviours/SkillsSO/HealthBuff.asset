@@ -15,6 +15,8 @@ MonoBehaviour:
   skillName: Health
   skillSprite: {fileID: 21300000, guid: e6c57ca0639b8894a91d344fc6bbca6f, type: 3}
   skillType: 2
+  skillDescription: ' Increases your max health, letting you endure more in the heat
+    of battle.'
   skillBehaviour: {fileID: 0}
   attackSettings: {fileID: 0}
   healAmount: 1.2
