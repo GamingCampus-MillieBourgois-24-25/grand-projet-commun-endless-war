@@ -5,7 +5,7 @@ public static class StatusEffectUtils
     public static void Apply(StatusEffect effect, GameObject target, GameObject self)
     {
         GameObject targetToAffect = effect.affectSelf ? self : target;
-
+        Debug.Log("apply effect");
         if (targetToAffect == null) return;
 
         switch (effect.effectType)
@@ -13,7 +13,13 @@ public static class StatusEffectUtils
             case EffectType.Heal:
                 var health = targetToAffect.GetComponent<PlayerHealthBehaviour>();
                 if (health != null)
-                    health.Heal((int)effect.effectValue);
+                {
+                    int value = (int)effect.effectValue;
+                    if (value >= 0)
+                        health.Heal(value);
+                    else
+                        health.TakeDamageNoInvincibility(-value);
+                }
                 break;
 
             //case EffectType.Poison:

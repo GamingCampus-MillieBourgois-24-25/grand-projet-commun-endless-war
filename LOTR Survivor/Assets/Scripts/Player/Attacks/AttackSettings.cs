@@ -33,7 +33,9 @@ public class AttackSettings : ScriptableObject
     [Tooltip("Range")]
     public float WideRange = 10f;
 
+    public StatusEffect[] attackEffects;
     public StatusEffect[] statusEffects;
+
     [Tooltip("Number of Projectiles")]
     public int NumberOfAttacks = 10;
 

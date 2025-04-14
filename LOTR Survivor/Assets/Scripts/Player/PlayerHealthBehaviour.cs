@@ -112,6 +112,22 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         }
     }
 
+    public void TakeDamageNoInvincibility(int damage)
+    {
+        if (isInvulnerable || isDead) return;
+
+        Health -= damage;
+
+        if (Health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            HealthEvents.PlayerDamagedEvent(damage);
+        }
+    }
+
     public void Die()
     {
         isDead = true;

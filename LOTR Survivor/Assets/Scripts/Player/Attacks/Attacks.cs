@@ -80,6 +80,14 @@ public abstract class Attack : MonoBehaviour
         }
     }
 
+    protected void ApplyAttackEffects()
+    {
+        foreach (var effect in attackSettings.attackEffects)
+        {
+            StatusEffectUtils.Apply(effect, null, player);
+        }
+    }
+
     protected void ApplyStatusEffects(GameObject target)
     {
         foreach (var effect in attackSettings.statusEffects)

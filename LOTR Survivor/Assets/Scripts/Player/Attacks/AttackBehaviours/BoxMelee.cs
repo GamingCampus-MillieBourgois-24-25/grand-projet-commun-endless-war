@@ -6,6 +6,8 @@ public class BoxMelee : AttackBehaviour
 {
     protected override void Attack()
     {
+        ApplyAttackEffects();
+
         Vector3 boxCenter = transform.position + transform.forward * (attackSettings.Range * 0.5f);
         Quaternion rotation = transform.rotation;
         Vector3 boxSize = new Vector3(attackSettings.WideRange, 2f, attackSettings.Range);
@@ -30,7 +32,7 @@ public class BoxMelee : AttackBehaviour
         PlayHitFX();
     }
 
-    private void PlayHitFX()
+    protected virtual void PlayHitFX()
     {
         if (attackSettings.hitPrefab != null)
         {
@@ -47,7 +49,7 @@ public class BoxMelee : AttackBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmosSelected()
     {
         if (attackSettings == null) return;
 

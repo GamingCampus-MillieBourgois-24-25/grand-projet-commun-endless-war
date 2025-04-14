@@ -39,7 +39,7 @@ public abstract class AttackBehaviour : MonoBehaviour
         attackSettings.Reset();
     }
 
-    protected bool CanAttack()
+    protected virtual bool CanAttack()
     {
         return attackTimer >= attackSettings.Cooldown;
     }
@@ -70,6 +70,14 @@ public abstract class AttackBehaviour : MonoBehaviour
             skillLevel++;
             attackSettings = attackSettings.Upgrade(skillLevel);
             Debug.Log("New level : " + skillLevel);
+        }
+    }
+
+    protected void ApplyAttackEffects()
+    {
+        foreach (var effect in attackSettings.attackEffects)
+        {
+            StatusEffectUtils.Apply(effect, null, player);
         }
     }
 

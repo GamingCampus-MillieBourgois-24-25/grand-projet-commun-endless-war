@@ -25,6 +25,9 @@ public class HealthBarCanvas : MonoBehaviour
 
         float health = current;
 
+        healthSlider.DOKill();
+        healthDepleteSlider.DOKill();
+
         if (health < healthSlider.value)
         {
             healthSlider.value = health;
