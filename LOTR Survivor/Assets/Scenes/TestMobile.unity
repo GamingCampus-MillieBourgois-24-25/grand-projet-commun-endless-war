@@ -5610,7 +5610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1015441579
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7550,7 +7550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911634370dae2fb4881326c412218783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1001 &1375481993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56234,13 +56233,13 @@ PrefabInstance:
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 630beb2a628937a489033c756d758cd4,
+      objectReference: {fileID: 11400000, guid: ff7eab64286873b479ea6fda405a0a93,
         type: 2}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
