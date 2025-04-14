@@ -1,21 +1,19 @@
+using FMODUnity;
+using FMOD.Studio;
 using UnityEngine;
 
 public class OneShotAudio : MonoBehaviour
 {
-    public static void PlayClip(AudioClip clip, Vector3 position, float volume = 1f)
+    public static void Play(EventReference soundEvent, Vector3 position = default)
     {
-        if (clip == null) return;
+        if (!soundEvent.IsNull)
+        {
+            EventInstance instance = RuntimeManager.CreateInstance(soundEvent);
 
-        GameObject tempGO = new GameObject("OneShotAudio");
-        tempGO.transform.position = position;
+            instance.setVolume(VolumeManager.Instance.GetSFXVolume());
 
-        AudioSource aSource = tempGO.AddComponent<AudioSource>();
-        aSource.clip = clip;
-        aSource.volume = volume;
-        aSource.spatialBlend = 1f;
-        aSource.Play();
-
-        float clipLength = clip.length;
-        Object.Destroy(tempGO, clipLength);
+            instance.start();
+            instance.release();
+        }
     }
 }

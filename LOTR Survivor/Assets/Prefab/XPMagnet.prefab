@@ -133,7 +133,13 @@ MonoBehaviour:
   animator: {fileID: 8788541495721213881}
   prefab: {fileID: 3425110117833773824}
   magnetRadius: 15
-  magnetSound: {fileID: 8300000, guid: 0b8f2048a4704294a8aefa304b95c032, type: 3}
+  magnetSoundEvent:
+    Guid:
+      Data1: 521941033
+      Data2: 1152768194
+      Data3: 1311649669
+      Data4: 1122404064
+    Path: event:/SFX/OBJECTS/XPMagnet_PickUp
 --- !u!135 &6395118169742594560
 SphereCollider:
   m_ObjectHideFlags: 0

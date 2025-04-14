@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Attack/AttackSettings", fileName = "NewAttackSettings")]
@@ -33,11 +34,11 @@ public class AttackSettings : ScriptableObject
     [Tooltip("Prefab Hit")]
     public GameObject hitPrefab;
 
-    [Tooltip("Spawn Sound")]
-    public AudioClip spawnClip;
+    [Tooltip("Spawn Event (FMOD)")]
+    public EventReference spawnEvent;
 
-    [Tooltip("Hit Sound")]
-    public AudioClip hitClip;
+    [Tooltip("Hit Event (FMOD)")]
+    public EventReference hitEvent;
 
     [Header("Upgrade Multipliers")]
     public float DamageUpgrade = 1f;
