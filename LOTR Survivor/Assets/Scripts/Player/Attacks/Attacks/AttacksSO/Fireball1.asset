@@ -21,8 +21,20 @@ MonoBehaviour:
   BaseMaxRotation: 360
   prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
   hitPrefab: {fileID: 0}
-  spawnClip: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}
-  hitClip: {fileID: 8300000, guid: 0375900ac66d55c47a9252a91303d811, type: 3}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   DamageUpgrade: 1.5
   SpeedUpgrade: 1
   CooldownUpgrade: 0.8

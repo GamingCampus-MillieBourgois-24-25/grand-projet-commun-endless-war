@@ -23,11 +23,11 @@ MonoBehaviour:
   hitPrefab: {fileID: 0}
   spawnEvent:
     Guid:
-      Data1: 1687753843
-      Data2: 1220676169
-      Data3: -1018964048
-      Data4: 1349835593
-    Path: event:/SFX/ATTACKS/FireballAttackSFX
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   hitEvent:
     Guid:
       Data1: 0
