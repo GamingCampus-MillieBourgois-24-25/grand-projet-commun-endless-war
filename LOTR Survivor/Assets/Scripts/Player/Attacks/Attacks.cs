@@ -4,6 +4,8 @@ using FMODUnity;
 public abstract class Attack : MonoBehaviour
 {
     protected AttackSettings attackSettings;
+    protected AudioSource audioSource;
+    protected GameObject player;
 
     protected virtual void Awake()
     {
@@ -61,6 +63,22 @@ public abstract class Attack : MonoBehaviour
             var main = system.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
             main.loop = false;
+        }
+    }
+
+    protected void ApplyAttackEffects()
+    {
+        foreach (var effect in attackSettings.attackEffects)
+        {
+            StatusEffectUtils.Apply(effect, null, player);
+        }
+    }
+
+    protected void ApplyStatusEffects(GameObject target)
+    {
+        foreach (var effect in attackSettings.statusEffects)
+        {
+            StatusEffectUtils.Apply(effect, target, player);
         }
     }
 }

@@ -4958,7 +4958,7 @@ GameObject:
   - component: {fileID: 2929425121346758057}
   - component: {fileID: 8342335964613171125}
   m_Layer: 0
-  m_Name: Electro slash
+  m_Name: Electro slash 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5173,7 +5173,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.05549129, g: 0.20247585, b: 0.4056604, a: 1}
+      maxColor: {r: 0.40392157, g: 0.097444475, b: 0.054901954, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

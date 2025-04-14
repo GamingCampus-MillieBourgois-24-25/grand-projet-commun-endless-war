@@ -10,6 +10,7 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected float attackTimer;
     protected int skillLevel = 1;
+    protected GameObject player;
 
     private void Start()
     {
@@ -26,13 +27,19 @@ public abstract class AttackBehaviour : MonoBehaviour
             attackTimer = 0f;
         }
     }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+    }
+
     public void SetAttackSettings(AttackSettings newAttackSettings)
     {
         attackSettings = newAttackSettings;
         attackSettings.Reset();
     }
 
-    protected bool CanAttack()
+    protected virtual bool CanAttack()
     {
         return attackTimer >= attackSettings.Cooldown;
     }
@@ -63,6 +70,22 @@ public abstract class AttackBehaviour : MonoBehaviour
             skillLevel++;
             attackSettings = attackSettings.Upgrade(skillLevel);
             Debug.Log("New level : " + skillLevel);
+        }
+    }
+
+    protected void ApplyAttackEffects()
+    {
+        foreach (var effect in attackSettings.attackEffects)
+        {
+            StatusEffectUtils.Apply(effect, null, player);
+        }
+    }
+
+    protected void ApplyStatusEffects(GameObject target)
+    {
+        foreach (var effect in attackSettings.statusEffects)
+        {
+            StatusEffectUtils.Apply(effect, target, player);
         }
     }
 }

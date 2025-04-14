@@ -10,37 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
-  m_Name: HealthBoost
+  m_Name: "Lame des anc\xEAtres sanguinaires"
   m_EditorClassIdentifier: 
-  BaseDamage: 0
+  BaseDamage: 100
   BaseSpeed: 0
-  BaseCooldown: 0
-  BaseRange: 0
-  Scale: 0
+  BaseCooldown: 6.3
+  BaseRange: 10
+  Scale: 0.2
   BaseAimRange: 0
   BaseMaxRotation: 0
-  NumberOfAttacks: 0
-  CooldownBetweenAttacks: 0
-  prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
-  hitPrefab: {fileID: 0}
-  spawnClip: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}
+  RotationOffset: -30
+  WideRange: 5
+  attackEffects:
+  - {fileID: 11400000, guid: e08d7e569c26daf44b306dddaf5545f3, type: 2}
+  statusEffects: []
+  NumberOfAttacks: 10
+  CooldownBetweenAttacks: 5
+  prefab: {fileID: 0}
+  hitPrefab: {fileID: 1171201465392465800, guid: 423fb3f079a6b3845aeb3ea44c8a5a9f,
+    type: 3}
+  spawnClip: {fileID: 0}
   hitClip: {fileID: 0}
-  DamageUpgrade: 1
+  DamageUpgrade: 2
   SpeedUpgrade: 1
   CooldownUpgrade: 1
-  RangeUpgrade: 1
+  RangeUpgrade: 1.5
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
-  HealthBoost: 1.2
+  HealthBoost: 1
   MaxDamage: 999
-  MaxSpeed: 100
-  MinCooldown: 0.1
+  MaxSpeed: 1000
+  MinCooldown: 1.2
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 5
-  Speed: 10
-  Cooldown: 0.3
+  Damage: 100
+  Speed: 0
+  Cooldown: 6.3
   Range: 10
-  AimRange: 5
-  MaxRotation: 360
+  AimRange: 0
+  MaxRotation: 0
