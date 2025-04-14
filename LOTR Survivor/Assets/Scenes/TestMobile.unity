@@ -5849,7 +5849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1038918186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56194,7 +56194,13 @@ PrefabInstance:
         type: 3}
       propertyPath: startingSkills.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ed107d576c912cc48b39340fda50e9b0,
+      objectReference: {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08,
+        type: 2}
+    - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: startingSkills.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08,
         type: 2}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
@@ -56897,12 +56903,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSkillSettings:
   - {fileID: 11400000, guid: 2c6f0abc0082df148a46885847097db6, type: 2}
+  - {fileID: 11400000, guid: ed107d576c912cc48b39340fda50e9b0, type: 2}
   - {fileID: 11400000, guid: e6370d2570a300148925608be95ebf3f, type: 2}
   - {fileID: 11400000, guid: 34b1148d4acc3f94790a2994860ac1b4, type: 2}
   - {fileID: 11400000, guid: 94fb333367546434bbecbd33c6529b28, type: 2}
   buffSkillSettings:
   - {fileID: 11400000, guid: 37d51d5d41240ad478d02afd87d289fb, type: 2}
-  startingSkill: {fileID: 11400000, guid: ed107d576c912cc48b39340fda50e9b0, type: 2}
+  startingSkill: {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08, type: 2}
 --- !u!4 &2081588556
 Transform:
   m_ObjectHideFlags: 0

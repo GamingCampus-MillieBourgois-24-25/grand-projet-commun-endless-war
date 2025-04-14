@@ -27,6 +27,14 @@ public class AttackSettings : ScriptableObject
     [Tooltip("Max Rotation")]
     public float BaseMaxRotation = 360f;
 
+    [Tooltip("Offset de rotation pour l'effet de coup")]
+    public float RotationOffset = 0f;
+
+    [Tooltip("Range")]
+    public float WideRange = 10f;
+
+    public StatusEffect[] statusEffects;
+
     [Header("VFX / SFX")]
     public GameObject prefab;
 
