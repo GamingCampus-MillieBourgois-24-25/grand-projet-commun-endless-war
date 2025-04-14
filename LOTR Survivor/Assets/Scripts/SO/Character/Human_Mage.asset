@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11ca25d3bcf49b743b627f87f6c1d078, type: 3}
-  m_Name: Cell
+  m_Name: Human_Mage
   m_EditorClassIdentifier: 
-  characterName: Cell
-  imageCharacter: {fileID: 21300000, guid: c761692ccc9024243bc218b35598cdc3, type: 3}
-  characterPrefab: {fileID: 5536098667953476755, guid: 78b0c54f1fd31874ca17365d7886d4f8,
+  characterName: Pablo
+  imageCharacter: {fileID: 0}
+  characterPrefab: {fileID: 919132149155446097, guid: 82965a5ac4386bc41bbe25acefe9b6d9,
     type: 3}
-  race: 0
-  classe: 0
-  pointsDeVie: 6000
+  race: 1
+  classe: 1
+  pointsDeVie: 0
   attacksBase: []
-  vitesseDeDeplacement: 1.2
+  vitesseDeDeplacement: 0
