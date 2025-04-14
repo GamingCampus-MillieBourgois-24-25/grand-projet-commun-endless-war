@@ -42,10 +42,10 @@ public class BoxMelee : AttackBehaviour
             GameObject hitEffect = Instantiate(attackSettings.hitPrefab, spawnPosition, adjustedRotation);
             hitEffect.transform.localScale = new Vector3(attackSettings.WideRange, hitEffect.transform.localScale.y, attackSettings.Range) * attackSettings.Scale;
 
-            if (attackSettings.hitClip != null)
-            {
-                OneShotAudio.PlayClip(attackSettings.hitClip, transform.position, VolumeManager.Instance.GetSFXVolume());
-            }
+            //if (attackSettings.hitClip != null)
+            //{
+            //    OneShotAudio.PlayClip(attackSettings.hitClip, transform.position, VolumeManager.Instance.GetSFXVolume());
+            //}
         }
     }
 
