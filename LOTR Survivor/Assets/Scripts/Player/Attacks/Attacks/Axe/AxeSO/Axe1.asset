@@ -21,8 +21,20 @@ MonoBehaviour:
   BaseMaxRotation: 180
   prefab: {fileID: 7575841542315212930, guid: ce1de233deb0b8c4e949404bb4b7ead8, type: 3}
   hitPrefab: {fileID: 0}
-  spawnClip: {fileID: 8300000, guid: e8c6088ca2e133a44a905278f905f99b, type: 3}
-  hitClip: {fileID: 8300000, guid: 0375900ac66d55c47a9252a91303d811, type: 3}
+  spawnEvent:
+    Guid:
+      Data1: -187302576
+      Data2: 1226070003
+      Data3: -310654057
+      Data4: 2009515477
+    Path: event:/SFX/ATTACKS/AxeAttackSFX
+  hitEvent:
+    Guid:
+      Data1: 1687753843
+      Data2: 1220676169
+      Data3: -1018964048
+      Data4: 1349835593
+    Path: event:/SFX/ATTACKS/FireballAttackSFX
   DamageUpgrade: 1.2
   SpeedUpgrade: 1
   CooldownUpgrade: 1
@@ -40,4 +52,4 @@ MonoBehaviour:
   Cooldown: 3.9
   Range: 6
   AimRange: 0
-  MaxRotation: 405
+  MaxRotation: 180

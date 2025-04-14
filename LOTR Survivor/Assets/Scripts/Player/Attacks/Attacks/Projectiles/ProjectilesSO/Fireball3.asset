@@ -21,8 +21,20 @@ MonoBehaviour:
   BaseMaxRotation: 360
   prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
   hitPrefab: {fileID: 0}
-  spawnClip: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}
-  hitClip: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 1687753843
+      Data2: 1220676169
+      Data3: -1018964048
+      Data4: 1349835593
+    Path: event:/SFX/ATTACKS/FireballAttackSFX
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   DamageUpgrade: 1.2
   SpeedUpgrade: 1
   CooldownUpgrade: 0.8

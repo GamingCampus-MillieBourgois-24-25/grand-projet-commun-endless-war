@@ -22,6 +22,8 @@ public class VolumeManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         musicVolume = Mathf.Clamp01(volume);
+        Debug.Log($"[FMOD] Volume musique demandé : {musicVolume}");
+
         if (MusicManager.Instance != null)
         {
             MusicManager.Instance.UpdateMusicVolume(musicVolume);

@@ -5862,6 +5862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06e7d838f8b0b141b85d464ce9f65cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicVolume: 1
+  sfxVolume: 1
 --- !u!4 &1194285967
 Transform:
   m_ObjectHideFlags: 0
@@ -6352,11 +6354,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicEvent:
     Guid:
-      Data1: 1047340773
-      Data2: 1117543052
-      Data3: -1729460832
-      Data4: -91619815
-    Path: event:/Music/master_music
+      Data1: 809522073
+      Data2: 1254928587
+      Data3: -995911009
+      Data4: 2087556946
+    Path: event:/MUSIC/master_music
 --- !u!4 &1302685341
 Transform:
   m_ObjectHideFlags: 0

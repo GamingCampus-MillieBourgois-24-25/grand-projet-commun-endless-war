@@ -1,6 +1,6 @@
+using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
-using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
@@ -21,31 +21,51 @@ public class MusicManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Vérification supplémentaire avant de créer l'instance
-        if (!musicEvent.IsNull)
+        LoadFMODBanks();
+        PlayMusic();
+    }
+
+    private void LoadFMODBanks()
+    {
+        try
         {
-            try
-            {
-                musicInstance = RuntimeManager.CreateInstance(musicEvent);
-                musicInstance.start();
-                UpdateMusicVolume(VolumeManager.Instance.GetMusicVolume());
-            }
-            catch (EventNotFoundException e)
-            {
-                Debug.LogError($"Événement FMOD non trouvé: {e.Message}");
-                Debug.LogError($"Vérifiez que l'événement '{musicEvent.Path}' existe dans vos banques FMOD");
-            }
+            RuntimeManager.LoadBank("Master", true);
+
+            Debug.Log("[FMOD] Banques chargées avec succès.");
         }
-        else
+        catch (System.Exception e)
         {
-            Debug.LogError("La référence à l'événement musical n'est pas assignée dans l'inspecteur");
+            Debug.LogError($"[FMOD] Erreur lors du chargement des banques : {e.Message}");
         }
+    }
+
+    private void PlayMusic()
+    {
+        if (musicEvent.IsNull)
+        {
+            Debug.LogError("[FMOD] L'événement musical n'est pas assigné dans l'inspecteur !");
+            return;
+        }
+
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
+
+        if (!musicInstance.isValid())
+        {
+            Debug.LogError("[FMOD] Impossible de créer l'instance de musique !");
+            return;
+        }
+
+        musicInstance.setVolume(1.0f);
+        musicInstance.start();
+
+        Debug.Log("[FMOD] Musique lancée au démarrage");
     }
 
     public void UpdateMusicVolume(float volume)
     {
         if (musicInstance.isValid())
         {
+            Debug.Log($"[FMOD] Volume musique appliqué : {volume}");
             musicInstance.setVolume(volume);
         }
     }

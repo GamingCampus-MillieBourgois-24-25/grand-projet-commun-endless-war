@@ -10,14 +10,7 @@ public class OneShotAudio : MonoBehaviour
         {
             EventInstance instance = RuntimeManager.CreateInstance(soundEvent);
 
-            // Applique le volume SFX actuel
             instance.setVolume(VolumeManager.Instance.GetSFXVolume());
-
-            // Positionnement 3D si nécessaire
-            if (position != default)
-            {
-                instance.set3DAttributes(position.To3DAttributes());
-            }
 
             instance.start();
             instance.release();

@@ -380,8 +380,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../fmod_endlesswar/fmod_endlesswar.fspro
-  sourceBankPath: ../../fmod_endlesswar/Build
+  sourceProjectPath: ../../fmod_endlesswar2/fmod_endlesswar2.fspro
+  sourceBankPath: ../../fmod_endlesswar2/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -393,7 +393,7 @@ MonoBehaviour:
   TargetAssetPath: ../../fmod_endlesswar/Build/Desktop
   TargetBankFolder: ../fmod_endlesswar/Build/Desktop
   EventLinkage: 0
-  LoggingLevel: 2
+  LoggingLevel: 0
   SpeakerModeSettings: []
   SampleRateSettings: []
   LiveUpdateSettings: []
