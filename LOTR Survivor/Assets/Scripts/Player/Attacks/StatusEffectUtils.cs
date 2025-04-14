@@ -18,7 +18,8 @@ public static class StatusEffectUtils
                     if (value >= 0)
                         health.Heal(value);
                     else
-                        health.TakeDamageNoInvincibility(-value);
+                        if (health.Health > -value)
+                        health.TakeDamage(-value, true);
                 }
                 break;
 
