@@ -30,6 +30,12 @@ public class PlayerInput : MonoBehaviour
         EnhancedTouchSupport.Enable();
     }
 
+    private void Start()
+    {
+        Joystick = FindAnyObjectByType<FloatingJoyStick>();
+        ResetJoystick();
+    }
+
     private void OnEnable()
     {
         TouchSimulation.Enable();

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class PlayerUpgradeManager : MonoBehaviour
-{
+{/*
     [Header("Référence des stats")]
     public PlayerStatsSO playerStats;
 
@@ -50,5 +50,5 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             Debug.Log("Pas assez de gold pour améliorer la Vitesse.");
         }
-    }
+    }*/
 }
