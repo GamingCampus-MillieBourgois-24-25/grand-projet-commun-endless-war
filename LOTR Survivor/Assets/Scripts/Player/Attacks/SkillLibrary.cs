@@ -24,7 +24,6 @@ public class SkillLibrary : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public SkillSettings GetRandomSkill()
