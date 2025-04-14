@@ -19,6 +19,7 @@ public class SkillHolderBehaviour : MonoBehaviour
     [SerializeField] Color buffColor;
 
     public static event Action<SkillHolderBehaviour> OnSkillSelected;
+    public static event Action<SkillSettings> OnDetailsButton;
 
     private bool isSelected = false;
 
@@ -68,5 +69,10 @@ public class SkillHolderBehaviour : MonoBehaviour
     {
         isSelected = false;
         selectImage.enabled = false;
+    }
+
+    public void ShowDetails()
+    {
+        OnDetailsButton?.Invoke(_skillSettings);
     }
 }

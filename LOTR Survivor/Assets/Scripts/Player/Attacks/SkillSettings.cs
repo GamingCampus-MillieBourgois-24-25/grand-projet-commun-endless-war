@@ -7,6 +7,7 @@ public class SkillSettings : ScriptableObject
     public string skillName;
     public Sprite skillSprite;
     public SkillType skillType;
+    public string skillDescription;
 
     [Header("Logic Prefab")]
     public GameObject skillBehaviour;

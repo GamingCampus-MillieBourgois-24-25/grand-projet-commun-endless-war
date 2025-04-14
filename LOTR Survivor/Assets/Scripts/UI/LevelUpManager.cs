@@ -17,6 +17,8 @@ public class LevelUpManager : MonoBehaviour
     [SerializeField] private GridLayoutGroup layoutGroup;
     [SerializeField] private GameObject skillHolder;
     [SerializeField] private SkillsManager skillManager;
+    [SerializeField] private SkillInfo skillInfo;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     private SkillSettings currentSkillSettings;
 
@@ -40,12 +42,16 @@ public class LevelUpManager : MonoBehaviour
     {
         XPEvents.OnLevelUP += DisplayPanel;
         SkillHolderBehaviour.OnSkillSelected += HandleSkillSelected;
+        SkillHolderBehaviour.OnDetailsButton += ShowDetails;
+        SkillInfo.OnHide += HideDetails;
     }
 
     private void OnDisable()
     {
         XPEvents.OnLevelUP -= DisplayPanel;
         SkillHolderBehaviour.OnSkillSelected -= HandleSkillSelected;
+        SkillHolderBehaviour.OnDetailsButton -= ShowDetails;
+        SkillInfo.OnHide -= HideDetails;
     }
 
     private void HandleSkillSelected(SkillHolderBehaviour selected)
@@ -140,7 +146,6 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
-
     private void RemoveExistingSkillHolders()
     {
         foreach (Transform child in layoutGroup.transform)
@@ -160,5 +165,16 @@ public class LevelUpManager : MonoBehaviour
             PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
             player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * skill.healAmount);
         }
+    }
+
+    private void ShowDetails(SkillSettings newSkillSettings)
+    {
+        skillInfo.ShowSkillInfo(newSkillSettings);
+        canvasGroup.interactable = false;
+    }
+
+    private void HideDetails()
+    {
+        canvasGroup.interactable = true;
     }
 }

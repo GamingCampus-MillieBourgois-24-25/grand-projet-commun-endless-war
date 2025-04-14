@@ -252,7 +252,6 @@ MonoBehaviour:
   titleText: {fileID: 3551014058253627690}
   contentText: {fileID: 1508969023906996088}
   animationDuration: 0.3
-  tooltipState: {fileID: 11400000, guid: 2d42acfaafd3bbc4ca507ea64352e50f, type: 2}
 --- !u!1 &4492373236877989175
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +290,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 30, y: 30}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7420487780019262359
 CanvasRenderer:
