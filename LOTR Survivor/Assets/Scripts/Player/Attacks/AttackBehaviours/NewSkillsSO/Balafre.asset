@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Balafre
   m_EditorClassIdentifier: 
   skillName: Balafre
-  skillSprite: {fileID: 0}
+  skillSprite: {fileID: 21300000, guid: 813236fd49715274fb92849c8442ca3e, type: 3}
   skillType: 1
   skillDescription: Slash
   skillBehaviour: {fileID: 6098613423092608936, guid: fe14fda35b0d56f41b6760a63c3e89cb,

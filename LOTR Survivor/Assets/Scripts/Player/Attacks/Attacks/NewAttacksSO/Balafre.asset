@@ -14,18 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseDamage: 30
   BaseSpeed: 0
-  BaseCooldown: 3.1
+  BaseCooldown: 1.9
   BaseRange: 6
   Scale: 0.2
   BaseAimRange: 0
   BaseMaxRotation: 0
   RotationOffset: -30
   WideRange: 3
+  attackEffects: []
+  statusEffects: []
+  NumberOfAttacks: 10
+  CooldownBetweenAttacks: 5
   prefab: {fileID: 0}
   hitPrefab: {fileID: 1171201465392465800, guid: 4aa9f30a28a77224ba84b2a2c334c71b,
     type: 3}
-  spawnClip: {fileID: 0}
-  hitClip: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   DamageUpgrade: 2
   SpeedUpgrade: 1
   CooldownUpgrade: 1
@@ -41,7 +57,7 @@ MonoBehaviour:
   MaxMaxRotation: 360
   Damage: 30
   Speed: 0
-  Cooldown: 3.1
+  Cooldown: 1.9
   Range: 6
   AimRange: 0
   MaxRotation: 0

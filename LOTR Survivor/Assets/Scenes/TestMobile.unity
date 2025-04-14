@@ -2487,12 +2487,12 @@ PrefabInstance:
     - target: {fileID: 6796628615508066735, guid: 9fff293862cf85a4ea353263c8ab8ab1,
         type: 3}
       propertyPath: m_CellSize.x
-      value: 250
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 6796628615508066735, guid: 9fff293862cf85a4ea353263c8ab8ab1,
         type: 3}
       propertyPath: m_CellSize.y
-      value: 250
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 7029653093763113944, guid: 9fff293862cf85a4ea353263c8ab8ab1,
         type: 3}
@@ -5849,7 +5849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1038918186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5931,7 +5931,6 @@ Transform:
   - {fileID: 1799378598}
   - {fileID: 476966317}
   - {fileID: 2081588556}
-  - {fileID: 1354325191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1068430344 stripped
@@ -7506,50 +7505,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1354325190
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1354325191}
-  - component: {fileID: 1354325192}
-  m_Layer: 0
-  m_Name: StatusManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1354325191
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354325190}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1051054699}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1354325192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354325190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911634370dae2fb4881326c412218783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1375481993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54868,7 +54823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1784559972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56239,7 +56194,7 @@ PrefabInstance:
         type: 3}
       propertyPath: startingSkills.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ff7eab64286873b479ea6fda405a0a93,
+      objectReference: {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08,
         type: 2}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
@@ -56949,6 +56904,7 @@ MonoBehaviour:
   attackSkillSettings:
   - {fileID: 11400000, guid: a90d83e151d1a5d4cb78decfd5a83c27, type: 2}
   - {fileID: 11400000, guid: 630beb2a628937a489033c756d758cd4, type: 2}
+  - {fileID: 11400000, guid: ff7eab64286873b479ea6fda405a0a93, type: 2}
   buffSkillSettings:
   - {fileID: 11400000, guid: 37d51d5d41240ad478d02afd87d289fb, type: 2}
   startingSkill: {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08, type: 2}
