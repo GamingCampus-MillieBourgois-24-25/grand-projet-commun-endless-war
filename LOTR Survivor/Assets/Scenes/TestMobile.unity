@@ -5688,7 +5688,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 1493423237}
+  defaultCharacterSprite: {fileID: 21300000, guid: c761692ccc9024243bc218b35598cdc3,
+    type: 3}
   spawnPoint: {fileID: 374803116}
+  defaultCharacterPrefab: {fileID: 5536098667953476755, guid: 78b0c54f1fd31874ca17365d7886d4f8,
+    type: 3}
   virtualCamera: {fileID: 2100570344}
 --- !u!1001 &1139185583
 PrefabInstance:
@@ -56761,6 +56765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoveJoystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371828003433955912, guid: aa00de77b7e02744d99be39bb266e42a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7502645630724081349, guid: aa00de77b7e02744d99be39bb266e42a,
         type: 3}
