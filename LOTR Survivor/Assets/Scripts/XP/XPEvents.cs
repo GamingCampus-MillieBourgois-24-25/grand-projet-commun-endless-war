@@ -6,6 +6,7 @@ public class XPEvents
     public static event Action<int> OnXPPicked;
     public static event Action<int, int> OnXPChanged;
     public static event Action<int> OnLevelUP;
+    public static event Action OnLevelComplete;
 
     public static void PickXP(int xp)
     {
@@ -20,5 +21,10 @@ public class XPEvents
     public static void RaiseLevelChanged(int level)
     {
         OnLevelUP?.Invoke(level);
+    }
+
+    public static void RaiseLevelComplete()
+    {
+        OnLevelComplete?.Invoke();
     }
 }

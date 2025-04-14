@@ -31,11 +31,13 @@ public class XPManager : MonoBehaviour
     private void OnEnable()
     {
         XPEvents.OnXPPicked += AddXP;
+        XPEvents.OnLevelComplete += OnLevelUpBuffSelected;
     }
 
     private void OnDisable()
     {
         XPEvents.OnXPPicked -= AddXP;
+        XPEvents.OnLevelComplete -= OnLevelUpBuffSelected;
     }
 
     private void Start()

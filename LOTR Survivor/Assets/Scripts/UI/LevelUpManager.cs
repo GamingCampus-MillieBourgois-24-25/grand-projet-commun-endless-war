@@ -102,7 +102,7 @@ public class LevelUpManager : MonoBehaviour
     {
         GamePauseManager.Instance.ResumeGame();
         levelUpPanel.gameObject.SetActive(false);
-        XPManager.Instance.OnLevelUpBuffSelected();
+        XPEvents.RaiseLevelComplete();
     }
 
     private void AddSkillHolders(int number)

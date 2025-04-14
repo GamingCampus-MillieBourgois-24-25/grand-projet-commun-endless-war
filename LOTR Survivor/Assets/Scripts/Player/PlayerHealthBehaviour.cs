@@ -47,6 +47,16 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     }
 
+    private void OnEnable()
+    {
+        XPEvents.OnLevelComplete += HandleLevelComplete;
+    }
+
+    private void OnDisable()
+    {
+        XPEvents.OnLevelComplete -= HandleLevelComplete;
+    }
+
     private void Start()
     {
         Health = MaxHealth;
@@ -56,6 +66,11 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     {
         if (isInvulnerable)
             HandleInvulnerability();
+    }
+
+    private void HandleLevelComplete()
+    {
+        StartInvulnerability();
     }
 
     private void StartInvulnerability(bool revive = false)
