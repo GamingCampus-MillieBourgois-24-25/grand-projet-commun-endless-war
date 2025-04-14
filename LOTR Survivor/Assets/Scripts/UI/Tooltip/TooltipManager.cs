@@ -14,6 +14,7 @@ public class TooltipManager : MonoBehaviour
     [SerializeField] private RectTransform tipTransform;
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text contentText;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     [Header("Animation Settings haha")]
     [SerializeField] private float animationDuration = 0.7f;
@@ -78,7 +79,7 @@ public class TooltipManager : MonoBehaviour
     {
         currentTween?.Kill();
 
-        currentTween = tipTransform.DOScale(Vector3.zero, animationDuration)
+        currentTween = tipTransform.DOScale(Vector3.zero, animationDuration * 0.75f)
             .SetEase(Ease.InBack)
             .OnComplete(OnTipHidden)
             .SetUpdate(true);

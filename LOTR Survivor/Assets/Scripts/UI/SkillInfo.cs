@@ -16,6 +16,8 @@ public class SkillInfo : MonoBehaviour
 
     private RectTransform infoPanelRect;
 
+    private float AnimationDuration = 0.6f;
+
     public static event Action OnHide;
 
     private void Awake()
@@ -31,13 +33,13 @@ public class SkillInfo : MonoBehaviour
     public void ShowSkillInfo(SkillSettings skillSettings)
     {
         infoPanel.transform.localScale = Vector3.zero;
-        infoPanel.transform.localEulerAngles = new Vector3(0, 0, -60f);
+        infoPanel.transform.localEulerAngles = new Vector3(0, 0, -40f);
 
-        infoPanel.transform.DOScale(Vector3.one, 0.3f)
+        infoPanel.transform.DOScale(Vector3.one, AnimationDuration)
             .SetEase(Ease.OutBack)
             .SetUpdate(true);
 
-        infoPanel.transform.DOLocalRotate(Vector3.zero, 0.3f)
+        infoPanel.transform.DOLocalRotate(Vector3.zero, AnimationDuration)
             .SetEase(Ease.OutBack)
             .SetUpdate(true);
 
@@ -52,12 +54,12 @@ public class SkillInfo : MonoBehaviour
     public void HideSkillInfo()
     {
         infoPanel.transform.localEulerAngles = Vector3.zero;
-        infoPanel.transform.DOLocalRotate(new Vector3(0, 0, -60f), 0.2f)
+        infoPanel.transform.DOLocalRotate(new Vector3(0, 0, -40f), AnimationDuration * 0.75f)
             .SetEase(Ease.InBack)
             .SetUpdate(true);
 
 
-        infoPanel.transform.DOScale(Vector3.zero, 0.2f)
+        infoPanel.transform.DOScale(Vector3.zero, AnimationDuration * 0.75f)
             .SetEase(Ease.InBack)
             .SetUpdate(true)
             .OnComplete(() =>
