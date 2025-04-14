@@ -10,37 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
-  m_Name: Fireball2
+  m_Name: Triple Javelin
   m_EditorClassIdentifier: 
-  BaseDamage: 20
+  BaseDamage: 8
   BaseSpeed: 10
-  BaseCooldown: 1.4
-  BaseRange: 10
-  Scale: 1
+  BaseCooldown: 2.5
+  BaseRange: 8
+  Scale: 0.8
   BaseAimRange: 5
   BaseMaxRotation: 360
-  NumberOfAttacks: 1
-  CooldownBetweenAttacks: 0
-  prefab: {fileID: 754821637487049960, guid: f2999c7a918c15541943e10ad92c0d3e, type: 3}
+  NumberOfAttacks: 3
+  CooldownBetweenAttacks: 0.3
+  prefab: {fileID: 754821637487049960, guid: ae1dba2333acaab40930148045471a2c, type: 3}
   hitPrefab: {fileID: 0}
   spawnClip: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}
   hitClip: {fileID: 0}
-  DamageUpgrade: 2
+  DamageUpgrade: 1.2
   SpeedUpgrade: 1
-  CooldownUpgrade: 0.9
+  CooldownUpgrade: 0.6
   RangeUpgrade: 1
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 0.8
+  MinCooldown: 0.1
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 15
-  Speed: 10
-  Cooldown: 1.4
+  Damage: 10
+  Speed: 8
+  Cooldown: 1.8000001
   Range: 10
   AimRange: 5
   MaxRotation: 360

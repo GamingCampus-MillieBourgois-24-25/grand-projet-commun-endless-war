@@ -34,6 +34,11 @@ public class AttackSettings : ScriptableObject
     public float WideRange = 10f;
 
     public StatusEffect[] statusEffects;
+    [Tooltip("Number of Projectiles")]
+    public int NumberOfAttacks = 10;
+
+    [Tooltip("Cooldown Between Attacks")]
+    public float CooldownBetweenAttacks = 5f;
 
     [Header("VFX / SFX")]
     public GameObject prefab;

@@ -19,6 +19,8 @@ MonoBehaviour:
   Scale: 10
   BaseAimRange: 0
   BaseMaxRotation: 180
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 0
   prefab: {fileID: 7575841542315212930, guid: ce1de233deb0b8c4e949404bb4b7ead8, type: 3}
   hitPrefab: {fileID: 0}
   spawnClip: {fileID: 8300000, guid: e8c6088ca2e133a44a905278f905f99b, type: 3}
