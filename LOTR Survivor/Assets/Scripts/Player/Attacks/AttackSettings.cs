@@ -27,6 +27,12 @@ public class AttackSettings : ScriptableObject
     [Tooltip("Max Rotation")]
     public float BaseMaxRotation = 360f;
 
+    [Tooltip("Number of Projectiles")]
+    public int NumberOfAttacks = 10;
+
+    [Tooltip("Cooldown Between Attacks")]
+    public float CooldownBetweenAttacks = 5f;
+
     [Header("VFX / SFX")]
     public GameObject prefab;
 
