@@ -155,7 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 478331260569868381}
-  flashDuration: 0.2
+  flashMaterial: {fileID: 2100000, guid: 31a520dfb12e22241bcdecd0d04e61ed, type: 2}
+  flashDuration: 0.3
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   deathParticle: {fileID: 100002, guid: 4bf22a1d8d9e7724b9af67921436851d, type: 3}
   reviveParticle: {fileID: 0}
@@ -260,6 +261,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2561487093687473507, guid: 9dfcb31d934f629418d0d3252f07fa78,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c05cf0170f55bb46a94134842c2b7c0, type: 2}
     - target: {fileID: 3730975194934849036, guid: 9dfcb31d934f629418d0d3252f07fa78,
         type: 3}
       propertyPath: m_LocalScale.x

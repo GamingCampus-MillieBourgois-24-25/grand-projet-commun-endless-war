@@ -14,6 +14,12 @@ public abstract class Attack : MonoBehaviour
 
     public void SetSettings(AttackSettings newProjectileSettings)
     {
+        if (newProjectileSettings == null)
+        {
+            Debug.LogWarning("New AttackSettings is null.");
+            return;
+        }
+
         attackSettings = newProjectileSettings;
         TryPlaySpawnSound();
     }
@@ -45,11 +51,18 @@ public abstract class Attack : MonoBehaviour
 
         if (ObjectPool.Instance != null)
         {
-            ObjectPool.Instance.Despawn(gameObject, attackSettings.prefab);
+            if (attackSettings.prefab != null)
+            {
+                ObjectPool.Instance.Despawn(gameObject, attackSettings.prefab);
+            }
+            else
+            {
+                Debug.LogWarning("Prefab is null, cannot despawn.");
+            }
         }
         else
         {
-            Debug.Log("ObjectPool Instance is not present in the scene!");
+            Debug.LogError("ObjectPool Instance is not present in the scene!");
             Destroy(gameObject);
         }
     }
@@ -66,13 +79,20 @@ public abstract class Attack : MonoBehaviour
         }
     }
 
-    protected void ApplyAttackEffects()
+    protected void ApplyAttackEffects(GameObject target)
     {
+        if (target == null)
+        {
+            Debug.LogWarning("Target is null. Skipping attack effects.");
+            return;
+        }
+
         foreach (var effect in attackSettings.attackEffects)
         {
-            StatusEffectUtils.Apply(effect, null, player);
+            StatusEffectUtils.Apply(effect, target, player);
         }
     }
+
 
     protected void ApplyStatusEffects(GameObject target)
     {

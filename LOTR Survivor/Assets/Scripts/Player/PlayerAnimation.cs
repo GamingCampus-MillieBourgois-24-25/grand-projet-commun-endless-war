@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
 
     [Header("Visual & Effects")]
+    [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private Color flashColor = Color.red;
     [SerializeField] private GameObject deathParticle;
@@ -19,6 +20,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private Renderer objectRenderer;
     private CinemachineImpulseSource impulseSource;
+    private Material originalMaterial;
     private Color originalColor;
     private bool isInvulnerable;
 
@@ -31,6 +33,7 @@ public class PlayerAnimation : MonoBehaviour
         if (objectRenderer != null)
         {
             originalColor = objectRenderer.material.color;
+            originalMaterial = objectRenderer.material;
         }
     }
 
@@ -113,11 +116,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (objectRenderer != null)
         {
-            objectRenderer.material.SetColor("_Color", flashColor);
-            objectRenderer.material.SetFloat("_Damaged", 1f);
+            objectRenderer.material = flashMaterial;
             yield return new WaitForSeconds(flashDuration);
-            objectRenderer.material.SetFloat("_Damaged", 0f);
-            objectRenderer.material.SetColor("_Color", originalColor);
+            objectRenderer.material = originalMaterial;
         }
     }
 

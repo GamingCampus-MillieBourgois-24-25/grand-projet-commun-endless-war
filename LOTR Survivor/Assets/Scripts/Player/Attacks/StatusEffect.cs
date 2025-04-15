@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum EffectType
@@ -13,8 +11,21 @@ public enum EffectType
 [CreateAssetMenu(menuName = "StatusEffect/Effect", fileName = "NewStatusEffect")]
 public class StatusEffect : ScriptableObject
 {
+    [Header("General")]
     public EffectType effectType;
+
+    [Tooltip("Valeur de l'effet. Interprétation dépend du type (dps, %, etc.)")]
     public float effectValue;
-    public float duration;
-    public bool affectSelf;
+
+    [Tooltip("Durée en secondes")]
+    public float duration = 1f;
+
+    [Tooltip("Appliquer à soi-même plutôt qu'à la cible ?")]
+    public bool affectSelf = false;
+
+    [Header("Stacking")]
+    public bool isStackable = false;
+
+    [Tooltip("Effet peut-il être réinitialisé si déjà actif ?")]
+    public bool refreshOnReapply = true;
 }
