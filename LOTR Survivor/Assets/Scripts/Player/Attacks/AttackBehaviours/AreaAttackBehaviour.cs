@@ -27,12 +27,12 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
 
     protected virtual void PlayHitFX()
     {
-        if (attackSettings.hitPrefab != null)
+        if (attackSettings.prefab != null)
         {
             Vector3 spawnPosition = GetFXSpawnPosition();
             Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, attackSettings.RotationOffset, 0);
 
-            GameObject hitEffect = Instantiate(attackSettings.hitPrefab, spawnPosition, adjustedRotation);
+            GameObject hitEffect = Instantiate(attackSettings.prefab, spawnPosition, adjustedRotation);
             hitEffect.transform.localScale = new Vector3(attackSettings.WideRange, hitEffect.transform.localScale.y, attackSettings.Range) * attackSettings.Scale;
         }
     }
