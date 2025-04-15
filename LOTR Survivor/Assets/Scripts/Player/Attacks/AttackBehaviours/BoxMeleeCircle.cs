@@ -1,46 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxMeleeCircle : AttackBehaviour
+public class BoxMeleeCircle : AreaAttackBehaviour
 {
-    protected override void Attack()
+    protected override Collider[] GetHitColliders()
     {
-        ApplyAttackEffects();
-
-        Vector3 attackPosition = transform.position;
-        float radius = attackSettings.Range;
-
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPosition, radius, LayerMask.GetMask("Enemy"));
-
-        foreach (Collider enemy in hitEnemies)
-        {
-            EnemyHealthBehaviour health = enemy.GetComponent<EnemyHealthBehaviour>();
-            if (health != null)
-            {
-                health.TakeDamage(attackSettings.Damage);
-                ApplyStatusEffects(enemy.gameObject);
-            }
-        }
-
-        PlayHitFX();
+        return Physics.OverlapSphere(transform.position, attackSettings.Range, LayerMask.GetMask("Enemy"));
     }
 
-    protected virtual void PlayHitFX()
+    protected override Vector3 GetFXSpawnPosition()
     {
-        if (attackSettings.hitPrefab != null)
-        {
-            Vector3 spawnPosition = transform.position;
-            Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, attackSettings.RotationOffset, 0);
-
-            GameObject hitEffect = Instantiate(attackSettings.hitPrefab, spawnPosition, adjustedRotation);
-            hitEffect.transform.localScale = new Vector3(attackSettings.WideRange, hitEffect.transform.localScale.y, attackSettings.Range) * attackSettings.Scale;
-
-            //if (attackSettings.hitClip != null)
-            //{
-            //    OneShotAudio.PlayClip(attackSettings.hitClip, transform.position, VolumeManager.Instance.GetSFXVolume());
-            //}
-        }
+        return transform.position;
     }
 
     protected virtual void OnDrawGizmosSelected()
@@ -48,7 +17,6 @@ public class BoxMeleeCircle : AttackBehaviour
         if (attackSettings == null) return;
 
         Gizmos.color = Color.red;
-
         Gizmos.DrawWireSphere(transform.position, attackSettings.Range);
     }
 }
