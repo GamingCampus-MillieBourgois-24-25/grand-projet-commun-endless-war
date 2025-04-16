@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a3ab7fbd6e01a648b9af68691528b03, type: 3}
-  m_Name: CooldownBuff
+  m_Name: RangeBuff
   m_EditorClassIdentifier: 
-  buffType: 2
-  multiplier: 0.8
-  duration: 5
+  buffType: 3
+  multiplier: 2
+  duration: 8

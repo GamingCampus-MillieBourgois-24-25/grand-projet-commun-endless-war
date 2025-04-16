@@ -4,7 +4,7 @@ public static class ProjectileUtils
 {
     public static GameObject FindNearestEnemy(Vector3 position, float range, LayerMask enemyLayer)
     {
-        Collider[] enemiesInRange = Physics.OverlapSphere(position, range, enemyLayer);
+        Collider[] enemiesInRange = Physics.OverlapSphere(position, range * PlayerStatsMultiplier.rangeMultiplier, enemyLayer);
 
         if (enemiesInRange.Length == 0)
             return null;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseDamage: 0
   BaseSpeed: 0
-  BaseCooldown: 10
+  BaseCooldown: 15
   BaseRange: 0
   Scale: 0
   BaseAimRange: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   statusEffects: []
   buffEffects:
   - {fileID: 11400000, guid: 223bf8d784e834f4f856702d3da18725, type: 2}
-  skillType: 2
+  skillType: 0000000002000000
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 0
   prefab: {fileID: 0}
@@ -46,14 +46,14 @@ MonoBehaviour:
     Path: 
   DamageUpgrade: 1
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
+  CooldownUpgrade: 0.9
   RangeUpgrade: 1
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 0.1
+  MinCooldown: 1
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
@@ -61,5 +61,5 @@ MonoBehaviour:
   Speed: 0
   Cooldown: 10
   Range: 0
-  AimRange: 0
+  AimRange: 5
   MaxRotation: 0

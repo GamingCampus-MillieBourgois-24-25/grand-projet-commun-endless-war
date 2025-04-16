@@ -17,13 +17,15 @@ MonoBehaviour:
   BaseCooldown: 6.3
   BaseRange: 10
   Scale: 0.2
-  BaseAimRange: 0
+  BaseAimRange: 5
   BaseMaxRotation: 0
   RotationOffset: -30
   WideRange: 5
   attackEffects:
   - {fileID: 11400000, guid: e08d7e569c26daf44b306dddaf5545f3, type: 2}
   statusEffects: []
+  buffEffects: []
+  skillType: 00000000
   NumberOfAttacks: 10
   CooldownBetweenAttacks: 5
   prefab: {fileID: 1171201465392465800, guid: 423fb3f079a6b3845aeb3ea44c8a5a9f, type: 3}
@@ -42,22 +44,22 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  DamageUpgrade: 2
+  DamageUpgrade: 1.5
   SpeedUpgrade: 1
   CooldownUpgrade: 1
-  RangeUpgrade: 1.5
+  RangeUpgrade: 1.1
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 1000
-  MinCooldown: 1.2
+  MinCooldown: 6.3
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 200
+  Damage: 100
   Speed: 0
   Cooldown: 6.3
-  Range: 15
-  AimRange: 0
+  Range: 10
+  AimRange: 5
   MaxRotation: 0

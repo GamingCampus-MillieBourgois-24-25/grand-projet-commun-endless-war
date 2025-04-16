@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: Marteau etourdissements
   m_EditorClassIdentifier: 
-  BaseDamage: 8
+  BaseDamage: 13
   BaseSpeed: 12
-  BaseCooldown: 3.7
-  BaseRange: 10
+  BaseCooldown: 7.1
+  BaseRange: 5
   Scale: 1
   BaseAimRange: 5
   BaseMaxRotation: 0
@@ -24,6 +24,8 @@ MonoBehaviour:
   attackEffects: []
   statusEffects:
   - {fileID: 11400000, guid: c2cae0e78db8cb442881075c3f3dd662, type: 2}
+  buffEffects: []
+  skillType: 0000000004000000
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 0
   prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
@@ -42,22 +44,22 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  DamageUpgrade: 1
+  DamageUpgrade: 1.3
   SpeedUpgrade: 1
   CooldownUpgrade: 1
-  RangeUpgrade: 1
+  RangeUpgrade: 1.2
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 0.1
+  MinCooldown: 7.1
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
   Damage: 8
-  Speed: 8
-  Cooldown: 0.5
+  Speed: 6
+  Cooldown: 3.7
   Range: 10
   AimRange: 5
-  MaxRotation: 360
+  MaxRotation: 0

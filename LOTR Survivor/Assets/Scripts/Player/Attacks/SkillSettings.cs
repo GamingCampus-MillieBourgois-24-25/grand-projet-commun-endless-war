@@ -22,5 +22,6 @@ public enum SkillType
     Attack,
     Starting,
     Buff,
-    Heal
+    Heal,
+    Projectile
 }
