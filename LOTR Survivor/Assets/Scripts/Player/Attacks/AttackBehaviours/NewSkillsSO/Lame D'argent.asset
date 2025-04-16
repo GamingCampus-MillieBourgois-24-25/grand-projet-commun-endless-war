@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
+  m_Name: Lame D'argent
+  m_EditorClassIdentifier: 
+  skillName: Lame d'argent
+  skillSprite: {fileID: 21300000, guid: 813236fd49715274fb92849c8442ca3e, type: 3}
+  skillType: 1
+  skillDescription: Slash
+  skillBehaviour: {fileID: 6098613423092608936, guid: fe14fda35b0d56f41b6760a63c3e89cb,
+    type: 3}
+  attackSettings: {fileID: 11400000, guid: 070ae59f51b9692438cbe26db29da5a3, type: 2}
