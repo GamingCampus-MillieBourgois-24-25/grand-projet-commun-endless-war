@@ -41,8 +41,16 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected virtual bool CanAttack()
     {
-        return attackTimer >= attackSettings.Cooldown;
+        if (attackSettings.skillType != SkillType.Buff)
+        {
+            return attackTimer >= attackSettings.Cooldown * PlayerStatsMultiplier.cooldownMultiplier;
+        }
+        else
+        {
+            return attackTimer >= attackSettings.Cooldown;
+        }
     }
+
 
     protected GameObject SpawnOrInstantiate(GameObject prefab, Vector3 position, Quaternion rotation)
     {
@@ -86,6 +94,14 @@ public abstract class AttackBehaviour : MonoBehaviour
         foreach (var effect in attackSettings.statusEffects)
         {
             StatusEffectUtils.Apply(effect, target, player);
+        }
+    }
+
+    protected void ApplyBuffs()
+    {
+        foreach (var effect in attackSettings.buffEffects)
+        {
+            PlayerStatsMultiplier.ApplyBuff(effect);
         }
     }
 }

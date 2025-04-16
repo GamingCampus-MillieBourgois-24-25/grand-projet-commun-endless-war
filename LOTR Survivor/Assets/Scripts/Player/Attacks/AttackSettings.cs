@@ -36,6 +36,10 @@ public class AttackSettings : ScriptableObject
 
     public StatusEffect[] attackEffects;
     public StatusEffect[] statusEffects;
+    public BuffEffect[] buffEffects;
+
+    [Header("Skill Type")]
+    public SkillType skillType;
 
     [Tooltip("Number of Projectiles")]
     public int NumberOfAttacks = 10;

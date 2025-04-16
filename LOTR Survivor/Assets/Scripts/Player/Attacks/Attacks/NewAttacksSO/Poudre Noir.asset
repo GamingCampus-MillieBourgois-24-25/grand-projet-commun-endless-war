@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
-  m_Name: HealthBoost
+  m_Name: Poudre Noir
   m_EditorClassIdentifier: 
   BaseDamage: 0
   BaseSpeed: 0
-  BaseCooldown: 0
+  BaseCooldown: 10
   BaseRange: 0
   Scale: 0
   BaseAimRange: 0
   BaseMaxRotation: 0
   RotationOffset: 0
-  WideRange: 10
+  WideRange: 0
   attackEffects: []
   statusEffects: []
-  buffEffects: []
-  skillType: 3
-  NumberOfAttacks: 0
+  buffEffects:
+  - {fileID: 11400000, guid: 2b1ec314ed2885144bf22620f101a545, type: 2}
+  skillType: 2
+  NumberOfAttacks: 1
   CooldownBetweenAttacks: 0
-  prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
+  prefab: {fileID: 0}
   hitPrefab: {fileID: 0}
   spawnEvent:
     Guid:
@@ -49,16 +50,16 @@ MonoBehaviour:
   RangeUpgrade: 1
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
-  HealthBoost: 1.2
+  HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 100
   MinCooldown: 0.1
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 5
-  Speed: 10
-  Cooldown: 0.3
-  Range: 10
-  AimRange: 5
-  MaxRotation: 360
+  Damage: 0
+  Speed: 0
+  Cooldown: 10
+  Range: 0
+  AimRange: 0
+  MaxRotation: 0

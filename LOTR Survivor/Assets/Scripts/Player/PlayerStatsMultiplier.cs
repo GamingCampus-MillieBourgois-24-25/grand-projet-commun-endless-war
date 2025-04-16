@@ -1,46 +1,82 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStatsMultiplier : MonoBehaviour
 {
-    public static float damageMultiplier = 1f;
-    public static float speedMultiplier = 1f;
-    public static float cooldownMultiplier = 1f;
+    public static float damageMultiplier => CalculateTotal(damageBuffs);
+    public static float speedMultiplier => CalculateTotal(speedBuffs);
+    public static float cooldownMultiplier => CalculateTotal(cooldownBuffs);
 
-    private static Coroutine damageCoroutine;
-    private static Coroutine speedCoroutine;
-    private static Coroutine cooldownCoroutine;
+    private static PlayerStatsMultiplier instance;
 
-    private static MonoBehaviour runner;
+    private static List<float> damageBuffs = new List<float>();
+    private static List<float> speedBuffs = new List<float>();
+    private static List<float> cooldownBuffs = new List<float>();
 
     private void Awake()
     {
-        if (runner == null)
-            runner = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public static void BuffDamage(float multiplier, float duration)
+    public static void ApplyBuff(BuffEffect buffEffect)
     {
-        if (damageCoroutine != null) runner.StopCoroutine(damageCoroutine);
-        damageCoroutine = runner.StartCoroutine(ApplyBuff(() => damageMultiplier = multiplier, () => damageMultiplier = 1f, duration));
+        if (instance == null)
+        {
+            Debug.LogWarning("PlayerStatsMultiplier instance is not available!");
+            return;
+        }
+
+        switch (buffEffect.buffType)
+        {
+            case BuffType.Damage:
+                instance.BuffDamage(buffEffect.multiplier, buffEffect.duration);
+                break;
+            case BuffType.Speed:
+                instance.BuffSpeed(buffEffect.multiplier, buffEffect.duration);
+                break;
+            case BuffType.Cooldown:
+                instance.BuffCooldown(buffEffect.multiplier, buffEffect.duration);
+                break;
+        }
     }
 
-    public static void BuffSpeed(float multiplier, float duration)
+    public void BuffDamage(float multiplier, float duration)
     {
-        if (speedCoroutine != null) runner.StopCoroutine(speedCoroutine);
-        speedCoroutine = runner.StartCoroutine(ApplyBuff(() => speedMultiplier = multiplier, () => speedMultiplier = 1f, duration));
+        StartCoroutine(ApplyBuff(damageBuffs, multiplier, duration));
     }
 
-    public static void BuffCooldown(float multiplier, float duration)
+    public void BuffSpeed(float multiplier, float duration)
     {
-        if (cooldownCoroutine != null) runner.StopCoroutine(cooldownCoroutine);
-        cooldownCoroutine = runner.StartCoroutine(ApplyBuff(() => cooldownMultiplier = multiplier, () => cooldownMultiplier = 1f, duration));
+        StartCoroutine(ApplyBuff(speedBuffs, multiplier, duration));
     }
 
-    private static IEnumerator ApplyBuff(System.Action apply, System.Action reset, float duration)
+    public void BuffCooldown(float multiplier, float duration)
     {
-        apply?.Invoke();
+        StartCoroutine(ApplyBuff(cooldownBuffs, multiplier, duration));
+    }
+
+    private static IEnumerator ApplyBuff(List<float> buffList, float multiplier, float duration)
+    {
+        buffList.Add(multiplier);
         yield return new WaitForSeconds(duration);
-        reset?.Invoke();
+        buffList.Remove(multiplier);
+    }
+
+    private static float CalculateTotal(List<float> buffs)
+    {
+        float total = 1f;
+        foreach (var buff in buffs)
+        {
+            total *= buff;
+        }
+        return total;
     }
 }
