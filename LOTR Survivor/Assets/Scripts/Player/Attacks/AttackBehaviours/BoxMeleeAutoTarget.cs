@@ -9,7 +9,9 @@ public class BoxMeleeAutoTarget : BoxMelee
         if (attackTimer < attackSettings.Cooldown)
             return false;
 
-        return GetHitColliders().Length > 0;
+        float adjustedRange = attackSettings.Range * PlayerStatsMultiplier.rangeMultiplier;
+        return GetHitColliders(adjustedRange).Length > 0;
     }
+
 }
 

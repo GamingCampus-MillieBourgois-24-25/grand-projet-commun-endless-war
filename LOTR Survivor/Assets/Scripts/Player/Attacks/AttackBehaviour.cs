@@ -50,7 +50,6 @@ public abstract class AttackBehaviour : MonoBehaviour
         return attackTimer >= actualCooldown;
     }
 
-
     protected GameObject SpawnOrInstantiate(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         if (ObjectPool.Instance != null)

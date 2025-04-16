@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BoxMeleeCircle : AreaAttackBehaviour
 {
-    protected override Collider[] GetHitColliders()
+    protected override Collider[] GetHitColliders(float adjustedRange)
     {
-        return Physics.OverlapSphere(transform.position, attackSettings.Range, LayerMask.GetMask("Enemy"));
+        return Physics.OverlapSphere(transform.position, adjustedRange, LayerMask.GetMask("Enemy"));
     }
 
     protected override Vector3 GetFXSpawnPosition()
@@ -12,7 +12,7 @@ public class BoxMeleeCircle : AreaAttackBehaviour
         return transform.position;
     }
 
-    protected override void PlayHitFX()
+    protected override void PlayHitFX(float adjustedRange)
     {
         if (attackSettings.prefab != null)
         {
@@ -22,15 +22,18 @@ public class BoxMeleeCircle : AreaAttackBehaviour
 
             GameObject hitEffect = Instantiate(attackSettings.prefab, spawnPosition, adjustedRotation);
 
-            hitEffect.transform.localScale = Vector3.one * attackSettings.Range * attackSettings.Scale;
+            hitEffect.transform.localScale = Vector3.one * adjustedRange * attackSettings.Scale;
         }
     }
+
 
     protected virtual void OnDrawGizmosSelected()
     {
         if (attackSettings == null) return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackSettings.Range);
+        float adjustedRange = attackSettings.Range * PlayerStatsMultiplier.rangeMultiplier;
+        Gizmos.DrawWireSphere(transform.position, adjustedRange);
     }
+
 }

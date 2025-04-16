@@ -19,7 +19,6 @@ public class HomingProjectile : Attack
         enemyLayer = LayerMask.GetMask(enemyLayerName);
     }
 
-
     void Update()
     {
         if (target == null || !target.activeSelf)
@@ -57,7 +56,8 @@ public class HomingProjectile : Attack
 
         if (target.TryGetComponent<EnemyHealthBehaviour>(out EnemyHealthBehaviour health))
         {
-            health.TakeDamage(attackSettings.Damage);
+            int finalDamage = Mathf.RoundToInt(attackSettings.Damage * PlayerStatsMultiplier.damageMultiplier);
+            health.TakeDamage(finalDamage);
             ApplyStatusEffects(target.gameObject);
         }
 
