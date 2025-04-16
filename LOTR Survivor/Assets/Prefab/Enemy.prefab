@@ -131,7 +131,7 @@ MonoBehaviour:
     type: 3}
   xpMagnetPrefab: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
     type: 3}
-  xpMagnetDropChance: 0.1
+  xpMagnetDropChance: 0.01
 --- !u!114 &8945391096205476242
 MonoBehaviour:
   m_ObjectHideFlags: 0
