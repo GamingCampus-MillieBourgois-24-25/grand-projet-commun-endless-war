@@ -24,7 +24,7 @@ MonoBehaviour:
   attackEffects: []
   statusEffects: []
   buffEffects: []
-  skillType: 3
+  skillType: 03000000
   NumberOfAttacks: 0
   CooldownBetweenAttacks: 0
   prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}

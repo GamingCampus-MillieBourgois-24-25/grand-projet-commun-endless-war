@@ -39,7 +39,7 @@ public class AttackSettings : ScriptableObject
     public BuffEffect[] buffEffects;
 
     [Header("Skill Type")]
-    public SkillType skillType;
+    public SkillType[] skillType;
 
     [Tooltip("Number of Projectiles")]
     public int NumberOfAttacks = 10;

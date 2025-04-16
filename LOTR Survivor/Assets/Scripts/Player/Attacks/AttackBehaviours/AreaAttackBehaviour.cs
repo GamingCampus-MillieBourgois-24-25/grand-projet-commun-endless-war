@@ -33,7 +33,7 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
             Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, attackSettings.RotationOffset, 0);
 
             GameObject hitEffect = Instantiate(attackSettings.prefab, spawnPosition, adjustedRotation);
-            hitEffect.transform.localScale = new Vector3(attackSettings.WideRange, hitEffect.transform.localScale.y, attackSettings.Range) * attackSettings.Scale;
+            hitEffect.transform.localScale = new Vector3(attackSettings.WideRange * PlayerStatsMultiplier.rangeMultiplier, hitEffect.transform.localScale.y, attackSettings.Range * PlayerStatsMultiplier.rangeMultiplier) * attackSettings.Scale;
         }
     }
 

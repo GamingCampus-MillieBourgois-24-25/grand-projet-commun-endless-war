@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: Lame D'argent
   m_EditorClassIdentifier: 
-  BaseDamage: 30
+  BaseDamage: 15
   BaseSpeed: 0
   BaseCooldown: 1.9
   BaseRange: 6
   Scale: 0.2
-  BaseAimRange: 0
+  BaseAimRange: 5
   BaseMaxRotation: 0
   RotationOffset: -30
   WideRange: 3
   attackEffects: []
   statusEffects: []
+  buffEffects: []
+  skillType: 00000000
   NumberOfAttacks: 10
   CooldownBetweenAttacks: 5
   prefab: {fileID: 1171201465392465800, guid: 4aa9f30a28a77224ba84b2a2c334c71b, type: 3}
@@ -41,10 +43,10 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  DamageUpgrade: 2
+  DamageUpgrade: 1.5
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
-  RangeUpgrade: 1.5
+  CooldownUpgrade: 0.95
+  RangeUpgrade: 1.1
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   HealthBoost: 1
@@ -58,5 +60,5 @@ MonoBehaviour:
   Speed: 0
   Cooldown: 1.9
   Range: 6
-  AimRange: 0
+  AimRange: 5
   MaxRotation: 0

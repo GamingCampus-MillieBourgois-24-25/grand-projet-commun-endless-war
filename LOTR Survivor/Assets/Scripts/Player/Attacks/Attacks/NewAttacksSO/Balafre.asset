@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: Balafre
   m_EditorClassIdentifier: 
-  BaseDamage: 30
+  BaseDamage: 15
   BaseSpeed: 0
   BaseCooldown: 1.9
   BaseRange: 6
@@ -23,6 +23,8 @@ MonoBehaviour:
   WideRange: 3
   attackEffects: []
   statusEffects: []
+  buffEffects: []
+  skillType: 0100000000000000
   NumberOfAttacks: 10
   CooldownBetweenAttacks: 5
   prefab: {fileID: 1171201465392465800, guid: 4aa9f30a28a77224ba84b2a2c334c71b, type: 3}
@@ -41,10 +43,10 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  DamageUpgrade: 2
+  DamageUpgrade: 1.6
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
-  RangeUpgrade: 1.5
+  CooldownUpgrade: 0.95
+  RangeUpgrade: 1.2
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   HealthBoost: 1
@@ -54,9 +56,9 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 30
+  Damage: 240
   Speed: 0
   Cooldown: 1.9
-  Range: 6
-  AimRange: 0
+  Range: 20.25
+  AimRange: 5
   MaxRotation: 0

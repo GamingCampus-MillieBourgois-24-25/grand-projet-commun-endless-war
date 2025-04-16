@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
   m_Name: "Triple Fl\xE8che d\u2019esprit"
   m_EditorClassIdentifier: 
-  BaseDamage: 8
-  BaseSpeed: 10
-  BaseCooldown: 2.5
-  BaseRange: 8
-  Scale: 0.8
+  BaseDamage: 15
+  BaseSpeed: 7
+  BaseCooldown: 12.1
+  BaseRange: 9
+  Scale: 1
   BaseAimRange: 5
-  BaseMaxRotation: 360
+  BaseMaxRotation: 0
   RotationOffset: 0
-  WideRange: 10
+  WideRange: 0
   attackEffects: []
   statusEffects: []
+  buffEffects: []
+  skillType: 0000000004000000
   NumberOfAttacks: 3
   CooldownBetweenAttacks: 0.3
   prefab: {fileID: 754821637487049960, guid: ae1dba2333acaab40930148045471a2c, type: 3}
@@ -41,7 +43,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  DamageUpgrade: 1.2
+  DamageUpgrade: 1
   SpeedUpgrade: 1
   CooldownUpgrade: 1
   RangeUpgrade: 1
@@ -54,9 +56,9 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 10
-  Speed: 8
-  Cooldown: 1.8000001
-  Range: 10
+  Damage: 8
+  Speed: 10
+  Cooldown: 2.5
+  Range: 8
   AimRange: 5
   MaxRotation: 360

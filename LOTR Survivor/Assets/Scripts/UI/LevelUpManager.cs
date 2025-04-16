@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -156,15 +157,18 @@ public class LevelUpManager : MonoBehaviour
 
     private void ApplySkill(SkillSettings skill)
     {
-        if (skill.attackSettings.skillType == SkillType.Attack || skill.attackSettings.skillType == SkillType.Starting || skill.attackSettings.skillType == SkillType.Buff)
+        if (skill.attackSettings.skillType != null &&
+    (Array.Exists(skill.attackSettings.skillType, t => t == SkillType.Attack || t == SkillType.Buff)))
         {
             skillManager.AddSkill(skill);
         }
-        else if (skill.attackSettings.skillType == SkillType.Heal)
+        else if (skill.attackSettings.skillType != null &&
+                 Array.Exists(skill.attackSettings.skillType, t => t == SkillType.Heal))
         {
             PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
             player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * skill.attackSettings.HealthBoost);
         }
+
     }
 
     private void ShowDetails(SkillSettings newSkillSettings)

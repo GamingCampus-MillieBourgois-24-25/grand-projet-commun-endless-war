@@ -6,7 +6,9 @@ public enum BuffType
 {
     Damage,
     Speed,
-    Cooldown
+    Cooldown,
+    Range,
+    ProjectileSpeed
 }
 
 [CreateAssetMenu(menuName = "Buff/Apply Buff Effect", fileName = "New Buff Effect")]

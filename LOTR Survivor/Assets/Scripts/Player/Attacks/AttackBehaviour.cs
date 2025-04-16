@@ -41,14 +41,13 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected virtual bool CanAttack()
     {
-        if (attackSettings.skillType != SkillType.Buff)
-        {
-            return attackTimer >= attackSettings.Cooldown * PlayerStatsMultiplier.cooldownMultiplier;
-        }
-        else
-        {
-            return attackTimer >= attackSettings.Cooldown;
-        }
+        float actualCooldown = attackSettings.Cooldown;
+
+        actualCooldown *= PlayerStatsMultiplier.cooldownMultiplier;
+
+        actualCooldown = Mathf.Max(actualCooldown, attackSettings.MinCooldown);
+
+        return attackTimer >= actualCooldown;
     }
 
 

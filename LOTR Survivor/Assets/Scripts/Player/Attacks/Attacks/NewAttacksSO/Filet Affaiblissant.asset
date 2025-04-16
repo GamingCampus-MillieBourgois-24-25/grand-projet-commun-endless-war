@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Filet Affaiblissant
   m_EditorClassIdentifier: 
   BaseDamage: 5
-  BaseSpeed: 12
+  BaseSpeed: 6
   BaseCooldown: 2.3
   BaseRange: 10
   Scale: 1
@@ -24,6 +24,8 @@ MonoBehaviour:
   attackEffects: []
   statusEffects:
   - {fileID: 11400000, guid: ebbce9cfc195a974193c3839e480835b, type: 2}
+  buffEffects: []
+  skillType: 0000000004000000
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 0
   prefab: {fileID: 754821637487049960, guid: ae1dba2333acaab40930148045471a2c, type: 3}
@@ -42,8 +44,8 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  DamageUpgrade: 1
-  SpeedUpgrade: 1
+  DamageUpgrade: 1.1
+  SpeedUpgrade: 1.4
   CooldownUpgrade: 1
   RangeUpgrade: 1
   AimRangeUpgrade: 1
@@ -51,13 +53,13 @@ MonoBehaviour:
   HealthBoost: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 0.1
+  MinCooldown: 2
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
   Damage: 5
-  Speed: 12
-  Cooldown: 1.2
+  Speed: 6
+  Cooldown: 2.3
   Range: 10
   AimRange: 5
   MaxRotation: 0
