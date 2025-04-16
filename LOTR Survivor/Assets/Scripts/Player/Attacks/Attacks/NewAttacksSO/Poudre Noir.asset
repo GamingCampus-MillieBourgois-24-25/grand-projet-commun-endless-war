@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
+  m_Name: Poudre Noir
+  m_EditorClassIdentifier: 
+  BaseDamage: 0
+  BaseSpeed: 0
+  BaseCooldown: 20
+  BaseRange: 0
+  Scale: 0
+  BaseAimRange: 0
+  BaseMaxRotation: 0
+  RotationOffset: 0
+  WideRange: 0
+  attackEffects: []
+  statusEffects: []
+  buffEffects:
+  - {fileID: 11400000, guid: 2b1ec314ed2885144bf22620f101a545, type: 2}
+  - {fileID: 11400000, guid: a57d66ae0ea1d4847bcbb18e4e70c85a, type: 2}
+  skillType: 0000000002000000
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 0
+  prefab: {fileID: 0}
+  hitPrefab: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 0.9
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  HealthBoost: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 1
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  Damage: 0
+  Speed: 0
+  Cooldown: 10
+  Range: 0
+  AimRange: 5
+  MaxRotation: 0

@@ -10,6 +10,7 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected float attackTimer;
     protected int skillLevel = 1;
+    protected GameObject player;
 
     private void Start()
     {
@@ -26,16 +27,29 @@ public abstract class AttackBehaviour : MonoBehaviour
             attackTimer = 0f;
         }
     }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+    }
+
     public void SetAttackSettings(AttackSettings newAttackSettings)
     {
         attackSettings = newAttackSettings;
         attackSettings.Reset();
     }
 
-    protected bool CanAttack()
+    protected virtual bool CanAttack()
     {
-        return attackTimer >= attackSettings.Cooldown;
+        float actualCooldown = attackSettings.Cooldown;
+
+        actualCooldown *= PlayerStatsMultiplier.cooldownMultiplier;
+
+        actualCooldown = Mathf.Max(actualCooldown, attackSettings.MinCooldown);
+
+        return attackTimer >= actualCooldown;
     }
+
 
     protected GameObject SpawnOrInstantiate(GameObject prefab, Vector3 position, Quaternion rotation)
     {
@@ -63,6 +77,30 @@ public abstract class AttackBehaviour : MonoBehaviour
             skillLevel++;
             attackSettings = attackSettings.Upgrade(skillLevel);
             Debug.Log("New level : " + skillLevel);
+        }
+    }
+
+    protected void ApplyAttackEffects()
+    {
+        foreach (var effect in attackSettings.attackEffects)
+        {
+            StatusEffectUtils.Apply(effect, null, player);
+        }
+    }
+
+    protected void ApplyStatusEffects(GameObject target)
+    {
+        foreach (var effect in attackSettings.statusEffects)
+        {
+            StatusEffectUtils.Apply(effect, target, player);
+        }
+    }
+
+    protected void ApplyBuffs()
+    {
+        foreach (var effect in attackSettings.buffEffects)
+        {
+            PlayerStatsMultiplier.ApplyBuff(effect);
         }
     }
 }

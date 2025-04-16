@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Axe : Attack
 {
-    private Transform player;
+    private Transform playerTransform;
     private float rotationAngle = 0f;
     private float initialDistance;
 
     public void Initialize(Transform newPlayer)
     {
-        player = newPlayer;
-        initialDistance = Vector3.Distance(transform.position, player.position);
+        playerTransform = newPlayer;
+        initialDistance = Vector3.Distance(transform.position, playerTransform.position);
         rotationAngle = 0;
     }
 
@@ -32,10 +32,10 @@ public class Axe : Attack
         float angleThisFrame = attackSettings.Speed * Time.deltaTime;
         rotationAngle += angleThisFrame;
 
-        transform.RotateAround(player.position, Vector3.up, attackSettings.Speed * Time.deltaTime);
+        transform.RotateAround(playerTransform.position, Vector3.up, attackSettings.Speed * Time.deltaTime);
 
-        Vector3 directionFromPlayer = (transform.position - player.position).normalized;
-        transform.position = player.position + directionFromPlayer * initialDistance;
+        Vector3 directionFromPlayer = (transform.position - playerTransform.position).normalized;
+        transform.position = playerTransform.position + directionFromPlayer * initialDistance;
 
         if (rotationAngle >= attackSettings.MaxRotation)
         {

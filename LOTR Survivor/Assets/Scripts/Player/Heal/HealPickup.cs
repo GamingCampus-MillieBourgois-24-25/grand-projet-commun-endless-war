@@ -26,8 +26,8 @@ public class HealPickup : MonoBehaviour
             {
                 playerHealth.Heal(healAmount);
 
-                if (!pickupEvent.IsNull)
-                    OneShotAudio.Play(pickupEvent, transform.position);
+                //if (!pickupEvent.IsNull)
+                //    OneShotAudio.Play(pickupEvent, transform.position);
 
                 if (animator != null)
                     animator.SetTrigger("Picked");
@@ -39,6 +39,7 @@ public class HealPickup : MonoBehaviour
 
     private void Delete()
     {
+        Debug.Log("debug");
         if (ObjectPool.Instance != null)
             ObjectPool.Instance.Despawn(gameObject, prefab);
         else

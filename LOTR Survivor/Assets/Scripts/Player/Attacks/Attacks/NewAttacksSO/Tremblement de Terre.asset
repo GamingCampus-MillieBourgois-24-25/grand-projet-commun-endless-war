@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a52098182cc144588998b839ae43f5, type: 3}
+  m_Name: Tremblement de Terre
+  m_EditorClassIdentifier: 
+  BaseDamage: 12
+  BaseSpeed: 0
+  BaseCooldown: 6.4
+  BaseRange: 9
+  Scale: 0.8
+  BaseAimRange: 0
+  BaseMaxRotation: 0
+  RotationOffset: 0
+  WideRange: 0
+  attackEffects: []
+  statusEffects: []
+  buffEffects: []
+  skillType: 00000000
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 0
+  prefab: {fileID: 6820269809885141747, guid: aa2d214df156f984c9cb16027bb7d0f7, type: 3}
+  hitPrefab: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageUpgrade: 1.5
+  SpeedUpgrade: 1.1
+  CooldownUpgrade: 0.95
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  HealthBoost: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 6.4
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  Damage: 10
+  Speed: 0
+  Cooldown: 6.4
+  Range: 6
+  AimRange: 5
+  MaxRotation: 0

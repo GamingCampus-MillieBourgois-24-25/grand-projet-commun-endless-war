@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewEnemy", menuName = "Enemies/New Enemy")]
@@ -35,4 +36,8 @@ public class EnemySO : ScriptableObject
     [Tooltip("Description de l'ennemi pour référence dans l'inspecteur.")]
     [TextArea]
     public string description;
+
+    [Header("Status Immunities")]
+    [Tooltip("Liste des types de statut auxquels cet ennemi est immunisé.")]
+    public List<EffectType> statusImmunities = new List<EffectType>();
 }

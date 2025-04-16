@@ -71,10 +71,10 @@ public class SceneTooltip : MonoBehaviour
 
     private void HandleLevelTip(int level)
     {
-        ShowTip(5);
+        StartCoroutine(ShowTipWithDelay(5, 1f));
     }
 
-    private IEnumerator ShowTipWithDelay(int id, float delay)
+    private IEnumerator ShowTipWithDelay(int id, float delay = 1f)
     {
         yield return new WaitForSecondsRealtime(delay);
         ShowTip(id);

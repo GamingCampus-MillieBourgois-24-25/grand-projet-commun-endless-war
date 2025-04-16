@@ -142,7 +142,6 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-
     private void HandlePlayerDeath()
     {
         StopMoving();

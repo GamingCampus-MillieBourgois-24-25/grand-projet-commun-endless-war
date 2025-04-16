@@ -10,9 +10,15 @@ public class HomingProjectile : Attack
 
     public void Initialize(GameObject target)
     {
+        if (target == null || !target.activeSelf)
+        {
+            Debug.LogError("Target is invalid during initialization.");
+            return;
+        }
         this.target = target;
         enemyLayer = LayerMask.GetMask(enemyLayerName);
     }
+
 
     void Update()
     {
@@ -32,9 +38,9 @@ public class HomingProjectile : Attack
     protected override void UpdateAttack()
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
-        transform.Translate(direction * attackSettings.Speed * Time.deltaTime, Space.World);
+        transform.Translate(direction * attackSettings.Speed * PlayerStatsMultiplier.projectileSpeedMultiplier * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.transform.position) < 0.2f)
+        if (Vector3.Distance(transform.position, target.transform.position) < 0.05f)
         {
             HitTarget();
         }
@@ -42,9 +48,17 @@ public class HomingProjectile : Attack
 
     private void HitTarget()
     {
+        if (target == null || !target.activeSelf)
+        {
+            Debug.LogWarning("Target is no longer valid.");
+            DestroyAttack();
+            return;
+        }
+
         if (target.TryGetComponent<EnemyHealthBehaviour>(out EnemyHealthBehaviour health))
         {
             health.TakeDamage(attackSettings.Damage);
+            ApplyStatusEffects(target.gameObject);
         }
 
         DestroyAttack();

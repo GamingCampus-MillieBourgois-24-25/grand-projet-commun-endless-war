@@ -19,10 +19,30 @@ MonoBehaviour:
   Scale: 0
   BaseAimRange: 0
   BaseMaxRotation: 0
+  RotationOffset: 0
+  WideRange: 10
+  attackEffects: []
+  statusEffects: []
+  buffEffects: []
+  skillType: 03000000
+  NumberOfAttacks: 0
+  CooldownBetweenAttacks: 0
   prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
   hitPrefab: {fileID: 0}
-  spawnClip: {fileID: 8300000, guid: e89f5e84019e7b04db6463ccf3be054e, type: 3}
-  hitClip: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   DamageUpgrade: 1
   SpeedUpgrade: 1
   CooldownUpgrade: 1

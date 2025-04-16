@@ -23,8 +23,8 @@ public class XPPickupMagnetPickup : MonoBehaviour
 
             XPMagnetEvents.Trigger(transform.position, magnetRadius);
 
-            if (!magnetSoundEvent.IsNull)
-                OneShotAudio.Play(magnetSoundEvent, transform.position);
+            //if (!magnetSoundEvent.IsNull)
+            //    OneShotAudio.Play(magnetSoundEvent, transform.position);
 
             if (animator != null)
                 animator.SetTrigger("Picked");

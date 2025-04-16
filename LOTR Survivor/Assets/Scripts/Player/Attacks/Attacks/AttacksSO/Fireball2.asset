@@ -19,6 +19,8 @@ MonoBehaviour:
   Scale: 1
   BaseAimRange: 5
   BaseMaxRotation: 360
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 0
   prefab: {fileID: 754821637487049960, guid: f2999c7a918c15541943e10ad92c0d3e, type: 3}
   hitPrefab: {fileID: 0}
   spawnEvent:

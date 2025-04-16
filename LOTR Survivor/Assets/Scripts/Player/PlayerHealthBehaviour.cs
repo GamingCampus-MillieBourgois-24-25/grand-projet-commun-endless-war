@@ -97,7 +97,12 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     public void TakeDamage(int damage)
     {
-        if (isInvulnerable || isDead) return;
+        TakeDamage(damage, false);
+    }
+
+    public void TakeDamage(int damage, bool ignoreInvulnerability)
+    {
+        if ((isInvulnerable && !ignoreInvulnerability) || isDead) return;
 
         Health -= damage;
 
@@ -108,9 +113,11 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         else
         {
             HealthEvents.PlayerDamagedEvent(damage);
-            StartInvulnerability();
+            if (!ignoreInvulnerability)
+                StartInvulnerability();
         }
     }
+
 
     public void Die()
     {
