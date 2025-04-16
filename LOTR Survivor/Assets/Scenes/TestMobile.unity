@@ -57496,10 +57496,10 @@ MonoBehaviour:
   attackSkillSettings:
   - {fileID: 11400000, guid: a90d83e151d1a5d4cb78decfd5a83c27, type: 2}
   - {fileID: 11400000, guid: 630beb2a628937a489033c756d758cd4, type: 2}
-  - {fileID: 11400000, guid: ff7eab64286873b479ea6fda405a0a93, type: 2}
+  - {fileID: 11400000, guid: cd90ffc9dd6a4104c9895361037bdf79, type: 2}
   buffSkillSettings:
   - {fileID: 11400000, guid: 37d51d5d41240ad478d02afd87d289fb, type: 2}
-  startingSkill: {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08, type: 2}
+  startingSkill: {fileID: 11400000, guid: cd90ffc9dd6a4104c9895361037bdf79, type: 2}
 --- !u!4 &2081588556
 Transform:
   m_ObjectHideFlags: 0
