@@ -1466,7 +1466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &258261952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5897,7 +5897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1015441579
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56747,6 +56747,16 @@ PrefabInstance:
       propertyPath: playerRb
       value: 
       objectReference: {fileID: 1996020918}
+    - target: {fileID: 8481779018304349590, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: joystickSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481779018304349590, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: joystickSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8481779018304349590, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: movementJoystick

@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
     private Vector2 rotationInput;
 
     private bool isInputEnabled = true;
+    private bool isRotating = false;
 
     private void Awake()
     {
@@ -68,6 +69,7 @@ public class PlayerInput : MonoBehaviour
         }
         else if (pos.x >= Screen.width / 2f && rotationFinger == null)
         {
+            isRotating = true;
             rotationFinger = finger;
             rotationInput = Vector2.zero;
             ActivateJoystick(rotationJoystick, pos);
@@ -103,6 +105,7 @@ public class PlayerInput : MonoBehaviour
 
         if (finger == rotationFinger)
         {
+            isRotating = false;
             rotationFinger = null;
             rotationInput = Vector2.zero;
             ResetJoystick(rotationJoystick);
@@ -116,7 +119,7 @@ public class PlayerInput : MonoBehaviour
         Vector3 moveDir = new Vector3(movementInput.x, 0, movementInput.y);
         playerRb.MovePosition(transform.position + moveDir * moveSpeed * Time.fixedDeltaTime);
 
-        if (moveDir != Vector3.zero)
+        if (moveDir != Vector3.zero && !isRotating)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDir);
             playerRb.MoveRotation(Quaternion.Slerp(playerRb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
@@ -169,6 +172,7 @@ public class PlayerInput : MonoBehaviour
 
     private void DisableInput()
     {
+        isRotating = false;
         isInputEnabled = false;
         ResetJoystick(movementJoystick);
         ResetJoystick(rotationJoystick);
