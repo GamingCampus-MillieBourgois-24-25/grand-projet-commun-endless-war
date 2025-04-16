@@ -13,7 +13,7 @@ public class SkillLibrary : MonoBehaviour
     private SkillSettings[] buffSkillSettings;
 
     [SerializeField]
-    private SkillSettings startingSkill;
+    private SkillSettings[] startingSkills;
 
     private void Awake()
     {
@@ -56,7 +56,16 @@ public class SkillLibrary : MonoBehaviour
 
     public SkillSettings GetStartingSkill()
     {
-        return startingSkill;
+        if (startingSkills != null && startingSkills.Length > 0)
+        {
+            int randomIndex = Random.Range(0, startingSkills.Length);
+            return startingSkills[randomIndex];
+        }
+        else
+        {
+            Debug.LogWarning("Skill settings array is empty or null.");
+            return null;
+        }
     }
 
     public void InitializeSkillSettings(SkillSettings[] newSkillSettings)

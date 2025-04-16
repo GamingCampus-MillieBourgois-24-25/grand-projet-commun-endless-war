@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Lame des anc\xEAtres sanguinaires"
   m_EditorClassIdentifier: 
   skillName: "Lame des anc\xEAtres sanguinaires"
-  skillSprite: {fileID: 21300000, guid: 1048a6bc1b806ba4dad7287f16d13069, type: 3}
+  skillSprite: {fileID: 21300000, guid: c8f4b6f6ce15fa946b1f88c0d7431ebc, type: 3}
   skillType: 0
   skillDescription: "Slash tr\xE8s puissant mais perd quelque PV\r\n"
   skillBehaviour: {fileID: 6098613423092608936, guid: faf36f5b31157814db1f48d83bad385e,
