@@ -156,11 +156,11 @@ public class LevelUpManager : MonoBehaviour
 
     private void ApplySkill(SkillSettings skill)
     {
-        if (skill.skillType == SkillType.Attack || skill.skillType == SkillType.Starting)
+        if (skill.attackSettings.skillType == SkillType.Attack || skill.attackSettings.skillType == SkillType.Starting || skill.attackSettings.skillType == SkillType.Buff)
         {
             skillManager.AddSkill(skill);
         }
-        else if (skill.skillType == SkillType.Buff)
+        else if (skill.attackSettings.skillType == SkillType.Heal)
         {
             PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
             player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * skill.attackSettings.HealthBoost);

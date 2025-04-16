@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: f3e38c1e96d1c384d8ca237154d977f6
+guid: 2831eb596e13427498ce6915756a4e51
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mage3
+    second: {fileID: 2100000, guid: dd13278082ae91541aba4f1e38fab447, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

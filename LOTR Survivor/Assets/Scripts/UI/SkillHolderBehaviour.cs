@@ -40,17 +40,18 @@ public class SkillHolderBehaviour : MonoBehaviour
         text.text = skillSettings.skillName;
         skillImage.sprite = skillSettings.skillSprite;
 
-        switch (skillSettings.skillType)
+        switch (skillSettings.attackSettings.skillType)
         {
             case SkillType.Starting:
                 skillHolderImage.color = startingSkillColor;
                 break;
 
-            case SkillType.Buff:
+            case SkillType.Heal:
                 skillHolderImage.color = buffColor;
                 break;
 
             case SkillType.Attack:
+            case SkillType.Buff:
             default:
                 skillHolderImage.color = skillColor;
                 break;
