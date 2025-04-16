@@ -6,6 +6,7 @@ public class SkillSettings : ScriptableObject
     [Header("Skill Details")]
     public string skillName;
     public Sprite skillSprite;
+    public SkillType skillType;
 
     [TextArea(3, 10)]
     public string skillDescription;
@@ -19,9 +20,7 @@ public class SkillSettings : ScriptableObject
 
 public enum SkillType
 {
-    Attack,
+    Normal,
     Starting,
     Buff,
-    Heal,
-    Projectile
 }

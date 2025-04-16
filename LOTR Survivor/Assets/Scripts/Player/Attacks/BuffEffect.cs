@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum BuffType
 {
+    Heal,
     Damage,
     Speed,
     Cooldown,

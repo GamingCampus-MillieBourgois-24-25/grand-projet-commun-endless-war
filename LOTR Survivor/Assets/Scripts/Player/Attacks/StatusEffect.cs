@@ -22,10 +22,4 @@ public class StatusEffect : ScriptableObject
 
     [Tooltip("Appliquer à soi-même plutôt qu'à la cible ?")]
     public bool affectSelf = false;
-
-    [Header("Stacking")]
-    public bool isStackable = false;
-
-    [Tooltip("Effet peut-il être réinitialisé si déjà actif ?")]
-    public bool refreshOnReapply = true;
 }

@@ -157,19 +157,46 @@ public class LevelUpManager : MonoBehaviour
 
     private void ApplySkill(SkillSettings skill)
     {
-        if (skill.attackSettings.skillType != null &&
-    (Array.Exists(skill.attackSettings.skillType, t => t == SkillType.Attack || t == SkillType.Buff)))
+        if (skill.skillType != SkillType.Buff)
         {
             skillManager.AddSkill(skill);
         }
-        else if (skill.attackSettings.skillType != null &&
-                 Array.Exists(skill.attackSettings.skillType, t => t == SkillType.Heal))
+        else
         {
-            PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
-            player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * skill.attackSettings.HealthBoost);
+            if (skill.attackSettings.buffEffects != null && skill.attackSettings.buffEffects.Length > 0)
+            {
+                if (skill.attackSettings.buffEffects[0].buffType == BuffType.Heal)
+                {
+                    ApplyHealingBuff(skill.attackSettings.buffEffects[0].multiplier);
+                }
+                else
+                {
+                    foreach (var buff in skill.attackSettings.buffEffects)
+                    {
+                        PlayerStatsMultiplier.AddBuff(buff.buffType, buff.multiplier);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No buff effects in skill");
+            }
         }
-
     }
+
+    private void ApplyHealingBuff(float healMultiplier)
+    {
+        PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
+        if (player != null)
+        {
+            player.MaxHealth = Mathf.RoundToInt(player.MaxHealth * healMultiplier);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerHealthBehaviour component not found.");
+        }
+    }
+
 
     private void ShowDetails(SkillSettings newSkillSettings)
     {
