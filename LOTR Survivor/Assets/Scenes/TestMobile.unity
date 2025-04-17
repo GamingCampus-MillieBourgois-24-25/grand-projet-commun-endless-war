@@ -537,6 +537,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 415720247}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &55113321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5229302206397172405, guid: 745b74b93fa332c488a03b1f0f161160,
+    type: 3}
+  m_PrefabInstance: {fileID: 135694432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &59868414
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1005,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1285702220434060809, guid: 745b74b93fa332c488a03b1f0f161160,
+        type: 3}
+      propertyPath: closeButton
+      value: 
+      objectReference: {fileID: 55113321}
     - target: {fileID: 1285702220434060809, guid: 745b74b93fa332c488a03b1f0f161160,
         type: 3}
       propertyPath: animationDuration

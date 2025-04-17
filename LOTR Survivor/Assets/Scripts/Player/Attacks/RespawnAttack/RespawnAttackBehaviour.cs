@@ -6,6 +6,11 @@ public class RespawnAttackBehaviour : MonoBehaviour
 {
     [SerializeField] SkillSettings attackSettings;
 
+    private void Start()
+    {
+        attackSettings.Reset();
+    }
+
     private void OnEnable()
     {
         HealthEvents.OnReviveComplete += Attack;

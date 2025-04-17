@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class TooltipManager : MonoBehaviour
     [SerializeField] private RectTransform tipTransform;
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text contentText;
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private Button closeButton;
 
     [Header("Animation Settings haha")]
     [SerializeField] private float animationDuration = 0.7f;
@@ -37,6 +38,7 @@ public class TooltipManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        closeButton.interactable = false;
     }
 
     private void Start()
@@ -78,6 +80,7 @@ public class TooltipManager : MonoBehaviour
     public void HideTip()
     {
         currentTween?.Kill();
+        closeButton.interactable = false;
 
         currentTween = tipTransform.DOScale(Vector3.zero, animationDuration * 0.75f)
             .SetEase(Ease.InBack)
@@ -103,7 +106,11 @@ public class TooltipManager : MonoBehaviour
 
         currentTween = tipTransform.DOScale(Vector3.one, animationDuration)
             .SetEase(Ease.OutBack)
-            .SetUpdate(true);
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                closeButton.interactable = true;
+            }); ;
     }
 
     private void OnTipHidden()
