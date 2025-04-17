@@ -18,4 +18,52 @@ MonoBehaviour:
   skillDescription: "Slash tr\xE8s puissant mais perd quelque PV\r\n"
   skillBehaviour: {fileID: 6098613423092608936, guid: faf36f5b31157814db1f48d83bad385e,
     type: 3}
-  attackSettings: {fileID: 11400000, guid: 37197b32aef303846ac5e3e5c071ee0f, type: 2}
+  BaseDamage: 50
+  BaseSpeed: 10
+  BaseCooldown: 17
+  BaseRange: 10
+  Scale: 0.3
+  BaseAimRange: 5
+  BaseMaxRotation: 360
+  RotationOffset: 0
+  WideRange: 5
+  attackEffects: []
+  statusEffects: []
+  buffEffects: []
+  attackTypes: 00000000
+  NumberOfAttacks: 10
+  CooldownBetweenAttacks: 5
+  prefab: {fileID: 1171201465392465800, guid: 1c6d5b2446aea2947973ea275fe0b276, type: 3}
+  hitPrefab: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 8.5
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  Damage: 50
+  Speed: 10
+  Cooldown: 17
+  Range: 10
+  AimRange: 5
+  MaxRotation: 360

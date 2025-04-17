@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAttackSkill", menuName = "Attack/Skill Settings")]
@@ -14,13 +15,92 @@ public class SkillSettings : ScriptableObject
     [Header("Logic Prefab")]
     public GameObject skillBehaviour;
 
-    [Header("Attack Settings")]
-    public AttackSettings attackSettings;
+    [Header("Base Stats")]
+    public int BaseDamage = 10;
+    public float BaseSpeed = 10f;
+    public float BaseCooldown = 1f;
+    public float BaseRange = 10f;
+    public float Scale = 1f;
+    public float BaseAimRange = 5f;
+    public float BaseMaxRotation = 360f;
+    public float RotationOffset = 0f;
+    public float WideRange = 10f;
+
+    public StatusEffect[] attackEffects;
+    public StatusEffect[] statusEffects;
+    public BuffEffect[] buffEffects;
+
+    [Header("Skill Type")]
+    public AttackType[] attackTypes;
+
+    [Tooltip("Number of Projectiles")]
+    public int NumberOfAttacks = 10;
+
+    [Tooltip("Cooldown Between Attacks")]
+    public float CooldownBetweenAttacks = 5f;
+
+    [Header("VFX / SFX")]
+    public GameObject prefab;
+    public GameObject hitPrefab;
+    public EventReference spawnEvent;
+    public EventReference hitEvent;
+
+    [Header("Upgrade Multipliers")]
+    public float DamageUpgrade = 1f;
+    public float SpeedUpgrade = 1f;
+    public float CooldownUpgrade = 1f;
+    public float RangeUpgrade = 1f;
+    public float AimRangeUpgrade = 1f;
+    public float MaxRotationUpgrade = 1f;
+
+    [Header("Upgrade Limits")]
+    public int MaxDamage = 999;
+    public float MaxSpeed = 100f;
+    public float MinCooldown = 1f;
+    public float MaxRange = 50f;
+    public float MaxAimRange = 30f;
+    public float MaxMaxRotation = 360f;
+
+    public int Damage;
+    public float Speed;
+    public float Cooldown;
+    public float Range;
+    public float AimRange;
+    public float MaxRotation;
+
+    public SkillSettings Upgrade(int level = 1)
+    {
+        Damage = Mathf.Min(Mathf.RoundToInt(BaseDamage * Mathf.Pow(DamageUpgrade, level - 1)), MaxDamage);
+        Speed = Mathf.Min(BaseSpeed * Mathf.Pow(SpeedUpgrade, level - 1), MaxSpeed);
+        Cooldown = Mathf.Max(BaseCooldown * Mathf.Pow(CooldownUpgrade, level - 1), MinCooldown);
+        Range = Mathf.Min(BaseRange * Mathf.Pow(RangeUpgrade, level - 1), MaxRange);
+        AimRange = Mathf.Min(BaseAimRange * Mathf.Pow(AimRangeUpgrade, level - 1), MaxAimRange);
+        MaxRotation = Mathf.Min(BaseMaxRotation * Mathf.Pow(MaxRotationUpgrade, level - 1), MaxMaxRotation);
+
+        return this;
+    }
+
+    public void Reset()
+    {
+        Damage = BaseDamage;
+        Speed = BaseSpeed;
+        Cooldown = BaseCooldown;
+        Range = BaseRange;
+        AimRange = BaseAimRange;
+        MaxRotation = BaseMaxRotation;
+    }
 }
 
 public enum SkillType
 {
     Normal,
     Starting,
+    Buff,
+}
+
+public enum AttackType
+{
+    Slash,
+    Projectile,
     Buff,
 }

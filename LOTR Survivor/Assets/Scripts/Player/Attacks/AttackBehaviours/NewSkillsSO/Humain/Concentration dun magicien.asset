@@ -10,30 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: Fleche de l'esprit
+  m_Name: Concentration dun magicien
   m_EditorClassIdentifier: 
-  skillName: Fleche de l'esprit
-  skillSprite: {fileID: 21300000, guid: 0dae21c3047de284fa18d5c3097f01e5, type: 3}
-  skillType: 0
-  skillDescription: Projectile Rapide
-  skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
+  skillName: Concentration d'un magicien
+  skillSprite: {fileID: 21300000, guid: bd46887707ff23a41931df3512b6e641, type: 3}
+  skillType: 1
+  skillDescription: " Buff + D\xE9g\xE2t +R\xE9duction CD + Projectile suppl\xE9mentaires
+    sur les sort"
+  skillBehaviour: {fileID: 7509719709111903018, guid: 0fe52d8c77e4e5e478890ebf49ba9099,
     type: 3}
-  BaseDamage: 10
-  BaseSpeed: 10
-  BaseCooldown: 1
-  BaseRange: 10
-  Scale: 1
-  BaseAimRange: 5
-  BaseMaxRotation: 360
+  BaseDamage: 0
+  BaseSpeed: 0
+  BaseCooldown: 25
+  BaseRange: 0
+  Scale: 0
+  BaseAimRange: 0
+  BaseMaxRotation: 0
   RotationOffset: 0
-  WideRange: 10
+  WideRange: 0
   attackEffects: []
   statusEffects: []
-  buffEffects: []
-  attackTypes: 01000000
-  NumberOfAttacks: 10
-  CooldownBetweenAttacks: 5
-  prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
+  buffEffects:
+  - {fileID: 11400000, guid: b99f63634b44d3b408e1f371e516ce6d, type: 2}
+  - {fileID: 11400000, guid: b673cc2b2420ad1469d83ceb22383aff, type: 2}
+  attackTypes: 02000000
+  NumberOfAttacks: 0
+  CooldownBetweenAttacks: 0
+  prefab: {fileID: 0}
   hitPrefab: {fileID: 0}
   spawnEvent:
     Guid:
@@ -57,13 +60,13 @@ MonoBehaviour:
   MaxRotationUpgrade: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 1
+  MinCooldown: 25
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 10
-  Speed: 10
-  Cooldown: 1
-  Range: 10
-  AimRange: 5
-  MaxRotation: 360
+  Damage: 0
+  Speed: 0
+  Cooldown: 0
+  Range: 0
+  AimRange: 0
+  MaxRotation: 0
