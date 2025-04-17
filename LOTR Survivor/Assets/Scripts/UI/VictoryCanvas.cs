@@ -18,16 +18,6 @@ public class VictoryCanvas : MonoBehaviour
         victoryPanel.gameObject.SetActive(false);
     }
 
-    private void OnEnable()
-    {
-        XPEvents.OnLevelComplete += DisplayUI;
-    }
-
-    private void OnDisable()
-    {
-        XPEvents.OnLevelComplete -= DisplayUI;
-    }
-
     public void QuitToHub()
     {
         Loader.Load(Loader.Scene.HubScene);

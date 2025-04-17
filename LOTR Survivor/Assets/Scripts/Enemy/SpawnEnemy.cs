@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class EnemySpawner : MonoBehaviour
     private float waveTimer;
     private bool isSpawningPaused = false;
     private EnemyWaveSO currentWave;
+
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private float finalSurvivalTime = 30f;
 
     private void Awake()
     {
@@ -77,7 +81,20 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        Debug.Log("All waves complete. Triggering victory screen.");
+        Debug.Log("All waves complete. Starting survival timer...");
+
+        float survivalTimer = finalSurvivalTime;
+
+        while (survivalTimer > 0f)
+        {
+            timerText.text = "Survival Time Left: " + Mathf.Ceil(survivalTimer).ToString("0") + "s";
+
+            survivalTimer -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        Debug.Log("Survival complete. Triggering victory screen.");
 
         GamePauseManager.Instance.PauseGame();
 
@@ -85,13 +102,13 @@ public class EnemySpawner : MonoBehaviour
         if (victoryCanvas != null)
         {
             victoryCanvas.DisplayUI();
+            timerText.text = "Survival Time Left: 0 s";
         }
         else
         {
             Debug.LogWarning("VictoryCanvas not found in the scene.");
         }
     }
-
     private IEnumerator SpawnContinuously(EnemyWaveSO wave)
     {
         while (true)

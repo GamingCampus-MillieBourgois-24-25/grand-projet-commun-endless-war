@@ -122,9 +122,15 @@ public class PlayerAnimation : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
+        if (EnemySpawner.Instance != null)
+        {
+            EnemySpawner.Instance.PauseSpawning();
+        }
+
         yield return new WaitForSecondsRealtime(1f);
         playerAnimator.SetTrigger("Die");
     }
+
 
     private IEnumerator PlayReviveAnimation()
     {
@@ -135,6 +141,11 @@ public class PlayerAnimation : MonoBehaviour
 
         playerAnimator.SetTrigger("Revive");
         yield return new WaitForSecondsRealtime(2f);
+
+        if (EnemySpawner.Instance != null)
+        {
+            EnemySpawner.Instance.ResumeSpawning();
+        }
 
         HealthEvents.ReviveFinished(transform);
         GetComponent<PlayerInput>().enabled = true;
