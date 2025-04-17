@@ -45,7 +45,7 @@ public class SkillsManager : MonoBehaviour
 
         if (skillBehaviour != null)
         {
-            skillBehaviour.SetAttackSettings(skillData.attackSettings);
+            skillBehaviour.SetSkillSettings(skillData);
             activeSkills.Add(new ActiveSkill(skillData, skillBehaviour));
             skillBehaviour.SetPlayer(gameObject);
             Debug.Log($"Skill '{skillData.skillName}' ajouté avec succès.");

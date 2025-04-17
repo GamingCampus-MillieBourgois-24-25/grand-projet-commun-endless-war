@@ -37,7 +37,7 @@ public class SkillInfo : MonoBehaviour
         ActivatePanel();
 
         SetTexts(skillSettings);
-        DisplayStats(skillSettings.attackSettings);
+        DisplayStats(skillSettings);
     }
 
     private void ResetPanelTransform()
@@ -70,7 +70,7 @@ public class SkillInfo : MonoBehaviour
         skillDescriptionText.text = skillSettings.skillDescription;
     }
 
-    private void DisplayStats(AttackSettings upgrades)
+    private void DisplayStats(SkillSettings upgrades)
     {
         var stats = new List<string>();
 
@@ -80,7 +80,6 @@ public class SkillInfo : MonoBehaviour
         AddStat(stats, "Range", upgrades.RangeUpgrade);
         AddStat(stats, "Aim Range", upgrades.AimRangeUpgrade);
         AddStat(stats, "Rotation", upgrades.MaxRotationUpgrade);
-        AddStat(stats, "Health Boost", upgrades.HealthBoost);
 
         for (int i = 0; i < statsText.Length; i++)
         {

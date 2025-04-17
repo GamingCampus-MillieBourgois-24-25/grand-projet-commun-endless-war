@@ -13,9 +13,57 @@ MonoBehaviour:
   m_Name: Lame de sang
   m_EditorClassIdentifier: 
   skillName: Lame de sang
-  skillSprite: {fileID: 21300000, guid: 3e68ac52959cd8d43ba5f1a4aadc56d4, type: 3}
+  skillSprite: {fileID: 21300000, guid: 40b82921bee40f740bd3d2bb1efbab03, type: 3}
   skillType: 0
   skillDescription: "Slash peu puissant mais r\xE9cup\xE8re des PV sur les ennemies"
   skillBehaviour: {fileID: 6098613423092608936, guid: fe14fda35b0d56f41b6760a63c3e89cb,
     type: 3}
-  attackSettings: {fileID: 11400000, guid: 4ad515b725ef9cb45bc0276cacc9b96e, type: 2}
+  BaseDamage: 10
+  BaseSpeed: 10
+  BaseCooldown: 8.7
+  BaseRange: 5
+  Scale: 0.3
+  BaseAimRange: 5
+  BaseMaxRotation: 360
+  RotationOffset: 0
+  WideRange: 3
+  attackEffects: []
+  statusEffects: []
+  buffEffects: []
+  attackTypes: 00000000
+  NumberOfAttacks: 10
+  CooldownBetweenAttacks: 5
+  prefab: {fileID: 1171201465392465800, guid: 1c6d5b2446aea2947973ea275fe0b276, type: 3}
+  hitPrefab: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 4.3
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  Damage: 10
+  Speed: 10
+  Cooldown: 1
+  Range: 5
+  AimRange: 5
+  MaxRotation: 360

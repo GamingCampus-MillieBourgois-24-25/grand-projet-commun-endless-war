@@ -40,13 +40,13 @@ public class SkillHolderBehaviour : MonoBehaviour
         text.text = skillSettings.skillName;
         skillImage.sprite = skillSettings.skillSprite;
 
-        SkillType[] types = skillSettings.attackSettings.skillType;
+        SkillType types = skillSettings.skillType;
 
-        if (types != null && Array.Exists(types, t => t == SkillType.Starting))
+        if (types == SkillType.Starting)
         {
             skillHolderImage.color = startingSkillColor;
         }
-        else if (types != null && Array.Exists(types, t => t == SkillType.Heal))
+        else if (types == SkillType.Buff)
         {
             skillHolderImage.color = buffColor;
         }

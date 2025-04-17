@@ -30,6 +30,40 @@ public class PlayerStatsMultiplier : MonoBehaviour
         }
     }
 
+    public static void AddBuff(BuffType buffType, float multiplier)
+    {
+        if (instance == null)
+        {
+            Debug.LogWarning("PlayerStatsMultiplier instance is not available!");
+            return;
+        }
+
+        switch (buffType)
+        {
+            case BuffType.Damage:
+                instance.AddBuffToList(damageBuffs, multiplier);
+                break;
+            case BuffType.Speed:
+                instance.AddBuffToList(speedBuffs, multiplier);
+                break;
+            case BuffType.Cooldown:
+                instance.AddBuffToList(cooldownBuffs, multiplier);
+                break;
+            case BuffType.Range:
+                instance.AddBuffToList(rangeBuffs, multiplier);
+                break;
+            case BuffType.ProjectileSpeed:
+                instance.AddBuffToList(projectileSpeedBuffs, multiplier);
+                break;
+        }
+    }
+
+    private void AddBuffToList(List<float> buffList, float multiplier)
+    {
+        if (!buffList.Contains(multiplier))
+            buffList.Add(multiplier);
+    }
+
     public static void ApplyBuff(BuffEffect buffEffect)
     {
         if (instance == null)

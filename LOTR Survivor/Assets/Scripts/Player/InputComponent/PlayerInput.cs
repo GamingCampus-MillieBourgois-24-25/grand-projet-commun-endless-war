@@ -39,6 +39,7 @@ public class PlayerInput : MonoBehaviour
 
         GamePauseManager.Instance.OnGamePaused += DisableInput;
         GamePauseManager.Instance.OnGameResumed += EnableInput;
+        EnableInput();
     }
 
     private void OnDisable()
@@ -53,6 +54,7 @@ public class PlayerInput : MonoBehaviour
 
         ResetJoystick(movementJoystick);
         ResetJoystick(rotationJoystick);
+        DisableInput();
     }
 
     private void HandleFingerDown(Finger finger)
@@ -174,6 +176,10 @@ public class PlayerInput : MonoBehaviour
     {
         isRotating = false;
         isInputEnabled = false;
+        movementFinger = null;
+        rotationFinger = null;
+        movementInput = Vector2.zero;
+        rotationInput = Vector2.zero;
         ResetJoystick(movementJoystick);
         ResetJoystick(rotationJoystick);
     }

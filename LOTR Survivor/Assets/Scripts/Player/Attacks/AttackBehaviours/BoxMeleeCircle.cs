@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BoxMeleeCircle : AreaAttackBehaviour
 {
-    protected override Collider[] GetHitColliders()
+    protected override Collider[] GetHitColliders(float adjustedRange)
     {
-        return Physics.OverlapSphere(transform.position, attackSettings.Range, LayerMask.GetMask("Enemy"));
+        return Physics.OverlapSphere(transform.position, adjustedRange, LayerMask.GetMask("Enemy"));
     }
 
     protected override Vector3 GetFXSpawnPosition()
@@ -12,25 +12,28 @@ public class BoxMeleeCircle : AreaAttackBehaviour
         return transform.position;
     }
 
-    protected override void PlayHitFX()
+    protected override void PlayHitFX(float adjustedRange)
     {
-        if (attackSettings.prefab != null)
+        if (skillSettings.prefab != null)
         {
             Vector3 spawnPosition = GetFXSpawnPosition();
             spawnPosition.y = 0;
-            Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, attackSettings.RotationOffset, 0);
+            Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, skillSettings.RotationOffset, 0);
 
-            GameObject hitEffect = Instantiate(attackSettings.prefab, spawnPosition, adjustedRotation);
+            GameObject hitEffect = Instantiate(skillSettings.prefab, spawnPosition, adjustedRotation);
 
-            hitEffect.transform.localScale = Vector3.one * attackSettings.Range * attackSettings.Scale;
+            hitEffect.transform.localScale = Vector3.one * adjustedRange * skillSettings.Scale;
         }
     }
 
+
     protected virtual void OnDrawGizmosSelected()
     {
-        if (attackSettings == null) return;
+        if (skillSettings == null) return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackSettings.Range);
+        float adjustedRange = skillSettings.Range * PlayerStatsMultiplier.rangeMultiplier;
+        Gizmos.DrawWireSphere(transform.position, adjustedRange);
     }
+
 }

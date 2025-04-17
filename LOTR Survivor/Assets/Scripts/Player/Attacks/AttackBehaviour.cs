@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class AttackBehaviour : MonoBehaviour
 {
     [Header("Paramètres")]
-    [SerializeField] protected AttackSettings attackSettings;
+    [SerializeField] protected SkillSettings skillSettings;
     [SerializeField] protected LayerMask enemyLayer;
 
     protected float attackTimer;
@@ -33,23 +33,22 @@ public abstract class AttackBehaviour : MonoBehaviour
         player = newPlayer;
     }
 
-    public void SetAttackSettings(AttackSettings newAttackSettings)
+    public void SetSkillSettings(SkillSettings newSkillSettings)
     {
-        attackSettings = newAttackSettings;
-        attackSettings.Reset();
+        skillSettings = newSkillSettings;
+        skillSettings.Reset();
     }
 
     protected virtual bool CanAttack()
     {
-        float actualCooldown = attackSettings.Cooldown;
+        float actualCooldown = skillSettings.Cooldown;
 
         actualCooldown *= PlayerStatsMultiplier.cooldownMultiplier;
 
-        actualCooldown = Mathf.Max(actualCooldown, attackSettings.MinCooldown);
+        actualCooldown = Mathf.Max(actualCooldown, skillSettings.MinCooldown);
 
         return attackTimer >= actualCooldown;
     }
-
 
     protected GameObject SpawnOrInstantiate(GameObject prefab, Vector3 position, Quaternion rotation)
     {
@@ -65,24 +64,24 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected abstract void Attack();
 
-    public virtual void Upgrade(AttackSettings newAttackSettings = null)
+    public virtual void Upgrade(SkillSettings newSkillSettings = null)
     {
-        if (newAttackSettings != null)
+        if (newSkillSettings != null)
         {
-            SetAttackSettings(newAttackSettings);
+            SetSkillSettings(newSkillSettings);
             skillLevel = 1;
         }
         else
         {
             skillLevel++;
-            attackSettings = attackSettings.Upgrade(skillLevel);
+            skillSettings = skillSettings.Upgrade(skillLevel);
             Debug.Log("New level : " + skillLevel);
         }
     }
 
     protected void ApplyAttackEffects()
     {
-        foreach (var effect in attackSettings.attackEffects)
+        foreach (var effect in skillSettings.attackEffects)
         {
             StatusEffectUtils.Apply(effect, null, player);
         }
@@ -90,7 +89,7 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected void ApplyStatusEffects(GameObject target)
     {
-        foreach (var effect in attackSettings.statusEffects)
+        foreach (var effect in skillSettings.statusEffects)
         {
             StatusEffectUtils.Apply(effect, target, player);
         }
@@ -98,7 +97,7 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     protected void ApplyBuffs()
     {
-        foreach (var effect in attackSettings.buffEffects)
+        foreach (var effect in skillSettings.buffEffects)
         {
             PlayerStatsMultiplier.ApplyBuff(effect);
         }

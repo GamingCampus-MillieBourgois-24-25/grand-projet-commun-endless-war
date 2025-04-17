@@ -5,15 +5,14 @@ using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Transform player; // Assign the player object in the Inspector
-    public float spawnRadius = 10f; // Radius around the player to spawn enemies
-    public float despawnDistance = 30f; // Distance at which enemies despawn
-    public float navMeshCheckRadius = 2f; // How far to check for a valid NavMesh position
-    public EnemyWaveSO[] waves; // Array of enemy waves
+    public Transform player;
+    public float spawnRadius = 10f;
+    public float despawnDistance = 30f;
+    public float navMeshCheckRadius = 2f;
+    public EnemyWaveSO[] waves;
 
     private List<GameObject> activeEnemies = new List<GameObject>();
     private int currentWaveIndex = 0;
-    private bool isWaveActive = false;
 
     private void Start()
     {
@@ -22,11 +21,13 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("ObjectPool Instance is NULL! Make sure ObjectPool is in the scene.");
             return;
         }
+
         if (waves == null || waves.Length == 0)
         {
             Debug.LogError("No waves assigned to EnemySpawner!");
             return;
         }
+
         StartCoroutine(ManageWaves());
     }
 
@@ -34,40 +35,30 @@ public class EnemySpawner : MonoBehaviour
     {
         while (currentWaveIndex < waves.Length)
         {
-            isWaveActive = true;
-            yield return StartCoroutine(SpawnWave(waves[currentWaveIndex]));
-            isWaveActive = false;
-            yield return new WaitForSeconds(waves[currentWaveIndex].waveCooldown);
+            EnemyWaveSO currentWave = waves[currentWaveIndex];
+
+            if (currentWave == null || currentWave.enemySOs.Length == 0)
+            {
+                Debug.LogError("Wave data is missing or empty!");
+                yield return null;
+                currentWaveIndex++;
+                continue;
+            }
+
+            float timer = 0f;
+            while (timer < currentWave.waveCooldown)
+            {
+                SpawnEnemy(currentWave);
+                yield return new WaitForSeconds(currentWave.spawnInterval);
+                timer += currentWave.spawnInterval;
+            }
+
             currentWaveIndex++;
-        }
-    }
-
-    private IEnumerator SpawnWave(EnemyWaveSO wave)
-    {
-        if (wave == null || wave.enemySOs.Length == 0)
-        {
-            Debug.LogError("Wave data is missing or empty!");
-            yield break;
-        }
-
-        int enemiesSpawned = 0;
-        while (enemiesSpawned < wave.minEnemies)
-        {
-            SpawnEnemy(wave);
-            enemiesSpawned++;
-            yield return new WaitForSeconds(wave.spawnInterval);
         }
     }
 
     private void SpawnEnemy(EnemyWaveSO wave)
     {
-        if (wave.enemySOs.Length == 0)
-        {
-            Debug.LogError("No enemies assigned in EnemyWaveSO!");
-            return;
-        }
-
-        // Pick a random enemy from the wave
         EnemySO enemyData = wave.enemySOs[Random.Range(0, wave.enemySOs.Length)];
 
         if (enemyData == null || enemyData.prefab == null)
@@ -76,7 +67,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        // Generate a spawn position around the player
         float angle = Random.Range(0f, Mathf.PI * 2);
         Vector3 spawnPosition = new Vector3(
             player.position.x + Mathf.Cos(angle) * spawnRadius,
@@ -84,7 +74,6 @@ public class EnemySpawner : MonoBehaviour
             player.position.z + Mathf.Sin(angle) * spawnRadius
         );
 
-        // Ensure the spawn is on the NavMesh
         if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit hit, navMeshCheckRadius, NavMesh.AllAreas))
         {
             spawnPosition = hit.position;
@@ -93,7 +82,7 @@ public class EnemySpawner : MonoBehaviour
             if (enemy != null)
             {
                 enemy.GetComponent<EnemyHealthBehaviour>().Initialize(enemyData);
-                activeEnemies.Add(enemy); // Track spawned enemy
+                activeEnemies.Add(enemy);
             }
             else
             {
@@ -115,24 +104,19 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = activeEnemies.Count - 1; i >= 0; i--)
         {
-            if (activeEnemies[i] == null)
+            GameObject enemy = activeEnemies[i];
+            if (enemy == null)
             {
                 activeEnemies.RemoveAt(i);
                 continue;
             }
 
-            if (Vector3.Distance(player.position, activeEnemies[i].transform.position) > despawnDistance)
+            if (Vector3.Distance(player.position, enemy.transform.position) > despawnDistance)
             {
-                ObjectPool.Instance.Despawn(activeEnemies[i], activeEnemies[i].GetComponent<EnemyHealthBehaviour>().enemyData.prefab);
+                ObjectPool.Instance.Despawn(enemy, enemy.GetComponent<EnemyHealthBehaviour>().enemyData.prefab);
                 activeEnemies.RemoveAt(i);
             }
         }
-    }
-
-    private int GetActiveEnemyCount()
-    {
-        activeEnemies.RemoveAll(enemy => enemy == null);
-        return activeEnemies.Count;
     }
 
     private void OnDrawGizmos()

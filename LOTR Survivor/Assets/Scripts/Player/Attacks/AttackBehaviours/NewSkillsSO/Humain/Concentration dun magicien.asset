@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
+  m_Name: Concentration dun magicien
+  m_EditorClassIdentifier: 
+  skillName: Concentration d'un magicien
+  skillSprite: {fileID: 21300000, guid: bd46887707ff23a41931df3512b6e641, type: 3}
+  skillType: 1
+  skillDescription: " Buff + D\xE9g\xE2t +R\xE9duction CD + Projectile suppl\xE9mentaires
+    sur les sort"
+  skillBehaviour: {fileID: 7509719709111903018, guid: 0fe52d8c77e4e5e478890ebf49ba9099,
+    type: 3}
+  BaseDamage: 0
+  BaseSpeed: 0
+  BaseCooldown: 25
+  BaseRange: 0
+  Scale: 0
+  BaseAimRange: 0
+  BaseMaxRotation: 0
+  RotationOffset: 0
+  WideRange: 0
+  attackEffects: []
+  statusEffects: []
+  buffEffects:
+  - {fileID: 11400000, guid: b99f63634b44d3b408e1f371e516ce6d, type: 2}
+  - {fileID: 11400000, guid: b673cc2b2420ad1469d83ceb22383aff, type: 2}
+  attackTypes: 02000000
+  NumberOfAttacks: 0
+  CooldownBetweenAttacks: 0
+  prefab: {fileID: 0}
+  hitPrefab: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 25
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  Damage: 0
+  Speed: 0
+  Cooldown: 0
+  Range: 0
+  AimRange: 0
+  MaxRotation: 0

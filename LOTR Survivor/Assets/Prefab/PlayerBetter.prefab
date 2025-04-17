@@ -120,10 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e088595d8ed104d91bcf9bfbfd7b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JoystickSize: {x: 200, y: 200}
-  Joystick: {fileID: 0}
-  PlayerRb: {fileID: 8750681803908683627}
-  speed: 5
+  joystickSize: {x: 100, y: 100}
+  movementJoystick: {fileID: 0}
+  rotationJoystick: {fileID: 0}
+  playerRb: {fileID: 0}
+  moveSpeed: 5
   rotationSpeed: 10
 --- !u!114 &3546374202348477930
 MonoBehaviour:
@@ -157,10 +158,10 @@ MonoBehaviour:
   playerAnimator: {fileID: 478331260569868381}
   flashMaterial: {fileID: 2100000, guid: 31a520dfb12e22241bcdecd0d04e61ed, type: 2}
   flashDuration: 0.3
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
-  deathParticle: {fileID: 100002, guid: 4bf22a1d8d9e7724b9af67921436851d, type: 3}
+  deathParticle: {fileID: 100002, guid: 995babeff1dec9641af656669a8646ee, type: 3}
   reviveParticle: {fileID: 0}
   blinkSpeed: 0.1
+  mesh: {fileID: 428784090497658467}
 --- !u!95 &478331260569868381
 Animator:
   serializedVersion: 5

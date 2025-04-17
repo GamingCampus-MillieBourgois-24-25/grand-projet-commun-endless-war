@@ -6,7 +6,7 @@ public class Buff : AttackBehaviour
 {
     protected override void Attack()
     {
-        if (attackSettings == null)
+        if (skillSettings == null)
             return;
 
         ApplyBuffs();

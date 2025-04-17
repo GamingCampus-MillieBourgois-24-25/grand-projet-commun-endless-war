@@ -13,9 +13,57 @@ MonoBehaviour:
   m_Name: Fleche de l'esprit
   m_EditorClassIdentifier: 
   skillName: Fleche de l'esprit
-  skillSprite: {fileID: 21300000, guid: 73677c8e0eaa11b4894ba43f1eb14d16, type: 3}
-  skillType: 1
+  skillSprite: {fileID: 21300000, guid: 0dae21c3047de284fa18d5c3097f01e5, type: 3}
+  skillType: 0
   skillDescription: Projectile Rapide
   skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
     type: 3}
-  attackSettings: {fileID: 11400000, guid: f027a17a69cdf7341b809f6b547a3bc5, type: 2}
+  BaseDamage: 10
+  BaseSpeed: 10
+  BaseCooldown: 1
+  BaseRange: 10
+  Scale: 1
+  BaseAimRange: 5
+  BaseMaxRotation: 360
+  RotationOffset: 0
+  WideRange: 10
+  attackEffects: []
+  statusEffects: []
+  buffEffects: []
+  attackTypes: 01000000
+  NumberOfAttacks: 10
+  CooldownBetweenAttacks: 5
+  prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
+  hitPrefab: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 1
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  Damage: 10
+  Speed: 10
+  Cooldown: 1
+  Range: 10
+  AimRange: 5
+  MaxRotation: 360
