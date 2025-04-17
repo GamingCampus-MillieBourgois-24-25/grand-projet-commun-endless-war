@@ -136,6 +136,7 @@ public class PlayerAnimation : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
         HealthEvents.ReviveFinished(transform);
         GetComponent<PlayerInput>().enabled = true;
+        XPManager.Instance.CheckLevelUP();
         isReviving = false;
     }
 

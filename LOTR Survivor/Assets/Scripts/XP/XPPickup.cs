@@ -4,11 +4,17 @@ public class XPPickup : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject prefab;
+    private Collider pickCollider;
     public int xpValue = 1;
 
     private bool picked = false;
     private bool isBeingMagnetized = false;
     private Transform target;
+
+    private void Awake()
+    {
+        pickCollider = GetComponent<Collider>();
+    }
 
     private void OnEnable()
     {

@@ -122,6 +122,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     public void Die()
     {
         isDead = true;
+        LevelUpManager.Instance.enabled = false;
         StartCoroutine(SlowmoThenDeath());
     }
 
@@ -150,6 +151,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     public void Revive(float amount)
     {
         isDead = false;
+        LevelUpManager.Instance.enabled = true;
         Heal(Mathf.RoundToInt(maxHealth * amount));
         HealthEvents.Revive(transform);
         StartInvulnerability(true);

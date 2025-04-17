@@ -17,6 +17,7 @@ public class XPManager : MonoBehaviour
 
     private bool isLevelingUp = false;
     private int currentLevel = 1;
+    private bool canCollectXp = true;
 
     private void Awake()
     {
@@ -54,6 +55,10 @@ public class XPManager : MonoBehaviour
 
     public void AddXP(int amount)
     {
+        if (!canCollectXp)
+        {
+            return;
+        }
         if (isLevelingUp)
         {
             pendingXp += amount;
@@ -64,7 +69,7 @@ public class XPManager : MonoBehaviour
         CheckLevelUP();
     }
 
-    private void CheckLevelUP()
+    public void CheckLevelUP()
     {
         if (currentXP >= maxXP)
         {
