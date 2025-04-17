@@ -124,6 +124,11 @@ public class PlayerAnimation : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
+        if (EnemySpawner.Instance != null)
+        {
+            EnemySpawner.Instance.PauseSpawning();
+        }
+
         yield return new WaitForSecondsRealtime(1f);
         playerAnimator.SetTrigger("Die");
     }
@@ -133,12 +138,20 @@ public class PlayerAnimation : MonoBehaviour
         isReviving = true;
         Instantiate(reviveParticle, transform.position, Quaternion.identity);
         playerAnimator.SetTrigger("Revive");
+
         yield return new WaitForSecondsRealtime(2f);
+
+        if (EnemySpawner.Instance != null)
+        {
+            EnemySpawner.Instance.ResumeSpawning();
+        }
+
         HealthEvents.ReviveFinished(transform);
         GetComponent<PlayerInput>().enabled = true;
         XPManager.Instance.CheckLevelUP();
         isReviving = false;
     }
+
 
     private void Explode()
     {

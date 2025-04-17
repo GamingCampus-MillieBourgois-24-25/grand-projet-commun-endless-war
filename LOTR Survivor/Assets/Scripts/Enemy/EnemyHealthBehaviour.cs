@@ -19,6 +19,7 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
     private int health;
     private Renderer objectRenderer;
+    private Material instanceMaterial;
     private Color originalColor;
 
     private static int killCounter = 0;
@@ -42,7 +43,11 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
         if (objectRenderer != null)
         {
-            originalColor = objectRenderer.material.color;
+            // Create and assign a unique material instance
+            instanceMaterial = new Material(objectRenderer.material);
+            objectRenderer.material = instanceMaterial;
+
+            originalColor = instanceMaterial.color;
         }
 
         OnHealthInitialized();
@@ -54,6 +59,19 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     {
         this.enemyData = enemySO;
         Health = MaxHealth;
+
+        if (instanceMaterial != null)
+        {
+            instanceMaterial.color = originalColor;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (instanceMaterial != null)
+        {
+            instanceMaterial.color = originalColor;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -72,11 +90,11 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
     private IEnumerator FlashRed()
     {
-        if (objectRenderer != null)
+        if (instanceMaterial != null)
         {
-            objectRenderer.material.color = FlashColor;
+            instanceMaterial.color = FlashColor;
             yield return new WaitForSeconds(FlashDuration);
-            objectRenderer.material.color = originalColor;
+            instanceMaterial.color = originalColor;
         }
     }
 
