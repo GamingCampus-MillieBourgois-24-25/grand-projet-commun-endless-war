@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lame de sang
   m_EditorClassIdentifier: 
   skillName: Lame de sang
-  skillSprite: {fileID: 21300000, guid: 1a52faa6083794a49a2ccc49761d4853, type: 3}
+  skillSprite: {fileID: 21300000, guid: 40b82921bee40f740bd3d2bb1efbab03, type: 3}
   skillType: 0
   skillDescription: "Slash peu puissant mais r\xE9cup\xE8re des PV sur les ennemies"
   skillBehaviour: {fileID: 6098613423092608936, guid: fe14fda35b0d56f41b6760a63c3e89cb,

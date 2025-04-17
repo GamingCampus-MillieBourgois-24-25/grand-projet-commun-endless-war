@@ -23,8 +23,9 @@ MonoBehaviour:
   WideRange: 10
   attackEffects: []
   statusEffects: []
-  buffEffects: []
-  skillType: 03000000
+  buffEffects:
+  - {fileID: 0}
+  attackTypes: 
   NumberOfAttacks: 0
   CooldownBetweenAttacks: 0
   prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}

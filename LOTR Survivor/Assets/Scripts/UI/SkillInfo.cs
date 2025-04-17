@@ -80,7 +80,6 @@ public class SkillInfo : MonoBehaviour
         AddStat(stats, "Range", upgrades.RangeUpgrade);
         AddStat(stats, "Aim Range", upgrades.AimRangeUpgrade);
         AddStat(stats, "Rotation", upgrades.MaxRotationUpgrade);
-        AddStat(stats, "Health Boost", upgrades.HealthBoost);
 
         for (int i = 0; i < statsText.Length; i++)
         {

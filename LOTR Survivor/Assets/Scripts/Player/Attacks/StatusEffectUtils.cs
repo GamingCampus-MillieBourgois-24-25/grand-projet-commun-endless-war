@@ -21,8 +21,6 @@ public static class StatusEffectUtils
             }
         }
         
-        Debug.Log($"[StatusEffect] Apply {effect.effectType} ({effect.effectValue}) to {(effect.affectSelf ? "self" : "target")}");
-
         switch (effect.effectType)
         {
             case EffectType.Heal:

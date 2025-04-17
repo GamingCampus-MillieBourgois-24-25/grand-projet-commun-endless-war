@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fleche de l'esprit
   m_EditorClassIdentifier: 
   skillName: Fleche de l'esprit
-  skillSprite: {fileID: 21300000, guid: 73677c8e0eaa11b4894ba43f1eb14d16, type: 3}
+  skillSprite: {fileID: 21300000, guid: 0dae21c3047de284fa18d5c3097f01e5, type: 3}
   skillType: 1
   skillDescription: Projectile Rapide
   skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,

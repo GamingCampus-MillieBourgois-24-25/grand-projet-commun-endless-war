@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Triple Fl\xE8che d\u2019esprit"
   m_EditorClassIdentifier: 
   skillName: "Triple Fl\xE8che d\u2019esprit"
-  skillSprite: {fileID: 21300000, guid: ffceb6993656c33498e50aa62c12e248, type: 3}
+  skillSprite: {fileID: 21300000, guid: 86db0b7d32122054987579aac5c3ba6f, type: 3}
   skillType: 0
   skillDescription: "Projectile 1 \xE0 1 rapidement peu puissant"
   skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,

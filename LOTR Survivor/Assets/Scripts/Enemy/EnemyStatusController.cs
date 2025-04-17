@@ -31,14 +31,13 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
         while (timer < duration)
         {
             healthBehaviour.TakeDamage(Mathf.RoundToInt(dps));
-            yield return new WaitForSeconds(1f);
-            timer += 1f;
+            yield return new WaitForSeconds(0.7f);
+            timer += 0.7f;
         }
     }
 
     public void ApplySlow(float slowPercent, float duration)
     {
-        Debug.Log("slow");
         if (slowRoutine != null) StopCoroutine(slowRoutine);
         slowRoutine = StartCoroutine(Slow(slowPercent, duration));
     }

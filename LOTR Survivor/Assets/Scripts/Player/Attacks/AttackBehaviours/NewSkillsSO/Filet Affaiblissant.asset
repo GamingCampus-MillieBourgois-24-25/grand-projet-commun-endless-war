@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Filet Affaiblissant
   m_EditorClassIdentifier: 
   skillName: Filet Affaiblissant
-  skillSprite: {fileID: 21300000, guid: 73677c8e0eaa11b4894ba43f1eb14d16, type: 3}
+  skillSprite: {fileID: 21300000, guid: b3a6440735263474ba7033306087e898, type: 3}
   skillType: 0
   skillDescription: "Projectile Slow qui r\xE9duit les ennemie touch\xE9\r\n"
   skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,

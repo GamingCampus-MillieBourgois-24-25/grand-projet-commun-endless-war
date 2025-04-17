@@ -22,7 +22,7 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     private Color originalColor;
 
     private static int killCounter = 0;
-    private static int killsForHealthPickup = 15;
+    private static int killsForHealthPickup = 30;
 
     public int MaxHealth { get => enemyData != null ? (int)enemyData.maxHealth : 100; set => enemyData.maxHealth = value; }
     public int Health { get => health; set => health = value; }
