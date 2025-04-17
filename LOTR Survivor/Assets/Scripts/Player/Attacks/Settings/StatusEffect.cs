@@ -5,7 +5,9 @@ public enum EffectType
     Poison,
     Slow,
     Heal,
-    Stun
+    Stun,
+    Burn,
+    Bleed
 }
 
 [CreateAssetMenu(menuName = "StatusEffect/Effect", fileName = "NewStatusEffect")]

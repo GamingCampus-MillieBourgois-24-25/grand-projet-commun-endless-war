@@ -6,10 +6,10 @@ public class BoxMeleeAutoTarget : BoxMelee
 {
     protected override bool CanAttack()
     {
-        if (attackTimer < attackSettings.Cooldown)
+        if (attackTimer < skillSettings.Cooldown)
             return false;
 
-        float adjustedRange = attackSettings.Range * PlayerStatsMultiplier.rangeMultiplier;
+        float adjustedRange = skillSettings.Range * PlayerStatsMultiplier.rangeMultiplier;
         return GetHitColliders(adjustedRange).Length > 0;
     }
 

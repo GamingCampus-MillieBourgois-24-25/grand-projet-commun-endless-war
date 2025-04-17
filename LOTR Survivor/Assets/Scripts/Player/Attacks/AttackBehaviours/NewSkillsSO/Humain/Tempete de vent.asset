@@ -10,30 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: Fleche de l'esprit
+  m_Name: Tempete de vent
   m_EditorClassIdentifier: 
-  skillName: Fleche de l'esprit
-  skillSprite: {fileID: 21300000, guid: 0dae21c3047de284fa18d5c3097f01e5, type: 3}
-  skillType: 0
-  skillDescription: Projectile Rapide
-  skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
+  skillName: "Temp\xEAte de vent"
+  skillSprite: {fileID: 21300000, guid: b3a6440735263474ba7033306087e898, type: 3}
+  skillType: 1
+  skillDescription: 'AOE autour du personnage qui inflige saignement '
+  skillBehaviour: {fileID: 6098613423092608936, guid: effc56a69ee514b49941417641280899,
     type: 3}
   BaseDamage: 10
   BaseSpeed: 10
-  BaseCooldown: 1
-  BaseRange: 10
+  BaseCooldown: 12
+  BaseRange: 7
   Scale: 1
   BaseAimRange: 5
-  BaseMaxRotation: 360
+  BaseMaxRotation: 0
   RotationOffset: 0
-  WideRange: 10
+  WideRange: 0
   attackEffects: []
-  statusEffects: []
+  statusEffects:
+  - {fileID: 11400000, guid: a31e42f2fd16b554c8bb6a60c5c08651, type: 2}
   buffEffects: []
-  attackTypes: 01000000
-  NumberOfAttacks: 10
-  CooldownBetweenAttacks: 5
-  prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
+  attackTypes: 00000000
+  NumberOfAttacks: 0
+  CooldownBetweenAttacks: 0
+  prefab: {fileID: 3377181292992421420, guid: 6e02174ec7bcb7a4994b5c4cec0445be, type: 3}
   hitPrefab: {fileID: 0}
   spawnEvent:
     Guid:
@@ -57,13 +58,13 @@ MonoBehaviour:
   MaxRotationUpgrade: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 1
+  MinCooldown: 6
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
   Damage: 10
   Speed: 10
-  Cooldown: 1
-  Range: 10
+  Cooldown: 12
+  Range: 7
   AimRange: 5
-  MaxRotation: 360
+  MaxRotation: 0

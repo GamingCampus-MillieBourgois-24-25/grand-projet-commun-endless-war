@@ -163,15 +163,15 @@ public class LevelUpManager : MonoBehaviour
         }
         else
         {
-            if (skill.attackSettings.buffEffects != null && skill.attackSettings.buffEffects.Length > 0)
+            if (skill.buffEffects != null && skill.buffEffects.Length > 0)
             {
-                if (skill.attackSettings.buffEffects[0].buffType == BuffType.Heal)
+                if (skill.buffEffects[0].buffType == BuffType.Heal)
                 {
-                    ApplyHealingBuff(skill.attackSettings.buffEffects[0].multiplier);
+                    ApplyHealingBuff(skill.buffEffects[0].multiplier);
                 }
                 else
                 {
-                    foreach (var buff in skill.attackSettings.buffEffects)
+                    foreach (var buff in skill.buffEffects)
                     {
                         PlayerStatsMultiplier.AddBuff(buff.buffType, buff.multiplier);
                     }
