@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -49,7 +49,6 @@ public class EnemySpawner : MonoBehaviour
 
         waveCoroutine = StartCoroutine(ManageWaves());
     }
-
     private IEnumerator ManageWaves()
     {
         while (currentWaveIndex < waves.Length)
@@ -76,6 +75,20 @@ public class EnemySpawner : MonoBehaviour
 
             StopCoroutine(spawnCoroutine);
             currentWaveIndex++;
+        }
+
+        Debug.Log("All waves complete. Triggering victory screen.");
+
+        GamePauseManager.Instance.PauseGame();
+
+        VictoryCanvas victoryCanvas = FindObjectOfType<VictoryCanvas>();
+        if (victoryCanvas != null)
+        {
+            victoryCanvas.DisplayUI();
+        }
+        else
+        {
+            Debug.LogWarning("VictoryCanvas not found in the scene.");
         }
     }
 
