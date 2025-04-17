@@ -94,6 +94,7 @@ public class TooltipManager : MonoBehaviour
     {
         Debug.Log("Showing new tip");
         isAnimating = true;
+        closeButton.interactable = true;
 
         titleText.text = tooltipData.title;
         contentText.text = tooltipData.content;
@@ -106,11 +107,7 @@ public class TooltipManager : MonoBehaviour
 
         currentTween = tipTransform.DOScale(Vector3.one, animationDuration)
             .SetEase(Ease.OutBack)
-            .SetUpdate(true)
-            .OnComplete(() =>
-            {
-                closeButton.interactable = true;
-            }); ;
+            .SetUpdate(true);
     }
 
     private void OnTipHidden()
