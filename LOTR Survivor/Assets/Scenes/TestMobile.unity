@@ -8966,7 +8966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1038918186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60451,7 +60451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1784559972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62497,25 +62497,25 @@ PrefabInstance:
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08,
+      objectReference: {fileID: 11400000, guid: cd90ffc9dd6a4104c9895361037bdf79,
         type: 2}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 82712ba3977a46e48a2a98c8c1af2290,
+      objectReference: {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce,
         type: 2}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce,
+      objectReference: {fileID: 11400000, guid: cf1d43652837f734a8c02a45391744c8,
         type: 2}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
@@ -62659,6 +62659,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7626618773407361657, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: attackSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: d6cfd5107deef884196384d3ef1150e4,
+        type: 2}
     - target: {fileID: 8481779018304349590, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: Joystick
@@ -63474,15 +63480,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSkillSettings:
-  - {fileID: 11400000, guid: 9f8dd48c6cd873f4792376308097c582, type: 2}
-  - {fileID: 11400000, guid: 841305f2d9bc312419e36e4d60806354, type: 2}
+  - {fileID: 11400000, guid: ca85d076b39fef94caaa9b6fec44db04, type: 2}
+  - {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08, type: 2}
+  - {fileID: 11400000, guid: 2cd47ec4c62d9544fa1e454a2c85182c, type: 2}
+  - {fileID: 11400000, guid: cd90ffc9dd6a4104c9895361037bdf79, type: 2}
+  - {fileID: 11400000, guid: 345ffea13485d6647a6fc0211123f4fd, type: 2}
+  - {fileID: 11400000, guid: cf1d43652837f734a8c02a45391744c8, type: 2}
+  - {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce, type: 2}
   - {fileID: 11400000, guid: ff7eab64286873b479ea6fda405a0a93, type: 2}
+  - {fileID: 11400000, guid: 9f8dd48c6cd873f4792376308097c582, type: 2}
+  - {fileID: 11400000, guid: 82712ba3977a46e48a2a98c8c1af2290, type: 2}
+  - {fileID: 11400000, guid: 841305f2d9bc312419e36e4d60806354, type: 2}
   - {fileID: 11400000, guid: a90d83e151d1a5d4cb78decfd5a83c27, type: 2}
   - {fileID: 11400000, guid: 630beb2a628937a489033c756d758cd4, type: 2}
-  - {fileID: 11400000, guid: cf1d43652837f734a8c02a45391744c8, type: 2}
-  - {fileID: 11400000, guid: 345ffea13485d6647a6fc0211123f4fd, type: 2}
-  - {fileID: 11400000, guid: ca85d076b39fef94caaa9b6fec44db04, type: 2}
-  - {fileID: 11400000, guid: 2cd47ec4c62d9544fa1e454a2c85182c, type: 2}
   - {fileID: 11400000, guid: 699d04a98e26d5a47895fdb13e6c6dd6, type: 2}
   - {fileID: 11400000, guid: fcbf14c95a798004cae6b3e40635dd14, type: 2}
   buffSkillSettings:
@@ -63492,9 +63502,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5d515573e61a19468fc74922944b6de, type: 2}
   - {fileID: 11400000, guid: 6396bd4cf29d8a147ae02770b1b40b87, type: 2}
   startingSkills:
-  - {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce, type: 2}
+  - {fileID: 11400000, guid: ca85d076b39fef94caaa9b6fec44db04, type: 2}
   - {fileID: 11400000, guid: 4aa38a7681f4f75439c847bf13803e08, type: 2}
-  - {fileID: 11400000, guid: 82712ba3977a46e48a2a98c8c1af2290, type: 2}
+  - {fileID: 11400000, guid: 2cd47ec4c62d9544fa1e454a2c85182c, type: 2}
+  - {fileID: 11400000, guid: cd90ffc9dd6a4104c9895361037bdf79, type: 2}
+  - {fileID: 11400000, guid: 345ffea13485d6647a6fc0211123f4fd, type: 2}
+  - {fileID: 11400000, guid: cf1d43652837f734a8c02a45391744c8, type: 2}
+  - {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce, type: 2}
+  - {fileID: 11400000, guid: ff7eab64286873b479ea6fda405a0a93, type: 2}
+  - {fileID: 11400000, guid: 9f8dd48c6cd873f4792376308097c582, type: 2}
 --- !u!4 &2081588556
 Transform:
   m_ObjectHideFlags: 0

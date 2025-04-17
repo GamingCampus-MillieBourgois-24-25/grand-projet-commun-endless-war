@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: Fleche de l'esprit
+  m_Name: Projectile de Feu
   m_EditorClassIdentifier: 
-  skillName: Fleche de l'esprit
-  skillSprite: {fileID: 21300000, guid: 0dae21c3047de284fa18d5c3097f01e5, type: 3}
-  skillType: 0
-  skillDescription: Projectile Rapide
+  skillName: Projectile  de feu
+  skillSprite: {fileID: 21300000, guid: 73677c8e0eaa11b4894ba43f1eb14d16, type: 3}
+  skillType: 1
+  skillDescription: Projectile magique qui inflige brulure
   skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
     type: 3}
   BaseDamage: 10
   BaseSpeed: 10
-  BaseCooldown: 1
+  BaseCooldown: 2
   BaseRange: 10
   Scale: 1
   BaseAimRange: 5
@@ -28,12 +28,13 @@ MonoBehaviour:
   RotationOffset: 0
   WideRange: 10
   attackEffects: []
-  statusEffects: []
+  statusEffects:
+  - {fileID: 11400000, guid: 5ca0ad77b7fb9bd4fbaf12bddfe09d2a, type: 2}
   buffEffects: []
   attackTypes: 01000000
-  NumberOfAttacks: 10
-  CooldownBetweenAttacks: 5
-  prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 1
+  prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
   hitPrefab: {fileID: 0}
   spawnEvent:
     Guid:
@@ -63,7 +64,7 @@ MonoBehaviour:
   MaxMaxRotation: 360
   Damage: 10
   Speed: 10
-  Cooldown: 1
+  Cooldown: 2
   Range: 10
   AimRange: 5
   MaxRotation: 360

@@ -20,7 +20,7 @@ public static class SkillFactory
             return null;
         }
 
-        behaviour.SetAttackSettings(settings.attackSettings);
+        behaviour.SetSkillSettings(settings);
         return new ActiveSkill(settings, behaviour);
     }
 }

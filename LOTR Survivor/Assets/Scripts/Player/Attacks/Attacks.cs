@@ -3,7 +3,7 @@ using FMODUnity;
 
 public abstract class Attack : MonoBehaviour
 {
-    protected AttackSettings attackSettings;
+    protected SkillSettings skillSettings;
     protected AudioSource audioSource;
     protected GameObject player;
 
@@ -12,31 +12,31 @@ public abstract class Attack : MonoBehaviour
         TryPlaySpawnSound();
     }
 
-    public void SetSettings(AttackSettings newProjectileSettings)
+    public void SetSettings(SkillSettings newProjectileSettings)
     {
         if (newProjectileSettings == null)
         {
-            Debug.LogWarning("New AttackSettings is null.");
+            Debug.LogWarning("New SkillSettings is null.");
             return;
         }
 
-        attackSettings = newProjectileSettings;
+        skillSettings = newProjectileSettings;
         TryPlaySpawnSound();
     }
 
     private void TryPlaySpawnSound()
     {
-        if (attackSettings != null && attackSettings.spawnEvent.IsNull == false)
+        if (skillSettings != null && skillSettings.spawnEvent.IsNull == false)
         {
-            OneShotAudio.Play(attackSettings.spawnEvent, transform.position);
+            OneShotAudio.Play(skillSettings.spawnEvent, transform.position);
         }
     }
 
     private void TryPlayHitSound()
     {
-        if (attackSettings != null && attackSettings.hitEvent.IsNull == false)
+        if (skillSettings != null && skillSettings.hitEvent.IsNull == false)
         {
-            OneShotAudio.Play(attackSettings.hitEvent, transform.position);
+            OneShotAudio.Play(skillSettings.hitEvent, transform.position);
         }
     }
 
@@ -51,9 +51,9 @@ public abstract class Attack : MonoBehaviour
 
         if (ObjectPool.Instance != null)
         {
-            if (attackSettings.prefab != null)
+            if (skillSettings.prefab != null)
             {
-                ObjectPool.Instance.Despawn(gameObject, attackSettings.prefab);
+                ObjectPool.Instance.Despawn(gameObject, skillSettings.prefab);
             }
             else
             {
@@ -69,9 +69,9 @@ public abstract class Attack : MonoBehaviour
 
     protected virtual void PlayHitFX()
     {
-        if (attackSettings.hitPrefab != null)
+        if (skillSettings.hitPrefab != null)
         {
-            GameObject fx = Instantiate(attackSettings.hitPrefab, transform.position, Quaternion.identity);
+            GameObject fx = Instantiate(skillSettings.hitPrefab, transform.position, Quaternion.identity);
             ParticleSystem system = fx.GetComponent<ParticleSystem>();
             var main = system.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
@@ -87,7 +87,7 @@ public abstract class Attack : MonoBehaviour
             return;
         }
 
-        foreach (var effect in attackSettings.attackEffects)
+        foreach (var effect in skillSettings.attackEffects)
         {
             StatusEffectUtils.Apply(effect, target, player);
         }
@@ -96,7 +96,7 @@ public abstract class Attack : MonoBehaviour
 
     protected void ApplyStatusEffects(GameObject target)
     {
-        foreach (var effect in attackSettings.statusEffects)
+        foreach (var effect in skillSettings.statusEffects)
         {
             StatusEffectUtils.Apply(effect, target, player);
         }

@@ -20,9 +20,9 @@ public class Projectile : Attack
 
     protected override void UpdateAttack()
     {
-        transform.Translate(direction * attackSettings.Speed * PlayerStatsMultiplier.projectileSpeedMultiplier * Time.deltaTime, Space.World);
+        transform.Translate(direction * skillSettings.Speed * PlayerStatsMultiplier.projectileSpeedMultiplier * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(startPosition, transform.position) >= attackSettings.Range * PlayerStatsMultiplier.rangeMultiplier)
+        if (Vector3.Distance(startPosition, transform.position) >= skillSettings.Range * PlayerStatsMultiplier.rangeMultiplier)
         {
             DestroyAttack();
         }
@@ -52,7 +52,7 @@ public class Projectile : Attack
         EnemyHealthBehaviour enemy = collider.GetComponent<EnemyHealthBehaviour>();
         if (enemy != null)
         {
-            int finalDamage = Mathf.RoundToInt(attackSettings.Damage * PlayerStatsMultiplier.damageMultiplier);
+            int finalDamage = Mathf.RoundToInt(skillSettings.Damage * PlayerStatsMultiplier.damageMultiplier);
             enemy.TakeDamage(finalDamage);
         }
     }

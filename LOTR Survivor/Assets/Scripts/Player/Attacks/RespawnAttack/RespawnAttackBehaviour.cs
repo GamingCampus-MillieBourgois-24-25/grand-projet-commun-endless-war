@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RespawnAttackBehaviour : MonoBehaviour
 {
-    [SerializeField] AttackSettings attackSettings;
+    [SerializeField] SkillSettings attackSettings;
 
     private void OnEnable()
     {

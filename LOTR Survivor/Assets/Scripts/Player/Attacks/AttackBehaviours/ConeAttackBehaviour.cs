@@ -35,7 +35,7 @@ public class ConeAttackBehaviour : AttackBehaviour
     private GameObject CreateMunition(float angle, Vector3 forward)
     {
         Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
-        return SpawnOrInstantiate(attackSettings.prefab, transform.position, rotation);
+        return SpawnOrInstantiate(skillSettings.prefab, transform.position, rotation);
     }
 
     private void InitializeProjectile(GameObject munition, float angle, Vector3 forward)
@@ -47,7 +47,7 @@ public class ConeAttackBehaviour : AttackBehaviour
         {
             Vector3 direction = Quaternion.Euler(0f, angle, 0f) * forward;
             projectile.Initialize(direction);
-            projectile.SetSettings(attackSettings);
+            projectile.SetSettings(skillSettings);
         }
     }
 }
