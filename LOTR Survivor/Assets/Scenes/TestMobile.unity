@@ -8014,7 +8014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &896403220
 Transform:
   m_ObjectHideFlags: 0
@@ -59205,12 +59205,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 325777987}
-  spawnRadius: 20
-  despawnDistance: 75
+  spawnRadius: 25
+  despawnDistance: 60
   navMeshCheckRadius: 50
   waves:
-  - {fileID: 11400000, guid: d271d05f8225a3a48b6a0286eac4d0c1, type: 2}
-  - {fileID: 11400000, guid: 6c71d56ef0e4e2f47b60c39750e5e8fd, type: 2}
+  - {fileID: 11400000, guid: 21bf4ed21dafa4a46af16d338357d76b, type: 2}
+  - {fileID: 11400000, guid: 6c72297ea6ef39f4d9bd36f848712b12, type: 2}
+  - {fileID: 11400000, guid: d7e3d0d17b65d384c83356677c478d9c, type: 2}
 --- !u!4 &1587179530
 Transform:
   m_ObjectHideFlags: 0
