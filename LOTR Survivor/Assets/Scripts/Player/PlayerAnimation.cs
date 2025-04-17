@@ -10,10 +10,10 @@ public class PlayerAnimation : MonoBehaviour
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
-    [SerializeField] private Color flashColor = Color.red;
     [SerializeField] private GameObject deathParticle;
     [SerializeField] private GameObject reviveParticle;
     [SerializeField] private float blinkSpeed = 0.1f;
+    [SerializeField] private Transform mesh;
 
     private PlayerHealthBehaviour playerHealth;
     private bool isReviving = false;
@@ -21,7 +21,6 @@ public class PlayerAnimation : MonoBehaviour
     private Renderer objectRenderer;
     private CinemachineImpulseSource impulseSource;
     private Material originalMaterial;
-    private Color originalColor;
     private bool isInvulnerable;
 
     private void Awake()
@@ -32,7 +31,6 @@ public class PlayerAnimation : MonoBehaviour
 
         if (objectRenderer != null)
         {
-            originalColor = objectRenderer.material.color;
             originalMaterial = objectRenderer.material;
         }
     }
@@ -124,11 +122,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
-        if (EnemySpawner.Instance != null)
-        {
-            EnemySpawner.Instance.PauseSpawning();
-        }
-
         yield return new WaitForSecondsRealtime(1f);
         playerAnimator.SetTrigger("Die");
     }
@@ -136,15 +129,12 @@ public class PlayerAnimation : MonoBehaviour
     private IEnumerator PlayReviveAnimation()
     {
         isReviving = true;
-        Instantiate(reviveParticle, transform.position, Quaternion.identity);
+        Vector3 position = transform.position;
+        position.y = 0;
+        Instantiate(reviveParticle, position, Quaternion.identity);
+
         playerAnimator.SetTrigger("Revive");
-
         yield return new WaitForSecondsRealtime(2f);
-
-        if (EnemySpawner.Instance != null)
-        {
-            EnemySpawner.Instance.ResumeSpawning();
-        }
 
         HealthEvents.ReviveFinished(transform);
         GetComponent<PlayerInput>().enabled = true;
@@ -152,10 +142,10 @@ public class PlayerAnimation : MonoBehaviour
         isReviving = false;
     }
 
-
     private void Explode()
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
+        ResetMesh();
         gameObject.SetActive(false);
         HealthEvents.GameOver();
     }
@@ -163,5 +153,14 @@ public class PlayerAnimation : MonoBehaviour
     private void OnGUI()
     {
         GUI.Label(new Rect(Screen.width - 150, 10, 150, 30), "Time Scale: " + Time.timeScale.ToString("F2"));
+    }
+
+    private void ResetMesh()
+    {
+        if (mesh != null)
+        {
+            mesh.localRotation = Quaternion.identity;
+            mesh.localPosition = new Vector3(0,0.5f,0);
+        }
     }
 }
