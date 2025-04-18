@@ -8,9 +8,12 @@ public class GameTimer : MonoBehaviour
     private int minutes = 0;
     private int seconds = 0;
     private float timer = 0f;
+    private bool isRunning = true;
 
     private void Update()
     {
+        if (!isRunning) return;
+
         timer += Time.deltaTime;
 
         if (timer >= 1f)
@@ -31,5 +34,15 @@ public class GameTimer : MonoBehaviour
     private void UpdateTimerUI()
     {
         timerText.text = $"{minutes:00}:{seconds:00}";
+    }
+
+    public void PauseTimer()
+    {
+        isRunning = false;
+    }
+
+    public void ResumeTimer()
+    {
+        isRunning = true;
     }
 }

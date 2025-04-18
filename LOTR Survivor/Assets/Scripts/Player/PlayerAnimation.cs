@@ -22,12 +22,14 @@ public class PlayerAnimation : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     private Material originalMaterial;
     private bool isInvulnerable;
+    private GameTimer gameTimer;
 
     private void Awake()
     {
         playerHealth = GetComponent<PlayerHealthBehaviour>();
         objectRenderer = GetComponentInChildren<Renderer>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
+        gameTimer = FindObjectOfType<GameTimer>();
 
         if (objectRenderer != null)
         {
@@ -102,6 +104,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandlePlayerDeath()
     {
+        if (gameTimer != null)
+            gameTimer.PauseTimer();
+
         StartCoroutine(PlayDeathAnimation());
     }
 
@@ -131,7 +136,6 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetTrigger("Die");
     }
 
-
     private IEnumerator PlayReviveAnimation()
     {
         isReviving = true;
@@ -146,6 +150,9 @@ public class PlayerAnimation : MonoBehaviour
         {
             EnemySpawner.Instance.ResumeSpawning();
         }
+
+        if (gameTimer != null)
+            gameTimer.ResumeTimer();
 
         HealthEvents.ReviveFinished(transform);
         GetComponent<PlayerInput>().enabled = true;
