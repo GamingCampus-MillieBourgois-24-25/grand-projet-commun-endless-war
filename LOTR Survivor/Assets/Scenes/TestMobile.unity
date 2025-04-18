@@ -60150,9 +60150,9 @@ MonoBehaviour:
   despawnDistance: 60
   navMeshCheckRadius: 50
   waves:
-  - {fileID: 11400000, guid: d7e3d0d17b65d384c83356677c478d9c, type: 2}
-  - {fileID: 11400000, guid: 6c72297ea6ef39f4d9bd36f848712b12, type: 2}
   - {fileID: 11400000, guid: 21bf4ed21dafa4a46af16d338357d76b, type: 2}
+  - {fileID: 11400000, guid: 6c72297ea6ef39f4d9bd36f848712b12, type: 2}
+  - {fileID: 11400000, guid: d7e3d0d17b65d384c83356677c478d9c, type: 2}
   timerText: {fileID: 907242434}
   finalSurviveTime: 15
   warningTime: 5
@@ -65797,6 +65797,11 @@ MonoBehaviour:
   animationDuration: 0.8
   startYOffset: 800
   animationEase: 30
+  enemyCountText: {fileID: 0}
+  goldEarnedText: {fileID: 0}
+  levelReachedText: {fileID: 0}
+  moneyManager: {fileID: 0}
+  xpManager: {fileID: 0}
 --- !u!224 &8718045635673807347 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5805349482686328263, guid: 7f100bc2aa1cb764fb355da83a034f0d,
