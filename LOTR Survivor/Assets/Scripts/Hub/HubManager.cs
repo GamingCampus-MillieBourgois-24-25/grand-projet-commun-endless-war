@@ -93,7 +93,6 @@ public class HubManager : MonoBehaviour
 
         characterImage.sprite = character.imageCharacter;
         characterName.text = character.characterName;
-        textGold.text = $"PV : {character.pointsDeVie} - Classe : {character.classe}";
     }
 
 

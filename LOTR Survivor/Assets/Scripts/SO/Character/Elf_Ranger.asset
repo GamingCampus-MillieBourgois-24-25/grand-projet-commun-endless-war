@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Elf_Ranger
   m_EditorClassIdentifier: 
   characterName: Power
-  imageCharacter: {fileID: 0}
+  imageCharacter: {fileID: 21300000, guid: 36e13b2e376b0ba4b95b135c29ef78e9, type: 3}
   characterPrefab: {fileID: 919132149155446097, guid: 2f1986bbc4bb0e14db16efaff7858d37,
     type: 3}
   race: 2
