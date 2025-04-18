@@ -19,6 +19,9 @@ public class XPManager : MonoBehaviour
     private int currentLevel = 1;
     private bool canCollectXp = true;
 
+    public int levelCurrent => currentLevel;
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

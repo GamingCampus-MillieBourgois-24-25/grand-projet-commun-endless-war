@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class GameOverCanvas : MonoBehaviour
@@ -15,6 +16,15 @@ public class GameOverCanvas : MonoBehaviour
     [SerializeField] private Ease animationEase = Ease.OutBounce;
 
     private Vector2 originalPosition;
+
+    // Références UI
+    [SerializeField] private TMP_Text enemyCountText;
+    [SerializeField] private TMP_Text goldEarnedText;
+    [SerializeField] private TMP_Text levelReachedText;
+
+    // Références managers
+    [SerializeField] private MoneyManager moneyManager;
+    [SerializeField] private XPManager xpManager;
 
     private void Awake()
     {
@@ -52,6 +62,18 @@ public class GameOverCanvas : MonoBehaviour
         gameOverPanel.DOAnchorPos(originalPosition, animationDuration)
             .SetEase(animationEase)
             .SetUpdate(true);
+
+        UpdateStatsUI();
+    }
+
+    private void UpdateStatsUI()
+    {
+        if (moneyManager != null && xpManager != null)
+        {
+            enemyCountText.text = $"Ennemis tués : {moneyManager.SessionEnemiesKilled}";
+            goldEarnedText.text = $"Gold gagné : {moneyManager.SessionGoldEarned}";
+            levelReachedText.text = $"Niveau atteint : {xpManager.levelCurrent}";
+        }
     }
 
     public void HidePanel()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Elf_Melee
   m_EditorClassIdentifier: 
   characterName: Arwen
-  imageCharacter: {fileID: 0}
+  imageCharacter: {fileID: 21300000, guid: d60e84d712a42db4ba67b173e19f089a, type: 3}
   characterPrefab: {fileID: 919132149155446097, guid: d011a7d24540fc543bff50e3e813435e,
     type: 3}
   race: 2

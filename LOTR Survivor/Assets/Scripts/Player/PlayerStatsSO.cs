@@ -20,5 +20,4 @@ public class PlayerStatsSO : ScriptableObject
 
     [Header("Vitesse")]
     public float vitesseDeDeplacement;
-
 }

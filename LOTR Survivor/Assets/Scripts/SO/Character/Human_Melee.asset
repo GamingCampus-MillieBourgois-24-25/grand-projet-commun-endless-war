@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Human_Melee
   m_EditorClassIdentifier: 
   characterName: Didier
-  imageCharacter: {fileID: 0}
+  imageCharacter: {fileID: 21300000, guid: dabd4c0620235e041a713e0ea2788422, type: 3}
   characterPrefab: {fileID: 919132149155446097, guid: 5c9b19a61964f5148ad2ed693d597f69,
     type: 3}
   race: 1

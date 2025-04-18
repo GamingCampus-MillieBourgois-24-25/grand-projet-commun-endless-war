@@ -12,7 +12,7 @@ public class BoxMelee : AreaAttackBehaviour
 
     protected override Vector3 GetFXSpawnPosition()
     {
-        return transform.position + transform.forward * (skillSettings.Range * PlayerStatsMultiplier.rangeMultiplier * 0.5f);
+        return transform.position + transform.forward * (skillSettings.Range * PlayerStatsMultiplier.rangeMultiplier * 0.5f) + new Vector3(0,0.5f,0);
     }
 
     protected override void PlayHitFX(float adjustedRange)
