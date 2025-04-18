@@ -45,7 +45,7 @@ public class HubManager : MonoBehaviour
         if (playerDatabase != null && playerDatabase.allCharacters.Count > 0)
         {
             currentCharacterIndex = 0;
-            DisplayCharacter(currentCharacterIndex);
+            InitCharacterDisplay(currentCharacterIndex);
         }
         else
         {
@@ -80,6 +80,23 @@ public class HubManager : MonoBehaviour
 
         DisplayCharacter(currentCharacterIndex, false);
     }
+
+    void InitCharacterDisplay(int index)
+    {
+        var character = playerDatabase.allCharacters[index];
+
+        if (character.imageCharacter == null)
+        {
+            Debug.LogError($"Aucune image pour le personnage {character.characterName}");
+        }
+
+        characterImageTransform.anchoredPosition = Vector2.zero;
+        characterImage.color = Color.white;
+
+        characterImage.sprite = character.imageCharacter;
+        characterName.text = character.characterName;
+    }
+
     void DisplayCharacter(int index, bool slideFromLeft = true)
     {
         var character = playerDatabase.allCharacters[index];
@@ -89,14 +106,8 @@ public class HubManager : MonoBehaviour
             Debug.LogError($"Aucune image pour le personnage {character.characterName}");
         }
 
-<<<<<<< Updated upstream
-        characterImage.sprite = character.imageCharacter;
-        characterName.text = character.characterName;
-    }
-=======
         characterImageTransform.DOKill();
         characterImage.DOKill();
->>>>>>> Stashed changes
 
         float exitDir = slideFromLeft ? 1f : -1f;
 
@@ -112,7 +123,6 @@ public class HubManager : MonoBehaviour
 
             characterImage.sprite = character.imageCharacter;
             characterName.text = character.characterName;
-            textGold.text = $"PV : {character.pointsDeVie} - Classe : {character.classe}";
 
             Sequence enterSequence = DOTween.Sequence();
             enterSequence.Append(characterImageTransform

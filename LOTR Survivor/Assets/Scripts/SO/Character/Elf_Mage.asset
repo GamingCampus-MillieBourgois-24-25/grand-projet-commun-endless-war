@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11ca25d3bcf49b743b627f87f6c1d078, type: 3}
-  m_Name: Elf_Ranger
+  m_Name: Elf_Mage
   m_EditorClassIdentifier: 
   characterName: Power
   imageCharacter: {fileID: 21300000, guid: 36e13b2e376b0ba4b95b135c29ef78e9, type: 3}
