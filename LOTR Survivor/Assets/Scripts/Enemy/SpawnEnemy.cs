@@ -22,10 +22,12 @@ public class EnemySpawner : MonoBehaviour
 
     private float waveTimer;
     private bool isSpawningPaused = false;
+    private bool isCountdownStarted = false;
     private EnemyWaveSO currentWave;
 
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private float finalSurvivalTime = 30f;
+    [SerializeField] private float finalSurviveTime = 15f;
+    [SerializeField] private float warningTime = 10f;
 
     private void Awake()
     {
@@ -66,6 +68,10 @@ public class EnemySpawner : MonoBehaviour
                 continue;
             }
 
+            WaveCountdownTimer.Instance?.StartCountdown((int)warningTime);
+
+            yield return new WaitForSeconds(warningTime);
+
             waveTimer = 0f;
             spawnCoroutine = StartCoroutine(SpawnContinuously(currentWave));
 
@@ -81,34 +87,22 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        Debug.Log("All waves complete. Starting survival timer...");
+        Debug.Log("All waves complete. Starting final survival phase...");
 
-        float survivalTimer = finalSurvivalTime;
+        WaveCountdownTimer.Instance?.DisplayFinalSurviveCountdown((int)finalSurviveTime);
+        yield return new WaitForSeconds(finalSurviveTime);
 
-        while (survivalTimer > 0f)
-        {
-            timerText.text = "Survival Time Left: " + Mathf.Ceil(survivalTimer).ToString("0") + "s";
-
-            survivalTimer -= Time.deltaTime;
-
-            yield return null;
-        }
-
-        Debug.Log("Survival complete. Triggering victory screen.");
+        Debug.Log("Final survival complete. Triggering victory screen.");
 
         GamePauseManager.Instance.PauseGame();
 
         VictoryCanvas victoryCanvas = FindObjectOfType<VictoryCanvas>();
         if (victoryCanvas != null)
-        {
             victoryCanvas.DisplayUI();
-            timerText.text = "Survival Time Left: 0 s";
-        }
         else
-        {
             Debug.LogWarning("VictoryCanvas not found in the scene.");
-        }
     }
+
     private IEnumerator SpawnContinuously(EnemyWaveSO wave)
     {
         while (true)
