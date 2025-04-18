@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TileMapMaterial
+  m_Name: TileMapMaterialBase
   m_Shader: {fileID: -6465566751694194690, guid: 010e1c3d5b7777244b6f69e161b875fb,
     type: 3}
   m_Parent: {fileID: 0}
@@ -42,15 +42,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorChange: 0.0252
-    - _ColorScale: 1.77
-    - _Contraste: 1.02
+    - _ColorChange: 0
+    - _ColorScale: 0
+    - _Contraste: 1
     - _GrassHeight: 0
-    - _HeightScale: 20
-    - _Intensity: 1
+    - _HeightScale: 0
+    - _Intensity: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Saturation: 1.5
+    - _Saturation: 1
     - _Scale: 1
     - _YPosition: 1.72
     m_Colors: []
