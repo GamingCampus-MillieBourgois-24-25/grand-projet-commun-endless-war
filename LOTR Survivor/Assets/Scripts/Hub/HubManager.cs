@@ -24,11 +24,6 @@ public class HubManager : MonoBehaviour
     [SerializeField] private PlayerDatabaseSO playerDatabase;
     private int currentCharacterIndex = 0;
 
-    //[Header("World Selection")]
-    //[SerializeField] private Image imageWorld;
-    //[SerializeField] private TMP_Text worldName;
-    //[SerializeField] private Button nextWorld;
-    //[SerializeField] private Button previousWorld;
 
     void Start()
     {
@@ -89,14 +84,12 @@ public class HubManager : MonoBehaviour
             Debug.LogError($"Aucune image pour le personnage {character.characterName}");
         }
 
-<<<<<<< Updated upstream
         characterImage.sprite = character.imageCharacter;
         characterName.text = character.characterName;
-    }
-=======
+
         characterImageTransform.DOKill();
         characterImage.DOKill();
->>>>>>> Stashed changes
+
 
         float exitDir = slideFromLeft ? 1f : -1f;
 
@@ -123,13 +116,4 @@ public class HubManager : MonoBehaviour
         });
     }
 
-    void NextWorld()
-    {
-        // à implémenter
-    }
-
-    void PreviousWorld()
-    {
-        // à implémenter
-    }
 }
