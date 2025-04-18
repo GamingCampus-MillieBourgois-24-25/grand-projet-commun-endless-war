@@ -12,19 +12,23 @@ public class TooltipTestUI : MonoBehaviour
 
     private void Start()
     {
-        // Charger l'état des tooltips
         SaveLoadManager.LoadTooltipState();
 
-        // Associer les actions aux boutons
-        saveAndRestartButton.onClick.AddListener(SaveAndRestart);
-        resetTooltipsButton.onClick.AddListener(() =>
-        {
-            var viewer = FindObjectOfType<TooltipStateViewer>();
-            viewer?.ResetTooltips();
-        });
+        if (saveAndRestartButton == null)
+            saveAndRestartButton.onClick.AddListener(SaveAndRestart);
+
+        if (resetTooltipsButton == null)
+            resetTooltipsButton.onClick.AddListener(ResetTooltips);
     }
 
-    private void SaveAndRestart()
+    public void ResetTooltips()
+    {
+        TooltipState.Instance.ResetTooltips();
+        SaveLoadManager.SaveTooltipState(TooltipState.Instance.ToList());
+        Debug.Log("Tooltips reset.");
+    }
+
+    public void SaveAndRestart()
     {
         SaveLoadManager.SaveTooltipState(TooltipState.Instance.ToList());
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Relance la scène
