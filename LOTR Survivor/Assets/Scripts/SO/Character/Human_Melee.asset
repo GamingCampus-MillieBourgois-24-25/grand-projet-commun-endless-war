@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ca25d3bcf49b743b627f87f6c1d078, type: 3}
   m_Name: Human_Melee
   m_EditorClassIdentifier: 
-  characterName: Didier
-  imageCharacter: {fileID: 21300000, guid: dabd4c0620235e041a713e0ea2788422, type: 3}
+  characterName: Human Melee
+  imageCharacter: {fileID: 21300000, guid: 36e14cf451d97694296b1d47e0274fad, type: 3}
   characterPrefab: {fileID: 919132149155446097, guid: 5c9b19a61964f5148ad2ed693d597f69,
     type: 3}
   race: 1

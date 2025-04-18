@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ca25d3bcf49b743b627f87f6c1d078, type: 3}
   m_Name: Orc_Warrior
   m_EditorClassIdentifier: 
-  characterName: AAAAAAAAAAH
+  characterName: Orc Melee
   imageCharacter: {fileID: 21300000, guid: ec04137feea85e14e9c56888131d8bb2, type: 3}
   characterPrefab: {fileID: 2416251756796195939, guid: bf7f4add7554b4e49bb8cabf90c9ab63,
     type: 3}
