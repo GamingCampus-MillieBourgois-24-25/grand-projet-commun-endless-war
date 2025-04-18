@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TooltipStateViewer : MonoBehaviour
+
+public class TooltipStateViewer : MonoBehaviour//Du caca :D
 {
     [Header("Current Tooltips")]
     [SerializeField]
