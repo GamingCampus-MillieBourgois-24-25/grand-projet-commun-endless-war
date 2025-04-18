@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class TooltipTestUI : MonoBehaviour
 {
+    private void Awake()
+    {
+        SaveLoadManager.LoadTooltipState();
+    }
+
     public void ResetTooltips()
     {
         TooltipState.Instance.ResetTooltips();
