@@ -43,6 +43,8 @@ public class TooltipState
     {
         seenTooltips[tooltipID] = true;
         UpdateTooltipList();
+
+        SaveLoadManager.SaveTooltipState(ToList());
     }
 
     public void ResetTooltips()
