@@ -18,7 +18,7 @@ public class FireballAttackBehaviour : AttackBehaviour
 
             if (nearestEnemy != null)
             {
-                GameObject fireball = SpawnOrInstantiate(skillSettings.prefab, transform.position, Quaternion.identity);
+                GameObject fireball = SpawnOrInstantiate(skillSettings.prefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
 
                 HomingProjectile fireballScript = fireball.GetComponent<HomingProjectile>();
                 if (fireballScript != null)
