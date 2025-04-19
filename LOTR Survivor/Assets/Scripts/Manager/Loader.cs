@@ -11,7 +11,8 @@ public static class Loader
         MenuScene,
         HubScene,
         TestMobile,
-        Loading
+        Loading,
+        SkillTree
     }
 
     private static Action onLoaderCallback;
@@ -20,10 +21,11 @@ public static class Loader
     {
         onLoaderCallback = () =>
         {
-            SceneManager.LoadScene(scene.ToString());
+            UnityEngine.SceneManagement.SceneManager.LoadScene(scene.ToString());
         };
 
-        SceneManager.LoadScene(Scene.Loading.ToString());
+        UnityEngine.SceneManagement.SceneManager.LoadScene(Scene.Loading.ToString());
+        Time.timeScale = 1.0f;
 
         Debug.Log("LOADING");
     }

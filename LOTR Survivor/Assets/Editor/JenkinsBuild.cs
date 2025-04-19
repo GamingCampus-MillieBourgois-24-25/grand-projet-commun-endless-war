@@ -11,7 +11,9 @@ public class JenkinsBuild
             "Assets/Scenes/MenuScene.unity",
             "Assets/Scenes/HubScene.unity",
             "Assets/Scenes/TestMobile.unity",
-            "Assets/Scenes/Loading.unity"};
+            "Assets/Scenes/Loading.unity",
+            "Assets/Scenes/SkillTree.unity"
+        };
 
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
         {
