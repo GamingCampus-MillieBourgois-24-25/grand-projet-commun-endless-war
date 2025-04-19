@@ -24,17 +24,17 @@ public class HubManager : MonoBehaviour
     [SerializeField] private PlayerDatabaseSO playerDatabase;
     private int currentCharacterIndex = 0;
 
-    //[Header("World Selection")]
-    //[SerializeField] private Image imageWorld;
-    //[SerializeField] private TMP_Text worldName;
-    //[SerializeField] private Button nextWorld;
-    //[SerializeField] private Button previousWorld;
+    [Header("Player Stats")]
+    [SerializeField] private TMP_Text raceText;
+    [SerializeField] private TMP_Text classeText;
+    [SerializeField] private TMP_Text pvText;
+    [SerializeField] private TMP_Text speedText;
 
     void Start()
     {
         if (startButton == null)
         {
-            Debug.LogError("Start Button n'est pas assigné dans l'inspecteur !");
+            Debug.LogError("Start Button is not assigned in the inspector!");
             return;
         }
 
@@ -49,7 +49,7 @@ public class HubManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Aucun personnage dans la base de données !");
+            Debug.LogError("No character found in the database!");
         }
     }
 
@@ -87,7 +87,7 @@ public class HubManager : MonoBehaviour
 
         if (character.imageCharacter == null)
         {
-            Debug.LogError($"Aucune image pour le personnage {character.characterName}");
+            Debug.LogError("No image for character " + character.characterName);
         }
 
         characterImageTransform.anchoredPosition = Vector2.zero;
@@ -95,6 +95,8 @@ public class HubManager : MonoBehaviour
 
         characterImage.sprite = character.imageCharacter;
         characterName.text = character.characterName;
+
+        UpdateCharacterStats(character);
     }
 
     void DisplayCharacter(int index, bool slideFromLeft = true)
@@ -103,7 +105,7 @@ public class HubManager : MonoBehaviour
 
         if (character.imageCharacter == null)
         {
-            Debug.LogError($"Aucune image pour le personnage {character.characterName}");
+            Debug.LogError("No image for character " + character.characterName);
         }
 
         characterImageTransform.DOKill();
@@ -124,6 +126,8 @@ public class HubManager : MonoBehaviour
             characterImage.sprite = character.imageCharacter;
             characterName.text = character.characterName;
 
+            UpdateCharacterStats(character);
+
             Sequence enterSequence = DOTween.Sequence();
             enterSequence.Append(characterImageTransform
                                     .DOAnchorPos(Vector2.zero, 0.6f)
@@ -133,13 +137,21 @@ public class HubManager : MonoBehaviour
         });
     }
 
+    void UpdateCharacterStats(PlayerStatsSO character)
+    {
+        raceText.text = character.race.ToString();
+        classeText.text = character.classe.ToString();
+        pvText.text = character.pointsDeVie.ToString();
+        speedText.text = character.vitesseDeDeplacement.ToString("F1");
+    }
+
     void NextWorld()
     {
-        // à implémenter
+        // To implement
     }
 
     void PreviousWorld()
     {
-        // à implémenter
+        // To implement
     }
 }

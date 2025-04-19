@@ -183,6 +183,10 @@ MonoBehaviour:
   nextCharacter: {fileID: 609955191}
   previousCharacter: {fileID: 1912014752}
   playerDatabase: {fileID: 11400000, guid: 670ed4b7d3c304d4cb11c412666deb3c, type: 2}
+  raceText: {fileID: 1719601629}
+  classeText: {fileID: 1083512856}
+  pvText: {fileID: 321792498}
+  speedText: {fileID: 602931720}
 --- !u!1 &75291981
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -121.910034, y: 79.79999}
+  m_AnchoredPosition: {x: -121.91016, y: 79.80005}
   m_SizeDelta: {x: 272.84, y: 130}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &354699779
@@ -3047,7 +3051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 32.299988}
+  m_AnchoredPosition: {x: 0, y: 32.30005}
   m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1808244663
