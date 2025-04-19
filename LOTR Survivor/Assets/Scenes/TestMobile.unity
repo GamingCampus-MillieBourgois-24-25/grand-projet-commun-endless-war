@@ -9055,7 +9055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1038918186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60586,7 +60586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1784559972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64279,6 +64279,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 910878203}
     m_Modifications:
+    - target: {fileID: 642285477232311919, guid: c93875da2d131c646a28061cd1a9cca6,
+        type: 3}
+      propertyPath: startingSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 642285477232311919, guid: c93875da2d131c646a28061cd1a9cca6,
+        type: 3}
+      propertyPath: startingSkills.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: a90d83e151d1a5d4cb78decfd5a83c27,
+        type: 2}
     - target: {fileID: 2997090935323725699, guid: c93875da2d131c646a28061cd1a9cca6,
         type: 3}
       propertyPath: movementJoystick

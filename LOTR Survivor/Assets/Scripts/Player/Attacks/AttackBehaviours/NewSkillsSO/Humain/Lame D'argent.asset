@@ -26,7 +26,7 @@ MonoBehaviour:
   BaseAimRange: 5
   BaseMaxRotation: 360
   RotationOffset: 0
-  WideRange: 3
+  WideRange: 5
   attackEffects: []
   statusEffects: []
   buffEffects: []
