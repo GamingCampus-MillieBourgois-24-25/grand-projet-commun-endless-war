@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9822900d1ff8fc04c8ea830f766d58cb, type: 3}
   m_Name: HealthBoost20
   m_EditorClassIdentifier: 
-  skillName: Health +20%
+  skillNameType: 0
+  value: 20
   skillText: +20%
   skillIcon: {fileID: 21300000, guid: 4cb7698c2ef039d4b9f5946a1779aade, type: 3}
+  skillCost: 25

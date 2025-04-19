@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public enum SkillSlotState
 public class SkillSlot : MonoBehaviour
 {
     public List<SkillSlot> prerequisiteSkillSlots;
+    public List<Image> links;
 
     public SkillSO skillSO;
 
@@ -42,10 +44,15 @@ public class SkillSlot : MonoBehaviour
         if (skillSlotState == SkillSlotState.Unlocked)
         {
             skillSlotState = SkillSlotState.Acquired;
-            OnSkillSlotAcquired?.Invoke(this);
             UpdateUI();
+            PlayAcquiredAnimation(() =>
+            {
+                OnSkillSlotAcquired?.Invoke(this);
+                UpdateLinks();
+            });
         }
     }
+
 
     public bool CanUnlockSkill()
     {
@@ -66,6 +73,7 @@ public class SkillSlot : MonoBehaviour
         {
             skillSlotState = SkillSlotState.Unlocked;
             UpdateUI();
+            PlayUnlockedAnimation();
         }
     }
 
@@ -73,6 +81,7 @@ public class SkillSlot : MonoBehaviour
     {
         skillIcon.sprite = skillSO.skillIcon;
         skillText.text = skillSO.skillText;
+        costText.text = skillSO.skillCost.ToString();
 
         switch (skillSlotState)
         {
@@ -99,4 +108,32 @@ public class SkillSlot : MonoBehaviour
         }
     }
 
+    private void PlayAcquiredAnimation(Action onComplete)
+    {
+        transform.DOKill();
+        transform.localScale = Vector3.one;
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(transform.DOScale(1.8f, 0.18f).SetEase(Ease.OutBack))
+           .Append(transform.DOScale(1f, 0.2f).SetEase(Ease.InOutSine))
+           .OnComplete(() => onComplete?.Invoke());
+    }
+
+    private void PlayUnlockedAnimation()
+    {
+        transform.DOKill();
+        transform.localScale = Vector3.one * 0.9f;
+        transform.DOScale(1f, 0.3f).SetEase(Ease.OutBounce);
+    }
+
+    private void UpdateLinks()
+    {
+        if (skillSlotState == SkillSlotState.Acquired) 
+        { 
+            foreach(Image link in links)
+            {
+                link.color = Color.green;
+            }
+        }
+    }
 }
