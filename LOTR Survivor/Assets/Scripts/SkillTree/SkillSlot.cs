@@ -74,10 +74,11 @@ public class SkillSlot : MonoBehaviour
             skillSlotState = SkillSlotState.Unlocked;
             UpdateUI();
             PlayUnlockedAnimation();
+            UpdateLinks();
         }
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         skillIcon.sprite = skillSO.skillIcon;
         skillText.text = skillSO.skillText;
@@ -126,13 +127,21 @@ public class SkillSlot : MonoBehaviour
         transform.DOScale(1f, 0.3f).SetEase(Ease.OutBounce);
     }
 
-    private void UpdateLinks()
+    public void UpdateLinks()
     {
-        if (skillSlotState == SkillSlotState.Acquired) 
-        { 
-            foreach(Image link in links)
+        foreach (Image link in links)
+        {
+            if (skillSlotState == SkillSlotState.Acquired)
             {
                 link.color = Color.green;
+            }
+            else if (skillSlotState == SkillSlotState.Unlocked)
+            {
+                link.color = Color.grey;
+            }
+            else
+            {
+                link.color = Color.red;
             }
         }
     }

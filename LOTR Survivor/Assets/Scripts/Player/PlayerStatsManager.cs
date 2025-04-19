@@ -33,30 +33,38 @@ public class PlayerStatsManager : MonoBehaviour
         switch (skill.skillNameType)
         {
             case SkillNameType.Health:
-                HealthBoost += skill.value;
+                HealthBoost = Mathf.Max(HealthBoost, skill.value);
                 break;
             case SkillNameType.Damage:
-                AttackBoost += skill.value;
+                AttackBoost = Mathf.Max(AttackBoost, skill.value);
                 break;
             case SkillNameType.ShotSpeed:
-                ShotSpeedBoost += skill.value;
+                ShotSpeedBoost = Mathf.Max(ShotSpeedBoost, skill.value);
                 break;
             case SkillNameType.Rate:
-                RateBoost += skill.value;
+                RateBoost = Mathf.Max(RateBoost, skill.value);
                 break;
             case SkillNameType.XP:
-                XPBoost += skill.value;
+                XPBoost = Mathf.Max(XPBoost, skill.value);
                 break;
             case SkillNameType.Range:
-                RangeBoost += skill.value;
+                RangeBoost = Mathf.Max(RangeBoost, skill.value);
                 break;
             case SkillNameType.Speed:
-                SpeedBoost += skill.value;
+                SpeedBoost = Mathf.Max(SpeedBoost, skill.value);
                 break;
             case SkillNameType.Skill:
                 break;
         }
 
         OnStatChanged?.Invoke(skill.skillNameType, skill.value);
+    }
+
+    public void LoadStatsFromSave(List<SkillSO> skills)
+    {
+        foreach (var skill in skills)
+        {
+            ApplySkill(skill);
+        }
     }
 }
