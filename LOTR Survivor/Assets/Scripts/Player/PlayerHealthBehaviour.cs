@@ -59,6 +59,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     private void Start()
     {
+        maxHealth = Mathf.RoundToInt(maxHealth* (1 + PlayerStatsManager.Instance.HealthBoost / 100));
         Health = MaxHealth;
     }
 

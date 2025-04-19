@@ -20,51 +20,129 @@ public class PlayerStatsManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+
+        LoadStats();
     }
 
-    public void ApplySkill(SkillSO skill)
+    private string statsSavePath => Application.persistentDataPath + "/playerStats.json";
+
+    public void SaveStats()
     {
+        PlayerStatsSaveData data = new PlayerStatsSaveData
+        {
+            healthBoost = HealthBoost,
+            attackBoost = AttackBoost,
+            shotSpeedBoost = ShotSpeedBoost,
+            rateBoost = RateBoost,
+            xpBoost = XPBoost,
+            rangeBoost = RangeBoost,
+            speedBoost = SpeedBoost
+        };
+
+        string json = JsonUtility.ToJson(data, true);
+        System.IO.File.WriteAllText(statsSavePath, json);
+    }
+
+    public void LoadStats()
+    {
+        if (!System.IO.File.Exists(statsSavePath))
+            return;
+
+        string json = System.IO.File.ReadAllText(statsSavePath);
+        PlayerStatsSaveData data = JsonUtility.FromJson<PlayerStatsSaveData>(json);
+
+        HealthBoost = data.healthBoost;
+        AttackBoost = data.attackBoost;
+        ShotSpeedBoost = data.shotSpeedBoost;
+        RateBoost = data.rateBoost;
+        XPBoost = data.xpBoost;
+        RangeBoost = data.rangeBoost;
+        SpeedBoost = data.speedBoost;
+
+        OnStatChanged?.Invoke(SkillNameType.Health, HealthBoost);
+        OnStatChanged?.Invoke(SkillNameType.Damage, AttackBoost);
+        OnStatChanged?.Invoke(SkillNameType.ShotSpeed, ShotSpeedBoost);
+        OnStatChanged?.Invoke(SkillNameType.Rate, RateBoost);
+        OnStatChanged?.Invoke(SkillNameType.XP, XPBoost);
+        OnStatChanged?.Invoke(SkillNameType.Range, RangeBoost);
+        OnStatChanged?.Invoke(SkillNameType.Speed, SpeedBoost);
+
+        Debug.Log(HealthBoost);
+    }
+
+    public void Apply(SkillSlot slot)
+    {
+        SkillSO skill = slot.skillSO;
+        float newValue = skill.value;
+
+        Debug.Log(newValue);
+
         switch (skill.skillNameType)
         {
             case SkillNameType.Health:
-                HealthBoost = Mathf.Max(HealthBoost, skill.value);
+                HealthBoost = Mathf.Max(HealthBoost, newValue);
                 break;
             case SkillNameType.Damage:
-                AttackBoost = Mathf.Max(AttackBoost, skill.value);
+                AttackBoost = Mathf.Max(AttackBoost, newValue);
                 break;
             case SkillNameType.ShotSpeed:
-                ShotSpeedBoost = Mathf.Max(ShotSpeedBoost, skill.value);
+                ShotSpeedBoost = Mathf.Max(ShotSpeedBoost, newValue);
                 break;
             case SkillNameType.Rate:
-                RateBoost = Mathf.Max(RateBoost, skill.value);
+                RateBoost = Mathf.Max(RateBoost, newValue);
                 break;
             case SkillNameType.XP:
-                XPBoost = Mathf.Max(XPBoost, skill.value);
+                XPBoost = Mathf.Max(XPBoost, newValue);
                 break;
             case SkillNameType.Range:
-                RangeBoost = Mathf.Max(RangeBoost, skill.value);
+                RangeBoost = Mathf.Max(RangeBoost, newValue);
                 break;
             case SkillNameType.Speed:
-                SpeedBoost = Mathf.Max(SpeedBoost, skill.value);
+                SpeedBoost = Mathf.Max(SpeedBoost, newValue);
                 break;
             case SkillNameType.Skill:
+                Debug.Log("Skill spécial appliqué : " + skill.skillText);
+                break;
+            default:
+                Debug.LogWarning("Skill non reconnu : " + skill.skillNameType);
                 break;
         }
 
-        OnStatChanged?.Invoke(skill.skillNameType, skill.value);
+        OnStatChanged?.Invoke(skill.skillNameType, newValue);
     }
-
-    public void LoadStatsFromSave(List<SkillSO> skills)
+    public void RecalculateAllStats(IEnumerable<SkillSlot> allSlots)
     {
-        foreach (var skill in skills)
+        HealthBoost = 0f;
+        AttackBoost = 0f;
+        ShotSpeedBoost = 0f;
+        RateBoost = 0f;
+        XPBoost = 0f;
+        RangeBoost = 0f;
+        SpeedBoost = 0f;
+
+        foreach (SkillSlot slot in allSlots)
         {
-            ApplySkill(skill);
+            if (slot.skillSlotState == SkillSlotState.Acquired)
+            {
+                Apply(slot);
+            }
         }
     }
+}
+
+[Serializable]
+public class PlayerStatsSaveData
+{
+    public float healthBoost;
+    public float attackBoost;
+    public float shotSpeedBoost;
+    public float rateBoost;
+    public float xpBoost;
+    public float rangeBoost;
+    public float speedBoost;
 }

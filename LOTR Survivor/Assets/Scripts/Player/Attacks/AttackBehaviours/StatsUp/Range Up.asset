@@ -17,4 +17,53 @@ MonoBehaviour:
   skillType: 2
   skillDescription: 
   skillBehaviour: {fileID: 0}
-  attackSettings: {fileID: 11400000, guid: 47856a6bcf25df74c98e239e0bd05770, type: 2}
+  BaseDamage: 10
+  BaseSpeed: 10
+  BaseCooldown: 1
+  BaseRange: 10
+  Scale: 1
+  BaseAimRange: 5
+  BaseMaxRotation: 360
+  RotationOffset: 0
+  WideRange: 10
+  attackEffects: []
+  statusEffects: []
+  buffEffects:
+  - {fileID: 11400000, guid: e859c1f0a4eadc1419c22d14c63944ab, type: 2}
+  attackTypes: 
+  NumberOfAttacks: 10
+  CooldownBetweenAttacks: 5
+  prefab: {fileID: 0}
+  hitPrefab: {fileID: 0}
+  spawnEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageUpgrade: 1
+  SpeedUpgrade: 1
+  CooldownUpgrade: 1
+  RangeUpgrade: 1
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 1
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  Damage: 0
+  Speed: 0
+  Cooldown: 0
+  Range: 0
+  AimRange: 0
+  MaxRotation: 0

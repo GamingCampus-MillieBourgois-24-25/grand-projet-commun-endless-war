@@ -53,7 +53,6 @@ public class SkillSlot : MonoBehaviour
         }
     }
 
-
     public bool CanUnlockSkill()
     {
         foreach (SkillSlot skill in prerequisiteSkillSlots)

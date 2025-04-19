@@ -10,7 +10,7 @@ public class HubManager : MonoBehaviour
 {
     [Header("Start Game")]
     [SerializeField] private Button startButton;
-    [SerializeField] private string nextScene;
+    [SerializeField] private Button skillTreeButton;
 
     [Header("Power-Up UI")]
     [SerializeField] private TMP_Text textGold;
@@ -39,6 +39,7 @@ public class HubManager : MonoBehaviour
         }
 
         startButton.onClick.AddListener(ChangeScene);
+        skillTreeButton.onClick.AddListener(SkillTree);
         nextCharacter.onClick.AddListener(NextCharacter);
         previousCharacter.onClick.AddListener(PreviousCharacter);
 
@@ -56,7 +57,13 @@ public class HubManager : MonoBehaviour
     void ChangeScene()
     {
         SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
-        SceneManager.LoadScene(nextScene);
+        Loader.Load(Loader.Scene.TestMobile);
+    }
+
+    void SkillTree()
+    {
+        SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
+        Loader.Load(Loader.Scene.SkillTree);
     }
 
     void PreviousCharacter()

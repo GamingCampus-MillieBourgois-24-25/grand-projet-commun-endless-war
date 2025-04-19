@@ -44,12 +44,16 @@ public class SkillTreeManager : MonoBehaviour
 
     private void HandleSkillAcquired(SkillSlot skillSlot)
     {
-        foreach(SkillSlot slot in skillSlots)
+        foreach (SkillSlot slot in skillSlots)
         {
             slot.Unlock();
         }
+
         skillTreeSaveManager.SaveSkillTree(skillSlots);
+        PlayerStatsManager.Instance.Apply(skillSlot);
+        PlayerStatsManager.Instance.SaveStats();
     }
+
 
     private void ResetSkillTree()
     {
@@ -69,6 +73,9 @@ public class SkillTreeManager : MonoBehaviour
         }
 
         skillTreeSaveManager.SaveSkillTree(skillSlots);
+        PlayerStatsManager.Instance.RecalculateAllStats(skillSlots);
+        PlayerStatsManager.Instance.SaveStats();
+
     }
 
     private void QuitToHub()

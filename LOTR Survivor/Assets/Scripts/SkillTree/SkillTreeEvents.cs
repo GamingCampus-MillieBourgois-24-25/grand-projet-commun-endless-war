@@ -16,7 +16,6 @@ public class SkillTreeEvents : MonoBehaviour
 
     private void HandleSkillAcquired(SkillSlot slot)
     {
-        PlayerStatsManager.Instance.ApplySkill(slot.skillSO);
 
     }
 }
