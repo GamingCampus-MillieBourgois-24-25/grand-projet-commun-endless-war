@@ -64,7 +64,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         UpdateTimer();
-        if (player != null)
+        if (player != null && !isStunned)
         {
             MoveTowardsPlayer();
             CheckDistanceToPlayer();
