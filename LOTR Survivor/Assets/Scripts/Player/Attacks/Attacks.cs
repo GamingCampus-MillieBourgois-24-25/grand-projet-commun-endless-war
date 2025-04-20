@@ -7,8 +7,13 @@ public abstract class Attack : MonoBehaviour
     protected AudioSource audioSource;
     protected GameObject player;
 
-    protected virtual void Awake()
+    protected float damageMultiplier;
+    protected float projectileSpeedMultiplier;
+    protected float rangeMultiplier;
+
+    protected virtual void OnEnable()
     {
+        CalculateMultipliers();
         TryPlaySpawnSound();
     }
 
@@ -22,6 +27,23 @@ public abstract class Attack : MonoBehaviour
 
         skillSettings = newProjectileSettings;
         TryPlaySpawnSound();
+    }
+
+    private void CalculateMultipliers()
+    {
+        if (PlayerStatsMultiplier.IsInitialized)
+        {
+            damageMultiplier = PlayerStatsMultiplier.damageMultiplier;
+            projectileSpeedMultiplier = PlayerStatsMultiplier.projectileSpeedMultiplier;
+            rangeMultiplier = PlayerStatsMultiplier.rangeMultiplier;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerStatsMultiplier is not initialized yet, using default values.");
+            damageMultiplier = 1f;
+            projectileSpeedMultiplier = 1f;
+            rangeMultiplier = 1f;
+        }
     }
 
     private void TryPlaySpawnSound()

@@ -8,10 +8,10 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
     {
         ApplyAttackEffects();
 
-        float adjustedDamage = skillSettings.Damage * PlayerStatsMultiplier.damageMultiplier;
+        float adjustedDamage = skillSettings.Damage * damageMultiplier;
         int finalDamage = Mathf.RoundToInt(adjustedDamage);
 
-        float adjustedRange = skillSettings.Range * PlayerStatsMultiplier.rangeMultiplier;
+        float adjustedRange = skillSettings.Range * rangeMultiplier;
 
         Collider[] hitEnemies = GetHitColliders(adjustedRange);
 
@@ -38,10 +38,9 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
             Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, skillSettings.RotationOffset, 0);
 
             GameObject hitEffect = Instantiate(skillSettings.prefab, spawnPosition, adjustedRotation);
-            hitEffect.transform.localScale = new Vector3(skillSettings.WideRange * PlayerStatsMultiplier.rangeMultiplier, hitEffect.transform.localScale.y, adjustedRange) * skillSettings.Scale;
+            hitEffect.transform.localScale = new Vector3(skillSettings.WideRange * rangeMultiplier, hitEffect.transform.localScale.y, adjustedRange) * skillSettings.Scale;
         }
     }
 
     protected abstract Vector3 GetFXSpawnPosition();
 }
-

@@ -29,7 +29,7 @@ public class Axe : Attack
 
     protected override void UpdateAttack()
     {
-        float angleThisFrame = skillSettings.Speed * PlayerStatsMultiplier.projectileSpeedMultiplier * Time.deltaTime;
+        float angleThisFrame = skillSettings.Speed * projectileSpeedMultiplier * Time.deltaTime;
         rotationAngle += angleThisFrame;
 
         transform.RotateAround(playerTransform.position, Vector3.up, skillSettings.Speed * Time.deltaTime);
@@ -37,7 +37,7 @@ public class Axe : Attack
         Vector3 directionFromPlayer = (transform.position - playerTransform.position).normalized;
         transform.position = playerTransform.position + directionFromPlayer * initialDistance;
 
-        if (rotationAngle >= skillSettings.MaxRotation * PlayerStatsMultiplier.projectileSpeedMultiplier)
+        if (rotationAngle >= skillSettings.MaxRotation * rangeMultiplier * projectileSpeedMultiplier)
         {
             DestroyAttack();
         }
@@ -53,7 +53,7 @@ public class Axe : Attack
 
     private void DealDamage(Collider collider)
     {
-        int finalDamage = Mathf.RoundToInt(skillSettings.Damage * PlayerStatsMultiplier.damageMultiplier);
+        int finalDamage = Mathf.RoundToInt(skillSettings.Damage * damageMultiplier);
 
         EnemyHealthBehaviour enemy = collider.GetComponent<EnemyHealthBehaviour>();
         if (enemy != null)

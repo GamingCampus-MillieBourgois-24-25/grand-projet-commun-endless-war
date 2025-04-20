@@ -22,10 +22,10 @@ MonoBehaviour:
   BaseSpeed: 10
   BaseCooldown: 2
   BaseRange: 5
-  Scale: 0.2
+  Scale: 0.3
   BaseAimRange: 5
   BaseMaxRotation: 360
-  RotationOffset: 0
+  RotationOffset: -30
   WideRange: 5
   attackEffects: []
   statusEffects: []

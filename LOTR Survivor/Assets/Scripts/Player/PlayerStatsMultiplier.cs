@@ -11,6 +11,7 @@ public class PlayerStatsMultiplier : MonoBehaviour
     public static float projectileSpeedMultiplier => CalculateTotal(projectileSpeedBuffs);
 
     private static PlayerStatsMultiplier instance;
+    public static bool IsInitialized => instance != null;
 
     private static List<float> damageBuffs = new List<float>();
     private static List<float> speedBuffs = new List<float>();

@@ -6,12 +6,18 @@ public class BoxMeleeAutoTarget : BoxMelee
 {
     protected override bool CanAttack()
     {
-        if (attackTimer < skillSettings.Cooldown)
+        float actualCooldown = skillSettings.Cooldown;
+
+        float cooldownMultiplier = PlayerStatsMultiplier.IsInitialized ? PlayerStatsMultiplier.cooldownMultiplier : 1f;
+        actualCooldown *= cooldownMultiplier;
+
+        actualCooldown = Mathf.Max(actualCooldown, skillSettings.MinCooldown);
+
+        if (attackTimer < actualCooldown)
             return false;
 
-        float adjustedRange = skillSettings.Range * PlayerStatsMultiplier.rangeMultiplier;
+        float adjustedRange = skillSettings.Range * rangeMultiplier;
+
         return GetHitColliders(adjustedRange).Length > 0;
     }
-
 }
-
