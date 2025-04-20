@@ -12,6 +12,7 @@ public class FireballAttackBehaviour : AttackBehaviour
 
     private System.Collections.IEnumerator FireProjectilesWithDelay()
     {
+        attackTimer = -100;
         for (int i = 0; i < skillSettings.NumberOfAttacks; i++)
         {
             GameObject nearestEnemy = ProjectileUtils.FindNearestEnemy(transform.position, skillSettings.Range, enemyLayer);
@@ -33,5 +34,23 @@ public class FireballAttackBehaviour : AttackBehaviour
                 yield return new WaitForSeconds(skillSettings.CooldownBetweenAttacks);
             }
         }
+        attackTimer = 0;
+    }
+
+    protected override bool CanAttack()
+    {
+        float actualCooldown = skillSettings.Cooldown;
+
+        float cooldownMultiplier = PlayerStatsMultiplier.IsInitialized ? PlayerStatsMultiplier.cooldownMultiplier : 1f;
+        actualCooldown *= cooldownMultiplier;
+
+        actualCooldown = Mathf.Max(actualCooldown, skillSettings.MinCooldown);
+
+         if (attackTimer < actualCooldown)
+            return false;
+         if (ProjectileUtils.FindNearestEnemy(transform.position, skillSettings.Range, enemyLayer) == null)
+            return false;
+
+        return true;
     }
 }

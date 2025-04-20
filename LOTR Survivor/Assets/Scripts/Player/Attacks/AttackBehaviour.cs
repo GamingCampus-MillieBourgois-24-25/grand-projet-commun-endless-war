@@ -24,12 +24,13 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected virtual void Update()
     {
         attackTimer += Time.deltaTime;
+        Debug.Log(attackTimer);
 
         if (CanAttack())
         {
+            attackTimer = 0;
             CalculateMultipliers();
             Attack();
-            attackTimer = 0f;
         }
     }
 

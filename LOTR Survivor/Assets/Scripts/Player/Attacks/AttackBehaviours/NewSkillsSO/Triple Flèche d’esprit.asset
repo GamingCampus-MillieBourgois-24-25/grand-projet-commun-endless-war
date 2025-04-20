@@ -20,7 +20,7 @@ MonoBehaviour:
     type: 3}
   BaseDamage: 10
   BaseSpeed: 10
-  BaseCooldown: 1
+  BaseCooldown: 4.1
   BaseRange: 10
   Scale: 1
   BaseAimRange: 5
@@ -32,7 +32,7 @@ MonoBehaviour:
   buffEffects: []
   attackTypes: 01000000
   NumberOfAttacks: 3
-  CooldownBetweenAttacks: 0.2
+  CooldownBetweenAttacks: 0.5
   prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
   hitPrefab: {fileID: 0}
   spawnEvent:
@@ -63,7 +63,7 @@ MonoBehaviour:
   MaxMaxRotation: 360
   Damage: 10
   Speed: 10
-  Cooldown: 1
+  Cooldown: 4.1
   Range: 10
   AimRange: 5
   MaxRotation: 360

@@ -102,7 +102,6 @@ public class EnemyBehaviour : MonoBehaviour
         bool wasInRange = isInRange;
         isInRange = distanceToPlayer <= enemyData.aggroRange;
 
-        Debug.Log(distanceToPlayer);
         if (isInRange && !wasInRange)
         {
             StopMoving();
