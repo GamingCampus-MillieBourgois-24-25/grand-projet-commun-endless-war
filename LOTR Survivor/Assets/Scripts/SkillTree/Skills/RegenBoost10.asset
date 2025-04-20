@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9822900d1ff8fc04c8ea830f766d58cb, type: 3}
-  m_Name: HealthBoost30
+  m_Name: RegenBoost10
   m_EditorClassIdentifier: 
-  skillNameType: 0
-  value: 30
-  skillText: +30%
-  skillIcon: {fileID: 21300000, guid: 4cb7698c2ef039d4b9f5946a1779aade, type: 3}
-  skillCost: 60
-  skillColor: {r: 1, g: 1, b: 1, a: 1}
+  skillNameType: 7
+  value: 10
+  skillText: +10%
+  skillIcon: {fileID: 21300000, guid: 70443f76c0ddad940b647b2f62bcf91c, type: 3}
+  skillCost: 1100
+  skillColor: {r: 0.13587357, g: 0.89433956, b: 0, a: 1}

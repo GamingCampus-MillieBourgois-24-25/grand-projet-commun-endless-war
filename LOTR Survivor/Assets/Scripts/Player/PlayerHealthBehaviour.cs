@@ -14,11 +14,15 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     [SerializeField] private float slowmoScale = 0.1f;
     [SerializeField] private float slowmoDuration = 1.5f;
+    [SerializeField] private float regenRate = 0;
+    [SerializeField] private float regenTime = 40f;
 
     private bool isDead = false;
 
     private bool isInvulnerable;
     private float invulnerabilityTimer;
+    private bool canRegen = false;
+    private float regenTimer;
 
     public event Action OnInvulnerabilityStart;
     public event Action OnInvulnerabilityEnd;
@@ -61,12 +65,29 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     {
         maxHealth = Mathf.RoundToInt(maxHealth* (1 + PlayerStatsManager.Instance.HealthBoost / 100));
         Health = MaxHealth;
+        regenRate = PlayerStatsManager.Instance.RegenBoost;
+        if (regenRate > 0)
+        {
+            canRegen = true;
+        }
     }
 
     private void Update()
     {
         if (isInvulnerable)
             HandleInvulnerability();
+        if (canRegen)
+            HandleRegen();
+    }
+
+    private void HandleRegen()
+    {
+        regenTimer += Time.deltaTime;
+        if (regenTimer > regenTime)
+        {
+            Heal(Mathf.RoundToInt((regenRate/100) * maxHealth));
+            regenTimer = 0;
+        }
     }
 
     private void HandleLevelComplete()
