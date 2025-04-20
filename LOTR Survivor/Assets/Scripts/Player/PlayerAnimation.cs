@@ -10,8 +10,10 @@ public class PlayerAnimation : MonoBehaviour
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+
     [SerializeField] private GameObject deathParticle;
     [SerializeField] private GameObject reviveParticle;
+    [SerializeField] private GameObject healingParticle;
     [SerializeField] private float blinkSpeed = 0.1f;
     [SerializeField] private Transform mesh;
 
@@ -45,6 +47,7 @@ public class PlayerAnimation : MonoBehaviour
             HealthEvents.OnPlayerDeath += HandlePlayerDeath;
             HealthEvents.OnPlayerDamaged += HandleDamageAnimations;
             HealthEvents.OnRevive += HandlePlayerRevive;
+            HealthEvents.OnHealing += HandleHealingAnimations;
 
             playerHealth.OnInvulnerabilityStart += OnInvulnerabilityStart;
             playerHealth.OnInvulnerabilityEnd += OnInvulnerabilityEnd;
@@ -58,6 +61,7 @@ public class PlayerAnimation : MonoBehaviour
             HealthEvents.OnPlayerDeath -= HandlePlayerDeath;
             HealthEvents.OnPlayerDamaged -= HandleDamageAnimations;
             HealthEvents.OnRevive -= HandlePlayerRevive;
+            HealthEvents.OnHealing -= HandleHealingAnimations;
 
             playerHealth.OnInvulnerabilityStart -= OnInvulnerabilityStart;
             playerHealth.OnInvulnerabilityEnd -= OnInvulnerabilityEnd;
@@ -101,6 +105,11 @@ public class PlayerAnimation : MonoBehaviour
         {
             CameraShakeManager.instance.CameraShake(impulseSource);
         }
+    }
+
+    private void HandleHealingAnimations(int amount)
+    {
+        Instantiate(healingParticle, transform.position, Quaternion.identity, transform);
     }
 
     private void HandlePlayerDeath()

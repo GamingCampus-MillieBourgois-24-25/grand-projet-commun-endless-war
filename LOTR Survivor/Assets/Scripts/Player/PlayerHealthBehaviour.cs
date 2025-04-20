@@ -151,6 +151,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         if (isDead) return;
         Health += amount;
         Health = Mathf.Clamp(Health, 0, MaxHealth);
+        HealthEvents.RaiseHealing(amount);
     }
 
     public void Revive(float amount)

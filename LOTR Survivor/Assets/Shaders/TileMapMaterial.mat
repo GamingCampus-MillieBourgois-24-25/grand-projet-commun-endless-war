@@ -47,7 +47,7 @@ Material:
     - _Contraste: 1.02
     - _GrassHeight: 0
     - _HeightScale: 0.2
-    - _Intensity: 1
+    - _Intensity: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Saturation: 1.5

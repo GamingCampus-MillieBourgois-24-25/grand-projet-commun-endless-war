@@ -64305,6 +64305,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBetter
       objectReference: {fileID: 0}
+    - target: {fileID: 3391338786875686621, guid: c93875da2d131c646a28061cd1a9cca6,
+        type: 3}
+      propertyPath: m_DefaultVelocity.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391338786875686621, guid: c93875da2d131c646a28061cd1a9cca6,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_ImpulseDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4450487198968254581, guid: c93875da2d131c646a28061cd1a9cca6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -64355,11 +64365,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5329338895539708842, guid: c93875da2d131c646a28061cd1a9cca6,
+        type: 3}
+      propertyPath: regenTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6603289866217192005, guid: c93875da2d131c646a28061cd1a9cca6,
         type: 3}
       propertyPath: mesh
       value: 
       objectReference: {fileID: 547392561}
+    - target: {fileID: 6603289866217192005, guid: c93875da2d131c646a28061cd1a9cca6,
+        type: 3}
+      propertyPath: healingParticle
+      value: 
+      objectReference: {fileID: 7986504087968017091, guid: 032ccc2dd0fd62f4bb240f763c13bdb7,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 1356080833249367370, guid: c93875da2d131c646a28061cd1a9cca6, type: 3}
     - {fileID: 4104385505120270667, guid: c93875da2d131c646a28061cd1a9cca6, type: 3}
