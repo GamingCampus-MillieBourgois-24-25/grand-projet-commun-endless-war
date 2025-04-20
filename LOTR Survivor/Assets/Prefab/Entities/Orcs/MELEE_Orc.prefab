@@ -278,5 +278,4 @@ MonoBehaviour:
   slowParticle: {fileID: 0}
   stunParticle: {fileID: 6097779538034126439, guid: 1a328cbeb0cd25743b3144ec84ace9ec,
     type: 3}
-  stunEffectAnchor: {fileID: 1794935078184233353, guid: bb417098ce7db534f855746b0c56224b,
-    type: 3}
+  stunEffectAnchor: {fileID: 8851120812954555731}

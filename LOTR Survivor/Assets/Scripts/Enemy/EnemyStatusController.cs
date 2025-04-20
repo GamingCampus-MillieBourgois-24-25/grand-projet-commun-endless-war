@@ -127,7 +127,7 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
 
     private IEnumerator Stun(float duration)
     {
-        if (stunParticle != null && currentStunParticle == null)
+        if (stunParticle != null && currentStunParticle == null && stunEffectAnchor!=null)
         {
             currentStunParticle = ObjectPool.Instance.Spawn(stunParticle, stunEffectAnchor.position, Quaternion.Euler(-90f, 0f, 0f));
             currentStunParticle.transform.SetParent(transform);
