@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1682213458449255308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2550948968064783423}
-  m_Layer: 6
-  m_Name: StunEffectAnchor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2550948968064783423
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682213458449255308}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8096261302854734990}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7466036329059886502
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,12 +13,12 @@ GameObject:
   - component: {fileID: 5102446194780928564}
   - component: {fileID: 3321119355655359760}
   - component: {fileID: 56370005108763215}
-  - component: {fileID: 6303746985748737423}
+  - component: {fileID: 8945391096205476242}
   - component: {fileID: 4420957439939387608}
-  - component: {fileID: -4960725241693521416}
-  - component: {fileID: -1400055305096260952}
+  - component: {fileID: -8870004804496244491}
+  - component: {fileID: 7919435242446840214}
   m_Layer: 6
-  m_Name: RANGE_Elf
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,12 +32,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466036329059886502}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.26, y: 2, z: 5.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2550948968064783423}
+  - {fileID: 1794935078184233353}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6302947169627268562
@@ -99,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80e809698f3aa3b42a6a3bedcd414ea3, type: 2}
+  - {fileID: 2100000, guid: cd944ee95205c8348bc2bc7ba0b9cd11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,14 +125,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1405b1c3c146437408f1ff5ab7676270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
+  enemyData: {fileID: 11400000, guid: 2d27bc1227acd654d8b088961e3b152d, type: 2}
   xpPrefab: {fileID: 1900636694727229254, guid: c166b2602b12bc04cada33f9d258d829,
     type: 3}
   healthPrefab: {fileID: 1498014835702131830, guid: db6da2141329a9a4b94b7c8d1708b522,
     type: 3}
-  xpMagnetPrefab: {fileID: 0}
-  xpMagnetDropChance: 0.1
---- !u!114 &6303746985748737423
+  xpMagnetPrefab: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
+    type: 3}
+  xpMagnetDropChance: 0.01
+--- !u!114 &8945391096205476242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,9 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f494e72fd648ac4ca00b07fd0ee2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
-  feet: {fileID: 0}
-  isStunned: 0
+  enemyData: {fileID: 11400000, guid: 2d27bc1227acd654d8b088961e3b152d, type: 2}
 --- !u!195 &4420957439939387608
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -188,8 +156,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 1
-  m_Acceleration: 7
+  m_Speed: 2
+  m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -200,7 +168,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &-4960725241693521416
+--- !u!54 &-8870004804496244491
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,7 +195,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-1400055305096260952
+--- !u!114 &7919435242446840214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,4 +214,35 @@ MonoBehaviour:
   slowParticle: {fileID: 0}
   stunParticle: {fileID: 6097779538034126439, guid: 1a328cbeb0cd25743b3144ec84ace9ec,
     type: 3}
-  stunEffectAnchor: {fileID: 2550948968064783423}
+  stunEffectAnchor: {fileID: 1794935078184233353}
+--- !u!1 &8842115754681324841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794935078184233353}
+  m_Layer: 6
+  m_Name: StunEffecAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1794935078184233353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842115754681324841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8096261302854734990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

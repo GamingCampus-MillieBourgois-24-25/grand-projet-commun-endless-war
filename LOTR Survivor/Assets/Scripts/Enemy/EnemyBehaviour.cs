@@ -7,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [Header("Enemy Data")]
     [SerializeField] private EnemySO enemyData;
+    [SerializeField] private Transform feet;
 
     private Transform player;
     private NavMeshAgent agent;
@@ -94,9 +95,14 @@ public class EnemyBehaviour : MonoBehaviour
     private void CheckDistanceToPlayer()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (feet!=null)
+        {
+            distanceToPlayer = Vector3.Distance(feet.position, player.position);
+        }
         bool wasInRange = isInRange;
         isInRange = distanceToPlayer <= enemyData.aggroRange;
 
+        Debug.Log(distanceToPlayer);
         if (isInRange && !wasInRange)
         {
             StopMoving();

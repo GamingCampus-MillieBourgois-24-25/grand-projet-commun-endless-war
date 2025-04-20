@@ -64338,13 +64338,13 @@ PrefabInstance:
         type: 3}
       propertyPath: startingSkills.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2cd47ec4c62d9544fa1e454a2c85182c,
+      objectReference: {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce,
         type: 2}
     - target: {fileID: 642285477232311919, guid: c93875da2d131c646a28061cd1a9cca6,
         type: 3}
       propertyPath: startingSkills.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce,
+      objectReference: {fileID: 11400000, guid: 2cd47ec4c62d9544fa1e454a2c85182c,
         type: 2}
     - target: {fileID: 642285477232311919, guid: c93875da2d131c646a28061cd1a9cca6,
         type: 3}
