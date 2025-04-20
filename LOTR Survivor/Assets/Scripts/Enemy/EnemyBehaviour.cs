@@ -13,10 +13,13 @@ public class EnemyBehaviour : MonoBehaviour
     private float attackTimer;
     private bool isInRange = false;
 
+    public bool isStunned = false;
+
     private void OnEnable()
     {
         HealthEvents.OnReviveComplete += SetPlayer;
         HealthEvents.OnPlayerDeath += HandlePlayerDeath;
+        isStunned = false;
     }
 
     private void OnDisable()
@@ -111,7 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Attack()
     {
-        if (isInRange && attackTimer >= enemyData.attackCooldown)
+        if (isInRange && attackTimer >= enemyData.attackCooldown && !isStunned)
         {
             if (player.TryGetComponent<IHealth>(out IHealth health))
             {

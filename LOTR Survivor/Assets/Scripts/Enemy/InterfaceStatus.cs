@@ -15,10 +15,10 @@ public interface IStunnable
 
 public interface IBurnable
 {
-    void ApplyBurn(float duration);
+    void ApplyBurn(float damagePerSecond, float duration);
 }
 
 public interface IBleedable
 {
-    void ApplyBleed(float duration);
+    void ApplyBleed(float damagePerSecond, float duration);
 }

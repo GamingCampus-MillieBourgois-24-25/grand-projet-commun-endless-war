@@ -31,6 +31,14 @@ public static class StatusEffectUtils
                 targetToAffect.GetComponent<IPoisonable>()?.ApplyPoison(effect.effectValue, effect.duration);
                 break;
 
+            case EffectType.Burn:
+                targetToAffect.GetComponent<IBurnable>()?.ApplyBurn(effect.effectValue, effect.duration);
+                break;
+
+            case EffectType.Bleed:
+                targetToAffect.GetComponent<IBleedable>()?.ApplyBleed(effect.effectValue, effect.duration);
+                break;
+
             case EffectType.Slow:
                 targetToAffect.GetComponent<ISlowable>()?.ApplySlow(effect.effectValue, effect.duration);
                 break;
@@ -61,33 +69,6 @@ public static class StatusEffectUtils
             int intDamage = Mathf.CeilToInt(amount);
             if (intDamage > 0)
                 health.TakeDamage(intDamage, true);
-        }
-    }
-
-    private static void ApplyPoison(GameObject target, float value, float duration)
-    {
-        var poisonable = target.GetComponent<IPoisonable>();
-        if (poisonable != null)
-        {
-            poisonable.ApplyPoison(value, duration);
-        }
-    }
-
-    private static void ApplySlow(GameObject target, float value, float duration)
-    {
-        var slowable = target.GetComponent<ISlowable>();
-        if (slowable != null)
-        {
-            slowable.ApplySlow(value, duration);
-        }
-    }
-
-    private static void ApplyStun(GameObject target, float duration)
-    {
-        var stunnable = target.GetComponent<IStunnable>();
-        if (stunnable != null)
-        {
-            stunnable.ApplyStun(duration);
         }
     }
 }

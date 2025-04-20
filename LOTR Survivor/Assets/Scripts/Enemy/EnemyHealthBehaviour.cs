@@ -48,7 +48,10 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
         OnHealthInitialized();
     }
 
-    public void OnHealthInitialized() { }
+    public void OnHealthInitialized() 
+    { 
+        health = MaxHealth;
+    }
 
     public void Initialize(EnemySO enemySO)
     {

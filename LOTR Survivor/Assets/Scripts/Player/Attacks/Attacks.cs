@@ -96,6 +96,7 @@ public abstract class Attack : MonoBehaviour
 
     protected void ApplyStatusEffects(GameObject target)
     {
+
         foreach (var effect in skillSettings.statusEffects)
         {
             StatusEffectUtils.Apply(effect, target, player);
