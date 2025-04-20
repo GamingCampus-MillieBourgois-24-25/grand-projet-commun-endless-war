@@ -146,11 +146,25 @@ public class HubManager : MonoBehaviour
 
     void UpdateCharacterStats(PlayerStatsSO character)
     {
+        if (character == null)
+        {
+            Debug.LogError("Character is null in UpdateCharacterStats!");
+            return;
+        }
+
+        if (raceText == null || classeText == null || pvText == null || speedText == null)
+        {
+            Debug.LogError("One or more UI text fields are not assigned in the Inspector!");
+            return;
+        }
+
         raceText.text = character.race.ToString();
         classeText.text = character.classe.ToString();
         pvText.text = character.pointsDeVie.ToString();
         speedText.text = character.vitesseDeDeplacement.ToString("F1");
     }
+
+
 
     void NextWorld()
     {

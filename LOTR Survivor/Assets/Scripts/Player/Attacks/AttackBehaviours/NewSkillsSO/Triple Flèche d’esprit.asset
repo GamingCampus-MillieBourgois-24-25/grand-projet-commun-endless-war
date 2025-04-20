@@ -20,7 +20,7 @@ MonoBehaviour:
     type: 3}
   BaseDamage: 10
   BaseSpeed: 10
-  BaseCooldown: 4.1
+  BaseCooldown: 2
   BaseRange: 10
   Scale: 1
   BaseAimRange: 5
@@ -63,7 +63,7 @@ MonoBehaviour:
   MaxMaxRotation: 360
   Damage: 10
   Speed: 10
-  Cooldown: 4.1
+  Cooldown: 2
   Range: 10
   AimRange: 5
   MaxRotation: 360
