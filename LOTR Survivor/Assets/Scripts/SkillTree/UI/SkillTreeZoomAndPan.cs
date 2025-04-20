@@ -20,6 +20,8 @@ public class SkillTreeZoomAndPan : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     private Vector2 lastPointerPosition;
     private bool isZooming = false;
+    private bool wasZoomingLastFrame = false;
+
 
     void Update()
     {
@@ -56,6 +58,15 @@ public class SkillTreeZoomAndPan : MonoBehaviour, IDragHandler, IBeginDragHandle
         }
 
         UpdateParallax();
+
+        if (wasZoomingLastFrame && !isZooming)
+        {
+            if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
+            {
+                lastPointerPosition = Touchscreen.current.touches[0].position.ReadValue();
+            }
+        }
+        wasZoomingLastFrame = isZooming;
     }
 
     private void ApplyZoom(float scaleFactor)
