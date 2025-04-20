@@ -12,8 +12,6 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     [Header("Invulnerability")]
     [SerializeField] private float invulnerabilityDuration = 2f;
 
-    [SerializeField] private float slowmoScale = 0.1f;
-    [SerializeField] private float slowmoDuration = 1.5f;
     [SerializeField] private float regenRate = 0;
     [SerializeField] private float regenTime = 40f;
 
@@ -145,22 +143,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
     {
         isDead = true;
         LevelUpManager.Instance.enabled = false;
-        StartCoroutine(SlowmoThenDeath());
-    }
-
-    private IEnumerator SlowmoThenDeath()
-    {
-        Time.timeScale = slowmoScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
-
-        yield return new WaitForSecondsRealtime(slowmoDuration);
-
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
-
         HealthEvents.PlayerDeathEvent();
-
-        GetComponent<PlayerInput>().enabled = false;
     }
 
     public void Heal(int amount)

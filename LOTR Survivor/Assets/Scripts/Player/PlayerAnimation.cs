@@ -15,6 +15,9 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private float blinkSpeed = 0.1f;
     [SerializeField] private Transform mesh;
 
+    [SerializeField] private float slowmoScale = 0.1f;
+    [SerializeField] private float slowmoDuration = 1.5f;
+
     private PlayerHealthBehaviour playerHealth;
     private bool isReviving = false;
 
@@ -103,6 +106,10 @@ public class PlayerAnimation : MonoBehaviour
     private void HandlePlayerDeath()
     {
         StartCoroutine(PlayDeathAnimation());
+        if (CameraShakeManager.instance != null)
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
     }
 
     private void HandlePlayerRevive(Transform player)
@@ -122,6 +129,16 @@ public class PlayerAnimation : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
+        Time.timeScale = slowmoScale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        yield return new WaitForSecondsRealtime(slowmoDuration);
+
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
+        GetComponent<PlayerInput>().enabled = false;
+
         yield return new WaitForSecondsRealtime(1f);
         playerAnimator.SetTrigger("Die");
     }
