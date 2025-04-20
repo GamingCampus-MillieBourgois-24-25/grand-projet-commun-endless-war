@@ -119,7 +119,7 @@ public class PlayerInput : MonoBehaviour
         if (!isInputEnabled) return;
 
         Vector3 moveDir = new Vector3(movementInput.x, 0, movementInput.y);
-        playerRb.MovePosition(transform.position + moveDir * moveSpeed * PlayerStatsMultiplier.speedMultiplier * Time.fixedDeltaTime);
+        playerRb.MovePosition(transform.position + moveDir * moveSpeed * PlayerStatsMultiplier.speedMultiplier * (1 + PlayerStatsManager.Instance.SpeedBoost/100) * Time.fixedDeltaTime);
 
         if (moveDir != Vector3.zero && !isRotating)
         {

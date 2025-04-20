@@ -96,14 +96,14 @@ public class SkillSlot : MonoBehaviour
                 skillButton.interactable = true;
                 costText.enabled = true;
                 lockedImage.enabled = false;
-                skillIcon.color = Color.white;
+                skillIcon.color = skillSO.skillColor;
                 break;
 
             case SkillSlotState.Acquired:
                 skillButton.interactable = false;
                 costText.enabled = false;
                 lockedImage.enabled = false;
-                skillIcon.color = Color.white;
+                skillIcon.color = skillSO.skillColor;
                 break;
         }
     }

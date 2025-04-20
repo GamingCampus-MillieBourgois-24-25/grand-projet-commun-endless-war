@@ -14,6 +14,7 @@ public class PlayerStatsManager : MonoBehaviour
     public float XPBoost { get; private set; }
     public float RangeBoost { get; private set; }
     public float SpeedBoost { get; private set; }
+    public float RegenBoost { get; private set; }
 
     private void Awake()
     {
@@ -41,7 +42,8 @@ public class PlayerStatsManager : MonoBehaviour
             rateBoost = RateBoost,
             xpBoost = XPBoost,
             rangeBoost = RangeBoost,
-            speedBoost = SpeedBoost
+            speedBoost = SpeedBoost,
+            regenBoost = RegenBoost,
         };
 
         string json = JsonUtility.ToJson(data, true);
@@ -63,6 +65,7 @@ public class PlayerStatsManager : MonoBehaviour
         XPBoost = data.xpBoost;
         RangeBoost = data.rangeBoost;
         SpeedBoost = data.speedBoost;
+        RegenBoost = data.regenBoost;
 
         OnStatChanged?.Invoke(SkillNameType.Health, HealthBoost);
         OnStatChanged?.Invoke(SkillNameType.Damage, AttackBoost);
@@ -105,6 +108,9 @@ public class PlayerStatsManager : MonoBehaviour
             case SkillNameType.Speed:
                 SpeedBoost = Mathf.Max(SpeedBoost, newValue);
                 break;
+            case SkillNameType.Regen:
+                RegenBoost = Mathf.Max(RegenBoost, newValue);
+                break;
             case SkillNameType.Skill:
                 Debug.Log("Skill spécial appliqué : " + skill.skillText);
                 break;
@@ -124,6 +130,7 @@ public class PlayerStatsManager : MonoBehaviour
         XPBoost = 0f;
         RangeBoost = 0f;
         SpeedBoost = 0f;
+        RegenBoost = 0f;
 
         foreach (SkillSlot slot in allSlots)
         {
@@ -145,4 +152,5 @@ public class PlayerStatsSaveData
     public float xpBoost;
     public float rangeBoost;
     public float speedBoost;
+    public float regenBoost;
 }

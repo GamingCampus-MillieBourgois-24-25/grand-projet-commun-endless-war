@@ -10,6 +10,7 @@ public class SkillSO : ScriptableObject
     public string skillText;
     public Sprite skillIcon;
     public int skillCost;
+    public Color skillColor = Color.white;
 }
 
 public enum SkillNameType
@@ -21,5 +22,6 @@ public enum SkillNameType
     XP,
     Range,
     Speed,
+    Regen,
     Skill
 }
