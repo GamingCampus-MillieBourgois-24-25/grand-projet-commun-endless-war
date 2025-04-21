@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7938384439400024400}
   - component: {fileID: 7938384439400024401}
   m_Layer: 0
-  m_Name: Shine_ellow
+  m_Name: unlockParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14384,7 +14384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6863902190781251673
 Transform:
   m_ObjectHideFlags: 0

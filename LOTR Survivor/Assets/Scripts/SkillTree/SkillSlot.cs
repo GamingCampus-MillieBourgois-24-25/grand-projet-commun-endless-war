@@ -15,21 +15,31 @@ public enum SkillSlotState
 
 public class SkillSlot : MonoBehaviour
 {
-    public List<SkillSlot> prerequisiteSkillSlots;
-    public List<Image> links;
-
+    [Header("Skill Data")]
     public SkillSO skillSO;
-
     public SkillSlotState skillSlotState;
+    public List<SkillSlot> prerequisiteSkillSlots;
+
+    [Header("UI References")]
+    public Button skillButton;
     public Image skillIcon;
     public TMP_Text skillText;
-
-    public Button skillButton;
-
-    public Image lockedImage;
     public TMP_Text costText;
+    public Image lockedImage;
+    public Image backgroundImage;
 
+    [Header("Link Visuals")]
+    public List<Image> links;
+
+    [Header("Colors")]
+    public Color unlockColor;
+    public Color lockColor;
+
+    [Header("Audio & FX")]
     [SerializeField] private GameObject unlockParticle;
+    public AudioSource audioSource;
+    public AudioClip unlockClip;
+    public AudioClip lockClip;
 
     public static event Action<SkillSlot> OnSkillSlotAcquired;
     public static event Action<SkillSlot> OnInsufficientFunds;
@@ -49,6 +59,7 @@ public class SkillSlot : MonoBehaviour
             if (MoneyManager.Instance.GetCurrentGold() < skillSO.skillCost)
             {
                 OnInsufficientFunds?.Invoke(this);
+                PlaySound(lockClip);
                 return;
             }
             MoneyManager.Instance.SpendGold(skillSO.skillCost);
@@ -99,6 +110,7 @@ public class SkillSlot : MonoBehaviour
                 costText.enabled = false;
                 lockedImage.enabled = true;
                 skillIcon.color = Color.grey;
+                backgroundImage.color = lockColor;
                 break;
 
             case SkillSlotState.Unlocked:
@@ -106,6 +118,7 @@ public class SkillSlot : MonoBehaviour
                 costText.enabled = true;
                 lockedImage.enabled = false;
                 skillIcon.color = skillSO.skillColor;
+                backgroundImage.color = lockColor;
                 break;
 
             case SkillSlotState.Acquired:
@@ -113,6 +126,7 @@ public class SkillSlot : MonoBehaviour
                 costText.enabled = false;
                 lockedImage.enabled = false;
                 skillIcon.color = skillSO.skillColor;
+                backgroundImage.color = unlockColor;
                 break;
         }
     }
@@ -129,14 +143,15 @@ public class SkillSlot : MonoBehaviour
             GameObject particleEffect = Instantiate(unlockParticle, transform);
             particleEffect.transform.localScale = Vector3.zero;
 
-            seq.Join(particleEffect.transform.DOScale(5f, 0.25f).SetEase(Ease.OutBack))
-               .Append(particleEffect.transform.DOScale(0f, 0.5f).SetEase(Ease.InBack))
+            seq.Join(particleEffect.transform.DOScale(50f, 0.25f).SetEase(Ease.OutBack))
+               .Append(particleEffect.transform.DOScale(0f, 0.25f).SetEase(Ease.InBack))
                .AppendCallback(() => Destroy(particleEffect));
         }
 
         seq.Insert(0, transform.DOScale(1.8f, 0.18f).SetEase(Ease.OutBack));
         seq.Insert(0.18f, transform.DOScale(1f, 0.2f).SetEase(Ease.InOutSine));
-        seq.OnComplete(() => onComplete?.Invoke());
+        seq.OnComplete(() => onComplete?.Invoke()); PlaySound(unlockClip);
+        ;
     }
 
 
@@ -172,4 +187,11 @@ public class SkillSlot : MonoBehaviour
         UpdateLinks();
     }
 
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip!=null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
 }

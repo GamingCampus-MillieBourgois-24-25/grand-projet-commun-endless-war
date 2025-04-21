@@ -21,10 +21,10 @@ public static class Loader
     {
         onLoaderCallback = () =>
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(scene.ToString());
+            SceneManager.LoadScene(scene.ToString());
         };
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(Scene.Loading.ToString());
+        SceneManager.LoadScene(Scene.Loading.ToString());
         Time.timeScale = 1.0f;
 
         Debug.Log("LOADING");

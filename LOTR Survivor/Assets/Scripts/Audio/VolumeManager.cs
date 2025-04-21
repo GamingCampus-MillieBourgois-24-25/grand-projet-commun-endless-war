@@ -8,15 +8,19 @@ public class VolumeManager : MonoBehaviour
     [SerializeField] private float musicVolume = 1f;
     [SerializeField] private float sfxVolume = 1f;
 
+    [SerializeField] private AudioSource soundFXPrefab;
+
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void SetMusicVolume(float volume)
@@ -33,9 +37,26 @@ public class VolumeManager : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
-        // Le volume SFX sera appliqué quand les sons sont joués via OneShotAudio
     }
 
     public float GetMusicVolume() => musicVolume;
     public float GetSFXVolume() => sfxVolume;
+
+    public void PlaySFX(AudioClip audioClip, Transform spawnTransform = null, float volume = 1f, bool persistThroughScenes = false)
+    {
+        if (audioClip == null || soundFXPrefab == null) return;
+
+        Vector3 spawnPosition = spawnTransform != null ? spawnTransform.position : Vector3.zero;
+
+        AudioSource audioSource = Instantiate(soundFXPrefab, spawnPosition, Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = Mathf.Clamp01(volume) * sfxVolume;
+        audioSource.Play();
+
+        if (persistThroughScenes)
+            DontDestroyOnLoad(audioSource.gameObject);
+
+        Destroy(audioSource.gameObject, audioClip.length);
+    }
+
 }
