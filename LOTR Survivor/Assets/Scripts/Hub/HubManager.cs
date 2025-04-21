@@ -38,6 +38,8 @@ public class HubManager : MonoBehaviour
             return;
         }
 
+        UpdateGold();
+
         startButton.onClick.AddListener(ChangeScene);
         skillTreeButton.onClick.AddListener(SkillTree);
         nextCharacter.onClick.AddListener(NextCharacter);
@@ -164,7 +166,10 @@ public class HubManager : MonoBehaviour
         speedText.text = character.vitesseDeDeplacement.ToString("F1");
     }
 
-
+    private void UpdateGold()
+    {
+        textGold.text = MoneyManager.Instance.GetCurrentGold().ToString();
+    }
 
     void NextWorld()
     {
