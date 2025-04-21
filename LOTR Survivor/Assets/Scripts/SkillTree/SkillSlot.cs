@@ -29,7 +29,10 @@ public class SkillSlot : MonoBehaviour
     public Image lockedImage;
     public TMP_Text costText;
 
+    [SerializeField] private GameObject unlockParticle;
+
     public static event Action<SkillSlot> OnSkillSlotAcquired;
+    public static event Action<SkillSlot> OnInsufficientFunds;
 
     private void OnValidate()
     {
@@ -43,6 +46,12 @@ public class SkillSlot : MonoBehaviour
     {
         if (skillSlotState == SkillSlotState.Unlocked)
         {
+            if (MoneyManager.Instance.GetCurrentGold() < skillSO.skillCost)
+            {
+                OnInsufficientFunds?.Invoke(this);
+                return;
+            }
+            MoneyManager.Instance.SpendGold(skillSO.skillCost);
             skillSlotState = SkillSlotState.Acquired;
             UpdateUI();
             PlayAcquiredAnimation(() =>
@@ -114,10 +123,22 @@ public class SkillSlot : MonoBehaviour
         transform.localScale = Vector3.one;
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOScale(1.8f, 0.18f).SetEase(Ease.OutBack))
-           .Append(transform.DOScale(1f, 0.2f).SetEase(Ease.InOutSine))
-           .OnComplete(() => onComplete?.Invoke());
+
+        if (unlockParticle != null)
+        {
+            GameObject particleEffect = Instantiate(unlockParticle, transform);
+            particleEffect.transform.localScale = Vector3.zero;
+
+            seq.Join(particleEffect.transform.DOScale(5f, 0.25f).SetEase(Ease.OutBack))
+               .Append(particleEffect.transform.DOScale(0f, 0.5f).SetEase(Ease.InBack))
+               .AppendCallback(() => Destroy(particleEffect));
+        }
+
+        seq.Insert(0, transform.DOScale(1.8f, 0.18f).SetEase(Ease.OutBack));
+        seq.Insert(0.18f, transform.DOScale(1f, 0.2f).SetEase(Ease.InOutSine));
+        seq.OnComplete(() => onComplete?.Invoke());
     }
+
 
     private void PlayUnlockedAnimation()
     {
@@ -144,4 +165,11 @@ public class SkillSlot : MonoBehaviour
             }
         }
     }
+    public void ResetState()
+    {
+        skillSlotState = (prerequisiteSkillSlots.Count == 0) ? SkillSlotState.Unlocked : SkillSlotState.Locked;
+        UpdateUI();
+        UpdateLinks();
+    }
+
 }
