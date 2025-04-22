@@ -845,6 +845,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicVolume: 1
   sfxVolume: 1
+  soundFXPrefab: {fileID: 8106413019427920925, guid: 0ed4e7401aa64ba42a56afc59151228e,
+    type: 3}
 --- !u!1 &580786067
 GameObject:
   m_ObjectHideFlags: 0
