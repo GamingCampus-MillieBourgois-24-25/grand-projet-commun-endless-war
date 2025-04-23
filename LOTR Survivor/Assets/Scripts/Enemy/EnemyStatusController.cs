@@ -56,8 +56,11 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
         ReturnParticle(ref currentStunParticle, stunParticle);
 
         var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.speed = baseSpeed;
-        agent.isStopped = false;
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            agent.speed = baseSpeed;
+            agent.isStopped = false;
+        }
     }
 
 
