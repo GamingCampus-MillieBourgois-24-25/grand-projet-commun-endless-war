@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner Instance { get; private set; }
+
     public Transform player;
     public float spawnRadius = 10f;
     public float despawnDistance = 30f;
@@ -13,6 +16,28 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> activeEnemies = new List<GameObject>();
     private int currentWaveIndex = 0;
+
+    private Coroutine waveCoroutine;
+    private Coroutine spawnCoroutine;
+
+    private float waveTimer;
+    private bool isSpawningPaused = false;
+    private bool isCountdownStarted = false;
+    private EnemyWaveSO currentWave;
+
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private float finalSurviveTime = 15f;
+    [SerializeField] private float warningTime = 10f;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -28,32 +53,65 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        StartCoroutine(ManageWaves());
+        waveCoroutine = StartCoroutine(ManageWaves());
     }
-
     private IEnumerator ManageWaves()
     {
         while (currentWaveIndex < waves.Length)
         {
-            EnemyWaveSO currentWave = waves[currentWaveIndex];
+            currentWave = waves[currentWaveIndex];
 
             if (currentWave == null || currentWave.enemySOs.Length == 0)
             {
                 Debug.LogError("Wave data is missing or empty!");
-                yield return null;
                 currentWaveIndex++;
                 continue;
             }
 
-            float timer = 0f;
-            while (timer < currentWave.waveCooldown)
+            WaveCountdownTimer.Instance?.StartCountdown((int)warningTime);
+
+            yield return new WaitForSeconds(warningTime);
+
+            waveTimer = 0f;
+            spawnCoroutine = StartCoroutine(SpawnContinuously(currentWave));
+
+            while (waveTimer < currentWave.waveCooldown)
             {
-                SpawnEnemy(currentWave);
-                yield return new WaitForSeconds(currentWave.spawnInterval);
-                timer += currentWave.spawnInterval;
+                if (!isSpawningPaused)
+                    waveTimer += Time.deltaTime;
+
+                yield return null;
             }
 
+            StopCoroutine(spawnCoroutine);
             currentWaveIndex++;
+        }
+
+        Debug.Log("All waves complete. Starting final survival phase...");
+
+        WaveCountdownTimer.Instance?.DisplayFinalSurviveCountdown((int)finalSurviveTime);
+        yield return new WaitForSeconds(finalSurviveTime);
+
+        Debug.Log("Final survival complete. Triggering victory screen.");
+
+        GamePauseManager.Instance.PauseGame();
+
+        VictoryCanvas victoryCanvas = FindObjectOfType<VictoryCanvas>();
+        if (victoryCanvas != null)
+            victoryCanvas.DisplayUI();
+        else
+            Debug.LogWarning("VictoryCanvas not found in the scene.");
+    }
+
+    private IEnumerator SpawnContinuously(EnemyWaveSO wave)
+    {
+        while (true)
+        {
+            if (!isSpawningPaused)
+            {
+                SpawnEnemy(wave);
+            }
+            yield return new WaitForSeconds(wave.spawnInterval);
         }
     }
 
@@ -117,6 +175,16 @@ public class EnemySpawner : MonoBehaviour
                 activeEnemies.RemoveAt(i);
             }
         }
+    }
+
+    public void PauseSpawning()
+    {
+        isSpawningPaused = true;
+    }
+
+    public void ResumeSpawning()
+    {
+        isSpawningPaused = false;
     }
 
     private void OnDrawGizmos()
