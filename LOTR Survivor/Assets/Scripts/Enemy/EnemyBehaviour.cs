@@ -7,16 +7,20 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [Header("Enemy Data")]
     [SerializeField] private EnemySO enemyData;
+    [SerializeField] private Transform feet;
 
     private Transform player;
     private NavMeshAgent agent;
     private float attackTimer;
     private bool isInRange = false;
 
+    public bool isStunned = false;
+
     private void OnEnable()
     {
         HealthEvents.OnReviveComplete += SetPlayer;
         HealthEvents.OnPlayerDeath += HandlePlayerDeath;
+        isStunned = false;
     }
 
     private void OnDisable()
@@ -61,7 +65,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         UpdateTimer();
-        if (player != null)
+        if (player != null && !isStunned)
         {
             MoveTowardsPlayer();
             CheckDistanceToPlayer();
@@ -91,6 +95,10 @@ public class EnemyBehaviour : MonoBehaviour
     private void CheckDistanceToPlayer()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (feet!=null)
+        {
+            distanceToPlayer = Vector3.Distance(feet.position, player.position);
+        }
         bool wasInRange = isInRange;
         isInRange = distanceToPlayer <= enemyData.aggroRange;
 
@@ -111,7 +119,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Attack()
     {
-        if (isInRange && attackTimer >= enemyData.attackCooldown)
+        if (isInRange && attackTimer >= enemyData.attackCooldown && !isStunned)
         {
             if (player.TryGetComponent<IHealth>(out IHealth health))
             {

@@ -12,6 +12,10 @@ public abstract class AttackBehaviour : MonoBehaviour
     protected int skillLevel = 1;
     protected GameObject player;
 
+    protected float damageMultiplier;
+    protected float rangeMultiplier;
+    protected float projectileSpeedMultiplier;
+
     private void Start()
     {
 
@@ -23,8 +27,9 @@ public abstract class AttackBehaviour : MonoBehaviour
 
         if (CanAttack())
         {
+            attackTimer = 0;
+            CalculateMultipliers();
             Attack();
-            attackTimer = 0f;
         }
     }
 
@@ -43,7 +48,8 @@ public abstract class AttackBehaviour : MonoBehaviour
     {
         float actualCooldown = skillSettings.Cooldown;
 
-        actualCooldown *= PlayerStatsMultiplier.cooldownMultiplier;
+        float cooldownMultiplier = PlayerStatsMultiplier.IsInitialized ? PlayerStatsMultiplier.cooldownMultiplier : 1f;
+        actualCooldown *= cooldownMultiplier;
 
         actualCooldown = Mathf.Max(actualCooldown, skillSettings.MinCooldown);
 
@@ -99,7 +105,30 @@ public abstract class AttackBehaviour : MonoBehaviour
     {
         foreach (var effect in skillSettings.buffEffects)
         {
-            PlayerStatsMultiplier.ApplyBuff(effect);
+            if (PlayerStatsMultiplier.IsInitialized)
+            {
+                PlayerStatsMultiplier.ApplyBuff(effect);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerStatsMultiplier is not initialized. Buff effect not applied.");
+            }
+        }
+    }
+
+    protected void CalculateMultipliers()
+    {
+        if (PlayerStatsMultiplier.IsInitialized)
+        {
+            damageMultiplier = PlayerStatsMultiplier.damageMultiplier;
+            rangeMultiplier = PlayerStatsMultiplier.rangeMultiplier;
+            projectileSpeedMultiplier = PlayerStatsMultiplier.projectileSpeedMultiplier;
+        }
+        else
+        {
+            damageMultiplier = 1f;
+            rangeMultiplier = 1f;
+            projectileSpeedMultiplier = 1f;
         }
     }
 }

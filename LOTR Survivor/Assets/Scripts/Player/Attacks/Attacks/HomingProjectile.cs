@@ -37,7 +37,7 @@ public class HomingProjectile : Attack
     protected override void UpdateAttack()
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
-        transform.Translate(direction * skillSettings.Speed * PlayerStatsMultiplier.projectileSpeedMultiplier * Time.deltaTime, Space.World);
+        transform.Translate(direction * skillSettings.Speed * projectileSpeedMultiplier * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, target.transform.position) < 0.05f)
         {
@@ -56,7 +56,7 @@ public class HomingProjectile : Attack
 
         if (target.TryGetComponent<EnemyHealthBehaviour>(out EnemyHealthBehaviour health))
         {
-            int finalDamage = Mathf.RoundToInt(skillSettings.Damage * PlayerStatsMultiplier.damageMultiplier);
+            int finalDamage = Mathf.RoundToInt(skillSettings.Damage * damageMultiplier);
             health.TakeDamage(finalDamage);
             ApplyStatusEffects(target.gameObject);
         }

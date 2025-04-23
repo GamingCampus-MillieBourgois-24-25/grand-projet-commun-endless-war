@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1682213458449255308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2550948968064783423}
+  m_Layer: 6
+  m_Name: StunEffectAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2550948968064783423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682213458449255308}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.116, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8096261302854734990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7466036329059886502
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,13 +40,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8096261302854734990}
-  - component: {fileID: 6303746985748737423}
-  - component: {fileID: 56370005108763215}
   - component: {fileID: 6302947169627268562}
   - component: {fileID: 5102446194780928564}
   - component: {fileID: 3321119355655359760}
+  - component: {fileID: 56370005108763215}
+  - component: {fileID: 6303746985748737423}
   - component: {fileID: 4420957439939387608}
   - component: {fileID: -4960725241693521416}
+  - component: {fileID: -1400055305096260952}
   m_Layer: 6
   m_Name: RANGE_Elf
   m_TagString: Enemy
@@ -32,44 +64,13 @@ Transform:
   m_GameObject: {fileID: 7466036329059886502}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.26, y: 2, z: 5.49}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2550948968064783423}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6303746985748737423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7466036329059886502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f494e72fd648ac4ca00b07fd0ee2586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
---- !u!114 &56370005108763215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7466036329059886502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1405b1c3c146437408f1ff5ab7676270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
-  xpPrefab: {fileID: 1900636694727229254, guid: c166b2602b12bc04cada33f9d258d829,
-    type: 3}
-  healthPrefab: {fileID: 1498014835702131830, guid: db6da2141329a9a4b94b7c8d1708b522,
-    type: 3}
-  xpMagnetPrefab: {fileID: 0}
-  xpMagnetDropChance: 0.1
 --- !u!33 &6302947169627268562
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -143,6 +144,40 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &56370005108763215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466036329059886502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1405b1c3c146437408f1ff5ab7676270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
+  xpPrefab: {fileID: 1900636694727229254, guid: c166b2602b12bc04cada33f9d258d829,
+    type: 3}
+  healthPrefab: {fileID: 1498014835702131830, guid: db6da2141329a9a4b94b7c8d1708b522,
+    type: 3}
+  xpMagnetPrefab: {fileID: 0}
+  xpMagnetDropChance: 0.1
+--- !u!114 &6303746985748737423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466036329059886502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f494e72fd648ac4ca00b07fd0ee2586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
+  feet: {fileID: 0}
+  isStunned: 0
 --- !u!195 &4420957439939387608
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -152,7 +187,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7466036329059886502}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 1
   m_Acceleration: 7
   avoidancePriority: 50
@@ -192,3 +227,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1400055305096260952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466036329059886502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83ebe243bdd1e1459f0be6ea4e14ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnParticle: {fileID: 7455372202216957759, guid: 74b70f51abb2c21468956c9cdd3d873c,
+    type: 3}
+  bleedParticle: {fileID: 0}
+  poisonParticle: {fileID: 0}
+  slowParticle: {fileID: 0}
+  stunParticle: {fileID: 6097779538034126439, guid: 1a328cbeb0cd25743b3144ec84ace9ec,
+    type: 3}
+  stunEffectAnchor: {fileID: 2550948968064783423}

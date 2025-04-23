@@ -8,6 +8,7 @@ public class HealthEvents
     public static event Action<Transform> OnReviveComplete;
     public static event Action OnPlayerDeath;
     public static event Action<int> OnPlayerDamaged;
+    public static event Action<int> OnHealing;
 
     public static event Action OnGameOver;
 
@@ -39,5 +40,10 @@ public class HealthEvents
     public static void GameOver()
     {
         OnGameOver?.Invoke();
+    }
+
+    public static void RaiseHealing(int amount)
+    {
+        OnHealing?.Invoke(amount);
     }
 }

@@ -10,7 +10,7 @@ public class HubManager : MonoBehaviour
 {
     [Header("Start Game")]
     [SerializeField] private Button startButton;
-    [SerializeField] private string nextScene;
+    [SerializeField] private Button skillTreeButton;
 
     [Header("Power-Up UI")]
     [SerializeField] private TMP_Text textGold;
@@ -24,21 +24,24 @@ public class HubManager : MonoBehaviour
     [SerializeField] private PlayerDatabaseSO playerDatabase;
     private int currentCharacterIndex = 0;
 
-    //[Header("World Selection")]
-    //[SerializeField] private Image imageWorld;
-    //[SerializeField] private TMP_Text worldName;
-    //[SerializeField] private Button nextWorld;
-    //[SerializeField] private Button previousWorld;
+    [Header("Player Stats")]
+    [SerializeField] private TMP_Text raceText;
+    [SerializeField] private TMP_Text classeText;
+    [SerializeField] private TMP_Text pvText;
+    [SerializeField] private TMP_Text speedText;
 
     void Start()
     {
         if (startButton == null)
         {
-            Debug.LogError("Start Button n'est pas assigné dans l'inspecteur !");
+            Debug.LogError("Start Button is not assigned in the inspector!");
             return;
         }
 
+        UpdateGold();
+
         startButton.onClick.AddListener(ChangeScene);
+        skillTreeButton.onClick.AddListener(SkillTree);
         nextCharacter.onClick.AddListener(NextCharacter);
         previousCharacter.onClick.AddListener(PreviousCharacter);
 
@@ -49,14 +52,20 @@ public class HubManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Aucun personnage dans la base de données !");
+            Debug.LogError("No character found in the database!");
         }
     }
 
     void ChangeScene()
     {
         SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
-        SceneManager.LoadScene(nextScene);
+        Loader.Load(Loader.Scene.TestMobile);
+    }
+
+    void SkillTree()
+    {
+        SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
+        Loader.Load(Loader.Scene.SkillTree);
     }
 
     void PreviousCharacter()
@@ -87,7 +96,7 @@ public class HubManager : MonoBehaviour
 
         if (character.imageCharacter == null)
         {
-            Debug.LogError($"Aucune image pour le personnage {character.characterName}");
+            Debug.LogError("No image for character " + character.characterName);
         }
 
         characterImageTransform.anchoredPosition = Vector2.zero;
@@ -95,6 +104,8 @@ public class HubManager : MonoBehaviour
 
         characterImage.sprite = character.imageCharacter;
         characterName.text = character.characterName;
+
+        UpdateCharacterStats(character);
     }
 
     void DisplayCharacter(int index, bool slideFromLeft = true)
@@ -103,7 +114,7 @@ public class HubManager : MonoBehaviour
 
         if (character.imageCharacter == null)
         {
-            Debug.LogError($"Aucune image pour le personnage {character.characterName}");
+            Debug.LogError("No image for character " + character.characterName);
         }
 
         characterImageTransform.DOKill();
@@ -124,6 +135,8 @@ public class HubManager : MonoBehaviour
             characterImage.sprite = character.imageCharacter;
             characterName.text = character.characterName;
 
+            UpdateCharacterStats(character);
+
             Sequence enterSequence = DOTween.Sequence();
             enterSequence.Append(characterImageTransform
                                     .DOAnchorPos(Vector2.zero, 0.6f)
@@ -133,13 +146,38 @@ public class HubManager : MonoBehaviour
         });
     }
 
+    void UpdateCharacterStats(PlayerStatsSO character)
+    {
+        if (character == null)
+        {
+            Debug.LogError("Character is null in UpdateCharacterStats!");
+            return;
+        }
+
+        if (raceText == null || classeText == null || pvText == null || speedText == null)
+        {
+            Debug.LogError("One or more UI text fields are not assigned in the Inspector!");
+            return;
+        }
+
+        raceText.text = character.race.ToString();
+        classeText.text = character.classe.ToString();
+        pvText.text = character.pointsDeVie.ToString();
+        speedText.text = character.vitesseDeDeplacement.ToString("F1");
+    }
+
+    private void UpdateGold()
+    {
+        textGold.text = MoneyManager.Instance.GetCurrentGold().ToString();
+    }
+
     void NextWorld()
     {
-        // à implémenter
+        // To implement
     }
 
     void PreviousWorld()
     {
-        // à implémenter
+        // To implement
     }
 }

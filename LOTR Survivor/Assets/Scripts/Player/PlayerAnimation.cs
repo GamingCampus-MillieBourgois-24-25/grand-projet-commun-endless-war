@@ -10,10 +10,15 @@ public class PlayerAnimation : MonoBehaviour
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+
     [SerializeField] private GameObject deathParticle;
     [SerializeField] private GameObject reviveParticle;
+    [SerializeField] private GameObject healingParticle;
     [SerializeField] private float blinkSpeed = 0.1f;
     [SerializeField] private Transform mesh;
+
+    [SerializeField] private float slowmoScale = 0.1f;
+    [SerializeField] private float slowmoDuration = 1.5f;
 
     private PlayerHealthBehaviour playerHealth;
     private bool isReviving = false;
@@ -22,14 +27,12 @@ public class PlayerAnimation : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     private Material originalMaterial;
     private bool isInvulnerable;
-    private GameTimer gameTimer;
 
     private void Awake()
     {
         playerHealth = GetComponent<PlayerHealthBehaviour>();
         objectRenderer = GetComponentInChildren<Renderer>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
-        gameTimer = FindObjectOfType<GameTimer>();
 
         if (objectRenderer != null)
         {
@@ -44,6 +47,7 @@ public class PlayerAnimation : MonoBehaviour
             HealthEvents.OnPlayerDeath += HandlePlayerDeath;
             HealthEvents.OnPlayerDamaged += HandleDamageAnimations;
             HealthEvents.OnRevive += HandlePlayerRevive;
+            HealthEvents.OnHealing += HandleHealingAnimations;
 
             playerHealth.OnInvulnerabilityStart += OnInvulnerabilityStart;
             playerHealth.OnInvulnerabilityEnd += OnInvulnerabilityEnd;
@@ -57,6 +61,7 @@ public class PlayerAnimation : MonoBehaviour
             HealthEvents.OnPlayerDeath -= HandlePlayerDeath;
             HealthEvents.OnPlayerDamaged -= HandleDamageAnimations;
             HealthEvents.OnRevive -= HandlePlayerRevive;
+            HealthEvents.OnHealing -= HandleHealingAnimations;
 
             playerHealth.OnInvulnerabilityStart -= OnInvulnerabilityStart;
             playerHealth.OnInvulnerabilityEnd -= OnInvulnerabilityEnd;
@@ -102,12 +107,18 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    private void HandleHealingAnimations(int amount)
+    {
+        Instantiate(healingParticle, transform.position, Quaternion.identity, transform);
+    }
+
     private void HandlePlayerDeath()
     {
-        if (gameTimer != null)
-            gameTimer.PauseTimer();
-
         StartCoroutine(PlayDeathAnimation());
+        if (CameraShakeManager.instance != null)
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
     }
 
     private void HandlePlayerRevive(Transform player)
@@ -127,10 +138,15 @@ public class PlayerAnimation : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
-        if (EnemySpawner.Instance != null)
-        {
-            EnemySpawner.Instance.PauseSpawning();
-        }
+        Time.timeScale = slowmoScale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        yield return new WaitForSecondsRealtime(slowmoDuration);
+
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
+        GetComponent<PlayerInput>().enabled = false;
 
         yield return new WaitForSecondsRealtime(1f);
         playerAnimator.SetTrigger("Die");
@@ -145,14 +161,6 @@ public class PlayerAnimation : MonoBehaviour
 
         playerAnimator.SetTrigger("Revive");
         yield return new WaitForSecondsRealtime(2f);
-
-        if (EnemySpawner.Instance != null)
-        {
-            EnemySpawner.Instance.ResumeSpawning();
-        }
-
-        if (gameTimer != null)
-            gameTimer.ResumeTimer();
 
         HealthEvents.ReviveFinished(transform);
         GetComponent<PlayerInput>().enabled = true;

@@ -36,7 +36,8 @@ Transform:
   m_LocalPosition: {x: -4.26, y: 2, z: 5.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1794935078184233353}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6302947169627268562
@@ -206,3 +207,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83ebe243bdd1e1459f0be6ea4e14ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  burnParticle: {fileID: 7455372202216957759, guid: 74b70f51abb2c21468956c9cdd3d873c,
+    type: 3}
+  bleedParticle: {fileID: 0}
+  poisonParticle: {fileID: 0}
+  slowParticle: {fileID: 0}
+  stunParticle: {fileID: 6097779538034126439, guid: 1a328cbeb0cd25743b3144ec84ace9ec,
+    type: 3}
+  stunEffectAnchor: {fileID: 1794935078184233353}
+--- !u!1 &8842115754681324841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794935078184233353}
+  m_Layer: 6
+  m_Name: StunEffecAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1794935078184233353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842115754681324841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8096261302854734990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

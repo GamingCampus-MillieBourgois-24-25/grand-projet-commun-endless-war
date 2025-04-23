@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c0337cc66ac6a834b9bbd2eb2b453a4a, type: 2}
   - {fileID: 11400000, guid: 68529f2ccf4deb4478410bdd5b2a9af0, type: 2}
   - {fileID: 11400000, guid: 58b2af55a001a3646bed4064eb1cb87f, type: 2}
-  spawnInterval: 1
+  spawnInterval: 0.3
   waveCooldown: 60

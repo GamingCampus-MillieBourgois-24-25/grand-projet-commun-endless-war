@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class MoneyManager : MonoBehaviour
     [Header("Gold Settings")]
     [SerializeField] private int enemiesPerGold = 10;
     private int enemiesKilled = 0;
+    [SerializeField]
     private int currentGold = 0;
 
     private const string GOLD_PREF_KEY = "PlayerGold";
@@ -22,6 +24,8 @@ public class MoneyManager : MonoBehaviour
     public int SessionEnemiesKilled => sessionEnemiesKilled;
     public int SessionGoldEarned => sessionGoldEarned;
 
+    public static event Action<int> OnGoldChanged;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,11 +36,11 @@ public class MoneyManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // Persiste entre les scènes
+        LoadGold();
     }
 
     private void Start()
     {
-        LoadGold();
     }
 
     public void OnEnemyKilled()
@@ -76,6 +80,7 @@ public class MoneyManager : MonoBehaviour
     public void AddGold(int amount)
     {
         currentGold += amount;
+        OnGoldChanged?.Invoke(currentGold);
         SaveGold();
     }
 
@@ -85,6 +90,7 @@ public class MoneyManager : MonoBehaviour
         {
             currentGold -= amount;
             SaveGold();
+            OnGoldChanged?.Invoke(currentGold);
         }
         else
         {

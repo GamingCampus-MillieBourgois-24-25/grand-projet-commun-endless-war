@@ -4,7 +4,7 @@ public class XPPickup : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject prefab;
-    private Collider pickCollider;
+    [SerializeField] private SphereCollider capsuleCollider;
     public int xpValue = 1;
 
     private bool picked = false;
@@ -13,7 +13,8 @@ public class XPPickup : MonoBehaviour
 
     private void Awake()
     {
-        pickCollider = GetComponent<Collider>();
+        capsuleCollider = GetComponent<SphereCollider>();
+        capsuleCollider.radius *= 1+(PlayerStatsManager.Instance.XPBoost/100);
     }
 
     private void OnEnable()

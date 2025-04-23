@@ -741,6 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 0}
   Knob: {fileID: 1985693141}
+  stickType: 0
 --- !u!114 &1015441581
 MonoBehaviour:
   m_ObjectHideFlags: 0
