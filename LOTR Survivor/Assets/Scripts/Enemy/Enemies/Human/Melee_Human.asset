@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
-  m_Name: Melee_Elf
+  m_Name: Melee_Human
   m_EditorClassIdentifier: 
   maxHealth: 20
-  attackPower: 4
+  attackPower: 6
   attackCooldown: 1.5
   speed: 2
-  aggroRange: 2
-  prefab: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
+  aggroRange: 1
+  prefab: {fileID: 742717709982947402, guid: fca7fd231da72dd4390ee2c14f07a7ea, type: 3}
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 

@@ -15,7 +15,5 @@ MonoBehaviour:
   enemySOs:
   - {fileID: 11400000, guid: e3af88babf509574685fca079036860b, type: 2}
   - {fileID: 11400000, guid: 83a9f8a61da0de04aa0e2ceb8cf36752, type: 2}
-  - {fileID: 11400000, guid: 58b2af55a001a3646bed4064eb1cb87f, type: 2}
-  minEnemies: 15
   spawnInterval: 1
   waveCooldown: 5
