@@ -16,7 +16,7 @@ public class SkillSO : ScriptableObject
 public enum SkillNameType
 {
     Health, // done
-    Damage,
+    Damage, // done
     ShotSpeed,
     Rate,
     XP, // done
