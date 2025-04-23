@@ -4,10 +4,15 @@ public class BoxMelee : AreaAttackBehaviour
 {
     protected override Collider[] GetHitColliders(float adjustedRange)
     {
-        Vector3 center = transform.position + transform.forward * (adjustedRange * 0.5f);
+        Vector3 center = transform.position + transform.forward * (adjustedRange * 0.5f) + new Vector3(0,0.5f,0);
         Vector3 size = new Vector3(skillSettings.WideRange, 2f, adjustedRange);
+        size.x = Mathf.Abs(size.x);
+        size.y = Mathf.Abs(size.y);
+        size.z = Mathf.Abs(size.z);
 
-        return Physics.OverlapBox(center, size / 2f, transform.rotation, LayerMask.GetMask("Enemy"));
+        Collider[] results = Physics.OverlapBox(center, size / 2f, transform.rotation, LayerMask.GetMask("Enemy"));
+
+        return results.Length > 0 ? results : null;
     }
 
     protected override Vector3 GetFXSpawnPosition()
@@ -35,7 +40,7 @@ public class BoxMelee : AreaAttackBehaviour
         float adjustedRange = skillSettings.Range * rangeMultiplier;
 
         Gizmos.color = Color.red;
-        Vector3 center = transform.position + transform.forward * (adjustedRange * 0.5f);
+        Vector3 center = transform.position + transform.forward * (adjustedRange * 0.5f) + new Vector3(0, 0.5f, 0);
         Vector3 size = new Vector3(skillSettings.WideRange, 2f, adjustedRange);
 
         Gizmos.matrix = Matrix4x4.TRS(center, transform.rotation, Vector3.one);

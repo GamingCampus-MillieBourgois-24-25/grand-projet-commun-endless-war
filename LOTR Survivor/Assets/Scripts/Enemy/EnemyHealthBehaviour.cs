@@ -17,9 +17,13 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     [SerializeField] private GameObject xpMagnetPrefab;
     [SerializeField, Range(0f, 1f)] private float xpMagnetDropChance = 0.1f;
 
-    private int health;
-    private Renderer objectRenderer;
-    private Color originalColor;
+    [Header("Visual & Effects")]
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] private Renderer mesh;
+
+    public int health;
+    private Material originalMaterial;
 
     private static int killCounter = 0;
     private static int killsForHealthPickup = 30;
@@ -29,7 +33,7 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     public float FlashDuration { get => enemyData != null ? enemyData.flashDuration : 0.1f; set => enemyData.flashDuration = value; }
     public Color FlashColor { get => enemyData != null ? enemyData.flashColor : Color.red; set => enemyData.flashColor = value; }
 
-    void Start()
+    private void Awake()
     {
         if (enemyData == null)
         {
@@ -37,26 +41,30 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
             return;
         }
 
-        Health = MaxHealth;
-        objectRenderer = GetComponent<Renderer>();
-
-        if (objectRenderer != null)
+        if (mesh != null)
         {
-            originalColor = objectRenderer.material.color;
+            originalMaterial = mesh.material;
         }
+    }
 
+    void Start()
+    {
+        OnHealthInitialized();
+    }
+
+    private void OnEnable()
+    {
+        if (mesh != null)
+        {
+            mesh.material = originalMaterial;
+
+        }
         OnHealthInitialized();
     }
 
     public void OnHealthInitialized() 
     { 
         health = MaxHealth;
-    }
-
-    public void Initialize(EnemySO enemySO)
-    {
-        this.enemyData = enemySO;
-        Health = MaxHealth;
     }
 
     public void TakeDamage(int damage)
@@ -75,11 +83,11 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
     private IEnumerator FlashRed()
     {
-        if (objectRenderer != null)
+        if (mesh != null)
         {
-            objectRenderer.material.color = FlashColor;
-            yield return new WaitForSeconds(FlashDuration);
-            objectRenderer.material.color = originalColor;
+            mesh.material = flashMaterial;
+            yield return new WaitForSeconds(flashDuration);
+            mesh.material = originalMaterial;
         }
     }
 

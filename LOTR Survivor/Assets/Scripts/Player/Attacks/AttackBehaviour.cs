@@ -21,7 +21,7 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         attackTimer += Time.deltaTime;
 
