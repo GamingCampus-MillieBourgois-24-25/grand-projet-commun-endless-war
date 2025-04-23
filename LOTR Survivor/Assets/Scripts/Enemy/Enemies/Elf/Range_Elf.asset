@@ -17,7 +17,8 @@ MonoBehaviour:
   attackCooldown: 0.8
   speed: 2
   aggroRange: 1
-  prefab: {fileID: 7466036329059886502, guid: 59ab7041fe805f44fbe687a8f400f3de, type: 3}
+  prefab: {fileID: 1213317557178731776, guid: 77d427289302af246bd18e77a2573a2c, type: 3}
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
+  statusImmunities: 
