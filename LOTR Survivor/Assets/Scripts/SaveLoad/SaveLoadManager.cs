@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class SaveLoadManager : MonoBehaviour
+public class SaveLoadManager
 {
     private static string SaveFilePath => Path.Combine(Application.persistentDataPath, "tooltip_state.json");
     
