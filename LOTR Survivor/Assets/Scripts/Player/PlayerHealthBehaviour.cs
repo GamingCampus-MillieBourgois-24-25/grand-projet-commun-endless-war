@@ -162,4 +162,11 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
         HealthEvents.Revive(transform);
         StartInvulnerability(true);
     }
+
+    public void IncreaseMaxHealthByPercentage(float percentage)
+    {
+        int increaseAmount = Mathf.RoundToInt(MaxHealth * (percentage / 100f));
+        MaxHealth += increaseAmount;
+        Debug.Log($"+{increaseAmount} Max Health ({percentage}%): new MaxHealth = {MaxHealth}");
+    }
 }
