@@ -107,6 +107,10 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: 31a520dfb12e22241bcdecd0d04e61ed, type: 2}
   flashDuration: 0.1
   mesh: {fileID: 1109862577976804236}
+  deathEffectSlash: {fileID: 6348637610057020349, guid: b13b0cf48590fdc46add9717a5db6fb6,
+    type: 3}
+  deathEffectMagic: {fileID: 1554935185360794264, guid: d5d1774d02039da47b9d2e568c38d3bb,
+    type: 3}
   health: 0
 --- !u!114 &3236420372072856788
 MonoBehaviour:

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthBehaviour : MonoBehaviour, IHealth
+public class EnemyHealthBehaviour : MonoBehaviour
 {
     [Header("Enemy Data")]
     [SerializeField] public EnemySO enemyData;
@@ -21,6 +21,9 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private Renderer mesh;
+
+    [SerializeField] private GameObject deathEffectSlash;
+    [SerializeField] private GameObject deathEffectMagic;
 
     public int health;
     private Material originalMaterial;
@@ -67,12 +70,13 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
         health = MaxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, DamageType type = DamageType.Magic)
     {
         Health -= damage;
 
         if (Health <= 0)
         {
+            PlayDeathVFX(type);
             DestroyEnemy();
         }
         else
@@ -91,6 +95,19 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
         }
     }
 
+    private void PlayDeathVFX(DamageType type)
+    {
+        if (deathEffectSlash == null || deathEffectMagic == null)
+            return;
+        if (type == DamageType.Magic)
+        {
+            Instantiate(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        }
+    }
     private void DestroyEnemy()
     {
         killCounter++;

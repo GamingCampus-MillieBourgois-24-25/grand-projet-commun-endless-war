@@ -57,7 +57,7 @@ public class HomingProjectile : Attack
         if (target.TryGetComponent<EnemyHealthBehaviour>(out EnemyHealthBehaviour health))
         {
             int finalDamage = Mathf.RoundToInt(skillSettings.Damage * damageMultiplier);
-            health.TakeDamage(finalDamage);
+            health.TakeDamage(finalDamage, skillSettings.damageType);
             ApplyStatusEffects(target.gameObject);
         }
 

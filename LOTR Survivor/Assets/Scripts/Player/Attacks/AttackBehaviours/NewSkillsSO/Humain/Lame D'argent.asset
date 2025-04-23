@@ -31,6 +31,7 @@ MonoBehaviour:
   statusEffects: []
   buffEffects: []
   attackTypes: 00000000
+  damageType: 1
   NumberOfAttacks: 10
   CooldownBetweenAttacks: 5
   prefab: {fileID: 1171201465392465800, guid: 4aa9f30a28a77224ba84b2a2c334c71b, type: 3}

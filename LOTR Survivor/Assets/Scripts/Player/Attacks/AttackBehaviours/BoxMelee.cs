@@ -24,7 +24,6 @@ public class BoxMelee : AreaAttackBehaviour
     {
         if (skillSettings.prefab != null)
         {
-
             Vector3 spawnPosition = GetFXSpawnPosition();
             Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, skillSettings.RotationOffset, 0);
 

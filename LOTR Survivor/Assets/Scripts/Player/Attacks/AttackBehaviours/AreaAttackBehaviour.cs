@@ -26,7 +26,7 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
                     EnemyHealthBehaviour health = enemy.GetComponent<EnemyHealthBehaviour>();
                     if (health != null)
                     {
-                        health.TakeDamage(finalDamage);
+                        health.TakeDamage(finalDamage, skillSettings.damageType);
                         ApplyStatusEffects(enemy.gameObject);
                     }
                 }

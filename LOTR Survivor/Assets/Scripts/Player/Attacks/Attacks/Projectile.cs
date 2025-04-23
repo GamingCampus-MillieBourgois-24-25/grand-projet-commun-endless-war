@@ -53,7 +53,7 @@ public class Projectile : Attack
         if (enemy != null)
         {
             int finalDamage = Mathf.RoundToInt(skillSettings.Damage * damageMultiplier);
-            enemy.TakeDamage(finalDamage);
+            enemy.TakeDamage(finalDamage, skillSettings.damageType);
         }
     }
 }
