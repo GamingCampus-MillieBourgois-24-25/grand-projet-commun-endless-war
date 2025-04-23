@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4212491458544495845}
   - component: {fileID: 7462383215853282884}
   - component: {fileID: 4796723636192518216}
-  m_Layer: 0
+  - component: {fileID: 9030776177189865801}
+  m_Layer: 6
   m_Name: HUMAN_MELEE_PREFAB
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 7187b41047f427946a142d8b6efbb6d5, type: 2}
-  feet: {fileID: 0}
   isStunned: 0
 --- !u!114 &4390684487292159166
 MonoBehaviour:
@@ -73,6 +73,10 @@ MonoBehaviour:
   xpMagnetPrefab: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
     type: 3}
   xpMagnetDropChance: 0.01
+  flashMaterial: {fileID: 2100000, guid: 31a520dfb12e22241bcdecd0d04e61ed, type: 2}
+  flashDuration: 0.1
+  mesh: {fileID: 6736590192600437735}
+  health: 0
 --- !u!114 &4212491458544495845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +94,8 @@ MonoBehaviour:
   bleedParticle: {fileID: 0}
   poisonParticle: {fileID: 0}
   slowParticle: {fileID: 0}
-  stunParticle: {fileID: 0}
+  stunParticle: {fileID: 6097779538034126439, guid: 1a328cbeb0cd25743b3144ec84ace9ec,
+    type: 3}
   stunEffectAnchor: {fileID: 6814959591059671133}
 --- !u!54 &7462383215853282884
 Rigidbody:
@@ -115,7 +120,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -141,6 +146,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &9030776177189865801
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742717709982947402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.4714537
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.73572683, z: 0}
 --- !u!1 &4431287884241751852
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6814959591059671133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StunAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,47 +268,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: human_melee
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c673c4da6060f745863ce7b3c28d58d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c673c4da6060f745863ce7b3c28d58d,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 433092512173899891}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c673c4da6060f745863ce7b3c28d58d, type: 3}
---- !u!1 &5079446193545409074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c673c4da6060f745863ce7b3c28d58d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5385382351653490531}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &433092512173899891
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5079446193545409074}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.5092812
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7546406, z: 0}
 --- !u!4 &5563636357819771016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c673c4da6060f745863ce7b3c28d58d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5385382351653490531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6736590192600437735 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 4c673c4da6060f745863ce7b3c28d58d,
     type: 3}
   m_PrefabInstance: {fileID: 5385382351653490531}
   m_PrefabAsset: {fileID: 0}

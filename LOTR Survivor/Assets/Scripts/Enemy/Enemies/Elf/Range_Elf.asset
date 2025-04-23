@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
   m_Name: Range_Elf
   m_EditorClassIdentifier: 
-  maxHealth: 40
-  attackPower: 15
-  attackCooldown: 0.8
+  maxHealth: 15
+  attackPower: 5
+  attackCooldown: 1.5
   speed: 2
   aggroRange: 1
   prefab: {fileID: 1213317557178731776, guid: 77d427289302af246bd18e77a2573a2c, type: 3}

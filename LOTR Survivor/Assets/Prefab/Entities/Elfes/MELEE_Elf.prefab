@@ -163,6 +163,10 @@ MonoBehaviour:
     type: 3}
   xpMagnetPrefab: {fileID: 0}
   xpMagnetDropChance: 0.1
+  flashMaterial: {fileID: 0}
+  flashDuration: 0.1
+  mesh: {fileID: 5102446194780928564}
+  health: 0
 --- !u!114 &3243725294918568049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 2d27bc1227acd654d8b088961e3b152d, type: 2}
-  feet: {fileID: 0}
   isStunned: 0
 --- !u!195 &4420957439939387608
 NavMeshAgent:

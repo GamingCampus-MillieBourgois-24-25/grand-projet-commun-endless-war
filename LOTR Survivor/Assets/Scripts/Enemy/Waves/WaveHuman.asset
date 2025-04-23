@@ -15,5 +15,5 @@ MonoBehaviour:
   enemySOs:
   - {fileID: 11400000, guid: ee539f3e9c56c564fabe1ff367563811, type: 2}
   - {fileID: 11400000, guid: 7187b41047f427946a142d8b6efbb6d5, type: 2}
-  spawnInterval: 1
-  waveCooldown: 5
+  spawnInterval: 0.8
+  waveCooldown: 60

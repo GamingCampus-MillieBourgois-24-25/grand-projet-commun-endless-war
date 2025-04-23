@@ -123,6 +123,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandlePlayerRevive(Transform player)
     {
+        Debug.Log("rezdf");
         StartCoroutine(PlayReviveAnimation());
     }
 
