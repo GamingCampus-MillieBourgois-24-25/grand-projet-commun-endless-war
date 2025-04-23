@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4728380264298895841}
+  - component: {fileID: 5565339666416567101}
   m_Layer: 0
   m_Name: DeathEffectSwordPrefab
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 6379218518816984145}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5565339666416567101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348637610057020349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc74d1e411c85cf45ad361fdcbd5d487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7549235967219338981}
+  prefab: {fileID: 6348637610057020349}
 --- !u!1 &8049939660057233640
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +58,6 @@ GameObject:
   - component: {fileID: 6379218518816984145}
   - component: {fileID: 7549235967219338981}
   - component: {fileID: 3719631771400968133}
-  - component: {fileID: 7456556477388453526}
   m_Layer: 0
   m_Name: DeathEffectSword
   m_TagString: Untagged
@@ -139,17 +153,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7456556477388453526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8049939660057233640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc74d1e411c85cf45ad361fdcbd5d487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 6348637610057020349}
-  animator: {fileID: 7549235967219338981}

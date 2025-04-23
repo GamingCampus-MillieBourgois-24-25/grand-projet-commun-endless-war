@@ -154,10 +154,8 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
 
     public void ApplyBurn(float dps, float duration)
     {
-        Debug.Log("burning");
         if (burnRoutine != null) StopCoroutine(burnRoutine);
         burnRoutine = StartCoroutine(Burn(dps, duration));
-        Debug.Log("really burning");
     }
 
     private IEnumerator Burn(float dps, float duration)
@@ -168,7 +166,6 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
             currentBurnParticle.transform.SetParent(transform);
         }
 
-        Debug.Log("absolute burning");
 
         float timer = 0f;
         int damageTick = Mathf.RoundToInt(dps);

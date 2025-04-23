@@ -97,17 +97,40 @@ public class EnemyHealthBehaviour : MonoBehaviour
 
     private void PlayDeathVFX(DamageType type)
     {
-        if (deathEffectSlash == null || deathEffectMagic == null)
-            return;
-        if (type == DamageType.Magic)
+        if (deathEffectSlash != null && deathEffectMagic != null)
         {
-            Instantiate(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+            if (ObjectPool.Instance != null)
+            {
+                if (type == DamageType.Magic)
+                {
+                    ObjectPool.Instance.Spawn(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    DebugPoolState("After spawning deathEffectMagic");
+                }
+                else
+                {
+                    ObjectPool.Instance.Spawn(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    DebugPoolState("After spawning deathEffectSlash");
+                }
+            }
+            else
+            {
+                if (type == DamageType.Magic)
+                {
+                    Instantiate(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                }
+            }
         }
         else
         {
-            Instantiate(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+            Debug.LogWarning("Death effect prefabs are not assigned.");
         }
     }
+
+
     private void DestroyEnemy()
     {
         killCounter++;
@@ -137,4 +160,22 @@ public class EnemyHealthBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void DebugPoolState(string context)
+    {
+        Debug.Log($"[POOL DEBUG] --- {context} ---");
+
+        if (ObjectPool.Instance == null) return;
+
+        var field = typeof(ObjectPool).GetField("pool", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var poolDict = field.GetValue(ObjectPool.Instance) as Dictionary<GameObject, Queue<GameObject>>;
+
+        foreach (var entry in poolDict)
+        {
+            string prefabName = entry.Key != null ? entry.Key.name : "NULL";
+            int count = entry.Value != null ? entry.Value.Count : -1;
+            Debug.Log($"    -> {prefabName}: {count} in pool");
+        }
+    }
+
 }
