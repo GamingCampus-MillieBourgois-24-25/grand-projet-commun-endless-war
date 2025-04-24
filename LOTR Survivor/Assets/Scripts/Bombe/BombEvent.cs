@@ -27,7 +27,7 @@ public class BombEvent : MonoBehaviour
     {
         OnKillAllVisibleEnemies?.Invoke();
     }*/
-
+        
     public void KillEnemiesInRange(Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);

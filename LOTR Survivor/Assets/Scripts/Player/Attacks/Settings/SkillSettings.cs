@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAttackSkill", menuName = "Attack/Skill Settings")]
 public class SkillSettings : ScriptableObject
 {
+    public int CurrentLevel = 1;
+
     [Header("Skill Details")]
     public string skillName;
     public Sprite skillSprite;
@@ -62,6 +64,9 @@ public class SkillSettings : ScriptableObject
     public float MaxAimRange = 30f;
     public float MaxMaxRotation = 360f;
 
+    [Header("Leveling")]
+    public int MaxLevel = 10;
+
     public int Damage;
     public float Speed;
     public float Cooldown;
@@ -69,14 +74,19 @@ public class SkillSettings : ScriptableObject
     public float AimRange;
     public float MaxRotation;
 
-    public SkillSettings Upgrade(int level = 1)
+    public SkillSettings Upgrade()
     {
-        Damage = Mathf.Min(Mathf.RoundToInt(BaseDamage * Mathf.Pow(DamageUpgrade, level - 1)), MaxDamage);
-        Speed = Mathf.Min(BaseSpeed * Mathf.Pow(SpeedUpgrade, level - 1), MaxSpeed);
-        Cooldown = Mathf.Max(BaseCooldown * Mathf.Pow(CooldownUpgrade, level - 1), MinCooldown);
-        Range = Mathf.Min(BaseRange * Mathf.Pow(RangeUpgrade, level - 1), MaxRange);
-        AimRange = Mathf.Min(BaseAimRange * Mathf.Pow(AimRangeUpgrade, level - 1), MaxAimRange);
-        MaxRotation = Mathf.Min(BaseMaxRotation * Mathf.Pow(MaxRotationUpgrade, level - 1), MaxMaxRotation);
+        if (CurrentLevel < MaxLevel)
+        {
+            CurrentLevel++;
+        }
+
+        Damage = Mathf.Min(Mathf.RoundToInt(BaseDamage * Mathf.Pow(DamageUpgrade, CurrentLevel - 1)), MaxDamage);
+        Speed = Mathf.Min(BaseSpeed * Mathf.Pow(SpeedUpgrade, CurrentLevel - 1), MaxSpeed);
+        Cooldown = Mathf.Max(BaseCooldown * Mathf.Pow(CooldownUpgrade, CurrentLevel - 1), MinCooldown);
+        Range = Mathf.Min(BaseRange * Mathf.Pow(RangeUpgrade, CurrentLevel - 1), MaxRange);
+        AimRange = Mathf.Min(BaseAimRange * Mathf.Pow(AimRangeUpgrade, CurrentLevel - 1), MaxAimRange);
+        MaxRotation = Mathf.Min(BaseMaxRotation * Mathf.Pow(MaxRotationUpgrade, CurrentLevel - 1), MaxMaxRotation);
 
         return this;
     }
@@ -89,6 +99,12 @@ public class SkillSettings : ScriptableObject
         Range = BaseRange;
         AimRange = BaseAimRange;
         MaxRotation = BaseMaxRotation;
+        CurrentLevel = 1;
+    }
+
+    public bool IsMaxLevel()
+    {
+        return CurrentLevel >= MaxLevel;
     }
 }
 
