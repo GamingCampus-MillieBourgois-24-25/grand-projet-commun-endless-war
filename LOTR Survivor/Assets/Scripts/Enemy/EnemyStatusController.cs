@@ -142,9 +142,12 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
 
         yield return new WaitForSeconds(duration);
 
-        agent.isStopped = false;
-        enemyBehaviour.isStunned = false;
-
+        if (enemyBehaviour.isStunned == true)
+        {
+            agent.isStopped = false;
+            enemyBehaviour.isStunned = false;
+        }
+        
         if (currentStunParticle != null)
         {
             ObjectPool.Instance.Despawn(currentStunParticle, stunParticle);
