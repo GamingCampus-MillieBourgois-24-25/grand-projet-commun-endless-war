@@ -18,13 +18,27 @@ public class BombEvent : MonoBehaviour
             Instance = this;
     }
 
-    public void KillAllEnemies()
+    /*public void KillAllEnemies()
     {
         OnKillAllEnemies?.Invoke();
-    }
+    }*/
 
     /*public void KillAllVisibleEnemies()
     {
         OnKillAllVisibleEnemies?.Invoke();
     }*/
+
+    public void KillEnemiesInRange(Vector3 center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+
+        foreach(var hitCollider  in hitColliders)
+        {
+            var enemy = hitCollider.GetComponent<EnemyHealthBehaviour>();
+            if (enemy != null)
+            {
+                enemy.DestroyFromEvent();
+            }
+        }
+    }
 }

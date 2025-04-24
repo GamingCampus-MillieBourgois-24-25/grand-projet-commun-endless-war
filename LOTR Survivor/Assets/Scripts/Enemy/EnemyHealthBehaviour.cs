@@ -104,21 +104,27 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
         }
     }
 
-    public void OnEnable()
+    public void DestroyFromEvent()
+    {
+        DestroyEnemy();
+    }
+
+    /*public void OnEnable()
     {
         Debug.Log($"{gameObject.name} -> OnEnable()");
         if (BombEvent.Instance != null)
         {
-            //BombEvent.Instance.OnKillAllVisibleEnemies += KillIfVisible;
-            BombEvent.Instance.OnKillAllEnemies += KillFromEvent;
+            BombEvent.Instance.OnKillAllVisibleEnemies += KillIfVisible;
+            //BombEvent.Instance.OnKillAllEnemies += KillFromEvent;
         }
     }
 
     void OnDisable()
     {
+        Debug.Log($"{gameObject.name} -> OnDisable()");
         if (BombEvent.Instance != null)
-            //BombEvent.Instance.OnKillAllVisibleEnemies -= KillIfVisible;
-            BombEvent.Instance.OnKillAllEnemies += KillFromEvent;
+            BombEvent.Instance.OnKillAllVisibleEnemies -= KillIfVisible;
+            //BombEvent.Instance.OnKillAllEnemies += KillFromEvent;
     }
 
     private void KillFromEvent()
@@ -127,13 +133,13 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     }
 
     //Système non fonctionnel pour kill que les ennemies présent sur l'écran
-    /*private void KillIfVisible()
+    private void KillIfVisible()
     {
-        if (IsVisibleByMainCamera())
+        if (IsVisibleOnScreen())
             DestroyEnemy();
     }
 
-    private bool IsVisibleByMainCamera()
+    private bool IsVisibleOnScreen()
     {
         if(Camera.main == null)
         {
@@ -141,23 +147,15 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
             return false;
         }
             
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
 
-        var renderer = GetComponent<Renderer>();
-        if(renderer == null)
-        {
-            Debug.LogWarning("Pas de Renderer sur " + gameObject.name);
-            return false;
-        }
+        bool isInFront = screenPoint.z > 0;
+        bool isInsideScreen = screenPoint.x >= 0 && screenPoint.x <= 1 && screenPoint.y >= 0 && screenPoint.y <= 1;
 
-        if(!renderer.isVisible)
-        {
-            Debug.Log($"{gameObject.name} : Renderer pas visible (hors champ)");
-            return false;
-        }
+        bool visible = isInFront && isInsideScreen;
 
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        bool isVisible = GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
-        Debug.Log($"{gameObject.name} visible dans le frustum ? {isVisible}");
-        return isVisible;
+        Debug.Log($"{gameObject.name} visible à l'écran ? {visible} (z: {screenPoint.z}, x: {screenPoint.x}, y: {screenPoint.y})");
+
+        return visible;
     }*/
 }
