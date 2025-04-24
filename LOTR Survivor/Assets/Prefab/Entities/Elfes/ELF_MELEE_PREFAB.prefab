@@ -101,9 +101,14 @@ MonoBehaviour:
     type: 3}
   healthPrefab: {fileID: 1498014835702131830, guid: db6da2141329a9a4b94b7c8d1708b522,
     type: 3}
+  goldPrefab: {fileID: 4153260053465889355, guid: ead055ad79695524787ef24a8e191887,
+    type: 3}
   xpMagnetPrefab: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
     type: 3}
   xpMagnetDropChance: 0.01
+  goldMagnetPrefab: {fileID: 1378769262155967048, guid: 7e4879efe0ca23747b4620c682224579,
+    type: 3}
+  goldDropChance: 0.01
   flashMaterial: {fileID: 2100000, guid: 31a520dfb12e22241bcdecd0d04e61ed, type: 2}
   flashDuration: 0.1
   mesh: {fileID: 1109862577976804236}

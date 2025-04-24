@@ -13,9 +13,16 @@ public class EnemyHealthBehaviour : MonoBehaviour
     [Header("Health Pickup")]
     [SerializeField] public GameObject healthPrefab;
 
+    [Header(" Gold Pickup")]
+    [SerializeField] private GameObject goldPrefab;
+
     [Header("XP Magnet Pickup")]
     [SerializeField] private GameObject xpMagnetPrefab;
     [SerializeField, Range(0f, 1f)] private float xpMagnetDropChance = 0.1f;
+
+    [Header("Gold Magnet Pickup")]
+    [SerializeField] private GameObject goldMagnetPrefab;
+    [SerializeField, Range(0f, 1f)] private float goldDropChance = 0.2f;
 
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
@@ -60,13 +67,12 @@ public class EnemyHealthBehaviour : MonoBehaviour
         if (mesh != null)
         {
             mesh.material = originalMaterial;
-
         }
         OnHealthInitialized();
     }
 
-    public void OnHealthInitialized() 
-    { 
+    public void OnHealthInitialized()
+    {
         health = MaxHealth;
     }
 
@@ -130,26 +136,40 @@ public class EnemyHealthBehaviour : MonoBehaviour
         }
     }
 
-
     private void DestroyEnemy()
     {
         killCounter++;
 
+        //  XP
         if (xpPrefab != null && ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity);
         }
 
+        if(goldPrefab != null && ObjectPool.Instance != null)
+        {
+            ObjectPool.Instance.Spawn(goldPrefab, transform.position, Quaternion.identity);
+        }
+
+        //  Health
         if (killCounter % killsForHealthPickup == 0 && healthPrefab != null)
         {
             Instantiate(healthPrefab, transform.position, Quaternion.identity);
         }
 
+        //  XP Magnet
         if (xpMagnetPrefab != null && Random.value < xpMagnetDropChance)
         {
             Instantiate(xpMagnetPrefab, transform.position, Quaternion.identity);
         }
 
+        // Gold Magnet
+        if (goldMagnetPrefab != null && Random.value < goldDropChance)
+        {
+            Instantiate(goldMagnetPrefab, transform.position, Quaternion.identity);
+        }
+
+        //  Clean up
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, enemyData.prefab);
@@ -177,5 +197,4 @@ public class EnemyHealthBehaviour : MonoBehaviour
             Debug.Log($"    -> {prefabName}: {count} in pool");
         }
     }
-
 }
