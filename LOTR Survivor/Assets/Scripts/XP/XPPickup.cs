@@ -73,7 +73,7 @@ public class XPPickup : MonoBehaviour
     {
         if (ObjectPool.Instance != null)
         {
-            ObjectPool.Instance.Despawn(gameObject); // plus besoin du champ prefab
+            ObjectPool.Instance.Despawn(gameObject);
         }
     }
 

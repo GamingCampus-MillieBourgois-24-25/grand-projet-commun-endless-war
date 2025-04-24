@@ -9,13 +9,14 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Button playButton;
     [SerializeField] private Button optionButton;
+    [SerializeField] private Button shopButton;
     [SerializeField] private Button quitMenu;
 
     [SerializeField] private TMP_Text playText;
     [SerializeField] private TMP_Text musicVolumeText;
     [SerializeField] private TMP_Text sfxVolumeText;
 
-    [SerializeField] private GameObject mainMenu;
+    [SerializeField] public GameObject mainMenu;
     [SerializeField] private GameObject optionMenu;
 
     [SerializeField] private Slider musicSlider;
@@ -27,6 +28,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private MusicManager musicManager;
 
+    [SerializeField] private ShopCanvas shopCanvas;
+
     private void Start()
     {
         mainMenu.SetActive(true);
@@ -37,6 +40,7 @@ public class MenuManager : MonoBehaviour
         playButton.onClick.AddListener(ChangeScene);
         quitMenu.onClick.AddListener(ReturnMenu);
         optionButton.onClick.AddListener(OptionMenu);
+        shopButton.onClick.AddListener(ShopMenu);
 
         musicSlider.onValueChanged.AddListener(delegate { AdjustMusicVolume(); });
         sfxSlider.onValueChanged.AddListener(delegate { AdjustSFXVolume(); });
@@ -90,6 +94,12 @@ public class MenuManager : MonoBehaviour
     {
         mainMenu.SetActive(true);
         optionMenu.SetActive(false);
+    }
+
+    void ShopMenu()
+    {
+        mainMenu.SetActive(false);
+        shopCanvas.OpenShop();
     }
 
     void AdjustMusicVolume()
