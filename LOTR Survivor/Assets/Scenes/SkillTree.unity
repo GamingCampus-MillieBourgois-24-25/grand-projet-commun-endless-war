@@ -6917,7 +6917,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillSO
       value: 
-      objectReference: {fileID: 11400000, guid: 5bdf9ed835898a44893d648bc955f2ff,
+      objectReference: {fileID: 11400000, guid: 0f77acc7d49b3aa4baa75d6342894d0a,
         type: 2}
     - target: {fileID: 7789912603154736954, guid: 8465135eb8fe3924da5df8c2e3a7e988,
         type: 3}
