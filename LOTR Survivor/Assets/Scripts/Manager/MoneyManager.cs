@@ -7,11 +7,10 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance { get; private set; }
 
-    public XPManager xpManager;
-
     [Header("Gold Settings")]
     [SerializeField] private int enemiesPerGold = 10;
     private int enemiesKilled = 0;
+
     [SerializeField]
     private int currentGold = 0;
 
@@ -37,28 +36,6 @@ public class MoneyManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject); // Persiste entre les scènes
         LoadGold();
-    }
-
-    private void Start()
-    {
-    }
-
-    public void OnEnemyKilled()
-    {
-        enemiesKilled++;
-        sessionEnemiesKilled++;
-
-        if (enemiesKilled >= enemiesPerGold)
-        {
-            int goldEarned = xpManager != null ? xpManager.levelCurrent : 1;
-            currentGold += goldEarned;
-            sessionGoldEarned += goldEarned;
-
-            enemiesKilled = 0;
-
-            Debug.Log($"+{goldEarned} Gold gagné ! Total: {currentGold}");
-            SaveGold();
-        }
     }
 
     private void LoadGold()

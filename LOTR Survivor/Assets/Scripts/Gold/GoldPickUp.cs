@@ -22,6 +22,7 @@ public class GoldPickup : MonoBehaviour
         isBeingMagnetized = false;
         target = null;
         GoldMagnetEvents.OnMagnetTriggered += OnMagnetTriggered;
+
     }
 
     private void OnDisable()
@@ -42,13 +43,20 @@ public class GoldPickup : MonoBehaviour
         if (other.CompareTag("Player") && !picked)
         {
             picked = true;
-            MoneyManager.Instance.AddGold(goldValue); // Ajout et sauvegarde
+
+            CollectGold();
 
             if (animator != null)
                 animator.SetTrigger("Picked");
             else
                 Delete();
         }
+    }
+
+    private void CollectGold()
+    {
+        MoneyManager.Instance.AddGold(goldValue); // Ajout et sauvegarde du gold
+        PlayerPrefs.Save();
     }
 
     private void OnMagnetTriggered(Vector3 center, float radius)
@@ -68,5 +76,7 @@ public class GoldPickup : MonoBehaviour
     {
         if (ObjectPool.Instance != null)
             ObjectPool.Instance.Despawn(gameObject, prefab);
+        else
+            Destroy(gameObject);
     }
 }

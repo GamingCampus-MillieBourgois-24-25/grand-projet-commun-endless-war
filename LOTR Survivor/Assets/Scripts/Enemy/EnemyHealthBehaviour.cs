@@ -13,12 +13,15 @@ public class EnemyHealthBehaviour : MonoBehaviour
     [Header("Health Pickup")]
     [SerializeField] public GameObject healthPrefab;
 
+    [Header(" Gold Pickup")]
+    [SerializeField] private GameObject goldPrefab;
+
     [Header("XP Magnet Pickup")]
     [SerializeField] private GameObject xpMagnetPrefab;
     [SerializeField, Range(0f, 1f)] private float xpMagnetDropChance = 0.1f;
 
-    [Header("Gold Drop Settings")]
-    [SerializeField] private GameObject goldPrefab;
+    [Header("Gold Magnet Pickup")]
+    [SerializeField] private GameObject goldMagnetPrefab;
     [SerializeField, Range(0f, 1f)] private float goldDropChance = 0.2f;
 
     [Header("Visual & Effects")]
@@ -143,6 +146,11 @@ public class EnemyHealthBehaviour : MonoBehaviour
             ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity);
         }
 
+        if(goldPrefab != null && ObjectPool.Instance != null)
+        {
+            ObjectPool.Instance.Spawn(goldPrefab, transform.position, Quaternion.identity);
+        }
+
         //  Health
         if (killCounter % killsForHealthPickup == 0 && healthPrefab != null)
         {
@@ -155,10 +163,10 @@ public class EnemyHealthBehaviour : MonoBehaviour
             Instantiate(xpMagnetPrefab, transform.position, Quaternion.identity);
         }
 
-        // GOLD DROP
-        if (goldPrefab != null && Random.value < goldDropChance)
+        // Gold Magnet
+        if (goldMagnetPrefab != null && Random.value < goldDropChance)
         {
-            ObjectPool.Instance.Spawn(goldPrefab, transform.position, Quaternion.identity);
+            Instantiate(goldMagnetPrefab, transform.position, Quaternion.identity);
         }
 
         //  Clean up
