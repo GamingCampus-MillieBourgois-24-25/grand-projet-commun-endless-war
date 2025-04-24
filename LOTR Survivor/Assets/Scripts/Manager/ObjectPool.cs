@@ -1,51 +1,67 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool Instance;
+    public static ObjectPool Instance { get; private set; }
 
-    private Dictionary<GameObject, Queue<GameObject>> pool = new();
+    private Dictionary<GameObject, Queue<GameObject>> pool = new Dictionary<GameObject, Queue<GameObject>>();
+    private Dictionary<GameObject, GameObject> instanceToPrefab = new Dictionary<GameObject, GameObject>();
 
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
     }
 
     public GameObject Spawn(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        if (!pool.ContainsKey(prefab))
-        {
-            pool[prefab] = new Queue<GameObject>();
-        }
+        GameObject instance;
 
-        if (pool[prefab].Count > 0)
+        if (pool.ContainsKey(prefab) && pool[prefab].Count > 0)
         {
-            GameObject obj = pool[prefab].Dequeue();
-            obj.transform.SetPositionAndRotation(position, rotation);
-            obj.SetActive(true);
-            return obj;
+            instance = pool[prefab].Dequeue();
+            instance.transform.position = position;
+            instance.transform.rotation = rotation;
+            instance.SetActive(true);
         }
         else
         {
-            return Instantiate(prefab, position, rotation);
+            instance = Instantiate(prefab, position, rotation);
+        }
+
+        instanceToPrefab[instance] = prefab;
+        return instance;
+    }
+
+    public void Despawn(GameObject instance)
+    {
+        if (instanceToPrefab.TryGetValue(instance, out GameObject prefab))
+        {
+            Despawn(instance, prefab);
+        }
+        else
+        {
+            Debug.LogWarning($"Trying to despawn instance {instance.name}, but no prefab reference was found.");
+            Destroy(instance); // fallback
         }
     }
 
-    public void Despawn(GameObject obj, GameObject prefab)
+    public void Despawn(GameObject instance, GameObject prefab)
     {
-        if (prefab == null)
-        {
-            Debug.Log("Prefab is null in Despawn method");
-            return;
-        }
+        instance.SetActive(false);
 
         if (!pool.ContainsKey(prefab))
         {
             pool[prefab] = new Queue<GameObject>();
         }
 
-        obj.SetActive(false);
-        pool[prefab].Enqueue(obj);
+        pool[prefab].Enqueue(instance);
+        instanceToPrefab.Remove(instance);
     }
 }

@@ -156,6 +156,7 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
 
     public void Revive(float amount)
     {
+        Debug.Log("huhuhuh");
         isDead = false;
         LevelUpManager.Instance.enabled = true;
         Heal(Mathf.RoundToInt(maxHealth * amount));

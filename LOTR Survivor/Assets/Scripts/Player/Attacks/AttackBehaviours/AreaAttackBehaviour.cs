@@ -15,13 +15,21 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
 
         Collider[] hitEnemies = GetHitColliders(adjustedRange);
 
-        foreach (Collider enemy in hitEnemies)
+        if (hitEnemies != null)
         {
-            EnemyHealthBehaviour health = enemy.GetComponent<EnemyHealthBehaviour>();
-            if (health != null)
+
+            Debug.Log(hitEnemies.Length);
+            foreach (Collider enemy in hitEnemies)
             {
-                health.TakeDamage(finalDamage);
-                ApplyStatusEffects(enemy.gameObject);
+                if (enemy != null)
+                {
+                    EnemyHealthBehaviour health = enemy.GetComponent<EnemyHealthBehaviour>();
+                    if (health != null)
+                    {
+                        health.TakeDamage(finalDamage, skillSettings.damageType);
+                        ApplyStatusEffects(enemy.gameObject);
+                    }
+                }
             }
         }
 

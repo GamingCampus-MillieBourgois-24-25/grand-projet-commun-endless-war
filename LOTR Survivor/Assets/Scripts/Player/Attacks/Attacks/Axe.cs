@@ -58,7 +58,7 @@ public class Axe : Attack
         EnemyHealthBehaviour enemy = collider.GetComponent<EnemyHealthBehaviour>();
         if (enemy != null)
         {
-            enemy.TakeDamage(finalDamage);
+            enemy.TakeDamage(finalDamage, skillSettings.damageType);
         }
     }
 }

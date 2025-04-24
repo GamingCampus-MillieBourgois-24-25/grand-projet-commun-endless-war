@@ -44,7 +44,6 @@ public class EnemySpawner : MonoBehaviour
         if (ObjectPool.Instance == null)
         {
             Debug.LogError("ObjectPool Instance is NULL! Make sure ObjectPool is in the scene.");
-            return;
         }
 
         if (waves == null || waves.Length == 0)
@@ -135,17 +134,34 @@ public class EnemySpawner : MonoBehaviour
         if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit hit, navMeshCheckRadius, NavMesh.AllAreas))
         {
             spawnPosition = hit.position;
-            GameObject enemy = ObjectPool.Instance.Spawn(enemyData.prefab, spawnPosition, Quaternion.identity);
-
-            if (enemy != null)
+            if (ObjectPool.Instance != null)
             {
-                enemy.GetComponent<EnemyHealthBehaviour>().Initialize(enemyData);
-                activeEnemies.Add(enemy);
+                GameObject enemy = ObjectPool.Instance.Spawn(enemyData.prefab, spawnPosition, Quaternion.identity);
+
+                if (enemy != null)
+                {
+                    activeEnemies.Add(enemy);
+                }
+                else
+                {
+                    Debug.LogError("Failed to spawn enemy from pool!");
+                }
             }
             else
             {
-                Debug.LogError("Failed to spawn enemy from pool!");
+                GameObject enemy = Instantiate(enemyData.prefab, spawnPosition, Quaternion.identity);
+
+                if (enemy != null)
+                {
+                    activeEnemies.Add(enemy);
+                }
+                else
+                {
+                    Debug.LogError("Failed to spawn enemy from pool!");
+                }
             }
+
+            
         }
         else
         {

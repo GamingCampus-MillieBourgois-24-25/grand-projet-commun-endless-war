@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthBehaviour : MonoBehaviour, IHealth
+public class EnemyHealthBehaviour : MonoBehaviour
 {
     [Header("Enemy Data")]
     [SerializeField] public EnemySO enemyData;
@@ -17,10 +17,16 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     [SerializeField] private GameObject xpMagnetPrefab;
     [SerializeField, Range(0f, 1f)] private float xpMagnetDropChance = 0.1f;
 
-    private int health;
-    private Renderer objectRenderer;
-    private Material instanceMaterial;
-    private Color originalColor;
+    [Header("Visual & Effects")]
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] private Renderer mesh;
+
+    [SerializeField] private GameObject deathEffectSlash;
+    [SerializeField] private GameObject deathEffectMagic;
+
+    public int health;
+    private Material originalMaterial;
 
     private static int killCounter = 0;
     private static int killsForHealthPickup = 30;
@@ -30,7 +36,7 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
     public float FlashDuration { get => enemyData != null ? enemyData.flashDuration : 0.1f; set => enemyData.flashDuration = value; }
     public Color FlashColor { get => enemyData != null ? enemyData.flashColor : Color.red; set => enemyData.flashColor = value; }
 
-    void Start()
+    private void Awake()
     {
         if (enemyData == null)
         {
@@ -38,18 +44,24 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
             return;
         }
 
-        Health = MaxHealth;
-        objectRenderer = GetComponent<Renderer>();
-
-        if (objectRenderer != null)
+        if (mesh != null)
         {
-            // Create and assign a unique material instance
-            instanceMaterial = new Material(objectRenderer.material);
-            objectRenderer.material = instanceMaterial;
-
-            originalColor = instanceMaterial.color;
+            originalMaterial = mesh.material;
         }
+    }
 
+    void Start()
+    {
+        OnHealthInitialized();
+    }
+
+    private void OnEnable()
+    {
+        if (mesh != null)
+        {
+            mesh.material = originalMaterial;
+
+        }
         OnHealthInitialized();
     }
 
@@ -58,31 +70,13 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
         health = MaxHealth;
     }
 
-    public void Initialize(EnemySO enemySO)
-    {
-        this.enemyData = enemySO;
-        Health = MaxHealth;
-
-        if (instanceMaterial != null)
-        {
-            instanceMaterial.color = originalColor;
-        }
-    }
-
-    private void OnEnable()
-    {
-        if (instanceMaterial != null)
-        {
-            instanceMaterial.color = originalColor;
-        }
-    }
-
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, DamageType type = DamageType.Magic)
     {
         Health -= damage;
 
         if (Health <= 0)
         {
+            PlayDeathVFX(type);
             DestroyEnemy();
         }
         else
@@ -93,13 +87,49 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
 
     private IEnumerator FlashRed()
     {
-        if (instanceMaterial != null)
+        if (mesh != null)
         {
-            instanceMaterial.color = FlashColor;
-            yield return new WaitForSeconds(FlashDuration);
-            instanceMaterial.color = originalColor;
+            mesh.material = flashMaterial;
+            yield return new WaitForSeconds(flashDuration);
+            mesh.material = originalMaterial;
         }
     }
+
+    private void PlayDeathVFX(DamageType type)
+    {
+        if (deathEffectSlash != null && deathEffectMagic != null)
+        {
+            if (ObjectPool.Instance != null)
+            {
+                if (type == DamageType.Magic)
+                {
+                    ObjectPool.Instance.Spawn(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    DebugPoolState("After spawning deathEffectMagic");
+                }
+                else
+                {
+                    ObjectPool.Instance.Spawn(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    DebugPoolState("After spawning deathEffectSlash");
+                }
+            }
+            else
+            {
+                if (type == DamageType.Magic)
+                {
+                    Instantiate(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Death effect prefabs are not assigned.");
+        }
+    }
+
 
     private void DestroyEnemy()
     {
@@ -130,4 +160,22 @@ public class EnemyHealthBehaviour : MonoBehaviour, IHealth
             Destroy(gameObject);
         }
     }
+
+    private void DebugPoolState(string context)
+    {
+        Debug.Log($"[POOL DEBUG] --- {context} ---");
+
+        if (ObjectPool.Instance == null) return;
+
+        var field = typeof(ObjectPool).GetField("pool", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var poolDict = field.GetValue(ObjectPool.Instance) as Dictionary<GameObject, Queue<GameObject>>;
+
+        foreach (var entry in poolDict)
+        {
+            string prefabName = entry.Key != null ? entry.Key.name : "NULL";
+            int count = entry.Value != null ? entry.Value.Count : -1;
+            Debug.Log($"    -> {prefabName}: {count} in pool");
+        }
+    }
+
 }

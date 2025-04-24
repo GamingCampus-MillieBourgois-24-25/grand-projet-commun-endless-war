@@ -88,6 +88,11 @@ public class GameOverCanvas : MonoBehaviour
     {
         GamePauseManager.Instance.ResumeGame();
         gameOverPanel.gameObject.SetActive(false);
+        if (player == null)
+        {
+            Debug.LogError("Player is null");
+            return;
+        }
         player.SetActive(true);
         player.GetComponent<PlayerHealthBehaviour>().Revive(amount);
     }

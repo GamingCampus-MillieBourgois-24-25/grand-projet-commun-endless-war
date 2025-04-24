@@ -32,6 +32,7 @@ public class SkillSettings : ScriptableObject
 
     [Header("Skill Type")]
     public AttackType[] attackTypes;
+    public DamageType damageType;
 
     [Tooltip("Number of Projectiles")]
     public int NumberOfAttacks = 10;
@@ -102,5 +103,11 @@ public enum AttackType
 {
     Slash,
     Projectile,
-    Buff,
+    Buff
+}
+
+public enum DamageType
+{
+    Magic,
+    NoMagic
 }

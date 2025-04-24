@@ -46,13 +46,12 @@ public class RespawnAttackBehaviour : MonoBehaviour
         {
             yield return new WaitForSeconds(0.02f);
             Instantiate(attackSettings.hitPrefab, enemy.transform.position, Quaternion.identity);
-            IHealth health = enemy.GetComponent<IHealth>();
+            EnemyHealthBehaviour health = enemy.GetComponent<EnemyHealthBehaviour>();
             if (health != null)
             {
-                health.TakeDamage(attackSettings.Damage);
+                health.TakeDamage(attackSettings.Damage, attackSettings.damageType);
             }
         }
-
     }
 
     private void OnDrawGizmosSelected()
