@@ -17,6 +17,10 @@ public class EnemyHealthBehaviour : MonoBehaviour
     [SerializeField] private GameObject xpMagnetPrefab;
     [SerializeField, Range(0f, 1f)] private float xpMagnetDropChance = 0.1f;
 
+    [Header("Gold Drop Settings")]
+    [SerializeField] private GameObject goldPrefab;
+    [SerializeField, Range(0f, 1f)] private float goldDropChance = 0.2f;
+
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
@@ -60,13 +64,12 @@ public class EnemyHealthBehaviour : MonoBehaviour
         if (mesh != null)
         {
             mesh.material = originalMaterial;
-
         }
         OnHealthInitialized();
     }
 
-    public void OnHealthInitialized() 
-    { 
+    public void OnHealthInitialized()
+    {
         health = MaxHealth;
     }
 
@@ -130,26 +133,35 @@ public class EnemyHealthBehaviour : MonoBehaviour
         }
     }
 
-
     private void DestroyEnemy()
     {
         killCounter++;
 
+        //  XP
         if (xpPrefab != null && ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity);
         }
 
+        //  Health
         if (killCounter % killsForHealthPickup == 0 && healthPrefab != null)
         {
             Instantiate(healthPrefab, transform.position, Quaternion.identity);
         }
 
+        //  XP Magnet
         if (xpMagnetPrefab != null && Random.value < xpMagnetDropChance)
         {
             Instantiate(xpMagnetPrefab, transform.position, Quaternion.identity);
         }
 
+        // GOLD DROP
+        if (goldPrefab != null && Random.value < goldDropChance)
+        {
+            ObjectPool.Instance.Spawn(goldPrefab, transform.position, Quaternion.identity);
+        }
+
+        //  Clean up
         if (ObjectPool.Instance != null)
         {
             ObjectPool.Instance.Despawn(gameObject, enemyData.prefab);
@@ -177,5 +189,4 @@ public class EnemyHealthBehaviour : MonoBehaviour
             Debug.Log($"    -> {prefabName}: {count} in pool");
         }
     }
-
 }
