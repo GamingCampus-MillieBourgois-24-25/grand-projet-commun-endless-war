@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c439402bf706f94c8c3411e3aa00363, type: 3}
-  m_Name: Slot 5
+  m_Name: Slot 1
   m_EditorClassIdentifier: 
-  slotSprite: {fileID: 21300000, guid: bf9ff9a047b905448ba522ac1697241d, type: 3}
-  slotName: The Orc Strategist
-  slotCost: 80
-  slotType: 0
-  costType: 1
+  slotSprite: {fileID: 21300000, guid: ee740f76eb3b7464eae524d10e007956, type: 3}
+  slotName: 250 Mithril
+  slotCost: 2
+  slotType: ITEMS
+  costType: 0

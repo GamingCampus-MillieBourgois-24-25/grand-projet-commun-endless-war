@@ -13,9 +13,16 @@ public class ShopHolder : MonoBehaviour
     [SerializeField] private Button button;
 
     [SerializeField] private Image bannerImage;
+    [SerializeField] private Image bannerImageBig;
+
+    [SerializeField] private Image bannerMask;
+    [SerializeField] private Image bannerMaskBig;
+
     [SerializeField] private TMP_Text bannerText;
     [SerializeField] private TMP_Text bannerType;
     [SerializeField] private TMP_Text cost;
+
+    [SerializeField] private TMP_Text maskText;
 
     private void Awake()
     {
@@ -30,10 +37,44 @@ public class ShopHolder : MonoBehaviour
 
     private void SelectItem()
     {
-        bannerImage.sprite = settings.slotSprite;
-        bannerImage.preserveAspect = true;
+        if (settings.size == 0)
+        {
+            bannerImage.sprite = settings.slotSprite;
+            bannerImage.preserveAspect = true;
+
+            var imageColor = bannerImage.color;
+            imageColor.a = 1f;
+            bannerImage.color = imageColor;
+
+            var maskColor = bannerMask.color;
+            maskColor.a = 1f;
+            bannerMask.color = maskColor;
+
+            var maskBigColor = bannerMaskBig.color;
+            maskBigColor.a = 0f;
+            bannerMaskBig.color = maskBigColor;
+        }
+        else
+        {
+            bannerImageBig.sprite = settings.slotSprite;
+            bannerImageBig.preserveAspect = true;
+
+            var imageColor = bannerImageBig.color;
+            imageColor.a = 1f;
+            bannerImageBig.color = imageColor;
+
+            var maskBigColor = bannerMaskBig.color;
+            maskBigColor.a = 1f;
+            bannerMaskBig.color = maskBigColor;
+
+            var maskColor = bannerMask.color;
+            maskColor.a = 0f;
+            bannerMask.color = maskColor;
+        }
+
+        maskText.text = settings.maskText;
         bannerText.text = settings.slotName;
-        bannerType.text = settings.slotType.ToString();
+        bannerType.text = settings.slotType;
         cost.text = settings.slotCost.ToString();
     }
 

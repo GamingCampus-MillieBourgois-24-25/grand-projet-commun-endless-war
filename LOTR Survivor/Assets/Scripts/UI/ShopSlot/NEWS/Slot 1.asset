@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c439402bf706f94c8c3411e3aa00363, type: 3}
-  m_Name: Slot 10
+  m_Name: Slot 1
   m_EditorClassIdentifier: 
-  slotSprite: {fileID: 21300000, guid: fbbbb4ddfd96be64d8145201b56071de, type: 3}
-  slotName: Orc Champion
+  slotSprite: {fileID: 21300000, guid: fbce1a619d2c4234b9694e7a0e98270f, type: 3}
+  slotName: Hero's Sword
   slotCost: 80
-  slotType: 0
+  slotType: ICONS
   costType: 1

@@ -1,24 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopCanvas : MonoBehaviour
 {
+    [Header("Canvas")]
     [SerializeField] private CanvasGroup shopCanvas;
+
+    [Header("Content Panels")]
     [SerializeField] private RectTransform leftContent;
     [SerializeField] private RectTransform rightContent;
     [SerializeField] private RectTransform topContent;
     [SerializeField] private RectTransform bottomContent;
 
+    [Header("Dependencies")]
     [SerializeField] private MenuManager menuManager;
 
+    [Header("Buttons")]
     [SerializeField] private Button overlayButton;
     [SerializeField] private Button newsButton;
+    [SerializeField] private Button itemsButton;
+    [SerializeField] private Button shortlyButton;
 
+    [Header("News Tab")]
     [SerializeField] private RectTransform newsTab;
     [SerializeField] private CanvasGroup newsCanvas;
+
+    [Header("Items Tab")]
+    [SerializeField] private RectTransform itemsTab;
+    [SerializeField] private CanvasGroup itemsCanvas;
+
+    [Header("Shortly Tab")]
+    [SerializeField] private RectTransform shortlyTab;
+    [SerializeField] private CanvasGroup shortlyCanvas;
+
+    [Header("Banner")]
+    [SerializeField] private Image maskBig;
+    [SerializeField] private Image mask;
+    [SerializeField] private TMP_Text cost;
+    [SerializeField] private TMP_Text header;
+    [SerializeField] private TMP_Text slotName;
 
     private Vector2 topStartPos;
     private Vector2 rightStartPos;
@@ -26,19 +50,24 @@ public class ShopCanvas : MonoBehaviour
     private Vector2 bottomStartPos;
 
     private bool newsOpen = false;
+    private bool itemsOpen = false;
+    private bool shortlyOpen = false;
 
     void Start()
     {
         shopCanvas.blocksRaycasts = false;
         shopCanvas.alpha = 0f;
+
         topStartPos = topContent.anchoredPosition;
         rightStartPos = rightContent.anchoredPosition;
         leftStartPos = leftContent.anchoredPosition;
         bottomStartPos = bottomContent.anchoredPosition;
 
         overlayButton.onClick.AddListener(HideShop);
-        overlayButton.onClick.AddListener(CloseNewsTab);
         newsButton.onClick.AddListener(HandleNewsButton);
+        itemsButton.onClick.AddListener(HandleItemsButton);
+        shortlyButton.onClick.AddListener(HandleShortlyButton);
+
     }
 
     public void OpenShop()
@@ -76,6 +105,8 @@ public class ShopCanvas : MonoBehaviour
 
     public void HideShop()
     {
+        CloseAllTabs();
+
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
 
@@ -112,48 +143,99 @@ public class ShopCanvas : MonoBehaviour
     private void HandleNewsButton()
     {
         if (newsOpen)
-        {
-            CloseNewsTab();
-        }
+            CloseTab(newsTab, newsCanvas, () => newsOpen = false);
         else
-        {
-            OpenNewsTab();
-        }
+            OpenTab(newsTab, newsCanvas, () => newsOpen = true);
     }
 
-    private void OpenNewsTab()
+    private void HandleItemsButton()
     {
-        if (newsTab != null)
+        if (itemsOpen)
+            CloseTab(itemsTab, itemsCanvas, () => itemsOpen = false);
+        else
+            OpenTab(itemsTab, itemsCanvas, () => itemsOpen = true);
+    }
+
+    private void HandleShortlyButton()
+    {
+        if (shortlyOpen)
+            CloseTab(shortlyTab, shortlyCanvas, () => shortlyOpen = false);
+        else
+            OpenTab(shortlyTab, shortlyCanvas, () => shortlyOpen = true);
+    }
+
+    private void OpenTab(RectTransform tab, CanvasGroup canvasGroup, System.Action onOpened)
+    {
+        CloseAllTabs();
+        ResetBanner();
+
+        if (tab != null)
         {
-            newsCanvas.blocksRaycasts = true;
-            newsCanvas.alpha = 1f;
-            newsCanvas.interactable = true;
-            newsOpen = true;
+            canvasGroup.blocksRaycasts = true;
+            canvasGroup.alpha = 1f;
+            canvasGroup.interactable = true;
+            onOpened?.Invoke();
 
             float screenWidth = Screen.width;
-            Vector2 startPos = new Vector2(screenWidth + 300f, newsTab.anchoredPosition.y);
-            newsTab.anchoredPosition = startPos;
+            Vector2 startPos = new Vector2(screenWidth + 300f, tab.anchoredPosition.y);
+            tab.anchoredPosition = startPos;
 
-            newsTab.DOAnchorPosX(rightStartPos.x, 1.2f)
+            tab.DOAnchorPosX(rightStartPos.x, 1.2f)
                 .SetEase(Ease.OutCubic)
                 .SetDelay(0.3f);
         }
     }
 
-    private void CloseNewsTab()
+    private void CloseTab(RectTransform tab, CanvasGroup canvasGroup, System.Action onClosed)
     {
-        if (newsTab != null && newsOpen)
+        ResetBanner();
+
+        if (tab != null)
         {
             float screenWidth = Screen.width;
-            newsTab.DOAnchorPosX(screenWidth + 300f, 1.2f)
+            tab.DOAnchorPosX(screenWidth + 300f, 1.2f)
                 .SetEase(Ease.InCubic)
                 .OnComplete(() =>
                 {
-                    newsCanvas.blocksRaycasts = false;
-                    newsCanvas.alpha = 0f;
-                    newsCanvas.interactable = false;
-                    newsOpen = false;
+                    canvasGroup.blocksRaycasts = false;
+                    canvasGroup.alpha = 0f;
+                    canvasGroup.interactable = false;
+                    onClosed?.Invoke();
                 });
         }
+    }
+
+    private void CloseAllTabs()
+    {
+        ResetBanner();
+        if (newsOpen)
+            CloseTab(newsTab, newsCanvas, () => newsOpen = false);
+
+        if (itemsOpen)
+            CloseTab(itemsTab, itemsCanvas, () => itemsOpen = false);
+
+        if (shortlyOpen)
+            CloseTab(shortlyTab, shortlyCanvas, () => shortlyOpen = false);
+    }
+
+    private void ResetBanner()
+    {
+        if (maskBig != null)
+        {
+            var color = maskBig.color;
+            color.a = 0f;
+            maskBig.color = color;
+        }
+
+        if (mask != null)
+        {
+            var color = mask.color;
+            color.a = 0f;
+            mask.color = color;
+        }
+
+        cost.text = "";
+        header.text = "";
+        slotName.text = "";
     }
 }
