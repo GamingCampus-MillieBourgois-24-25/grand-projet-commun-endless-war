@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(BombEvent))]
 public class BombEventEditor : Editor
 {
-    private float radius = 10f;
+    private float radius = 5f;
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();

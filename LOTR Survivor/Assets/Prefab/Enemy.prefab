@@ -128,6 +128,8 @@ MonoBehaviour:
     type: 3}
   healthPrefab: {fileID: 1498014835702131830, guid: db6da2141329a9a4b94b7c8d1708b522,
     type: 3}
+  bombPrefab: {fileID: 2941361695388360458, guid: 1321a2f39f49fe548a53855619b7cf62,
+    type: 3}
 --- !u!114 &8945391096205476242
 MonoBehaviour:
   m_ObjectHideFlags: 0
