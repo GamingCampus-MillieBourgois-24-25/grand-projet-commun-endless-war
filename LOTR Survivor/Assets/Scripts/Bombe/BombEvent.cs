@@ -37,7 +37,7 @@ public class BombEvent : MonoBehaviour
             var enemy = hitCollider.GetComponent<EnemyHealthBehaviour>();
             if (enemy != null)
             {
-                enemy.DestroyFromEvent();
+                //enemy.DestroyFromEvent();
             }
         }
     }
