@@ -10,6 +10,7 @@ public class HubManager : MonoBehaviour
 {
     [Header("Start Game")]
     [SerializeField] private Button startButton;
+    [SerializeField] private Button returnButton;
     [SerializeField] private Button skillTreeButton;
 
     [Header("Power-Up UI")]
@@ -37,10 +38,16 @@ public class HubManager : MonoBehaviour
             Debug.LogError("Start Button is not assigned in the inspector!");
             return;
         }
+        if (returnButton == null)
+        {
+            Debug.LogError("Start Button is not assigned in the inspector!");
+            return;
+        }
 
         UpdateGold();
 
         startButton.onClick.AddListener(ChangeScene);
+        returnButton.onClick.AddListener(PreviousScene);
         skillTreeButton.onClick.AddListener(SkillTree);
         nextCharacter.onClick.AddListener(NextCharacter);
         previousCharacter.onClick.AddListener(PreviousCharacter);
@@ -61,7 +68,10 @@ public class HubManager : MonoBehaviour
         SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
         Loader.Load(Loader.Scene.TestMobile);
     }
-
+    void PreviousScene()
+    {
+        Loader.Load(Loader.Scene.MenuScene);
+    }
     void SkillTree()
     {
         SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
