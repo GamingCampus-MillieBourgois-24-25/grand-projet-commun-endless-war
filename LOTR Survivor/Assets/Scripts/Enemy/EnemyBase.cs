@@ -9,6 +9,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected Transform player;
     protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected float rotationSpeed = 1.0f;
 
     protected bool isInRange = false;
     protected bool isAttacking = false;
@@ -38,8 +39,18 @@ public abstract class EnemyBase : MonoBehaviour
         if (player == null || isStunned) return;
 
         attackTimer += Time.deltaTime;
-        MoveTowardsPlayer();
+
+        if (!isAttacking)
+        {
+            MoveTowardsPlayer();
+        }
+
         CheckDistanceToPlayer();
+
+        if (isInRange)
+        {
+            RotateTowardsPlayer();
+        }
 
         if (CanAttack())
         {
@@ -74,6 +85,19 @@ public abstract class EnemyBase : MonoBehaviour
             agent.SetDestination(player.position);
         }
     }
+
+    protected virtual void RotateTowardsPlayer()
+    {
+        if (player == null) return;
+
+        Vector3 directionToPlayer = player.position - transform.position;
+        directionToPlayer.y = 0;
+
+        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
 
     protected virtual void StopMoving()
     {

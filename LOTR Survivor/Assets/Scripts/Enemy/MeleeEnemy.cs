@@ -12,6 +12,8 @@ public class MeleeEnemy : EnemyBase
         isAttacking = true;
         attackTimer = 0f;
 
+        StopMoving();
+
         if (animator != null)
         {
             animator.SetTrigger("Attack");
@@ -35,5 +37,6 @@ public class MeleeEnemy : EnemyBase
     public void EndAttack()
     {
         isAttacking = false;
+        ResumeMoving();
     }
 }

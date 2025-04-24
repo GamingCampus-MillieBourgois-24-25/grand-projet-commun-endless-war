@@ -17,6 +17,8 @@ public class RangedEnemy : EnemyBase
         isAttacking = true;
         attackTimer = 0f;
 
+        StopMoving();
+
         if (animator != null)
         {
             animator.SetTrigger("Attack");
@@ -36,7 +38,10 @@ public class RangedEnemy : EnemyBase
             EnemyProjectile enemyProj = proj.GetComponent<EnemyProjectile>();
             if (enemyProj != null)
             {
-                Vector3 dir = (player.position - firePoint.position).normalized;
+                Vector3 dir = (player.position + new Vector3(0,1.5f,0) - firePoint.position).normalized;
+
+                proj.transform.LookAt(player);
+
                 enemyProj.Init(dir, projectileSpeed, enemyData.attackPower);
             }
         }
@@ -45,5 +50,6 @@ public class RangedEnemy : EnemyBase
     public void EndAttack()
     {
         isAttacking = false;
+        ResumeMoving();
     }
 }
