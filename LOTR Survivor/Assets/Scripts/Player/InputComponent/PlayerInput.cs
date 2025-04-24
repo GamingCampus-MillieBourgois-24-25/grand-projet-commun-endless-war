@@ -57,6 +57,7 @@ public class PlayerInput : MonoBehaviour
         DisableInput();
     }
 
+
     private void HandleFingerDown(Finger finger)
     {
         if (!isInputEnabled) return;
@@ -170,6 +171,10 @@ public class PlayerInput : MonoBehaviour
         }
 
         return offset;
+    }
+    public void SetSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
 
     private void DisableInput()

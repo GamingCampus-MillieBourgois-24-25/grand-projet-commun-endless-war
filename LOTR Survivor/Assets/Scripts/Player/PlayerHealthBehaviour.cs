@@ -69,6 +69,10 @@ public class PlayerHealthBehaviour : MonoBehaviour, IHealth
             canRegen = true;
         }
     }
+    public void SetHealth(int healthAmount)
+    {
+        Health = healthAmount;
+    }
 
     private void Update()
     {

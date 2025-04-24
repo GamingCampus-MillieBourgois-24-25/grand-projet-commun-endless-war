@@ -184,10 +184,10 @@ MonoBehaviour:
   nextCharacter: {fileID: 609955191}
   previousCharacter: {fileID: 1912014752}
   playerDatabase: {fileID: 11400000, guid: 670ed4b7d3c304d4cb11c412666deb3c, type: 2}
-  raceText: {fileID: 0}
-  classeText: {fileID: 0}
-  pvText: {fileID: 0}
-  speedText: {fileID: 0}
+  raceText: {fileID: 1719601629}
+  classeText: {fileID: 1083512856}
+  pvText: {fileID: 321792498}
+  speedText: {fileID: 602931720}
 --- !u!1 &75291981
 GameObject:
   m_ObjectHideFlags: 0

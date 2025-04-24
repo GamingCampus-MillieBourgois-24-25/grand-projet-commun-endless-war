@@ -59,6 +59,9 @@ public class HubManager : MonoBehaviour
     void ChangeScene()
     {
         SelectedCharacterData.selectedCharacter = playerDatabase.allCharacters[currentCharacterIndex];
+        SelectedCharacterData.selectedCharacterPrefab = playerDatabase.allCharacters[currentCharacterIndex].characterPrefab;
+        SelectedCharacterData.selectedCharacterSprite = playerDatabase.allCharacters[currentCharacterIndex].imageCharacter;
+
         Loader.Load(Loader.Scene.TestMobile);
     }
 
@@ -133,6 +136,7 @@ public class HubManager : MonoBehaviour
             characterImage.color = new Color(1f, 1f, 1f, 0f);
 
             characterImage.sprite = character.imageCharacter;
+
             characterName.text = character.characterName;
 
             UpdateCharacterStats(character);

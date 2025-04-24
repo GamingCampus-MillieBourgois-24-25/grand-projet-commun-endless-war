@@ -20,4 +20,4 @@ MonoBehaviour:
   classe: 2
   pointsDeVie: 500
   attacksBase: []
-  vitesseDeDeplacement: 1.5
+  vitesseDeDeplacement: 5
