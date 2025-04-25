@@ -137,7 +137,7 @@ MonoBehaviour:
   deathParticle: {fileID: 100002, guid: 995babeff1dec9641af656669a8646ee, type: 3}
   reviveParticle: {fileID: 3744133877081091469, guid: a2a060732547fe64581bb0cb3c2bdf1d,
     type: 3}
-  healingParticle: {fileID: 7986504087968017091, guid: 12a56ee4630040c4eb17ae9707ed4cef,
+  healingParticle: {fileID: 7986504087968017091, guid: 032ccc2dd0fd62f4bb240f763c13bdb7,
     type: 3}
   blinkSpeed: 0.1
   mesh: {fileID: 5220143637470936189}

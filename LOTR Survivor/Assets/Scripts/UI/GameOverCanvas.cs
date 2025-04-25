@@ -30,6 +30,7 @@ public class GameOverCanvas : MonoBehaviour
     {
         originalPosition = gameOverPanel.anchoredPosition;
         gameOverPanel.gameObject.SetActive(false);
+        PlayerEvents.OnPlayerSpawned += AssignPlayer;
     }
 
     private void OnEnable()
@@ -95,5 +96,10 @@ public class GameOverCanvas : MonoBehaviour
         }
         player.SetActive(true);
         player.GetComponent<PlayerHealthBehaviour>().Revive(amount);
+    }
+
+    private void AssignPlayer(GameObject _player)
+    {
+        player = _player;
     }
 }
