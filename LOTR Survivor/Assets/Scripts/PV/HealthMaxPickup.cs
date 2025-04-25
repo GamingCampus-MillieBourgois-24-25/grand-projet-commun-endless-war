@@ -12,6 +12,7 @@ public class HealthMaxPickup : MonoBehaviour
         if (playerHealth != null )
         {
             playerHealth.IncreaseMaxHealthByPercentage( healthIncreasePercentage );
+            PVMaxEvents.PickHPObject(healthIncreasePercentage);
             Destroy(gameObject);
         }
     }
