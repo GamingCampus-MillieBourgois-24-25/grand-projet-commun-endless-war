@@ -6,9 +6,7 @@ public class WaveCountdownTimer : MonoBehaviour
 {
     public static WaveCountdownTimer Instance;
 
-    [SerializeField] private GameObject textContainer;
     [SerializeField] private TextMeshProUGUI countdownText;
-    [SerializeField] private GameObject countdownContainer;
 
     private Coroutine countdownCoroutine;
 
@@ -21,10 +19,11 @@ public class WaveCountdownTimer : MonoBehaviour
         }
 
         Instance = this;
-        if (countdownContainer != null)
-        {
-            countdownContainer.SetActive(true);
-        }
+    }
+
+    private void Start()
+    {
+        countdownText.text = "";
     }
 
     public void DisplayFinalSurviveCountdown(int time)
@@ -32,7 +31,6 @@ public class WaveCountdownTimer : MonoBehaviour
         if (countdownCoroutine != null)
             StopCoroutine(countdownCoroutine);
 
-        textContainer.SetActive(true);
         countdownCoroutine = StartCoroutine(FinalSurviveCountdownRoutine(time));
     }
 
@@ -48,7 +46,6 @@ public class WaveCountdownTimer : MonoBehaviour
         }
 
         countdownText.text = "";
-        textContainer.SetActive(false);
     }
 
     public void StartCountdown(int time)
@@ -56,7 +53,6 @@ public class WaveCountdownTimer : MonoBehaviour
         if (countdownCoroutine != null)
             StopCoroutine(countdownCoroutine);
 
-        textContainer.SetActive(true);
         countdownCoroutine = StartCoroutine(CountdownRoutine(time));
     }
 
@@ -72,6 +68,5 @@ public class WaveCountdownTimer : MonoBehaviour
         }
 
         countdownText.text = "";
-        textContainer.SetActive(false);
     }
 }
