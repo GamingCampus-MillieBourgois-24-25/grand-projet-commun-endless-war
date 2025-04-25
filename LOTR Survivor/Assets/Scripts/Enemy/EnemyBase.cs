@@ -16,6 +16,8 @@ public abstract class EnemyBase : MonoBehaviour
     protected float attackTimer = 0f;
     public bool isStunned = false;
 
+    private bool playerDead = false;
+
     protected virtual void OnEnable()
     {
         HealthEvents.OnReviveComplete += SetPlayer;
@@ -70,12 +72,14 @@ public abstract class EnemyBase : MonoBehaviour
     {
         player = playerTransform;
         if (agent != null) agent.isStopped = false;
+        playerDead = false;
     }
 
     protected virtual void HandlePlayerDeath()
     {
         isStunned = false;
         StopMoving();
+        playerDead = true;
     }
 
     protected virtual void MoveTowardsPlayer()
@@ -110,7 +114,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void ResumeMoving()
     {
-        if (agent != null && agent.isActiveAndEnabled)
+        if (agent != null && agent.isActiveAndEnabled && !playerDead)
         {
             agent.isStopped = false;
         }

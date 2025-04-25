@@ -119,18 +119,16 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!isSpawningPaused)
             {
-                // On sélectionne un ennemi selon les poids
                 EnemyWaveEntry selectedEntry = GetRandomEnemyEntry(wave);
                 if (selectedEntry == null) yield break;
 
-                // Le nombre d'ennemis à spawn dépend du maxInGroup de l'ennemi choisi
-                int count = selectedEntry.maxInGroup;
+                int count = Random.Range(1, selectedEntry.maxInGroup + 1);
                 List<Vector3> positions = GetSpawnPositionsAroundPlayer(count);
 
                 for (int i = 0; i < positions.Count; i++)
                 {
                     SpawnEnemyAtPosition(selectedEntry.enemySO, positions[i]);
-                    yield return new WaitForSeconds(0.05f); // Petit délai entre chaque spawn
+                    yield return new WaitForSeconds(0.05f);
                 }
             }
 
@@ -140,14 +138,12 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemyWaveEntry GetRandomEnemyEntry(EnemyWaveSO wave)
     {
-        // Calcul du poids total pour déterminer quel ennemi spawn
         int totalWeight = 0;
         foreach (EnemyWaveEntry entry in wave.waveEntries)
         {
             totalWeight += entry.spawnWeight;
         }
 
-        // Tirer un nombre aléatoire en fonction des poids
         int randomWeight = Random.Range(0, totalWeight);
         int currentWeight = 0;
 
@@ -156,7 +152,6 @@ public class EnemySpawner : MonoBehaviour
             currentWeight += entry.spawnWeight;
             if (randomWeight < currentWeight)
             {
-                // Vérifier si le nombre maximum d'ennemis de ce type n'est pas atteint
                 int enemyCount = activeEnemies.FindAll(e => e.GetComponent<EnemyHealthBehaviour>().enemyData == entry.enemySO).Count;
                 if (enemyCount < entry.maxThisEnemy)
                 {
@@ -165,7 +160,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        return null; // Si aucun ennemi valide n'est trouvé
+        return null;
     }
 
     private List<Vector3> GetSpawnPositionsAroundPlayer(int count)

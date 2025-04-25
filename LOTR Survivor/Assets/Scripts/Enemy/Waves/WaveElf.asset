@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9599c92bd838efe44a4a220df5f2ae97, type: 3}
   m_Name: WaveElf
   m_EditorClassIdentifier: 
-  enemySOs:
-  - {fileID: 11400000, guid: 2d27bc1227acd654d8b088961e3b152d, type: 2}
-  - {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
-  spawnInterval: 1
+  waveEntries:
+  - enemySO: {fileID: 11400000, guid: 2d27bc1227acd654d8b088961e3b152d, type: 2}
+    spawnWeight: 4
+    maxInGroup: 3
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
+    spawnWeight: 3
+    maxInGroup: 2
+    maxThisEnemy: 999
+  spawnInterval: 2
   waveCooldown: 60
