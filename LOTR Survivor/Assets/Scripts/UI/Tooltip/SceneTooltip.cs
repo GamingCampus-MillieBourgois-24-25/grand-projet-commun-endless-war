@@ -19,6 +19,7 @@ public class SceneTooltip : MonoBehaviour
         HealthEvents.OnReviveComplete += HandleReviveTip;
         XPEvents.OnXPPicked += HandleXPTip;
         XPEvents.OnLevelUP += HandleLevelTip;
+        PVMaxEvents.OnHPObjectPicked += HandlePVMaxTip;
     }
 
     private void OnDisable()
@@ -30,6 +31,7 @@ public class SceneTooltip : MonoBehaviour
         HealthEvents.OnReviveComplete -= HandleReviveTip;
         XPEvents.OnXPPicked -= HandleXPTip;
         XPEvents.OnLevelUP -= HandleLevelTip;
+        PVMaxEvents.OnHPObjectPicked -= HandlePVMaxTip;
     }
 
     private IEnumerator ShowTooltipsWithDelay()
@@ -72,6 +74,12 @@ public class SceneTooltip : MonoBehaviour
     private void HandleLevelTip(int level)
     {
         StartCoroutine(ShowTipWithDelay(5, 1f));
+    }
+
+    private void HandlePVMaxTip(float percentage)
+    {
+        PVMaxEvents.OnHPObjectPicked -= HandlePVMaxTip;
+        StartCoroutine(ShowTipWithDelay(6, 0.5f));
     }
 
     private IEnumerator ShowTipWithDelay(int id, float delay = 1f)

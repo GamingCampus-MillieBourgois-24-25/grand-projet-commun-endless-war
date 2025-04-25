@@ -43,6 +43,14 @@ public class EnemySpawner : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        if (waveCoroutine == null && waves.Length > 0)
+        {
+            waveCoroutine = StartCoroutine(ManageWaves());
+        }
+    }
+
     private void OnEnable()
     {
         PlayerEvents.OnPlayerSpawned += AssignPlayer;
@@ -70,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
         {
             currentWave = waves[currentWaveIndex];
 
-            if (currentWave == null || currentWave.enemySOs.Length == 0)
+            if (currentWave == null || currentWave.waveEntries.Length == 0)
             {
                 Debug.LogWarning("Wave is empty or invalid. Skipping.");
                 currentWaveIndex++;
@@ -97,7 +105,6 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        // Final survival phase
         WaveCountdownTimer.Instance?.DisplayFinalSurviveCountdown((int)finalSurviveTime);
         yield return new WaitForSeconds(finalSurviveTime);
 
@@ -111,29 +118,95 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             if (!isSpawningPaused)
-                SpawnEnemy(wave);
+            {
+                EnemyWaveEntry selectedEntry = GetRandomEnemyEntry(wave);
+                if (selectedEntry == null) yield break;
+
+                int count = Random.Range(1, selectedEntry.maxInGroup + 1);
+                List<Vector3> positions = GetSpawnPositionsAroundPlayer(count);
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    SpawnEnemyAtPosition(selectedEntry.enemySO, positions[i]);
+                    yield return new WaitForSeconds(0.05f);
+                }
+            }
 
             yield return new WaitForSeconds(wave.spawnInterval);
         }
     }
 
-    private void SpawnEnemy(EnemyWaveSO wave)
+    private EnemyWaveEntry GetRandomEnemyEntry(EnemyWaveSO wave)
     {
-        if (player == null)
+        int totalWeight = 0;
+        foreach (EnemyWaveEntry entry in wave.waveEntries)
         {
-            Debug.LogWarning("[EnemySpawner] No player assigned, cannot spawn.");
-            return;
+            totalWeight += entry.spawnWeight;
         }
 
-        EnemySO enemyData = wave.enemySOs[Random.Range(0, wave.enemySOs.Length)];
-        if (enemyData == null || enemyData.prefab == null)
+        int randomWeight = Random.Range(0, totalWeight);
+        int currentWeight = 0;
+
+        foreach (EnemyWaveEntry entry in wave.waveEntries)
         {
-            Debug.LogWarning("[EnemySpawner] Invalid enemy in wave.");
-            return;
+            currentWeight += entry.spawnWeight;
+            if (randomWeight < currentWeight)
+            {
+                int enemyCount = activeEnemies.FindAll(e => e.GetComponent<EnemyHealthBehaviour>().enemyData == entry.enemySO).Count;
+                if (enemyCount < entry.maxThisEnemy)
+                {
+                    return entry;
+                }
+            }
         }
 
-        float angle = Random.Range(0f, Mathf.PI * 2f);
-        Vector3 spawnPos = player.position + new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * spawnRadius;
+        return null;
+    }
+
+    private List<Vector3> GetSpawnPositionsAroundPlayer(int count)
+    {
+        List<Vector3> positions = new List<Vector3>();
+
+        Vector3 baseDir = Vector3.zero;
+        int validEnemies = 0;
+
+        foreach (GameObject enemy in activeEnemies)
+        {
+            if (enemy != null && enemy.activeInHierarchy)
+            {
+                baseDir += enemy.transform.position;
+                validEnemies++;
+            }
+        }
+
+        if (validEnemies > 0)
+        {
+            baseDir = (player.position - (baseDir / validEnemies)).normalized;
+        }
+        else
+        {
+            float angle = Random.Range(0f, Mathf.PI * 2f);
+            baseDir = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)).normalized;
+        }
+
+        float baseAngle = Mathf.Atan2(baseDir.z, baseDir.x);
+        float totalSpread = Mathf.Deg2Rad * 30f;
+        float angleStep = count > 1 ? totalSpread / (count - 1) : 0f;
+        float startAngle = baseAngle - totalSpread / 2f;
+
+        for (int i = 0; i < count; i++)
+        {
+            float angle = startAngle + i * angleStep;
+            Vector3 dir = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)).normalized;
+            positions.Add(player.position + dir * spawnRadius);
+        }
+
+        return positions;
+    }
+
+    private void SpawnEnemyAtPosition(EnemySO enemySO, Vector3 spawnPos)
+    {
+        if (player == null) return;
 
         if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, navMeshCheckRadius, NavMesh.AllAreas))
         {
@@ -141,11 +214,11 @@ public class EnemySpawner : MonoBehaviour
 
             if (ObjectPool.Instance != null)
             {
-                enemy = ObjectPool.Instance.Spawn(enemyData.prefab, hit.position, Quaternion.identity);
+                enemy = ObjectPool.Instance.Spawn(enemySO.prefab, hit.position, Quaternion.identity);
             }
             else
             {
-                enemy = Instantiate(enemyData.prefab, hit.position, Quaternion.identity);
+                enemy = Instantiate(enemySO.prefab, hit.position, Quaternion.identity);
             }
 
             if (enemy != null)

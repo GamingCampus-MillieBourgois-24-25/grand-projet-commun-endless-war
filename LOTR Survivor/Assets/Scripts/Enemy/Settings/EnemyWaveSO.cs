@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEnemyWave", menuName = "Waves/New Enemy Wave")]
 public class EnemyWaveSO : ScriptableObject
 {
-    public EnemySO[] enemySOs;
+    public EnemyWaveEntry[] waveEntries;
     public float spawnInterval;
     public float waveCooldown;
 }
