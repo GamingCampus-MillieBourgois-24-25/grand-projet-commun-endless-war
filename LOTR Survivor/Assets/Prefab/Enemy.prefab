@@ -133,6 +133,15 @@ MonoBehaviour:
   xpMagnetPrefab: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
     type: 3}
   xpMagnetDropChance: 0.01
+  goldPrefab: {fileID: 4153260053465889355, guid: ead055ad79695524787ef24a8e191887,
+    type: 3}
+  goldDropChance: 0.01
+  flashMaterial: {fileID: 0}
+  flashDuration: 0.1
+  mesh: {fileID: 0}
+  deathEffectSlash: {fileID: 0}
+  deathEffectMagic: {fileID: 0}
+  health: 0
 --- !u!114 &8945391096205476242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 2d27bc1227acd654d8b088961e3b152d, type: 2}
+  isStunned: 0
 --- !u!195 &4420957439939387608
 NavMeshAgent:
   m_ObjectHideFlags: 0

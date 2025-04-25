@@ -30,8 +30,25 @@ public class SkillLibrary : MonoBehaviour
     {
         if (attackSkillSettings != null && attackSkillSettings.Length > 0)
         {
-            int randomIndex = Random.Range(0, attackSkillSettings.Length);
-            return attackSkillSettings[randomIndex];
+            List<SkillSettings> availableSkills = new List<SkillSettings>();
+            foreach (var skill in attackSkillSettings)
+            {
+                if (!skill.IsMaxLevel())
+                {
+                    availableSkills.Add(skill);
+                }
+            }
+
+            if (availableSkills.Count > 0)
+            {
+                int randomIndex = Random.Range(0, availableSkills.Count);
+                return availableSkills[randomIndex];
+            }
+            else
+            {
+                Debug.LogWarning("Toutes les compétences ont atteint leur niveau max.");
+                return GetRandomBuffSkill();
+            }
         }
         else
         {
@@ -58,8 +75,25 @@ public class SkillLibrary : MonoBehaviour
     {
         if (startingSkills != null && startingSkills.Length > 0)
         {
-            int randomIndex = Random.Range(0, startingSkills.Length);
-            return startingSkills[randomIndex];
+            List<SkillSettings> availableStartingSkills = new List<SkillSettings>();
+            foreach (var skill in startingSkills)
+            {
+                if (!skill.IsMaxLevel())
+                {
+                    availableStartingSkills.Add(skill);
+                }
+            }
+
+            if (availableStartingSkills.Count > 0)
+            {
+                int randomIndex = Random.Range(0, availableStartingSkills.Count);
+                return availableStartingSkills[randomIndex];
+            }
+            else
+            {
+                Debug.LogWarning("Toutes les compétences de démarrage ont atteint leur niveau max.");
+                return GetRandomBuffSkill();
+            }
         }
         else
         {

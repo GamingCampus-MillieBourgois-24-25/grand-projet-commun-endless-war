@@ -149,7 +149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &974872061731250729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1061,8 +1061,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 974872061731250729}
   - {fileID: 2535202477540593709}
+  - {fileID: 974872061731250729}
   - {fileID: 920907225918902691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1151,11 +1151,13 @@ MonoBehaviour:
   startYOffset: 800
   animationEase: 30
   skillNumber: 4
-  layoutGroup: {fileID: 0}
-  skillHolder: {fileID: 0}
+  layoutGroup: {fileID: 6796628615508066735}
+  skillHolder: {fileID: 2248550189354714445, guid: 45eaef3a29e9dc94a9c6e0446dfa2ac3,
+    type: 3}
   skillManager: {fileID: 0}
   skillInfo: {fileID: 7575237808515246281}
   canvasGroup: {fileID: 8560873103462308748}
+  closeButton: {fileID: 1185225675732531751}
 --- !u!1 &3745080723059895459
 GameObject:
   m_ObjectHideFlags: 0

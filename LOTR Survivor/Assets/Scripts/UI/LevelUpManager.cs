@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
-using TMPro;
 
 public class LevelUpManager : MonoBehaviour
 {
@@ -17,15 +17,16 @@ public class LevelUpManager : MonoBehaviour
 
     [SerializeField] private GridLayoutGroup layoutGroup;
     [SerializeField] private GameObject skillHolder;
+    [SerializeField] private SkillsManager skillManager;
     [SerializeField] private SkillInfo skillInfo;
     [SerializeField] private CanvasGroup canvasGroup;
 
-    private SkillsManager skillManager;
+    [SerializeField] private GameObject closeButton;
+
     private SkillSettings currentSkillSettings;
 
     private Vector2 originalPosition;
 
-    // Singleton pattern
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -35,43 +36,27 @@ public class LevelUpManager : MonoBehaviour
         }
 
         Instance = this;
-
         originalPosition = levelUpPanel.anchoredPosition;
         levelUpPanel.gameObject.SetActive(false);
+        skillManager = GameObject.FindGameObjectWithTag("Player").GetComponent<SkillsManager>();
     }
 
     private void OnEnable()
     {
         XPEvents.OnLevelUP += DisplayPanel;
-        SkillHolderBehaviour.OnSkillSelected += HandleSkillSelected;  // Subscribe to skill selected event
+        SkillHolderBehaviour.OnSkillSelected += HandleSkillSelected;
         SkillHolderBehaviour.OnDetailsButton += ShowDetails;
         SkillInfo.OnHide += HideDetails;
-
-        PlayerEvents.OnPlayerSpawned += AssignPlayer; // Listen for when the player spawns
     }
 
     private void OnDisable()
     {
         XPEvents.OnLevelUP -= DisplayPanel;
-        SkillHolderBehaviour.OnSkillSelected -= HandleSkillSelected;  // Unsubscribe from skill selected event
+        SkillHolderBehaviour.OnSkillSelected -= HandleSkillSelected;
         SkillHolderBehaviour.OnDetailsButton -= ShowDetails;
         SkillInfo.OnHide -= HideDetails;
-
-        PlayerEvents.OnPlayerSpawned -= AssignPlayer; // Unsubscribe from event when disabled
     }
 
-    // This method will be called when the player spawns to assign the skillManager
-    private void AssignPlayer(GameObject playerObj)
-    {
-        skillManager = playerObj.GetComponent<SkillsManager>();
-
-        if (skillManager == null)
-            Debug.LogWarning("[LevelUpManager] Player has no SkillsManager!");
-        else
-            Debug.Log("[LevelUpManager] Player assigned successfully.");
-    }
-
-    // This method is called when a skill is selected
     private void HandleSkillSelected(SkillHolderBehaviour selected)
     {
         currentSkillSettings = selected._skillSettings;
@@ -85,15 +70,8 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
-    // Called when level up occurs to display the level up panel
     public void DisplayPanel(int level)
     {
-        if (skillManager == null)
-        {
-            Debug.LogWarning("[LevelUpManager] skillManager is not assigned, cannot display panel.");
-            return;
-        }
-
         levelUpPanel.gameObject.SetActive(true);
         GamePauseManager.Instance.PauseGame();
 
@@ -108,12 +86,10 @@ public class LevelUpManager : MonoBehaviour
             .SetUpdate(true);
     }
 
-    // Hides the level up panel and applies selected skill
     public void HidePanel()
     {
         if (currentSkillSettings == null)
         {
-            Debug.LogWarning("[LevelUpManager] No skill selected.");
             return;
         }
 
@@ -121,12 +97,10 @@ public class LevelUpManager : MonoBehaviour
             .SetEase(Ease.InBack)
             .SetUpdate(true)
             .OnComplete(OnHideComplete);
-
         ApplySkill(currentSkillSettings);
         currentSkillSettings = null;
     }
 
-    // Resumes the game and triggers level complete event
     private void OnHideComplete()
     {
         GamePauseManager.Instance.ResumeGame();
@@ -134,7 +108,6 @@ public class LevelUpManager : MonoBehaviour
         XPEvents.RaiseLevelComplete();
     }
 
-    // Adds skill holders dynamically based on the number
     private void AddSkillHolders(int number)
     {
         for (int i = 0; i < number; i++)
@@ -152,7 +125,6 @@ public class LevelUpManager : MonoBehaviour
 
             SkillSettings skill = null;
 
-            // Select appropriate skill based on index
             if (i == 0)
             {
                 skill = SkillLibrary.Instance.GetStartingSkill();
@@ -166,7 +138,6 @@ public class LevelUpManager : MonoBehaviour
                 skill = SkillLibrary.Instance.GetRandomSkill();
             }
 
-            // Update skill data on the holder if skill is available
             if (skill != null && holder.TryGetComponent(out SkillHolderBehaviour behaviour))
             {
                 behaviour.UpdateData(skill);
@@ -178,7 +149,6 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
-    // Removes all skill holders from the UI
     private void RemoveExistingSkillHolders()
     {
         foreach (Transform child in layoutGroup.transform)
@@ -187,7 +157,6 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
-    // Applies the selected skill to the player
     private void ApplySkill(SkillSettings skill)
     {
         if (skill.skillType != SkillType.Buff)
@@ -217,7 +186,6 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
-    // Applies a healing buff to the player
     private void ApplyHealingBuff(float healMultiplier)
     {
         PlayerHealthBehaviour player = skillManager.GetComponent<PlayerHealthBehaviour>();
@@ -231,16 +199,17 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
-    // Displays skill details when the player selects a skill
+
     private void ShowDetails(SkillSettings newSkillSettings)
     {
         skillInfo.ShowSkillInfo(newSkillSettings);
         canvasGroup.interactable = false;
+        closeButton.SetActive(true);
     }
 
-    // Hides skill details when the player closes them
     private void HideDetails()
     {
         canvasGroup.interactable = true;
+        closeButton.SetActive(false);
     }
 }
