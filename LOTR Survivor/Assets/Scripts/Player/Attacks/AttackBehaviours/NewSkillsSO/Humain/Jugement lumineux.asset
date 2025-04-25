@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Jugement lumineux
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: Jugement lumineux
   skillSprite: {fileID: 21300000, guid: 8e6de2a5d31343446870eaf33edb36c1, type: 3}
   skillType: 1
@@ -34,6 +35,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2cae0e78db8cb442881075c3f3dd662, type: 2}
   buffEffects: []
   attackTypes: 00000000
+  damageType: 0
   NumberOfAttacks: 0
   CooldownBetweenAttacks: 0
   prefab: {fileID: 3377181292992421420, guid: 6e02174ec7bcb7a4994b5c4cec0445be, type: 3}
@@ -64,9 +66,10 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 0
   MaxMaxRotation: 0
-  Damage: 5
+  MaxLevel: 10
+  Damage: 0
   Speed: 0
-  Cooldown: 13
+  Cooldown: 4
   Range: 10
   AimRange: 0
   MaxRotation: 0

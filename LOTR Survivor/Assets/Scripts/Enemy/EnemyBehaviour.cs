@@ -57,7 +57,6 @@ public class EnemyBehaviour : MonoBehaviour
 
         agent.speed = enemyData.speed;
 
-        PlayerHealthBehaviour playerHealth = player.GetComponent<PlayerHealthBehaviour>();
         HealthEvents.OnPlayerDeath += HandlePlayerDeath;
     }
 

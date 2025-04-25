@@ -30,6 +30,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         isStunned = false;
+        isAttacking = false;
     }
 
     protected virtual void OnDisable()
@@ -71,6 +72,17 @@ public abstract class EnemyBase : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         agent = GetComponent<NavMeshAgent>();
+
+        if (player == null)
+        {
+            Debug.Log("zut");
+        }
+
+        if (agent == null)
+        {
+            Debug.LogError("NavMeshAgent manquant sur " + gameObject.name);
+            return;
+        }
 
         if (agent != null) agent.speed = enemyData.speed;
     }
