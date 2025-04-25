@@ -16,19 +16,10 @@ public class GameTimer : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer >= 1f)
-        {
-            seconds++;
-            timer = 0f;
+        minutes = Mathf.FloorToInt(timer / 60);
+        seconds = Mathf.FloorToInt(timer % 60);
 
-            if (seconds >= 60)
-            {
-                minutes++;
-                seconds = 0;
-            }
-
-            UpdateTimerUI();
-        }
+        UpdateTimerUI();
     }
 
     private void UpdateTimerUI()
