@@ -834,6 +834,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
     m_RemovedGameObjects:
@@ -1023,6 +1028,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
     m_RemovedGameObjects:
@@ -1208,6 +1218,7 @@ GameObject:
   - component: {fileID: 199006599}
   - component: {fileID: 199006598}
   - component: {fileID: 199006601}
+  - component: {fileID: 199006602}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1323,6 +1334,50 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &199006602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199006597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &213569009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +1953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
     m_RemovedGameObjects:
@@ -2419,6 +2479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
@@ -3178,6 +3243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
@@ -4871,6 +4941,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
     m_RemovedGameObjects:
@@ -5386,6 +5461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
@@ -6026,7 +6106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1737260510
 Transform:
   m_ObjectHideFlags: 0
@@ -6054,7 +6134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6079d1659ffd4a7408e2b384b746c149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1677499987}
   spawnRadius: 20
   despawnDistance: 75
   navMeshCheckRadius: 50
@@ -6063,7 +6143,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c71d56ef0e4e2f47b60c39750e5e8fd, type: 2}
   timerText: {fileID: 0}
   finalSurviveTime: 15
-  warningTime: 10
+  warningTime: 3
 --- !u!1 &1753304710
 GameObject:
   m_ObjectHideFlags: 0
@@ -6253,6 +6333,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
@@ -7053,6 +7138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}
@@ -8006,6 +8096,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ELF_MELEE_PREFAB (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144808274856383609, guid: 9bc3e094d18517b42b740e1495a53c75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393608474494735531, guid: 9bc3e094d18517b42b740e1495a53c75, type: 3}

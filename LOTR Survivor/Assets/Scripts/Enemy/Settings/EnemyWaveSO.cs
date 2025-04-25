@@ -6,4 +6,5 @@ public class EnemyWaveSO : ScriptableObject
     public EnemySO[] enemySOs;
     public float spawnInterval;
     public float waveCooldown;
+    public int maxEnemiesSpawn = 4;
 }
