@@ -22,6 +22,13 @@ public abstract class EnemyBase : MonoBehaviour
     {
         HealthEvents.OnReviveComplete += SetPlayer;
         HealthEvents.OnPlayerDeath += HandlePlayerDeath;
+
+        if (animator != null)
+        {
+            animator.speed = 1f;
+            animator.Play("Idle");
+        }
+
         isStunned = false;
     }
 
