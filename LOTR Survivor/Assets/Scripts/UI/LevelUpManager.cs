@@ -21,6 +21,8 @@ public class LevelUpManager : MonoBehaviour
     [SerializeField] private SkillInfo skillInfo;
     [SerializeField] private CanvasGroup canvasGroup;
 
+    [SerializeField] private GameObject closeButton;
+
     private SkillSettings currentSkillSettings;
 
     private Vector2 originalPosition;
@@ -202,10 +204,12 @@ public class LevelUpManager : MonoBehaviour
     {
         skillInfo.ShowSkillInfo(newSkillSettings);
         canvasGroup.interactable = false;
+        closeButton.SetActive(true);
     }
 
     private void HideDetails()
     {
         canvasGroup.interactable = true;
+        closeButton.SetActive(false);
     }
 }
