@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 40
   attackPower: 15
   attackCooldown: 0.8
-  speed: 1
+  speed: 2
   aggroRange: 1
   prefab: {fileID: 3749023707266510813, guid: aaa35b12d1027754884c71a58317cda3, type: 3}
   flashDuration: 0.1

@@ -18,6 +18,6 @@ MonoBehaviour:
     type: 3}
   race: 1
   classe: 1
-  pointsDeVie: 0
+  pointsDeVie: 20
   attacksBase: []
-  vitesseDeDeplacement: 0
+  vitesseDeDeplacement: 5
