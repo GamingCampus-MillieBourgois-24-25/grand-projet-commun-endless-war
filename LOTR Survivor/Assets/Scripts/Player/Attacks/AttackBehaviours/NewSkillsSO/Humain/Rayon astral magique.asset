@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Rayon astral magique
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: Rayon astral magique
-  skillSprite: {fileID: 21300000, guid: 13364319a4a194f45a200f3afaf3b498, type: 3}
+  skillSprite: {fileID: 21300000, guid: 22348e40c43618e43b9f0f6368d3182b, type: 3}
   skillType: 1
   skillDescription: "Project large porte inflige beaucoup de d\xE9g\xE2t "
   skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
@@ -31,6 +32,7 @@ MonoBehaviour:
   statusEffects: []
   buffEffects: []
   attackTypes: 01000000
+  damageType: 0
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 1
   prefab: {fileID: 754821637487049960, guid: f2999c7a918c15541943e10ad92c0d3e, type: 3}
@@ -61,6 +63,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 25
   Speed: 10
   Cooldown: 4.7

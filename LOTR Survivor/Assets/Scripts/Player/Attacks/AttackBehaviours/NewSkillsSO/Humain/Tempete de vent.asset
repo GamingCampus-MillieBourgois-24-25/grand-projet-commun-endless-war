@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Tempete de vent
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: "Temp\xEAte de vent"
-  skillSprite: {fileID: 21300000, guid: b3a6440735263474ba7033306087e898, type: 3}
+  skillSprite: {fileID: 21300000, guid: 6856f2f94d566dd469d07ac51a276efa, type: 3}
   skillType: 1
   skillDescription: 'AOE autour du personnage qui inflige saignement '
   skillBehaviour: {fileID: 6098613423092608936, guid: effc56a69ee514b49941417641280899,
@@ -32,6 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a31e42f2fd16b554c8bb6a60c5c08651, type: 2}
   buffEffects: []
   attackTypes: 00000000
+  damageType: 0
   NumberOfAttacks: 0
   CooldownBetweenAttacks: 0
   prefab: {fileID: 3377181292992421420, guid: 6e02174ec7bcb7a4994b5c4cec0445be, type: 3}
@@ -62,6 +64,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 10
   Speed: 10
   Cooldown: 12

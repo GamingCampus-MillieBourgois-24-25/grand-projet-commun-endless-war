@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Projectile arcanique
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: Projectile arcanique
-  skillSprite: {fileID: 21300000, guid: 2035ddeb0db57bd418888267b089c4d8, type: 3}
+  skillSprite: {fileID: 21300000, guid: cb763472799ff3f4fbe1d246fe92aaac, type: 3}
   skillType: 1
   skillDescription: Projectile shotgun
   skillBehaviour: {fileID: 3117057591713310481, guid: cfa34fb1aef408744be865e151678535,
@@ -31,6 +32,7 @@ MonoBehaviour:
   statusEffects: []
   buffEffects: []
   attackTypes: 01000000
+  damageType: 0
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 1
   prefab: {fileID: 7777741130337875386, guid: c2c3279344ef7b940bdefccb9d7f1e2d, type: 3}
@@ -61,6 +63,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 15
   Speed: 7
   Cooldown: 5.6
