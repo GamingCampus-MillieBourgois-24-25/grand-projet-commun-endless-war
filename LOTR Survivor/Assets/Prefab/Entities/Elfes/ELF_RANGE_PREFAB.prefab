@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
   animator: {fileID: 778020805392102151}
-  rotationSpeed: 1
+  rotationSpeed: 5
   isStunned: 0
   projectilePrefab: {fileID: 7671491202235141443, guid: e998f3a1e04add74f9f2baa69aa0d850,
     type: 3}
