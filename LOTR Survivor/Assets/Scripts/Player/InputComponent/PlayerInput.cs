@@ -57,6 +57,11 @@ public class PlayerInput : MonoBehaviour
         DisableInput();
     }
 
+    public void AssignJoysticks(FloatingJoyStick moveJoy, FloatingJoyStick rotateJoy)
+    {
+        movementJoystick = moveJoy;
+        rotationJoystick = rotateJoy;
+    }
 
     private void HandleFingerDown(Finger finger)
     {
