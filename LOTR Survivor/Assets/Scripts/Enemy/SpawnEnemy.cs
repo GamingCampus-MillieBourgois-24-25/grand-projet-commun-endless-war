@@ -78,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
         {
             currentWave = waves[currentWaveIndex];
 
-            if (currentWave == null || currentWave.enemySOs.Length == 0)
+            if (currentWave == null || currentWave.waveEntries.Length == 0)
             {
                 Debug.LogWarning("Wave is empty or invalid. Skipping.");
                 currentWaveIndex++;
@@ -119,18 +119,53 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!isSpawningPaused)
             {
-                int count = Random.Range(1, wave.maxEnemiesSpawn + 1);
+                // On sélectionne un ennemi selon les poids
+                EnemyWaveEntry selectedEntry = GetRandomEnemyEntry(wave);
+                if (selectedEntry == null) yield break;
+
+                // Le nombre d'ennemis à spawn dépend du maxInGroup de l'ennemi choisi
+                int count = selectedEntry.maxInGroup;
                 List<Vector3> positions = GetSpawnPositionsAroundPlayer(count);
 
                 for (int i = 0; i < positions.Count; i++)
                 {
-                    SpawnEnemyAtPosition(wave, positions[i]);
-                    yield return new WaitForSeconds(0.05f);
+                    SpawnEnemyAtPosition(selectedEntry.enemySO, positions[i]);
+                    yield return new WaitForSeconds(0.05f); // Petit délai entre chaque spawn
                 }
             }
 
             yield return new WaitForSeconds(wave.spawnInterval);
         }
+    }
+
+    private EnemyWaveEntry GetRandomEnemyEntry(EnemyWaveSO wave)
+    {
+        // Calcul du poids total pour déterminer quel ennemi spawn
+        int totalWeight = 0;
+        foreach (EnemyWaveEntry entry in wave.waveEntries)
+        {
+            totalWeight += entry.spawnWeight;
+        }
+
+        // Tirer un nombre aléatoire en fonction des poids
+        int randomWeight = Random.Range(0, totalWeight);
+        int currentWeight = 0;
+
+        foreach (EnemyWaveEntry entry in wave.waveEntries)
+        {
+            currentWeight += entry.spawnWeight;
+            if (randomWeight < currentWeight)
+            {
+                // Vérifier si le nombre maximum d'ennemis de ce type n'est pas atteint
+                int enemyCount = activeEnemies.FindAll(e => e.GetComponent<EnemyHealthBehaviour>().enemyData == entry.enemySO).Count;
+                if (enemyCount < entry.maxThisEnemy)
+                {
+                    return entry;
+                }
+            }
+        }
+
+        return null; // Si aucun ennemi valide n'est trouvé
     }
 
     private List<Vector3> GetSpawnPositionsAroundPlayer(int count)
@@ -160,7 +195,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         float baseAngle = Mathf.Atan2(baseDir.z, baseDir.x);
-
         float totalSpread = Mathf.Deg2Rad * 30f;
         float angleStep = count > 1 ? totalSpread / (count - 1) : 0f;
         float startAngle = baseAngle - totalSpread / 2f;
@@ -175,16 +209,9 @@ public class EnemySpawner : MonoBehaviour
         return positions;
     }
 
-    private void SpawnEnemyAtPosition(EnemyWaveSO wave, Vector3 spawnPos)
+    private void SpawnEnemyAtPosition(EnemySO enemySO, Vector3 spawnPos)
     {
         if (player == null) return;
-
-        EnemySO enemyData = wave.enemySOs[Random.Range(0, wave.enemySOs.Length)];
-        if (enemyData == null || enemyData.prefab == null)
-        {
-            Debug.LogWarning("[EnemySpawner] Invalid enemy in wave.");
-            return;
-        }
 
         if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, navMeshCheckRadius, NavMesh.AllAreas))
         {
@@ -192,11 +219,11 @@ public class EnemySpawner : MonoBehaviour
 
             if (ObjectPool.Instance != null)
             {
-                enemy = ObjectPool.Instance.Spawn(enemyData.prefab, hit.position, Quaternion.identity);
+                enemy = ObjectPool.Instance.Spawn(enemySO.prefab, hit.position, Quaternion.identity);
             }
             else
             {
-                enemy = Instantiate(enemyData.prefab, hit.position, Quaternion.identity);
+                enemy = Instantiate(enemySO.prefab, hit.position, Quaternion.identity);
             }
 
             if (enemy != null)
