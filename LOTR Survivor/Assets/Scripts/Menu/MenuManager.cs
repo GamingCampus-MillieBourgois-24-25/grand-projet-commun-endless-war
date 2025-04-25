@@ -10,9 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button optionButton;
     [SerializeField] private Button shopButton;
-    [SerializeField] private Button quitMenu;
 
-    [SerializeField] private TMP_Text playText;
     [SerializeField] private TMP_Text musicVolumeText;
     [SerializeField] private TMP_Text sfxVolumeText;
 
@@ -35,10 +33,8 @@ public class MenuManager : MonoBehaviour
         mainMenu.SetActive(true);
         optionMenu.SetActive(false);
 
-        StartCoroutine(FadeTextRoutine());
 
         playButton.onClick.AddListener(ChangeScene);
-        quitMenu.onClick.AddListener(ReturnMenu);
         optionButton.onClick.AddListener(OptionMenu);
         shopButton.onClick.AddListener(ShopMenu);
 
@@ -53,30 +49,6 @@ public class MenuManager : MonoBehaviour
 
         sfxSlider.value = VolumeManager.Instance.GetSFXVolume();
         UpdateVolumeTexts();
-    }
-
-    IEnumerator FadeTextRoutine()
-    {
-        while (true)
-        {
-            yield return StartCoroutine(FadeText(0f, 1f, 0.8f));
-            yield return new WaitForSeconds(1f);
-            yield return StartCoroutine(FadeText(1f, 0f, 0.8f));
-            yield return new WaitForSeconds(1f);
-        }
-    }
-
-    IEnumerator FadeText(float startAlpha, float endAlpha, float duration)
-    {
-        float elapsedTime = 0f;
-        Color color = playText.color;
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
-            playText.color = new Color(color.r, color.g, color.b, alpha);
-            yield return null;
-        }
     }
 
     void ChangeScene()
