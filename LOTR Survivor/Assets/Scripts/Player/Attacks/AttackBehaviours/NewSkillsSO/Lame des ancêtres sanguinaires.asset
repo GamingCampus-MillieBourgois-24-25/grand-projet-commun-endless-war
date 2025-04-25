@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: "Lame des anc\xEAtres sanguinaires"
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: "Lame des anc\xEAtres sanguinaires"
   skillSprite: {fileID: 21300000, guid: 3febb5b43536ec04ab649c631c3ba503, type: 3}
   skillType: 0
@@ -58,10 +59,11 @@ MonoBehaviour:
   MaxRotationUpgrade: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 8.5
+  MinCooldown: 2
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 50
   Speed: 10
   Cooldown: 17

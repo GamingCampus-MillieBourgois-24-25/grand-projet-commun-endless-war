@@ -10,6 +10,8 @@ public class VictoryCanvas : MonoBehaviour
     [SerializeField] private float startYOffset = 800f;
     [SerializeField] private Ease animationEase = Ease.OutBounce;
 
+    [SerializeField] private AudioClip winClip;
+
     private Vector2 originalPosition;
 
     private void Awake()
@@ -30,6 +32,8 @@ public class VictoryCanvas : MonoBehaviour
 
     public void DisplayUI()
     {
+        VolumeManager.Instance.PlaySFX(winClip, 1f);
+
         GamePauseManager.Instance.PauseGame();
         victoryPanel.gameObject.SetActive(true);
 

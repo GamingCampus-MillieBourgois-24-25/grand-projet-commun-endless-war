@@ -20,7 +20,7 @@ public class SoundButton : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if (clickSound)
-            VolumeManager.Instance.PlaySFX(clickSound, transform, 1f, true);
+            VolumeManager.Instance.PlaySFX(clickSound, 1f, transform, true);
 
         transform.DOScale(initialScale * scaleFactor, duration)
             .OnComplete(() =>

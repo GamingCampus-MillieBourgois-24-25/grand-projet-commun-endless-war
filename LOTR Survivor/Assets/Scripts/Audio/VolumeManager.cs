@@ -42,7 +42,7 @@ public class VolumeManager : MonoBehaviour
     public float GetMusicVolume() => musicVolume;
     public float GetSFXVolume() => sfxVolume;
 
-    public void PlaySFX(AudioClip audioClip, Transform spawnTransform = null, float volume = 1f, bool persistThroughScenes = false)
+    public void PlaySFX(AudioClip audioClip, float volume = 1f, Transform spawnTransform = null, bool persistThroughScenes = false)
     {
         if (audioClip == null || soundFXPrefab == null) return;
 

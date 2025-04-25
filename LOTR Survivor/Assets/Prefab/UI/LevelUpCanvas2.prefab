@@ -1170,10 +1170,10 @@ MonoBehaviour:
   layoutGroup: {fileID: 6796628615508066735}
   skillHolder: {fileID: 2248550189354714445, guid: 45eaef3a29e9dc94a9c6e0446dfa2ac3,
     type: 3}
-  skillManager: {fileID: 0}
   skillInfo: {fileID: 7575237808515246281}
   canvasGroup: {fileID: 8560873103462308748}
   closeButton: {fileID: 1185225675732531751}
+  levelUpClip: {fileID: 8300000, guid: e9cb99f90ad9d744c8dbcffaca15d129, type: 3}
 --- !u!1 &3745080723059895459
 GameObject:
   m_ObjectHideFlags: 0

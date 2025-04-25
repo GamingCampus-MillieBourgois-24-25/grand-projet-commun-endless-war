@@ -24,5 +24,11 @@ public class Health : Editor
             player.Die();
             Debug.Log("Mort déclenchée.");
         }
+
+        if (GUILayout.Button("Win"))
+        {
+            VictoryCanvas victoryCanvas = FindObjectOfType<VictoryCanvas>();
+            victoryCanvas?.DisplayUI();
+        }
     }
 }

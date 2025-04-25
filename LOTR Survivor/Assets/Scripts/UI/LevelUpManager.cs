@@ -22,6 +22,8 @@ public class LevelUpManager : MonoBehaviour
 
     [SerializeField] private GameObject closeButton;
 
+    [SerializeField] private AudioClip levelUpClip;
+
     private SkillsManager skillManager;
     private SkillSettings currentSkillSettings;
 
@@ -97,6 +99,8 @@ public class LevelUpManager : MonoBehaviour
             Debug.LogWarning("[LevelUpManager] skillManager is not assigned, cannot display panel.");
             return;
         }
+
+        VolumeManager.Instance.PlaySFX(levelUpClip, 1f);
 
         levelUpPanel.gameObject.SetActive(true);
         GamePauseManager.Instance.PauseGame();
