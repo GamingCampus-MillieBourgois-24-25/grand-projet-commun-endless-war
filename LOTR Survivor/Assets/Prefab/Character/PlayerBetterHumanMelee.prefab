@@ -143,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 4126265438597834433, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: m_Name
-      value: PlayerBetterOnsenfou
+      value: PlayerBetterHumanMelee
       objectReference: {fileID: 0}
     - target: {fileID: 4486109927044123527, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
@@ -203,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 8481779018304349590, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8750681803908683627, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
