@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: 1
   skillName: Jugement lumineux
-  skillSprite: {fileID: 21300000, guid: 8e6de2a5d31343446870eaf33edb36c1, type: 3}
+  skillSprite: {fileID: 21300000, guid: c7f5d17b526bf144096b49e3bd2de29b, type: 3}
   skillType: 1
   skillDescription: "Large AOE infligeant de lourd d\xE9g\xE2t sur les ennemie, Inflige
     ralentissement"

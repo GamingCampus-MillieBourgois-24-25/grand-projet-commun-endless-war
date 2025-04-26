@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Concentration dun magicien
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: Concentration d'un magicien
-  skillSprite: {fileID: 21300000, guid: bd46887707ff23a41931df3512b6e641, type: 3}
+  skillSprite: {fileID: 21300000, guid: 3e9739c29615f234e9db705438d9a128, type: 3}
   skillType: 1
   skillDescription: " Buff + D\xE9g\xE2t +R\xE9duction CD + Projectile suppl\xE9mentaires
     sur les sort"
@@ -34,6 +35,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b99f63634b44d3b408e1f371e516ce6d, type: 2}
   - {fileID: 11400000, guid: b673cc2b2420ad1469d83ceb22383aff, type: 2}
   attackTypes: 02000000
+  damageType: 0
   NumberOfAttacks: 0
   CooldownBetweenAttacks: 0
   prefab: {fileID: 0}
@@ -64,6 +66,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 0
   Speed: 0
   Cooldown: 0

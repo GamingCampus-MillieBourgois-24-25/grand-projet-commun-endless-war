@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Estoc du lion d'argent
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: Estoc du lion d'argent
-  skillSprite: {fileID: 21300000, guid: 06a56855c4ae053448ef8dac220c8baa, type: 3}
+  skillSprite: {fileID: 21300000, guid: 9e2f15de2f5ddfe46afc05c1f9494bfc, type: 3}
   skillType: 1
   skillDescription: "Slash longue port\xE9e\r"
   skillBehaviour: {fileID: 6098613423092608936, guid: fe14fda35b0d56f41b6760a63c3e89cb,
@@ -31,6 +32,7 @@ MonoBehaviour:
   statusEffects: []
   buffEffects: []
   attackTypes: 00000000
+  damageType: 0
   NumberOfAttacks: 10
   CooldownBetweenAttacks: 5
   prefab: {fileID: 1171201465392465800, guid: 4aa9f30a28a77224ba84b2a2c334c71b, type: 3}
@@ -61,6 +63,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 10
   Speed: 10
   Cooldown: 3
