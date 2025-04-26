@@ -26,6 +26,8 @@ public class GameOverCanvas : MonoBehaviour
     [SerializeField] private MoneyManager moneyManager;
     [SerializeField] private XPManager xpManager;
 
+    [SerializeField] private AudioClip loseClip;
+
     private void Awake()
     {
         originalPosition = gameOverPanel.anchoredPosition;
@@ -55,6 +57,8 @@ public class GameOverCanvas : MonoBehaviour
 
     public void DisplayUI()
     {
+        VolumeManager.Instance.PlaySFX(loseClip, 1f);
+
         GamePauseManager.Instance.PauseGame();
         gameOverPanel.gameObject.SetActive(true);
 

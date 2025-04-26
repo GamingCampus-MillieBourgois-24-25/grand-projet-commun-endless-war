@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     [Header("Animation References")]
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Animator playerAnimator2;
 
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
@@ -20,6 +21,9 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private float slowmoScale = 0.1f;
     [SerializeField] private float slowmoDuration = 1.5f;
 
+    [SerializeField] private AudioClip[] damageClips;
+    [SerializeField] private AudioClip heal;
+
     private PlayerHealthBehaviour playerHealth;
     private bool isReviving = false;
 
@@ -27,6 +31,8 @@ public class PlayerAnimation : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     private Material originalMaterial;
     private bool isInvulnerable;
+
+    public float movement;
 
     private void Awake()
     {
@@ -95,11 +101,24 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandleMovementAnimations()
     {
-        
+        if (movement > 0.1)
+        {
+            playerAnimator2.SetBool("IsMoving", true);
+        }
+        else
+        {
+            playerAnimator2.SetBool("IsMoving", false);
+        }
     }
 
     private void HandleDamageAnimations(int amount)
     {
+        if (damageClips != null && damageClips.Length > 0)
+        {
+            AudioClip damageClip = damageClips[UnityEngine.Random.Range(0, damageClips.Length)];
+            VolumeManager.Instance.PlaySFX(damageClip, 0.8f);
+        }
+
         StartCoroutine(FlashFeedback());
         if (CameraShakeManager.instance != null)
         {
@@ -109,6 +128,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandleHealingAnimations(int amount)
     {
+        VolumeManager.Instance.PlaySFX(heal, 0.5f);
         Instantiate(healingParticle, transform.position, Quaternion.identity, transform);
     }
 
@@ -123,7 +143,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandlePlayerRevive(Transform player)
     {
-        Debug.Log("rezdf");
         StartCoroutine(PlayReviveAnimation());
     }
 

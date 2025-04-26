@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7153258416509433355}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,6 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2697674510200690039}
   prefab: {fileID: 1900636694727229254}
+  capsuleCollider: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6ba286ffd14a8414c8345b965d02003e, type: 3}
+  cube: {fileID: 98392135098470171}
   xpValue: 1
 --- !u!135 &5404039641430897911
 SphereCollider:

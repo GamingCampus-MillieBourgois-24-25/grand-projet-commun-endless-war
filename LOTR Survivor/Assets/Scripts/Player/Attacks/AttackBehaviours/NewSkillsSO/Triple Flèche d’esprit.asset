@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: "Triple Fl\xE8che d\u2019esprit"
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: "Triple Fl\xE8che d\u2019esprit"
   skillSprite: {fileID: 21300000, guid: 86db0b7d32122054987579aac5c3ba6f, type: 3}
   skillType: 0
@@ -31,24 +32,13 @@ MonoBehaviour:
   statusEffects: []
   buffEffects: []
   attackTypes: 01000000
+  damageType: 1
   NumberOfAttacks: 3
   CooldownBetweenAttacks: 0.5
   prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
   hitPrefab: {fileID: 0}
-  spawnEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  hitEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  spawnEvent: {fileID: 0}
+  hitEvent: {fileID: 0}
   DamageUpgrade: 1
   SpeedUpgrade: 1
   CooldownUpgrade: 1
@@ -61,6 +51,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 10
   Speed: 10
   Cooldown: 2

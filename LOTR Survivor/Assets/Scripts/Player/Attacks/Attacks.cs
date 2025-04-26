@@ -48,17 +48,17 @@ public abstract class Attack : MonoBehaviour
 
     private void TryPlaySpawnSound()
     {
-        if (skillSettings != null && skillSettings.spawnEvent.IsNull == false)
+        if (skillSettings != null && skillSettings.spawnEvent != null)
         {
-            OneShotAudio.Play(skillSettings.spawnEvent, transform.position);
+            VolumeManager.Instance.PlaySFX(skillSettings.spawnEvent);
         }
     }
 
     private void TryPlayHitSound()
     {
-        if (skillSettings != null && skillSettings.hitEvent.IsNull == false)
+        if (skillSettings != null && skillSettings.hitEvent != null)
         {
-            OneShotAudio.Play(skillSettings.hitEvent, transform.position);
+            VolumeManager.Instance.PlaySFX(skillSettings.hitEvent);
         }
     }
 

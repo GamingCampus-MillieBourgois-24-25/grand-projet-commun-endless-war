@@ -32,6 +32,9 @@ public class EnemyHealthBehaviour : MonoBehaviour
     [SerializeField] private GameObject deathEffectSlash;
     [SerializeField] private GameObject deathEffectMagic;
 
+    [SerializeField] private AudioClip deathSword;
+    [SerializeField] private AudioClip deathBurn;
+
     public int health;
     private Material originalMaterial;
 
@@ -110,10 +113,12 @@ public class EnemyHealthBehaviour : MonoBehaviour
                 if (type == DamageType.Magic)
                 {
                     ObjectPool.Instance.Spawn(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    VolumeManager.Instance.PlaySFX(deathBurn, 0.5f);
                 }
                 else
                 {
                     ObjectPool.Instance.Spawn(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    VolumeManager.Instance.PlaySFX(deathSword, 0.5f);
                 }
             }
             else
@@ -141,7 +146,8 @@ public class EnemyHealthBehaviour : MonoBehaviour
         //  XP
         if (xpPrefab != null && ObjectPool.Instance != null)
         {
-            ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity);
+            XPPickup xp =  ObjectPool.Instance.Spawn(xpPrefab, transform.position, Quaternion.identity).GetComponent<XPPickup>();
+            xp.SeValue(enemyData.xpValue);
         }
 
         if(goldPrefab != null && ObjectPool.Instance != null)

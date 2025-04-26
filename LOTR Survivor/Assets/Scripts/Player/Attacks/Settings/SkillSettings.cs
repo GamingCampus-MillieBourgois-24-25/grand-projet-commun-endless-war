@@ -45,8 +45,8 @@ public class SkillSettings : ScriptableObject
     [Header("VFX / SFX")]
     public GameObject prefab;
     public GameObject hitPrefab;
-    public EventReference spawnEvent;
-    public EventReference hitEvent;
+    public AudioClip spawnEvent;
+    public AudioClip hitEvent;
 
     [Header("Upgrade Multipliers")]
     public float DamageUpgrade = 1f;

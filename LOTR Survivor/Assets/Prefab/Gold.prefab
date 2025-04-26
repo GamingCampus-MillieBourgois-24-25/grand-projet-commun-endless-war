@@ -51,8 +51,8 @@ MonoBehaviour:
   animator: {fileID: 5786918656033922986}
   prefab: {fileID: 4153260053465889355}
   sphereCollider: {fileID: 0}
+  clip: {fileID: 8300000, guid: 63fdbe628f10b9f46ae2b77d66dfa9e7, type: 3}
   goldValue: 1
-  goldID: 1
 --- !u!95 &5786918656033922986
 Animator:
   serializedVersion: 5

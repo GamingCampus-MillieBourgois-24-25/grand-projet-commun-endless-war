@@ -27,6 +27,8 @@ public class MeleeEnemy : EnemyBase
 
     public void TryApplyDamage()
     {
+        VolumeManager.Instance.PlaySFX(enemyData.attackClip, 0.3f);
+
         float dist = Vector3.Distance(transform.position, player.position);
         if (dist <= enemyData.aggroRange && player.TryGetComponent<PlayerHealthBehaviour>(out PlayerHealthBehaviour health))
         {

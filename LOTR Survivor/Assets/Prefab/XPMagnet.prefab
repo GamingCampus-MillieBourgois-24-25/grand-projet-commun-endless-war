@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8788541495721213881}
   prefab: {fileID: 3425110117833773824}
-  magnetRadius: 15
+  magnetRadius: 100
   magnetSoundEvent:
     Guid:
       Data1: 521941033

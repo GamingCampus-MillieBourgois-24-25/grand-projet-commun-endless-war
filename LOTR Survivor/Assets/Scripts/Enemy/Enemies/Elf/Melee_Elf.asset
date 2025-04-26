@@ -22,3 +22,4 @@ MonoBehaviour:
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
   statusImmunities: 
+  attackClip: {fileID: 8300000, guid: 50d278aa552b52e44bfd321a55db6cac, type: 3}

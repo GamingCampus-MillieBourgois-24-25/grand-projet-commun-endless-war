@@ -42,6 +42,8 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
     {
         if (skillSettings.prefab != null)
         {
+            VolumeManager.Instance.PlaySFX(skillSettings.spawnEvent);
+
             Vector3 spawnPosition = GetFXSpawnPosition();
             Quaternion adjustedRotation = transform.rotation * Quaternion.Euler(0, skillSettings.RotationOffset, 0);
 

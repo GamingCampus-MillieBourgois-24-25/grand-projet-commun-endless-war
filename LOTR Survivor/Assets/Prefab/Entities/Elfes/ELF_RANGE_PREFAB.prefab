@@ -70,6 +70,8 @@ MonoBehaviour:
     type: 3}
   deathEffectMagic: {fileID: 1554935185360794264, guid: d5d1774d02039da47b9d2e568c38d3bb,
     type: 3}
+  deathSword: {fileID: 8300000, guid: 966ea5fb9495c3649ac91b1d7e3c7d7d, type: 3}
+  deathBurn: {fileID: 8300000, guid: 49fa38c4eb6ceb74fa4be72a7f72ca85, type: 3}
   health: 0
 --- !u!114 &8282820965585120134
 MonoBehaviour:
@@ -181,6 +183,7 @@ MonoBehaviour:
   animator: {fileID: 778020805392102151}
   rotationSpeed: 5
   isStunned: 0
+  followPlayer: 1
   projectilePrefab: {fileID: 7671491202235141443, guid: e998f3a1e04add74f9f2baa69aa0d850,
     type: 3}
   firePoint: {fileID: 989590452551749928}

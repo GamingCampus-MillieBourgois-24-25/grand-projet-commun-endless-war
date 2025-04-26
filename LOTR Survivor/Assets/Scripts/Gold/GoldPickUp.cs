@@ -5,6 +5,8 @@ public class GoldPickup : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject prefab;
     [SerializeField] private SphereCollider sphereCollider;
+
+    [SerializeField] private AudioClip clip;
     public int goldValue = 1;
 
     private bool picked = false;
@@ -43,6 +45,8 @@ public class GoldPickup : MonoBehaviour
         if (other.CompareTag("Player") && !picked)
         {
             picked = true;
+
+            VolumeManager.Instance.PlaySFX(clip, 0.1f);
 
             CollectGold();
 
