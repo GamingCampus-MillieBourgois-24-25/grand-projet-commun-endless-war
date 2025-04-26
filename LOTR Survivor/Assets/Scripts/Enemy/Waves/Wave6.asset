@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveEntries:
   - enemySO: {fileID: 11400000, guid: e3af88babf509574685fca079036860b, type: 2}
-    spawnWeight: 3
+    spawnWeight: 2
     maxInGroup: 5
-    maxThisEnemy: 0
+    maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: 83a9f8a61da0de04aa0e2ceb8cf36752, type: 2}
-    spawnWeight: 3
-    maxInGroup: 3
-    maxThisEnemy: 0
+    spawnWeight: 2
+    maxInGroup: 4
+    maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: 95251fcf428402a498647161422e962d, type: 2}
     spawnWeight: 1
-    maxInGroup: 1
-    maxThisEnemy: 5
+    maxInGroup: 3
+    maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: a4b4c5368b825c5479108bd06ef16c9e, type: 2}
     spawnWeight: 1
-    maxInGroup: 1
-    maxThisEnemy: 5
-  spawnInterval: 1.5
+    maxInGroup: 3
+    maxThisEnemy: 999
+  spawnInterval: 1.25
   waveCooldown: 60

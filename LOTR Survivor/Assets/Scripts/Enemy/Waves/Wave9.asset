@@ -15,27 +15,27 @@ MonoBehaviour:
   waveEntries:
   - enemySO: {fileID: 11400000, guid: 6f931bdd71a0c4e4fa3dcd37de848847, type: 2}
     spawnWeight: 3
-    maxInGroup: 3
+    maxInGroup: 8
     maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: 2ba50f236c2ba564ba9986fd4219bf1d, type: 2}
     spawnWeight: 3
-    maxInGroup: 3
+    maxInGroup: 8
     maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: a4b4c5368b825c5479108bd06ef16c9e, type: 2}
     spawnWeight: 3
-    maxInGroup: 3
+    maxInGroup: 8
     maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: b5f03771b6dd44848b3a16c459419def, type: 2}
     spawnWeight: 1
-    maxInGroup: 1
-    maxThisEnemy: 3
+    maxInGroup: 5
+    maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: 1cc2c9ab9b6a03a4f84f8eac3c1cc0fe, type: 2}
     spawnWeight: 1
-    maxInGroup: 1
-    maxThisEnemy: 3
+    maxInGroup: 5
+    maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: 31fd2931a966d9e4b96fabf5abc476c0, type: 2}
     spawnWeight: 1
-    maxInGroup: 1
-    maxThisEnemy: 3
-  spawnInterval: 1
+    maxInGroup: 5
+    maxThisEnemy: 999
+  spawnInterval: 0.5
   waveCooldown: 60

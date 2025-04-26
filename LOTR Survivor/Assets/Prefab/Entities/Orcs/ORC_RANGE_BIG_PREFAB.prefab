@@ -187,7 +187,7 @@ MonoBehaviour:
   rotationSpeed: 5
   isStunned: 0
   followPlayer: 1
-  projectilePrefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5,
+  projectilePrefab: {fileID: 754821637487049960, guid: da8a584374e755a4da0071d964ede357,
     type: 3}
   firePoint: {fileID: 421497752390832613}
   projectileSpeed: 6

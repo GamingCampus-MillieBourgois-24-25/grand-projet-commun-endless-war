@@ -45,5 +45,5 @@ MonoBehaviour:
     spawnWeight: 1
     maxInGroup: 1
     maxThisEnemy: 5
-  spawnInterval: 2
+  spawnInterval: 1.5
   waveCooldown: 60
