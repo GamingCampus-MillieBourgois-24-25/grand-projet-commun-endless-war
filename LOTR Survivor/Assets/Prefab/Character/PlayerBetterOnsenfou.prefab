@@ -71,8 +71,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 504c07e98fdbb2842a36409d4cc50156,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4913336290994275857}
   m_SourcePrefab: {fileID: 100100000, guid: 504c07e98fdbb2842a36409d4cc50156, type: 3}
+--- !u!1 &6217355830576412227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 504c07e98fdbb2842a36409d4cc50156,
+    type: 3}
+  m_PrefabInstance: {fileID: 6523769716957825810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4913336290994275857
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217355830576412227}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0dbb84ebefb5fa4c88de330af8df215, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &6702390350189014265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 504c07e98fdbb2842a36409d4cc50156,
@@ -166,6 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8481779018304349590, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 882083877447249082}
+    - target: {fileID: 8481779018304349590, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -190,6 +226,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3744133877081091469, guid: a2a060732547fe64581bb0cb3c2bdf1d,
         type: 3}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: playerAnimator2
+      value: 
+      objectReference: {fileID: 4913336290994275857}
     - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: damageClips.Array.size
@@ -220,6 +261,18 @@ PrefabInstance:
       addedObject: {fileID: 6702390350189014265}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae, type: 3}
+--- !u!114 &882083877447249082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 8473343365834420818}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3258cc455f24843b34b829271d96d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5464697928560458197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4486109927044123527, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,

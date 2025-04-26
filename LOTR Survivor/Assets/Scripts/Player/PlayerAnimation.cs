@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     [Header("Animation References")]
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Animator playerAnimator2;
 
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
@@ -102,11 +103,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (movement > 0.1)
         {
-            playerAnimator.SetBool("IsMoving", true);
+            playerAnimator2.SetBool("IsMoving", true);
         }
         else
         {
-            playerAnimator.SetBool("IsMoving", true);
+            playerAnimator2.SetBool("IsMoving", false);
         }
     }
 
@@ -142,7 +143,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandlePlayerRevive(Transform player)
     {
-        Debug.Log("rezdf");
         StartCoroutine(PlayReviveAnimation());
     }
 
