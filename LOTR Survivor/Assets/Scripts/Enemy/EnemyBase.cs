@@ -46,7 +46,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (player == null || isStunned) return;
+        if (player == null || isStunned || !followPlayer) return;
 
         attackTimer += Time.deltaTime;
 
@@ -98,6 +98,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         StopMoving();
         followPlayer = false;
+        isAttacking = false;
     }
 
     protected virtual void MoveTowardsPlayer()
