@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1405b1c3c146437408f1ff5ab7676270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 83a9f8a61da0de04aa0e2ceb8cf36752, type: 2}
+  enemyData: {fileID: 11400000, guid: a4b4c5368b825c5479108bd06ef16c9e, type: 2}
   xpPrefab: {fileID: 1900636694727229254, guid: c166b2602b12bc04cada33f9d258d829,
     type: 3}
   healthPrefab: {fileID: 1498014835702131830, guid: db6da2141329a9a4b94b7c8d1708b522,
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa23f40056ec01845a0b2d264741a687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 83a9f8a61da0de04aa0e2ceb8cf36752, type: 2}
+  enemyData: {fileID: 11400000, guid: a4b4c5368b825c5479108bd06ef16c9e, type: 2}
   animator: {fileID: 8809525000566574815}
   rotationSpeed: 5
   isStunned: 0

@@ -29,6 +29,8 @@ public abstract class EnemyBase : MonoBehaviour
             animator.Play("Idle");
         }
 
+        if (agent != null) agent.speed = enemyData.speed;
+
         isStunned = false;
         isAttacking = false;
     }
