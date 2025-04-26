@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DatabasePlayer
   m_EditorClassIdentifier: 
   allCharacters:
-  - {fileID: 11400000, guid: 3032d83ac591eee45be2e00b23440797, type: 2}
+  - {fileID: 11400000, guid: 4b8865272af23aa4b9bba8f7797b811f, type: 2}
   - {fileID: 11400000, guid: 7bd55250cba91334e8a56a519ed6ad06, type: 2}

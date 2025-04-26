@@ -234,6 +234,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
+      propertyPath: playerAnimator2
+      value: 
+      objectReference: {fileID: 3145384328878378863}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
       propertyPath: damageClips.Array.size
       value: 3
       objectReference: {fileID: 0}
