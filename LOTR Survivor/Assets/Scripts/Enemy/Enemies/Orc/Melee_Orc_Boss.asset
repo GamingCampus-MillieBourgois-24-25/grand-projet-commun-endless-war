@@ -22,5 +22,5 @@ MonoBehaviour:
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
   statusImmunities: 05000000
-  attackClip: {fileID: 8300000, guid: 1453634993b14cc4f8fd062e617c5259, type: 3}
+  attackClip: {fileID: 8300000, guid: b4a240d237d3ef345a39cd96d72a0158, type: 3}
   xpValue: 8

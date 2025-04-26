@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4653fdedd404f14daa9c49e4f8615b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangedEnemy: {fileID: 0}
+  rangedEnemy: {fileID: 6400600368082190948}
   meleeEnemy: {fileID: 0}
 --- !u!4 &5218480997917356854 stripped
 Transform:
