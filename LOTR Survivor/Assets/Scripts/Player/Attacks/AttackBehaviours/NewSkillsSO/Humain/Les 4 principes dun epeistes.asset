@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Les 4 principes dun epeistes
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: "Les 4 principes d'un \xE9p\xE9istes"
-  skillSprite: {fileID: 21300000, guid: 36e14cf451d97694296b1d47e0274fad, type: 3}
+  skillSprite: {fileID: 21300000, guid: 1358ac2435aa03f458f3c7c44e6f3b7e, type: 3}
   skillType: 1
   skillDescription: "Buff +D\xE9g\xE2t Attaque +Vitesse d'attaque +R\xE9duction Cooldown"
   skillBehaviour: {fileID: 7509719709111903018, guid: 0fe52d8c77e4e5e478890ebf49ba9099,
@@ -34,6 +35,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 796c11db614858442b668d550bbd4efe, type: 2}
   - {fileID: 11400000, guid: bcd8f369e9ce70043a27ec786b999230, type: 2}
   attackTypes: 02000000
+  damageType: 0
   NumberOfAttacks: 0
   CooldownBetweenAttacks: 0
   prefab: {fileID: 0}
@@ -64,6 +66,7 @@ MonoBehaviour:
   MaxRange: 0
   MaxAimRange: 0
   MaxMaxRotation: 0
+  MaxLevel: 10
   Damage: 0
   Speed: 0
   Cooldown: 0
