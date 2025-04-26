@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9599c92bd838efe44a4a220df5f2ae97, type: 3}
+  m_Name: Wave7
+  m_EditorClassIdentifier: 
+  waveEntries:
+  - enemySO: {fileID: 11400000, guid: e3af88babf509574685fca079036860b, type: 2}
+    spawnWeight: 3
+    maxInGroup: 6
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: 83a9f8a61da0de04aa0e2ceb8cf36752, type: 2}
+    spawnWeight: 3
+    maxInGroup: 5
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: 95251fcf428402a498647161422e962d, type: 2}
+    spawnWeight: 1
+    maxInGroup: 3
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: a4b4c5368b825c5479108bd06ef16c9e, type: 2}
+    spawnWeight: 1
+    maxInGroup: 3
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: d9db09b924bbdb84db8cfb6eb45169f5, type: 2}
+    spawnWeight: 1
+    maxInGroup: 3
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: 6f931bdd71a0c4e4fa3dcd37de848847, type: 2}
+    spawnWeight: 1
+    maxInGroup: 3
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: 748582f685b2da44bbdd848fabd66099, type: 2}
+    spawnWeight: 1
+    maxInGroup: 3
+    maxThisEnemy: 999
+  - enemySO: {fileID: 11400000, guid: 2ba50f236c2ba564ba9986fd4219bf1d, type: 2}
+    spawnWeight: 1
+    maxInGroup: 3
+    maxThisEnemy: 999
+  spawnInterval: 1
+  waveCooldown: 60

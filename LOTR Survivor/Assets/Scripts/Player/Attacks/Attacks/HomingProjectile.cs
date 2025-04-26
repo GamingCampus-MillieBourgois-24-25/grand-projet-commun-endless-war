@@ -39,7 +39,7 @@ public class HomingProjectile : Attack
         Vector3 direction = (target.transform.position - transform.position).normalized;
         transform.Translate(direction * skillSettings.Speed * projectileSpeedMultiplier * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.transform.position) < 0.05f)
+        if (Vector3.Distance(transform.position, target.transform.position) < 0.1f)
         {
             HitTarget();
         }

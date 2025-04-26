@@ -53,17 +53,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1405b1c3c146437408f1ff5ab7676270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
+  enemyData: {fileID: 11400000, guid: b5f03771b6dd44848b3a16c459419def, type: 2}
   xpPrefab: {fileID: 1900636694727229254, guid: c166b2602b12bc04cada33f9d258d829,
     type: 3}
   healthPrefab: {fileID: 1498014835702131830, guid: db6da2141329a9a4b94b7c8d1708b522,
     type: 3}
-  goldPrefab: {fileID: 0}
+  goldPrefab: {fileID: 4153260053465889355, guid: ead055ad79695524787ef24a8e191887,
+    type: 3}
   xpMagnetPrefab: {fileID: 3425110117833773824, guid: 851d20688adb4274dbdd4a3a0418ba0b,
     type: 3}
   xpMagnetDropChance: 0.01
-  goldMagnetPrefab: {fileID: 0}
+  goldMagnetPrefab: {fileID: 1378769262155967048, guid: 7e4879efe0ca23747b4620c682224579,
+    type: 3}
   goldDropChance: 0.2
+  goldCoinDropChance: 0.1
   flashMaterial: {fileID: 2100000, guid: 31a520dfb12e22241bcdecd0d04e61ed, type: 2}
   flashDuration: 0.1
   mesh: {fileID: 4056136725891467060}
@@ -86,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83ebe243bdd1e1459f0be6ea4e14ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burnParticle: {fileID: 7455372202216957759, guid: 74b70f51abb2c21468956c9cdd3d873c,
+  burnParticle: {fileID: 7455372202216957759, guid: 0ca12cb66f3b2ed4081e5a1df6a73891,
     type: 3}
   bleedParticle: {fileID: 7455372202216957759, guid: 3757fb6fa3b44914bb7036576e67629f,
     type: 3}
@@ -180,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa23f40056ec01845a0b2d264741a687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 375f62925de19114c980e1cc70d0a15c, type: 2}
+  enemyData: {fileID: 11400000, guid: b5f03771b6dd44848b3a16c459419def, type: 2}
   animator: {fileID: 778020805392102151}
   rotationSpeed: 5
   isStunned: 0

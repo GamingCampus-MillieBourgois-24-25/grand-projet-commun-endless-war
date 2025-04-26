@@ -1,14 +1,14 @@
 public enum Race
 {
     Orc,
-    Humain,
-    Elfe,
+    Human,
+    Elf,
     Nain
 }
 
 public enum Classe
 {
     Tank,
-    Distance,
-    CorpsACorps
+    Range,
+    Melee
 }

@@ -12,8 +12,18 @@ public class PlayerSetup : MonoBehaviour
 
     private GameObject characterInstance;
 
+    private PlayerSpawnPoint[] spawnPoints;
+
     private void Start()
     {
+        spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
+
+        if(spawnPoints.Length == 0)
+        {
+            Debug.LogError("No PlayerSpawnPoint found in the scene");
+            return;
+        }
+        
         // Use fallback if testing without selecting a character
         var prefabToUse = SelectedCharacterData.selectedCharacterPrefab ?? defaultCharacterPrefab;
         var statsToUse = SelectedCharacterData.selectedCharacter ?? defaultCharacterStats;
@@ -21,8 +31,11 @@ public class PlayerSetup : MonoBehaviour
 
         if (prefabToUse != null && statsToUse != null)
         {
+            PlayerSpawnPoint randomSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            
             characterInstance = Instantiate(prefabToUse, playerParent);
-            characterInstance.transform.position = Vector3.zero;
+            //characterInstance.transform.position = Vector3.zero;
+            characterInstance.transform.position = randomSpawn.transform.position;
 
             PlayerEvents.OnPlayerSpawned?.Invoke(characterInstance);
 

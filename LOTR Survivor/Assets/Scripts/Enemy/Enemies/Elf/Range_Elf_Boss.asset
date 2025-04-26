@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
   m_Name: Range_Elf_Boss
   m_EditorClassIdentifier: 
-  maxHealth: 25
-  attackPower: 5
+  maxHealth: 40
+  attackPower: 8
   attackCooldown: 1.5
   speed: 2
   aggroRange: 8
@@ -21,6 +21,6 @@ MonoBehaviour:
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
-  statusImmunities: 
+  statusImmunities: 00000000
   attackClip: {fileID: 8300000, guid: 188d649e86e78a24e930eee8c491f55f, type: 3}
-  xpValue: 3
+  xpValue: 8

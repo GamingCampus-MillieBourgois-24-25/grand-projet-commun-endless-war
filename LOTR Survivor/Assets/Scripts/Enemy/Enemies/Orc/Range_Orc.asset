@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
   m_Name: Range_Orc
   m_EditorClassIdentifier: 
-  maxHealth: 40
-  attackPower: 15
-  attackCooldown: 0.8
+  maxHealth: 25
+  attackPower: 8
+  attackCooldown: 3.2
   speed: 2
-  aggroRange: 1
+  aggroRange: 5
   prefab: {fileID: 3749023707266510813, guid: aaa35b12d1027754884c71a58317cda3, type: 3}
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
-  statusImmunities: 
+  statusImmunities: 05000000
+  attackClip: {fileID: 8300000, guid: e9cd9294c526663449f20682da99226b, type: 3}
+  xpValue: 1
