@@ -1164,6 +1164,7 @@ MonoBehaviour:
   levelReachedText: {fileID: 0}
   moneyManager: {fileID: 0}
   xpManager: {fileID: 0}
+  loseClip: {fileID: 8300000, guid: 56ef43bad9f59d744a6e757d018af308, type: 3}
 --- !u!1 &8473447009332215977
 GameObject:
   m_ObjectHideFlags: 0

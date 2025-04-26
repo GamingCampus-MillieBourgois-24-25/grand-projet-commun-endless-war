@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ac1fbc3af80d7e46b00acc0573c584a
+guid: 0fd806121ab4c3249a870066a39bdac9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: marche
-      takeName: marche
-      internalID: -6233252300620757983
+      name: Human_Melee_Walk
+      takeName: Take 001
+      internalID: 1827226128182048838
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -44,7 +44,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

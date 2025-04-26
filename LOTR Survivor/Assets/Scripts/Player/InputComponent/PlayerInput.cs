@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private PlayerAnimation animator;
 
     private Finger movementFinger;
     private Finger rotationFinger;
@@ -137,6 +138,11 @@ public class PlayerInput : MonoBehaviour
             Vector3 lookDir = new Vector3(rotationInput.x, 0, rotationInput.y);
             Quaternion targetRotation = Quaternion.LookRotation(lookDir);
             playerRb.MoveRotation(Quaternion.Slerp(playerRb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+        }
+
+        if (animator != null)
+        {
+            animator.movement = moveDir.magnitude;
         }
     }
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Fleche des ombres
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: "Fl\xE8che des ombres"
   skillSprite: {fileID: 21300000, guid: d027b551c9cdb144aab3413390bd684e, type: 3}
   skillType: 0
@@ -31,24 +32,13 @@ MonoBehaviour:
   statusEffects: []
   buffEffects: []
   attackTypes: 01000000
-  NumberOfAttacks: 10
-  CooldownBetweenAttacks: 5
+  damageType: 0
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 0
   prefab: {fileID: 754821637487049960, guid: 7ddbd6fd1985b3e4284046bca5741fd5, type: 3}
   hitPrefab: {fileID: 0}
-  spawnEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  hitEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  spawnEvent: {fileID: 0}
+  hitEvent: {fileID: 0}
   DamageUpgrade: 1
   SpeedUpgrade: 1
   CooldownUpgrade: 1
@@ -61,6 +51,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 0
   Speed: 0
   Cooldown: 0

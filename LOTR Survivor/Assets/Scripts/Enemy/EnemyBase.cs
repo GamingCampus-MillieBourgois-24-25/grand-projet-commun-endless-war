@@ -105,6 +105,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (!isInRange && agent != null)
         {
             agent.SetDestination(player.position);
+            animator.SetBool("IsMoving", true);
         }
     }
 
@@ -127,6 +128,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             agent.isStopped = true;
             agent.SetDestination(transform.position);
+            animator.SetBool("IsMoving", false);
         }
     }
 
@@ -149,6 +151,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void Stun()
     {
+        animator.SetBool("IsMoving", false);
         animator.Play("Idle");
         isStunned = true;
         agent.isStopped = true;

@@ -63,6 +63,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: heal
+      value: 
+      objectReference: {fileID: 8300000, guid: 41416b5d359a2a644a17792db5af8559, type: 3}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: damageClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: damageClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a56640101fb4e742a439540ac0b25e7, type: 3}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: damageClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 71c570b2594f8bf42a08f80c3648bab6, type: 3}
+    - target: {fileID: 8766985071957548776, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
+        type: 3}
+      propertyPath: damageClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 013eff9914f91fa468193f4c61223245, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

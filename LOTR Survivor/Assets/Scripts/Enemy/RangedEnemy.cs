@@ -32,6 +32,8 @@ public class RangedEnemy : EnemyBase
 
     public void ShootProjectile()
     {
+        VolumeManager.Instance.PlaySFX(enemyData.attackClip, 0.3f);
+
         if (projectilePrefab != null && firePoint != null && player != null)
         {
             GameObject proj = ObjectPool.Instance.Spawn(projectilePrefab, firePoint.position, Quaternion.identity);

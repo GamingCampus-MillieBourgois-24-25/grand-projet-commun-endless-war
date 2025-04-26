@@ -40,4 +40,8 @@ public class EnemySO : ScriptableObject
     [Header("Status Immunities")]
     [Tooltip("Liste des types de statut auxquels cet ennemi est immunisé.")]
     public List<EffectType> statusImmunities = new List<EffectType>();
+
+    public AudioClip attackClip;
+
+    public int xpValue = 1;
 }

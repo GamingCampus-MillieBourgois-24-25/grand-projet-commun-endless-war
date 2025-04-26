@@ -5,6 +5,9 @@ public class XPPickup : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject prefab;
     [SerializeField] private SphereCollider capsuleCollider;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private Transform cube;
+
     public int xpValue = 1;
 
     private bool picked = false;
@@ -44,6 +47,7 @@ public class XPPickup : MonoBehaviour
         {
             picked = true;
             XPEvents.PickXP(xpValue);
+            VolumeManager.Instance.PlaySFX(clip, 0.1f);
 
             if (animator != null)
             {
@@ -77,4 +81,9 @@ public class XPPickup : MonoBehaviour
         }
     }
 
+    public void SeValue(int value)
+    {
+        xpValue = value;
+        cube.transform.localScale *= Mathf.Sqrt(value);
+    }
 }

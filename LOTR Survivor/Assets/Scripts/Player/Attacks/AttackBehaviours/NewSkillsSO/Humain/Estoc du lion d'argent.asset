@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Estoc du lion d'argent
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
   skillName: Estoc du lion d'argent
   skillSprite: {fileID: 21300000, guid: 06a56855c4ae053448ef8dac220c8baa, type: 3}
   skillType: 1
@@ -31,24 +32,13 @@ MonoBehaviour:
   statusEffects: []
   buffEffects: []
   attackTypes: 00000000
+  damageType: 1
   NumberOfAttacks: 10
   CooldownBetweenAttacks: 5
   prefab: {fileID: 1171201465392465800, guid: 4aa9f30a28a77224ba84b2a2c334c71b, type: 3}
   hitPrefab: {fileID: 0}
-  spawnEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  hitEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  spawnEvent: {fileID: 8300000, guid: 4bdeb204d84624a4180bfb774d62be83, type: 3}
+  hitEvent: {fileID: 0}
   DamageUpgrade: 1
   SpeedUpgrade: 1
   CooldownUpgrade: 1
@@ -61,6 +51,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 10
   Speed: 10
   Cooldown: 3

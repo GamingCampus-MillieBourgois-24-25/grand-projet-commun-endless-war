@@ -22,6 +22,8 @@ public class BoxMelee : AreaAttackBehaviour
 
     protected override void PlayHitFX(float adjustedRange)
     {
+        VolumeManager.Instance.PlaySFX(skillSettings.spawnEvent, 0.5f);
+
         if (skillSettings.prefab != null)
         {
             Vector3 spawnPosition = GetFXSpawnPosition();
