@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
   m_Name: Melee_Elf_Boss
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  attackPower: 6
+  maxHealth: 50
+  attackPower: 12
   attackCooldown: 1.5
   speed: 3
   aggroRange: 3
-  prefab: {fileID: 8144808274856383609, guid: 8041c8fd0d11df149891ba9bff64fd10, type: 3}
+  prefab: {fileID: 8144808274856383609, guid: d641a2560b2a696468013fe852679d00, type: 3}
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
-  statusImmunities: 
+  statusImmunities: 00000000
   attackClip: {fileID: 8300000, guid: 50d278aa552b52e44bfd321a55db6cac, type: 3}
-  xpValue: 3
+  xpValue: 8

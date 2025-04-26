@@ -22,7 +22,8 @@ public class EnemyHealthBehaviour : MonoBehaviour
 
     [Header("Gold Magnet Pickup")]
     [SerializeField] private GameObject goldMagnetPrefab;
-    [SerializeField, Range(0f, 1f)] private float goldDropChance = 0.2f;
+    [SerializeField, Range(0f, 1f)] private float goldDropChance = 0.01f;
+    [SerializeField, Range(0f, 1f)] private float goldCoinDropChance = 0.01f;
 
     [Header("Visual & Effects")]
     [SerializeField] private Material flashMaterial;
@@ -150,7 +151,7 @@ public class EnemyHealthBehaviour : MonoBehaviour
             xp.SeValue(enemyData.xpValue);
         }
 
-        if(goldPrefab != null && ObjectPool.Instance != null)
+        if(goldPrefab != null && ObjectPool.Instance != null && Random.value < goldCoinDropChance)
         {
             ObjectPool.Instance.Spawn(goldPrefab, transform.position, Quaternion.identity);
         }

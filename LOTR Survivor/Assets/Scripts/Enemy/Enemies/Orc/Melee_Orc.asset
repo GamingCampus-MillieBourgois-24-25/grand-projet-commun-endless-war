@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
   m_Name: Melee_Orc
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  attackPower: 6
-  attackCooldown: 1.5
-  speed: 2
-  aggroRange: 1
+  maxHealth: 30
+  attackPower: 10
+  attackCooldown: 3.4
+  speed: 1.5
+  aggroRange: 1.5
   prefab: {fileID: 2717916582596424889, guid: 90cc5b5ca698d644b8c5a3e1e0bdffd9, type: 3}
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
-  statusImmunities: 
+  statusImmunities: 05000000
+  attackClip: {fileID: 8300000, guid: 1453634993b14cc4f8fd062e617c5259, type: 3}
+  xpValue: 1

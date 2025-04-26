@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
+  m_Name: Melee_Elf_Big
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+  attackPower: 6
+  attackCooldown: 1.5
+  speed: 3
+  aggroRange: 3
+  prefab: {fileID: 8144808274856383609, guid: 8041c8fd0d11df149891ba9bff64fd10, type: 3}
+  flashDuration: 0.1
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  description: 
+  statusImmunities: 00000000
+  attackClip: {fileID: 8300000, guid: 50d278aa552b52e44bfd321a55db6cac, type: 3}
+  xpValue: 3

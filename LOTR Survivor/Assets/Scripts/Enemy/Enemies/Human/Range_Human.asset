@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
   m_Name: Range_Human
   m_EditorClassIdentifier: 
-  maxHealth: 40
-  attackPower: 15
-  attackCooldown: 0.8
-  speed: 2
-  aggroRange: 1
+  maxHealth: 20
+  attackPower: 10
+  attackCooldown: 4.1
+  speed: 1.5
+  aggroRange: 8
   prefab: {fileID: 7007100317776650397, guid: 55f97f025a447014793d34c13db5a267, type: 3}
   flashDuration: 0.1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   description: 
-  statusImmunities: 
+  statusImmunities: 04000000
+  attackClip: {fileID: 0}
+  xpValue: 1

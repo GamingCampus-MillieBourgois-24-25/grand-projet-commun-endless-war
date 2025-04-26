@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1954def9dc11544b17e4a62f07b574, type: 3}
+  m_Name: Melee_Human_Big
+  m_EditorClassIdentifier: 
+  maxHealth: 35
+  attackPower: 10
+  attackCooldown: 1.9
+  speed: 2
+  aggroRange: 3
+  prefab: {fileID: 742717709982947402, guid: 5e581cd20e5aaa241a8adef88b4c11f2, type: 3}
+  flashDuration: 0.1
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  description: 
+  statusImmunities: 04000000
+  attackClip: {fileID: 8300000, guid: 50d278aa552b52e44bfd321a55db6cac, type: 3}
+  xpValue: 3
