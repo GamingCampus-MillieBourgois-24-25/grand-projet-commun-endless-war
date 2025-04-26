@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStunnable, IBurnable, IBleedable
 {
-    private EnemyBehaviour enemyBehaviour;
+    private EnemyBase enemyBehaviour;
     private EnemyHealthBehaviour healthBehaviour;
     private float baseSpeed;
 
@@ -29,7 +29,7 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
 
     private void Awake()
     {
-        enemyBehaviour = GetComponent<EnemyBehaviour>();
+        enemyBehaviour = GetComponent<EnemyBase>();
         healthBehaviour = GetComponent<EnemyHealthBehaviour>();
         baseSpeed = GetComponent<UnityEngine.AI.NavMeshAgent>().speed;
     }
@@ -136,17 +136,11 @@ public class EnemyStatusController : MonoBehaviour, IPoisonable, ISlowable, IStu
             currentStunParticle.transform.SetParent(transform);
         }
 
-        enemyBehaviour.isStunned = true;
-        var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.isStopped = true;
+        enemyBehaviour.Stun();
 
         yield return new WaitForSeconds(duration);
 
-        if (enemyBehaviour.isStunned == true)
-        {
-            agent.isStopped = false;
-            enemyBehaviour.isStunned = false;
-        }
+        enemyBehaviour.UnStun();
         
         if (currentStunParticle != null)
         {

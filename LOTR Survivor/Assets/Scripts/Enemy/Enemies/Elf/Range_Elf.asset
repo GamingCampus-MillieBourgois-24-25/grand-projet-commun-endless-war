@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Range_Elf
   m_EditorClassIdentifier: 
   maxHealth: 15
-  attackPower: 5
+  attackPower: 3
   attackCooldown: 1.5
   speed: 2
   aggroRange: 6

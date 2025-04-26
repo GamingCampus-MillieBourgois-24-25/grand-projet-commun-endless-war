@@ -16,7 +16,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected float attackTimer = 0f;
     public bool isStunned = false;
 
-    private bool playerDead = false;
+    public bool followPlayer = true;
 
     protected virtual void OnEnable()
     {
@@ -30,6 +30,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         isStunned = false;
+        isAttacking = false;
     }
 
     protected virtual void OnDisable()
@@ -72,6 +73,17 @@ public abstract class EnemyBase : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         agent = GetComponent<NavMeshAgent>();
 
+        if (player == null)
+        {
+            Debug.Log("zut");
+        }
+
+        if (agent == null)
+        {
+            Debug.LogError("NavMeshAgent manquant sur " + gameObject.name);
+            return;
+        }
+
         if (agent != null) agent.speed = enemyData.speed;
     }
 
@@ -79,14 +91,13 @@ public abstract class EnemyBase : MonoBehaviour
     {
         player = playerTransform;
         if (agent != null) agent.isStopped = false;
-        playerDead = false;
+        followPlayer = true;
     }
 
     protected virtual void HandlePlayerDeath()
     {
-        isStunned = false;
         StopMoving();
-        playerDead = true;
+        followPlayer = false;
     }
 
     protected virtual void MoveTowardsPlayer()
@@ -121,7 +132,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void ResumeMoving()
     {
-        if (agent != null && agent.isActiveAndEnabled && !playerDead)
+        if (agent != null && agent.isActiveAndEnabled && followPlayer)
         {
             agent.isStopped = false;
         }
@@ -134,6 +145,20 @@ public abstract class EnemyBase : MonoBehaviour
 
         if (isInRange) StopMoving();
         else ResumeMoving();
+    }
+
+    public void Stun()
+    {
+        animator.Play("Idle");
+        isStunned = true;
+        agent.isStopped = true;
+        isAttacking = false;
+    }
+
+    public void UnStun()
+    {
+        isStunned = false;
+        ResumeMoving();
     }
 
     protected abstract bool CanAttack();

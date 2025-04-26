@@ -59,7 +59,7 @@ public class SkillSlot : MonoBehaviour
             if (MoneyManager.Instance.GetCurrentGold() < skillSO.skillCost)
             {
                 OnInsufficientFunds?.Invoke(this);
-                PlaySound(lockClip);
+                VolumeManager.Instance.PlaySFX(lockClip, 0.5f);
                 return;
             }
             MoneyManager.Instance.SpendGold(skillSO.skillCost);
@@ -150,7 +150,7 @@ public class SkillSlot : MonoBehaviour
 
         seq.Insert(0, transform.DOScale(1.8f, 0.18f).SetEase(Ease.OutBack));
         seq.Insert(0.18f, transform.DOScale(1f, 0.2f).SetEase(Ease.InOutSine));
-        seq.OnComplete(() => onComplete?.Invoke()); PlaySound(unlockClip);
+        seq.OnComplete(() => onComplete?.Invoke()); VolumeManager.Instance.PlaySFX(unlockClip, 0.5f);
         ;
     }
 
@@ -185,13 +185,5 @@ public class SkillSlot : MonoBehaviour
         skillSlotState = (prerequisiteSkillSlots.Count == 0) ? SkillSlotState.Unlocked : SkillSlotState.Locked;
         UpdateUI();
         UpdateLinks();
-    }
-
-    private void PlaySound(AudioClip clip)
-    {
-        if (audioSource != null && clip!=null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
     }
 }

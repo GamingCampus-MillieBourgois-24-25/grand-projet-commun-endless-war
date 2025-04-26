@@ -12,7 +12,7 @@ public class BoxMelee : AreaAttackBehaviour
 
         Collider[] results = Physics.OverlapBox(center, size / 2f, transform.rotation, LayerMask.GetMask("Enemy"));
 
-        return results.Length > 0 ? results : null;
+        return results;
     }
 
     protected override Vector3 GetFXSpawnPosition()

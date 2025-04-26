@@ -50,9 +50,6 @@ public class RangedEnemy : EnemyBase
     public void EndAttack()
     {
         isAttacking = false;
-        if (!isStunned)
-        {
-            ResumeMoving();
-        }
+        ResumeMoving();
     }
 }

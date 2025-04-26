@@ -110,12 +110,10 @@ public class EnemyHealthBehaviour : MonoBehaviour
                 if (type == DamageType.Magic)
                 {
                     ObjectPool.Instance.Spawn(deathEffectMagic, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-                    DebugPoolState("After spawning deathEffectMagic");
                 }
                 else
                 {
                     ObjectPool.Instance.Spawn(deathEffectSlash, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-                    DebugPoolState("After spawning deathEffectSlash");
                 }
             }
             else

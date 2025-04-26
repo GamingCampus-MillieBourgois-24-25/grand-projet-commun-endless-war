@@ -1169,6 +1169,7 @@ MonoBehaviour:
   animationDuration: 0.8
   startYOffset: 800
   animationEase: 30
+  winClip: {fileID: 8300000, guid: d4617acd0f2e7ad42aafa7a0e0f234ea, type: 3}
 --- !u!1 &8473447009332215977
 GameObject:
   m_ObjectHideFlags: 0
