@@ -20,7 +20,7 @@ MonoBehaviour:
     close-range enemies.
   skillBehaviour: {fileID: 3117057591713310481, guid: cfa34fb1aef408744be865e151678535,
     type: 3}
-  BaseDamage: 10
+  BaseDamage: 20
   BaseSpeed: 5
   BaseCooldown: 5.6
   BaseRange: 6
