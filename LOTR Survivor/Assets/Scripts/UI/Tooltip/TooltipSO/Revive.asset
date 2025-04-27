@@ -16,3 +16,4 @@ MonoBehaviour:
   title: Combat
   content: Upon revival, you unleash a devastating shockwave, damaging all nearby
     enemies. Use this power to turn the tide of battle victory is within your grasp.
+    You can only revive once.

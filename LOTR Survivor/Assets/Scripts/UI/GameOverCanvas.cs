@@ -28,6 +28,12 @@ public class GameOverCanvas : MonoBehaviour
 
     [SerializeField] private AudioClip loseClip;
 
+    [SerializeField] private int maxRespawn = 1;
+
+    [SerializeField] private GameObject[] gameObjects;
+
+    private int respawnCount = 0;
+
     private void Awake()
     {
         originalPosition = gameOverPanel.anchoredPosition;
@@ -69,6 +75,14 @@ public class GameOverCanvas : MonoBehaviour
             .SetUpdate(true);
 
         UpdateStatsUI();
+
+        if (respawnCount >= maxRespawn)
+        {
+            foreach (GameObject go in gameObjects)
+            {
+                go.SetActive(false);
+            }
+        }
     }
 
     private void UpdateStatsUI()
@@ -83,6 +97,7 @@ public class GameOverCanvas : MonoBehaviour
 
     public void HidePanel()
     {
+        respawnCount++;
         gameOverPanel.DOAnchorPos(originalPosition + Vector2.down * startYOffset, 0.5f)
             .SetEase(Ease.InBack)
             .SetUpdate(true)
