@@ -89,12 +89,22 @@ public class MenuManager : MonoBehaviour
 
     void AdjustMusicVolume()
     {
-        VolumeManager.Instance.SetMusicVolume(musicSlider.value);
+        //VolumeManager.Instance.SetMusicVolume(musicSlider.value);
+
+        //if (musicManager != null)
+        //{
+        //    musicManager.UpdateMusicVolume(musicSlider.value);
+        //}
+
+        float newVolume = musicSlider.value;
+        VolumeManager.Instance.SetMusicVolume(newVolume);
 
         if (musicManager != null)
         {
-            musicManager.UpdateMusicVolume(musicSlider.value);
+            musicManager.UpdateMusicVolume(newVolume);
         }
+
+        FindObjectOfType<Music>().UpdateVolume(newVolume);
 
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
         UpdateVolumeTexts();

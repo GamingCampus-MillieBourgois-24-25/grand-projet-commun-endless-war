@@ -48,4 +48,9 @@ public class Music : MonoBehaviour
     {
         volumeMultiplier = resumeMultiplier;
     }
+
+    public void UpdateVolume(float newVolume)
+    {
+        Volume = newVolume;
+    }
 }
