@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipID: 4
   title: Combat
-  content: When you revive, you mass damage around you. Very powerful. Very cool.
-    Enemy cooked. Now win.
+  content: Upon revival, you unleash a devastating shockwave, damaging all nearby
+    enemies. Use this power to turn the tide of battle victory is within your grasp.

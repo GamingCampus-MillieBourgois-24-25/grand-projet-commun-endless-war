@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipID: 1
   title: Combat
-  content: You have a health bar, look at health bar, keep health bar full, health
-    bar is shiny.
+  content: Monitor your health bar carefully. Keep it full to stay in the fight a
+    full bar shines with vitality.
