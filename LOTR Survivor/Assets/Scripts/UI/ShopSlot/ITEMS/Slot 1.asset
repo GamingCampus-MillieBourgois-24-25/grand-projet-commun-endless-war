@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Slot 1
   m_EditorClassIdentifier: 
   slotSprite: {fileID: 21300000, guid: ee740f76eb3b7464eae524d10e007956, type: 3}
-  slotName: 250 Mithril
-  slotCost: 2
+  slotName: 100 Mithril
+  slotCost: "0,99 \u20AC"
   slotType: ITEMS
   costType: 0
+  size: 0
+  maskText: 

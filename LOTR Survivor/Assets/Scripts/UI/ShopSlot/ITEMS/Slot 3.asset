@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotSprite: {fileID: 21300000, guid: b7fb9d5f8ce78e74e85fd2c5ea5e221c, type: 3}
   slotName: Battle Pass XP
-  slotCost: 2
+  slotCost: "4,99 \u20AC"
   slotType: ITEMS
   costType: 0
+  size: 0
+  maskText: 
