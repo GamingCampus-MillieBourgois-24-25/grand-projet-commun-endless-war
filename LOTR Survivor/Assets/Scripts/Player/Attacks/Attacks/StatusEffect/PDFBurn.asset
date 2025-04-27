@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PDFBurn
   m_EditorClassIdentifier: 
   effectType: 4
-  effectValue: 3
+  effectValue: 8
   duration: 3
   affectSelf: 0

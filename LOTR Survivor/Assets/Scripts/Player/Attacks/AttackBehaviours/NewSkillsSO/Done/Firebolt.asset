@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
+  m_Name: Firebolt
+  m_EditorClassIdentifier: 
+  CurrentLevel: 1
+  skillName: Firebolt
+  skillSprite: {fileID: 21300000, guid: 5081a471a0b24354a90c1eef8d28435c, type: 3}
+  skillType: 1
+  skillDescription: Launch a blazing projectile that ignites enemies on contact,
+    dealing burn damage over time.
+  skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
+    type: 3}
+  BaseDamage: 10
+  BaseSpeed: 6
+  BaseCooldown: 1.2
+  BaseRange: 8
+  Scale: 1
+  BaseAimRange: 5
+  BaseMaxRotation: 360
+  RotationOffset: 0
+  WideRange: 10
+  attackEffects: []
+  statusEffects:
+  - {fileID: 11400000, guid: 5ca0ad77b7fb9bd4fbaf12bddfe09d2a, type: 2}
+  buffEffects: []
+  attackTypes: 01000000
+  damageType: 0
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 1
+  prefab: {fileID: 7671491202235141443, guid: 3d29bab226141de4cadfee7328723eda, type: 3}
+  hitPrefab: {fileID: 952961124639765284, guid: b190a56e6b02c9545bbb2bf06e00b85d,
+    type: 3}
+  spawnEvent: {fileID: 8300000, guid: e9cd9294c526663449f20682da99226b, type: 3}
+  hitEvent: {fileID: 0}
+  DamageUpgrade: 2
+  SpeedUpgrade: 1
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.5
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 0.5
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  MaxLevel: 10
+  Damage: 10
+  Speed: 6
+  Cooldown: 1.2
+  Range: 8
+  AimRange: 5
+  MaxRotation: 360

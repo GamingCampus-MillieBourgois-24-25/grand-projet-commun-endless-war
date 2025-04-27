@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
+  m_Name: Bloodline Blade
+  m_EditorClassIdentifier: 
+  CurrentLevel: 1
+  skillName: Bloodline Blade
+  skillSprite: {fileID: 21300000, guid: 3febb5b43536ec04ab649c631c3ba503, type: 3}
+  skillType: 0
+  skillDescription: A devastating slash fueled by ancestral blood, trading life for
+    overwhelming power.
+  skillBehaviour: {fileID: 6098613423092608936, guid: faf36f5b31157814db1f48d83bad385e,
+    type: 3}
+  BaseDamage: 30
+  BaseSpeed: 10
+  BaseCooldown: 16
+  BaseRange: 6
+  Scale: 0.3
+  BaseAimRange: 0
+  BaseMaxRotation: 0
+  RotationOffset: 0
+  WideRange: 5
+  attackEffects:
+  - {fileID: 11400000, guid: e08d7e569c26daf44b306dddaf5545f3, type: 2}
+  statusEffects: []
+  buffEffects: []
+  attackTypes: 00000000
+  damageType: 1
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 0
+  prefab: {fileID: 1171201465392465800, guid: 423fb3f079a6b3845aeb3ea44c8a5a9f, type: 3}
+  hitPrefab: {fileID: 4386588507499592971, guid: d44cdd2ee224dee4592efcc3e99059bf,
+    type: 3}
+  spawnEvent: {fileID: 8300000, guid: 1453634993b14cc4f8fd062e617c5259, type: 3}
+  hitEvent: {fileID: 0}
+  DamageUpgrade: 2
+  SpeedUpgrade: 1
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.5
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 5
+  MaxRange: 15
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  MaxLevel: 3
+  Damage: 50
+  Speed: 10
+  Cooldown: 17
+  Range: 15
+  AimRange: 5
+  MaxRotation: 360

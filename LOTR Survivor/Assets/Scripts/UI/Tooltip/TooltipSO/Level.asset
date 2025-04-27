@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipID: 5
   title: Level
-  content: 'You level +. You choose skill. If already know skill : upgrade skill.
-    Skills chosen random. First skill always starting skill. Starting skill different
-    for other boy and girl. Still development.'
+  content: 'When you level up, you select a skill.
+
+    If you already possess the
+    skill, it will be upgraded.
+
+    Skills are offered randomly, but at least one
+    skill related to your class will always appear.'

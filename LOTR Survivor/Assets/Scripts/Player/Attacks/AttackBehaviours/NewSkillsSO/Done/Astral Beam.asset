@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
+  m_Name: Astral Beam
+  m_EditorClassIdentifier: 
+  CurrentLevel: 1
+  skillName: Astral Beam
+  skillSprite: {fileID: 21300000, guid: 1611a894fbe3e3c41ae30f2cee64360d, type: 3}
+  skillType: 1
+  skillDescription: Unleash a concentrated beam of astral energy that blasts through
+    enemies, dealing immense damage in its path.
+  skillBehaviour: {fileID: 6098613423092608936, guid: c0e5423c4b50487408c2c5ab56114d18,
+    type: 3}
+  BaseDamage: 15
+  BaseSpeed: 20
+  BaseCooldown: 9
+  BaseRange: 10
+  Scale: 4
+  BaseAimRange: 0
+  BaseMaxRotation: 0
+  RotationOffset: 0
+  WideRange: 0
+  attackEffects: []
+  statusEffects: []
+  buffEffects: []
+  attackTypes: 01000000
+  damageType: 0
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 1
+  prefab: {fileID: 7777741130337875386, guid: c2c3279344ef7b940bdefccb9d7f1e2d, type: 3}
+  hitPrefab: {fileID: 2965222256817593503, guid: f585d05e915b2514d8939abd69813e3f,
+    type: 3}
+  spawnEvent: {fileID: 8300000, guid: ed4561821df0f9b4d93e9f23b52d255d, type: 3}
+  hitEvent: {fileID: 0}
+  DamageUpgrade: 2
+  SpeedUpgrade: 1
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.5
+  AimRangeUpgrade: 1
+  MaxRotationUpgrade: 1
+  MaxDamage: 999
+  MaxSpeed: 100
+  MinCooldown: 2.3
+  MaxRange: 50
+  MaxAimRange: 30
+  MaxMaxRotation: 360
+  MaxLevel: 3
+  Damage: 15
+  Speed: 20
+  Cooldown: 9
+  Range: 10
+  AimRange: 0
+  MaxRotation: 0

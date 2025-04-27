@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipID: 0
   title: Combat
-  content: Kill guys. Get EXP. Kill guys. Get EXP. Kill guys. Get EXP. Kill guys.
-    Get EXP. Kill guys. Get EXP. Kill guys. Get EXP.
+  content: Survive through 10 relentless waves of enemies. Defeat them to earn XP
+    and unlock powerful new skills.

@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c609b6a84bf5947855aafe73ffa0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSettings: {fileID: 0}
+  skillSettings: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  munitionNumber: 20
+  munitionNumber: 10
   munitionRadius: 45

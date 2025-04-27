@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipID: 3
   title: XP
-  content: You killed guy you got XP. Take all XP. Look XP bar. XP bar is cool. Level
-    up when XP bar is full.
+  content: You defeated an enemy and earned experience points. Collect XP to fill
+    your experience bar. When the bar is full, you level up.
