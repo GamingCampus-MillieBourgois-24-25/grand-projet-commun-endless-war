@@ -196,11 +196,6 @@ public class PlayerAnimation : MonoBehaviour
         HealthEvents.GameOver();
     }
 
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(Screen.width - 150, 10, 150, 30), "Time Scale: " + Time.timeScale.ToString("F2"));
-    }
-
     private void ResetMesh()
     {
         if (mesh != null)
