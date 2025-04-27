@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Human_Melee
   m_EditorClassIdentifier: 
   characterName: Human Melee
-  imageCharacter: {fileID: 21300000, guid: 36e14cf451d97694296b1d47e0274fad, type: 3}
+  imageCharacter: {fileID: 21300000, guid: 56270816d6909c1408a07b7a2a5f72f7, type: 3}
   characterPrefab: {fileID: 5536098667953476755, guid: fe1fdac0afed6024c9b5c52d50108908,
     type: 3}
   race: 1
