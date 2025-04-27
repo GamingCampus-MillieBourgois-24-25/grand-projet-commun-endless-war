@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverCanvas : MonoBehaviour
 {
@@ -28,12 +29,34 @@ public class GameOverCanvas : MonoBehaviour
 
     [SerializeField] private AudioClip loseClip;
 
+    [SerializeField] private TMP_Text goldText;
+    [SerializeField] private GameObject[] respawnObject;
+    [SerializeField] private TMP_Text currentGold;
+ 
+    [SerializeField] private int respawn = 1;
+
+    private int respawnCount = 0;
+    private Vector2 currentGoldOriginalPosition;
+    private Color currentGoldOriginalColor;
+
+
     private void Awake()
     {
         originalPosition = gameOverPanel.anchoredPosition;
         gameOverPanel.gameObject.SetActive(false);
         PlayerEvents.OnPlayerSpawned += AssignPlayer;
+
+        if (currentGold != null)
+        {
+            currentGoldOriginalPosition = currentGold.rectTransform.anchoredPosition;
+            currentGoldOriginalColor = currentGold.color;
+        }
+        else
+        {
+            Debug.LogWarning("currentGold n'est pas assigné !");
+        }
     }
+
 
     private void OnEnable()
     {
@@ -57,11 +80,27 @@ public class GameOverCanvas : MonoBehaviour
 
     public void DisplayUI()
     {
-        VolumeManager.Instance.PlaySFX(loseClip, 1f);
+        if (goldText != null)
+            goldText.text = retryCost.ToString();
+        if (currentGold != null && moneyManager != null)
+            currentGold.text = moneyManager.GetCurrentGold().ToString();
 
-        GamePauseManager.Instance.PauseGame();
+        if (respawnObject != null && respawnCount >= respawn)
+        {
+            foreach (GameObject item in respawnObject)
+            {
+                if (item != null)
+                    item.SetActive(false);
+            }
+        }
+
+        if (VolumeManager.Instance != null)
+            VolumeManager.Instance.PlaySFX(loseClip, 1f);
+
+        if (GamePauseManager.Instance != null)
+            GamePauseManager.Instance.PauseGame();
+
         gameOverPanel.gameObject.SetActive(true);
-
         gameOverPanel.anchoredPosition = originalPosition + Vector2.up * startYOffset;
 
         gameOverPanel.DOAnchorPos(originalPosition, animationDuration)
@@ -70,6 +109,7 @@ public class GameOverCanvas : MonoBehaviour
 
         UpdateStatsUI();
     }
+
 
     private void UpdateStatsUI()
     {
@@ -91,6 +131,7 @@ public class GameOverCanvas : MonoBehaviour
 
     private void OnHideComplete()
     {
+        respawnCount++;
         GamePauseManager.Instance.ResumeGame();
         gameOverPanel.gameObject.SetActive(false);
         if (player == null)
@@ -105,5 +146,57 @@ public class GameOverCanvas : MonoBehaviour
     private void AssignPlayer(GameObject _player)
     {
         player = _player;
+    }
+
+    public void TryRespawn()
+    {
+        if (respawn >= respawnCount)
+        {
+            return;
+        }
+        if (moneyManager.GetCurrentGold() < retryCost)
+        {
+            ShakeCurrentGold();
+            return;
+        }
+
+        HidePanel();
+        moneyManager.SpendGold(retryCost);
+    }
+
+    private void ShakeCurrentGold()
+    {
+        if (currentGold == null)
+        {
+            Debug.LogWarning("currentGold est null !");
+            return;
+        }
+
+        currentGold.rectTransform.DOKill();
+        currentGold.DOKill();
+
+        currentGold.rectTransform.DOShakeAnchorPos(
+            duration: 0.4f,
+            strength: new Vector2(20f, 5f),
+            vibrato: 10,
+            randomness: 90,
+            snapping: false,
+            fadeOut: true
+        )
+        .SetUpdate(true)
+        .OnComplete(() => {
+            if (currentGold != null)
+                currentGold.rectTransform.anchoredPosition = currentGoldOriginalPosition;
+        });
+
+        Color flashColor = Color.red;
+
+        currentGold.DOColor(flashColor, 0.2f)
+            .SetLoops(2, LoopType.Yoyo)
+            .SetUpdate(true)
+            .OnComplete(() => {
+                if (currentGold != null)
+                    currentGold.color = currentGoldOriginalColor;
+            });
     }
 }
