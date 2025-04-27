@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotSprite: {fileID: 21300000, guid: fe717314783495a49b2b44ef0f907e82, type: 3}
   slotName: Battle Pass
-  slotCost: 999
+  slotCost: 500
   slotType: 30 days of
   costType: 1
   size: 0

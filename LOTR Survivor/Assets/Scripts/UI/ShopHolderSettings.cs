@@ -9,7 +9,7 @@ public class ShopHolderSettings : ScriptableObject
 {
     public Sprite slotSprite;
     public string slotName;
-    public int slotCost;
+    public string slotCost;
     public string slotType;
     public CostType costType;
     public int size = 0;

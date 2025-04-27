@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotSprite: {fileID: 21300000, guid: 54e54e07e6f03cb46ac02edcd91e86e0, type: 3}
   slotName: The mountain Orc
-  slotCost: 80
+  slotCost: 150
   slotType: ICONS
   costType: 1
+  size: 0
+  maskText: 

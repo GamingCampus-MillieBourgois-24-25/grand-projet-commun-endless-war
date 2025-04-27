@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotSprite: {fileID: 21300000, guid: bf9ff9a047b905448ba522ac1697241d, type: 3}
   slotName: The Orc Strategist
-  slotCost: 80
+  slotCost: 150
   slotType: ICONS
   costType: 1
+  size: 0
+  maskText: 
