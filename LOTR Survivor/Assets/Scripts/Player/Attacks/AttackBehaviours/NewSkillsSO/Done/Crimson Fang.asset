@@ -38,7 +38,8 @@ MonoBehaviour:
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 0
   prefab: {fileID: 1171201465392465800, guid: 1c6d5b2446aea2947973ea275fe0b276, type: 3}
-  hitPrefab: {fileID: 0}
+  hitPrefab: {fileID: 5435998012328932994, guid: a36191e0cf00f3b4c8ba3fef8602bb73,
+    type: 3}
   spawnEvent: {fileID: 8300000, guid: 4bdeb204d84624a4180bfb774d62be83, type: 3}
   hitEvent: {fileID: 0}
   DamageUpgrade: 2

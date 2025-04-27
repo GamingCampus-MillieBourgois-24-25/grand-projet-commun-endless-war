@@ -38,9 +38,10 @@ MonoBehaviour:
   damageType: 0
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 0
-  prefab: {fileID: 3377181292992421420, guid: 6e02174ec7bcb7a4994b5c4cec0445be, type: 3}
-  hitPrefab: {fileID: 0}
-  spawnEvent: {fileID: 0}
+  prefab: {fileID: 3377181292992421420, guid: 9c53f8a6291b0c842bed74c5900966e7, type: 3}
+  hitPrefab: {fileID: 2944396702758532163, guid: 3c64d8b1f986cc54ea3aa388c25145e4,
+    type: 3}
+  spawnEvent: {fileID: 8300000, guid: d443cf8238997ca42b20c78e53710b01, type: 3}
   hitEvent: {fileID: 0}
   DamageUpgrade: 2
   SpeedUpgrade: 1
@@ -55,9 +56,9 @@ MonoBehaviour:
   MaxAimRange: 0
   MaxMaxRotation: 0
   MaxLevel: 3
-  Damage: 0
+  Damage: 5
   Speed: 0
-  Cooldown: 0
-  Range: 0
+  Cooldown: 13
+  Range: 6
   AimRange: 0
   MaxRotation: 0

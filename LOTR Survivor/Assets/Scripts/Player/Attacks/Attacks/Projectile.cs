@@ -42,9 +42,14 @@ public class Projectile : Attack
         if (collider.CompareTag("Enemy"))
         {
             DealDamage(collider);
+           
             if (destroyOnHit)
             {
                 DestroyAttack();
+            }
+            else
+            {
+                PlayHitFX();
             }
         }
 

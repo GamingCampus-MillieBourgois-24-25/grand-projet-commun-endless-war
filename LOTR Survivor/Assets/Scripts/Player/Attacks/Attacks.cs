@@ -54,7 +54,7 @@ public abstract class Attack : MonoBehaviour
         }
     }
 
-    private void TryPlayHitSound()
+    protected void TryPlayHitSound()
     {
         if (skillSettings != null && skillSettings.hitEvent != null)
         {
