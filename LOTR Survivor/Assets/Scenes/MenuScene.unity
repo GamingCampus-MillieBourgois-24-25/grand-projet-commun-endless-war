@@ -1701,6 +1701,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &196720308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7117557823412295528, guid: 56e3e27d065d7794dadb54d409ebd585,
@@ -3773,6 +3774,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &540829961
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,6 +4147,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &580786067
 GameObject:
   m_ObjectHideFlags: 0
@@ -6424,6 +6427,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &853690557
 GameObject:
   m_ObjectHideFlags: 0
@@ -6661,7 +6665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4e749cbd88db484b83ddb42828657cd, type: 2}
   m_sharedMaterial: {fileID: 1341385435824263734, guid: e4e749cbd88db484b83ddb42828657cd,
@@ -7198,6 +7202,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &919843361
 GameObject:
   m_ObjectHideFlags: 0
@@ -8682,6 +8687,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1078744649
 GameObject:
   m_ObjectHideFlags: 0
@@ -9221,6 +9227,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1118056505
 GameObject:
   m_ObjectHideFlags: 0
@@ -10034,6 +10041,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1146068924
 GameObject:
   m_ObjectHideFlags: 0
@@ -10389,6 +10397,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1156565551
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,6 +10633,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1233478592
 GameObject:
   m_ObjectHideFlags: 0
@@ -11155,6 +11165,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1283028301
 GameObject:
   m_ObjectHideFlags: 0
@@ -12049,6 +12060,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1333575855
 GameObject:
   m_ObjectHideFlags: 0
@@ -13356,6 +13368,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1459827805
 GameObject:
   m_ObjectHideFlags: 0
@@ -13492,6 +13505,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1001 &1466832504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13741,6 +13755,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1490099534
 GameObject:
   m_ObjectHideFlags: 0
@@ -14502,7 +14517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Music :'
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14963,6 +14978,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1703610981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7117557823412295528, guid: 56e3e27d065d7794dadb54d409ebd585,
@@ -14984,6 +15000,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1708161820
 GameObject:
   m_ObjectHideFlags: 0
@@ -15300,6 +15317,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1756022592 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7117557823412295528, guid: ea0873c426144fc4c89b7068743bfb66,
@@ -15321,6 +15339,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1765286487
 GameObject:
   m_ObjectHideFlags: 0
@@ -15726,6 +15745,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1822028149
 GameObject:
   m_ObjectHideFlags: 0
@@ -16737,6 +16757,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &1982647607
 GameObject:
   m_ObjectHideFlags: 0
@@ -17062,6 +17083,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &2014730879
 GameObject:
   m_ObjectHideFlags: 0
@@ -17339,6 +17361,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &2101584234
 GameObject:
   m_ObjectHideFlags: 0
@@ -17516,6 +17539,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1 &2145662466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7117557823412295528, guid: 56e3e27d065d7794dadb54d409ebd585,
@@ -17537,6 +17561,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1001 &2146774477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17786,6 +17811,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 68724eb16c0cabd41bbc37ae7c9a02ff, type: 3}
   scaleFactor: 1.1
   duration: 0.1
+  buttonTransform: {fileID: 0}
 --- !u!1001 &3389876782620914589
 PrefabInstance:
   m_ObjectHideFlags: 0
