@@ -28,11 +28,12 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private ShopCanvas shopCanvas;
 
+    private bool OptionsOpen = false;
+
     private void Start()
     {
         mainMenu.SetActive(true);
         optionMenu.SetActive(false);
-
 
         playButton.onClick.AddListener(ChangeScene);
         optionButton.onClick.AddListener(OptionMenu);
@@ -58,8 +59,18 @@ public class MenuManager : MonoBehaviour
 
     void OptionMenu()
     {
-        mainMenu.SetActive(false);
-        optionMenu.SetActive(true);
+        if (OptionsOpen)
+        {
+            mainMenu.SetActive(true);
+            optionMenu.SetActive(false);
+            OptionsOpen = false;
+        }
+        else
+        {
+            OptionsOpen = true;
+            mainMenu.SetActive(false);
+            optionMenu.SetActive(true);
+        }
     }
 
     void ReturnMenu()
@@ -70,6 +81,8 @@ public class MenuManager : MonoBehaviour
 
     void ShopMenu()
     {
+        optionMenu.SetActive(false);
+        OptionsOpen = false;
         mainMenu.SetActive(false);
         shopCanvas.OpenShop();
     }

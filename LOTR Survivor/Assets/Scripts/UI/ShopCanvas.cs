@@ -24,6 +24,7 @@ public class ShopCanvas : MonoBehaviour
     [SerializeField] private Button newsButton;
     [SerializeField] private Button itemsButton;
     [SerializeField] private Button shortlyButton;
+    [SerializeField] private Button closeButton;
 
     [Header("News Tab")]
     [SerializeField] private RectTransform newsTab;
@@ -101,6 +102,7 @@ public class ShopCanvas : MonoBehaviour
         leftContent.DOAnchorPos(leftStartPos, duration)
             .SetEase(Ease.OutCubic)
             .SetDelay(delayOthers + delayLeft);
+        closeButton.interactable = true;
     }
 
     public void HideShop()
@@ -113,6 +115,8 @@ public class ShopCanvas : MonoBehaviour
         float duration = 1.5f;
         float delayLeft = 0.3f;
         float delayOthers = 0.2f;
+
+        closeButton.interactable = false;
 
         topContent.DOAnchorPos(new Vector2(-screenWidth - 300f, topStartPos.y), duration)
             .SetEase(Ease.InCubic);
