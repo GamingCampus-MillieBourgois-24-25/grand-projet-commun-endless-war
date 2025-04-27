@@ -46,11 +46,11 @@ public abstract class Attack : MonoBehaviour
         }
     }
 
-    private void TryPlaySpawnSound()
+    protected void TryPlaySpawnSound()
     {
         if (skillSettings != null && skillSettings.spawnEvent != null)
         {
-            VolumeManager.Instance.PlaySFX(skillSettings.spawnEvent);
+            VolumeManager.Instance.PlaySFX(skillSettings.spawnEvent, 0.5f);
         }
     }
 
@@ -58,7 +58,7 @@ public abstract class Attack : MonoBehaviour
     {
         if (skillSettings != null && skillSettings.hitEvent != null)
         {
-            VolumeManager.Instance.PlaySFX(skillSettings.hitEvent);
+            VolumeManager.Instance.PlaySFX(skillSettings.hitEvent, 0.5f);
         }
     }
 
