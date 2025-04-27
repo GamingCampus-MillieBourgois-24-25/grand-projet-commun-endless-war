@@ -18,7 +18,7 @@ public abstract class AttackBehaviour : MonoBehaviour
 
     private void Start()
     {
-
+        skillSettings.acquired = true;
     }
 
     protected virtual void FixedUpdate()

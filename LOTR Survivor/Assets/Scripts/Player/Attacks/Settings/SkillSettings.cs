@@ -74,6 +74,7 @@ public class SkillSettings : ScriptableObject
     public float AimRange;
     public float MaxRotation;
 
+    public bool acquired = false;
     public SkillSettings Upgrade()
     {
         if (CurrentLevel < MaxLevel)
@@ -100,6 +101,7 @@ public class SkillSettings : ScriptableObject
         AimRange = BaseAimRange;
         MaxRotation = BaseMaxRotation;
         CurrentLevel = 1;
+        acquired = false;
     }
 
     public bool IsMaxLevel()
