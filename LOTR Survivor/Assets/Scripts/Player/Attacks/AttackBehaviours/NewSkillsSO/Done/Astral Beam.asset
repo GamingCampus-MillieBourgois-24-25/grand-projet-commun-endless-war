@@ -10,60 +10,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: Projectile arcanique
+  m_Name: Astral Beam
   m_EditorClassIdentifier: 
-  skillName: Projectile arcanique
-  skillSprite: {fileID: 21300000, guid: 2035ddeb0db57bd418888267b089c4d8, type: 3}
+  CurrentLevel: 1
+  skillName: Astral Beam
+  skillSprite: {fileID: 21300000, guid: 1611a894fbe3e3c41ae30f2cee64360d, type: 3}
   skillType: 1
-  skillDescription: Projectile shotgun
-  skillBehaviour: {fileID: 3117057591713310481, guid: cfa34fb1aef408744be865e151678535,
+  skillDescription: Unleash a concentrated beam of astral energy that blasts through
+    enemies, dealing immense damage in its path.
+  skillBehaviour: {fileID: 7777741130337875386, guid: c2c3279344ef7b940bdefccb9d7f1e2d,
     type: 3}
   BaseDamage: 15
-  BaseSpeed: 7
-  BaseCooldown: 5.6
+  BaseSpeed: 20
+  BaseCooldown: 9
   BaseRange: 10
-  Scale: 1
+  Scale: 4
   BaseAimRange: 0
   BaseMaxRotation: 0
   RotationOffset: 0
-  WideRange: 10
+  WideRange: 0
   attackEffects: []
   statusEffects: []
   buffEffects: []
   attackTypes: 01000000
+  damageType: 0
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 1
   prefab: {fileID: 7777741130337875386, guid: c2c3279344ef7b940bdefccb9d7f1e2d, type: 3}
   hitPrefab: {fileID: 0}
-  spawnEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  hitEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  DamageUpgrade: 1
+  spawnEvent: {fileID: 0}
+  hitEvent: {fileID: 0}
+  DamageUpgrade: 2
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
-  RangeUpgrade: 1
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.5
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 2.8
+  MinCooldown: 2.3
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  Damage: 15
-  Speed: 7
-  Cooldown: 5.6
+  MaxLevel: 3
+  Damage: 25
+  Speed: 10
+  Cooldown: 4.7
   Range: 10
   AimRange: 0
   MaxRotation: 0

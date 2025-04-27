@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: Projectile de Feu
+  m_Name: Firebolt
   m_EditorClassIdentifier: 
-  skillName: Projectile  de feu
+  CurrentLevel: 1
+  skillName: Firebolt
   skillSprite: {fileID: 21300000, guid: 73677c8e0eaa11b4894ba43f1eb14d16, type: 3}
   skillType: 1
-  skillDescription: Projectile magique qui inflige brulure
+  skillDescription: Launch a blazing projectile that ignites enemies on contact,
+    dealing burn damage over time.
   skillBehaviour: {fileID: 6098613423092608936, guid: 6b317c88a9df0e04da44c4472c501e21,
     type: 3}
   BaseDamage: 10
-  BaseSpeed: 10
-  BaseCooldown: 1.4
-  BaseRange: 10
+  BaseSpeed: 6
+  BaseCooldown: 1.2
+  BaseRange: 8
   Scale: 1
   BaseAimRange: 5
   BaseMaxRotation: 360
@@ -37,24 +39,12 @@ MonoBehaviour:
   CooldownBetweenAttacks: 1
   prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
   hitPrefab: {fileID: 0}
-  spawnEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  hitEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  DamageUpgrade: 1
+  spawnEvent: {fileID: 8300000, guid: e9cd9294c526663449f20682da99226b, type: 3}
+  hitEvent: {fileID: 0}
+  DamageUpgrade: 2
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
-  RangeUpgrade: 1
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.5
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   MaxDamage: 999
@@ -63,6 +53,7 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
+  MaxLevel: 10
   Damage: 10
   Speed: 10
   Cooldown: 1.4

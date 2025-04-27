@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectType: 1
   effectValue: 0.5
-  duration: 5
+  duration: 6
   affectSelf: 0

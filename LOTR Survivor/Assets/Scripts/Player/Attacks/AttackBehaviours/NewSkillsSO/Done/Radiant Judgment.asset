@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: Jugement lumineux
+  m_Name: Radiant Judgment
   m_EditorClassIdentifier: 
   CurrentLevel: 1
-  skillName: Jugement lumineux
-  skillSprite: {fileID: 21300000, guid: 8e6de2a5d31343446870eaf33edb36c1, type: 3}
+  skillName: Radiant Judgment
+  skillSprite: {fileID: 21300000, guid: 6536311a4f9195a48a895cd1f3be0a13, type: 3}
   skillType: 1
-  skillDescription: "Large AOE infligeant de lourd d\xE9g\xE2t sur les ennemie, Inflige
-    ralentissement"
+  skillDescription: Unleashes a blinding burst of light over a wide area, damaging
+    enemies, stunning them in place, and slowing their movements under divine pressure.
   skillBehaviour: {fileID: 6098613423092608936, guid: effc56a69ee514b49941417641280899,
     type: 3}
   BaseDamage: 5
   BaseSpeed: 0
   BaseCooldown: 13
-  BaseRange: 10
+  BaseRange: 6
   Scale: 1
   BaseAimRange: 0
   BaseMaxRotation: 0
@@ -36,40 +36,28 @@ MonoBehaviour:
   buffEffects: []
   attackTypes: 00000000
   damageType: 0
-  NumberOfAttacks: 0
+  NumberOfAttacks: 1
   CooldownBetweenAttacks: 0
   prefab: {fileID: 3377181292992421420, guid: 6e02174ec7bcb7a4994b5c4cec0445be, type: 3}
   hitPrefab: {fileID: 0}
-  spawnEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  hitEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  DamageUpgrade: 1
+  spawnEvent: {fileID: 0}
+  hitEvent: {fileID: 0}
+  DamageUpgrade: 2
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
-  RangeUpgrade: 1
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.5
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   MaxDamage: 999
   MaxSpeed: 100
   MinCooldown: 6.5
-  MaxRange: 50
+  MaxRange: 10
   MaxAimRange: 0
   MaxMaxRotation: 0
-  MaxLevel: 10
+  MaxLevel: 3
   Damage: 0
   Speed: 0
-  Cooldown: 4
-  Range: 10
+  Cooldown: 0
+  Range: 0
   AimRange: 0
   MaxRotation: 0

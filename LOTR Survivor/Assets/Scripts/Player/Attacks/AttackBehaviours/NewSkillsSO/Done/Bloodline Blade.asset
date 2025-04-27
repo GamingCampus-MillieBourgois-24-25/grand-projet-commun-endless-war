@@ -10,51 +10,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
-  m_Name: "Lame des anc\xEAtres sanguinaires"
+  m_Name: Bloodline Blade
   m_EditorClassIdentifier: 
   CurrentLevel: 1
-  skillName: "Lame des anc\xEAtres sanguinaires"
+  skillName: Bloodline Blade
   skillSprite: {fileID: 21300000, guid: 3febb5b43536ec04ab649c631c3ba503, type: 3}
   skillType: 0
-  skillDescription: "Slash tr\xE8s puissant mais perd quelque PV\r\n"
+  skillDescription: A devastating slash fueled by ancestral blood, trading life for
+    overwhelming power.
   skillBehaviour: {fileID: 6098613423092608936, guid: faf36f5b31157814db1f48d83bad385e,
     type: 3}
-  BaseDamage: 50
+  BaseDamage: 30
   BaseSpeed: 10
-  BaseCooldown: 17
-  BaseRange: 10
+  BaseCooldown: 16
+  BaseRange: 6
   Scale: 0.3
-  BaseAimRange: 5
-  BaseMaxRotation: 360
+  BaseAimRange: 0
+  BaseMaxRotation: 0
   RotationOffset: 0
   WideRange: 5
-  attackEffects: []
+  attackEffects:
+  - {fileID: 11400000, guid: e08d7e569c26daf44b306dddaf5545f3, type: 2}
   statusEffects: []
   buffEffects: []
   attackTypes: 00000000
   damageType: 1
-  NumberOfAttacks: 10
-  CooldownBetweenAttacks: 5
+  NumberOfAttacks: 1
+  CooldownBetweenAttacks: 0
   prefab: {fileID: 1171201465392465800, guid: 1c6d5b2446aea2947973ea275fe0b276, type: 3}
   hitPrefab: {fileID: 0}
-  spawnEvent: {fileID: 8300000, guid: 4bdeb204d84624a4180bfb774d62be83, type: 3}
+  spawnEvent: {fileID: 8300000, guid: 1453634993b14cc4f8fd062e617c5259, type: 3}
   hitEvent: {fileID: 0}
-  DamageUpgrade: 1
+  DamageUpgrade: 2
   SpeedUpgrade: 1
-  CooldownUpgrade: 1
-  RangeUpgrade: 1
+  CooldownUpgrade: 0.8
+  RangeUpgrade: 1.5
   AimRangeUpgrade: 1
   MaxRotationUpgrade: 1
   MaxDamage: 999
   MaxSpeed: 100
-  MinCooldown: 2
-  MaxRange: 50
+  MinCooldown: 5
+  MaxRange: 15
   MaxAimRange: 30
   MaxMaxRotation: 360
-  MaxLevel: 10
+  MaxLevel: 3
   Damage: 50
   Speed: 10
   Cooldown: 17
-  Range: 10
+  Range: 15
   AimRange: 5
   MaxRotation: 360

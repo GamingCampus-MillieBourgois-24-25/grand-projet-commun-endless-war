@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14c262462fdc63f47b28f9d8a08541cb, type: 3}
-  m_Name: PDFBurn
+  m_Name: JLStunEffect
   m_EditorClassIdentifier: 
-  effectType: 4
-  effectValue: 8
+  effectType: 3
+  effectValue: 0
   duration: 3
   affectSelf: 0

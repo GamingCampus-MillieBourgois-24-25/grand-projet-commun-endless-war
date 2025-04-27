@@ -225,11 +225,11 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 2
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.6
+    widthMultiplier: 0.993906
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -244,7 +244,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -256,8 +256,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.20714617, g: 0, b: 1, a: 0.5176471}
-      key1: {r: 0.7147212, g: 0, b: 1, a: 0}
+      key0: {r: 0, g: 0.8787062, b: 1, a: 0.7254902}
+      key1: {r: 0, g: 0.8371587, b: 1, a: 0.7254902}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -265,7 +265,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 27563
+      ctime1: 65535
       ctime2: 0
       ctime3: 0
       ctime4: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b54e18604cfa94ebc2b60d848066f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOnHit: 0
 --- !u!136 &7596554873162992515
 CapsuleCollider:
   m_ObjectHideFlags: 0

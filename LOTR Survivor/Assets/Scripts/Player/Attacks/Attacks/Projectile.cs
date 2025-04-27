@@ -7,6 +7,8 @@ public class Projectile : Attack
     private Vector3 direction;
     private Vector3 startPosition;
 
+    [SerializeField] bool destroyOnHit = true;
+
     public void Initialize(Vector3 newDirection)
     {
         direction = newDirection.normalized;
@@ -38,7 +40,10 @@ public class Projectile : Attack
         if (collider.CompareTag("Enemy"))
         {
             DealDamage(collider);
-            DestroyAttack();
+            if (destroyOnHit)
+            {
+                DestroyAttack();
+            }
         }
 
         if (collider.CompareTag("Walls"))
