@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Wind Surge
   m_EditorClassIdentifier: 
-  CurrentLevel: 1
+  CurrentLevel: 3
   skillName: Wind Surge
   skillSprite: {fileID: 21300000, guid: 385013a28cde6ac49a9244e1c1e1de86, type: 3}
   skillType: 1
@@ -53,10 +53,11 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  MaxLevel: 10
+  MaxLevel: 3
   Damage: 0
   Speed: 0
-  Cooldown: 0
+  Cooldown: 16.000002
   Range: 0
   AimRange: 0
   MaxRotation: 0
+  acquired: 1

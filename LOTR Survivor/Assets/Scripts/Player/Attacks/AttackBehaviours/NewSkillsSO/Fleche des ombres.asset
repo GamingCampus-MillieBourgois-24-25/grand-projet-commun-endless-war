@@ -51,10 +51,11 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  MaxLevel: 10
+  MaxLevel: 3
   Damage: 0
   Speed: 0
   Cooldown: 0
   Range: 0
   AimRange: 0
   MaxRotation: 0
+  acquired: 0
