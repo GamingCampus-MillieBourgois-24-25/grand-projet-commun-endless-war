@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Human_Mage
   m_EditorClassIdentifier: 
   characterName: Human Mage
-  imageCharacter: {fileID: 21300000, guid: 8e6de2a5d31343446870eaf33edb36c1, type: 3}
+  imageCharacter: {fileID: 21300000, guid: c4935a2ed1acd7b40839a81a7aa0404c, type: 3}
   characterPrefab: {fileID: 5536098667953476755, guid: dbb7d3a779efe464693b7e8bc8d272d5,
     type: 3}
   race: 1
   classe: 1
   pointsDeVie: 20
   attacksBase:
-  - {fileID: 11400000, guid: 82712ba3977a46e48a2a98c8c1af2290, type: 2}
+  - {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce, type: 2}
   vitesseDeDeplacement: 5

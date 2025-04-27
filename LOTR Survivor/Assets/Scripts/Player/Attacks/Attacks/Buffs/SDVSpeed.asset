@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SDVSpeed
   m_EditorClassIdentifier: 
   buffType: 2
-  multiplier: 2
+  multiplier: 1.5
   duration: 10

@@ -23,6 +23,7 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
             {
                 if (enemy != null)
                 {
+                    PlayDamageFX(enemy.transform);
                     EnemyHealthBehaviour health = enemy.GetComponent<EnemyHealthBehaviour>();
                     if (health != null)
                     {
@@ -49,6 +50,16 @@ public abstract class AreaAttackBehaviour : AttackBehaviour
 
             GameObject hitEffect = Instantiate(skillSettings.prefab, spawnPosition, adjustedRotation);
             hitEffect.transform.localScale = new Vector3(skillSettings.WideRange * rangeMultiplier, hitEffect.transform.localScale.y, adjustedRange) * skillSettings.Scale;
+        }
+    }
+
+    protected virtual void PlayDamageFX(Transform position)
+    {
+        if (skillSettings.hitPrefab != null)
+        {
+            VolumeManager.Instance.PlaySFX(skillSettings.hitEvent);
+
+            GameObject hitEffect = Instantiate(skillSettings.hitPrefab, position.position, Quaternion.identity);
         }
     }
 

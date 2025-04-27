@@ -198,6 +198,8 @@ public class LevelUpManager : MonoBehaviour
     // Applies the selected skill to the player
     private void ApplySkill(SkillSettings skill)
     {
+        ApplyHealingBuff(1.05f);
+
         if (skill.skillType != SkillType.Buff)
         {
             skillManager.AddSkill(skill);
