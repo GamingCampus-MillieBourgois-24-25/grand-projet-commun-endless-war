@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9706bc3103274b96950b7c95adbbc, type: 3}
   m_Name: Firebolt
   m_EditorClassIdentifier: 
-  CurrentLevel: 1
+  CurrentLevel: 3
   skillName: Firebolt
   skillSprite: {fileID: 21300000, guid: 5081a471a0b24354a90c1eef8d28435c, type: 3}
   skillType: 1
@@ -54,10 +54,11 @@ MonoBehaviour:
   MaxRange: 50
   MaxAimRange: 30
   MaxMaxRotation: 360
-  MaxLevel: 10
-  Damage: 10
+  MaxLevel: 3
+  Damage: 40
   Speed: 6
-  Cooldown: 1.2
-  Range: 8
+  Cooldown: 0.76800007
+  Range: 18
   AimRange: 5
   MaxRotation: 360
+  acquired: 1
