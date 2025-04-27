@@ -16,5 +16,5 @@ MonoBehaviour:
   value: 20
   skillText: +20%
   skillIcon: {fileID: 21300000, guid: f5fd75218e9a7ac448a84ed955cc1b8c, type: 3}
-  skillCost: 20
+  skillCost: 50
   skillColor: {r: 1, g: 1, b: 1, a: 1}
