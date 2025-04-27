@@ -3198,8 +3198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Volume: 0
   volumeMultiplier: 0
-  pauseMultiplier: 0.05
-  resumeMultiplier: 0.1
+  pauseMultiplier: 0.2
+  resumeMultiplier: 0.5
 --- !u!1 &404570355
 GameObject:
   m_ObjectHideFlags: 0

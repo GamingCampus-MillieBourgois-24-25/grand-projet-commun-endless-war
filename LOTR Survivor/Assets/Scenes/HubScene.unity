@@ -2101,8 +2101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Volume: 0
   volumeMultiplier: 0
-  pauseMultiplier: 0.05
-  resumeMultiplier: 0.1
+  pauseMultiplier: 0.1
+  resumeMultiplier: 0.7
 --- !u!1 &779386819
 GameObject:
   m_ObjectHideFlags: 0
