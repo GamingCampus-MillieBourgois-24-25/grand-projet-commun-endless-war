@@ -24,7 +24,6 @@ public class GameOverCanvas : MonoBehaviour
     [SerializeField] private TMP_Text levelReachedText;
 
     // Références managers
-    [SerializeField] private MoneyManager moneyManager;
     [SerializeField] private XPManager xpManager;
 
     [SerializeField] private AudioClip loseClip;
@@ -82,8 +81,8 @@ public class GameOverCanvas : MonoBehaviour
     {
         if (goldText != null)
             goldText.text = retryCost.ToString();
-        if (currentGold != null && moneyManager != null)
-            currentGold.text = moneyManager.GetCurrentGold().ToString();
+        if (currentGold != null && MoneyManager.Instance != null)
+            currentGold.text = MoneyManager.Instance.GetCurrentGold().ToString();
 
         if (respawnObject != null && respawnCount >= respawn)
         {
@@ -113,10 +112,10 @@ public class GameOverCanvas : MonoBehaviour
 
     private void UpdateStatsUI()
     {
-        if (moneyManager != null && xpManager != null)
+        if (MoneyManager.Instance != null && xpManager != null)
         {
-            enemyCountText.text = $"Ennemis tués : {moneyManager.SessionEnemiesKilled}";
-            goldEarnedText.text = $"Gold gagné : {moneyManager.SessionGoldEarned}";
+            enemyCountText.text = $"Ennemis tués : {MoneyManager.Instance.SessionEnemiesKilled}";
+            goldEarnedText.text = $"Gold gagné : {MoneyManager.Instance.SessionGoldEarned}";
             levelReachedText.text = $"Niveau atteint : {xpManager.levelCurrent}";
         }
     }
@@ -150,18 +149,18 @@ public class GameOverCanvas : MonoBehaviour
 
     public void TryRespawn()
     {
-        if (respawn >= respawnCount)
+        if (respawnCount >= respawn)
         {
             return;
         }
-        if (moneyManager.GetCurrentGold() < retryCost)
+        if (MoneyManager.Instance.GetCurrentGold() < retryCost)
         {
             ShakeCurrentGold();
             return;
         }
 
         HidePanel();
-        moneyManager.SpendGold(retryCost);
+        MoneyManager.Instance.SpendGold(retryCost);
     }
 
     private void ShakeCurrentGold()
