@@ -36,7 +36,7 @@ MonoBehaviour:
   damageType: 0
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 1
-  prefab: {fileID: 7777741130337875386, guid: c2c3279344ef7b940bdefccb9d7f1e2d, type: 3}
+  prefab: {fileID: 7671491202235141443, guid: ebc6f7d3b2cfdc34f98745405aebf16b, type: 3}
   hitPrefab: {fileID: 0}
   spawnEvent: {fileID: 0}
   hitEvent: {fileID: 0}

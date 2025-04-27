@@ -24,11 +24,11 @@ MonoBehaviour:
   - enemySO: {fileID: 11400000, guid: d9db09b924bbdb84db8cfb6eb45169f5, type: 2}
     spawnWeight: 1
     maxInGroup: 1
-    maxThisEnemy: 5
+    maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: 6f931bdd71a0c4e4fa3dcd37de848847, type: 2}
     spawnWeight: 1
     maxInGroup: 1
-    maxThisEnemy: 5
+    maxThisEnemy: 999
   - enemySO: {fileID: 11400000, guid: ee539f3e9c56c564fabe1ff367563811, type: 2}
     spawnWeight: 2
     maxInGroup: 3
@@ -37,5 +37,5 @@ MonoBehaviour:
     spawnWeight: 2
     maxInGroup: 1
     maxThisEnemy: 999
-  spawnInterval: 2
+  spawnInterval: 2.5
   waveCooldown: 60

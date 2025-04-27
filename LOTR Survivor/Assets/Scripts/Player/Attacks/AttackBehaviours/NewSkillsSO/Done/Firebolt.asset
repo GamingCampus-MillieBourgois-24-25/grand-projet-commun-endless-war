@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: 1
   skillName: Firebolt
-  skillSprite: {fileID: 21300000, guid: 73677c8e0eaa11b4894ba43f1eb14d16, type: 3}
+  skillSprite: {fileID: 21300000, guid: 5081a471a0b24354a90c1eef8d28435c, type: 3}
   skillType: 1
   skillDescription: Launch a blazing projectile that ignites enemies on contact,
     dealing burn damage over time.
@@ -37,7 +37,7 @@ MonoBehaviour:
   damageType: 0
   NumberOfAttacks: 1
   CooldownBetweenAttacks: 1
-  prefab: {fileID: 754821637487049960, guid: a7e651d9a12db2342b98334c25c381ad, type: 3}
+  prefab: {fileID: 7671491202235141443, guid: 3d29bab226141de4cadfee7328723eda, type: 3}
   hitPrefab: {fileID: 0}
   spawnEvent: {fileID: 8300000, guid: e9cd9294c526663449f20682da99226b, type: 3}
   hitEvent: {fileID: 0}
@@ -55,8 +55,8 @@ MonoBehaviour:
   MaxMaxRotation: 360
   MaxLevel: 10
   Damage: 10
-  Speed: 10
-  Cooldown: 1.4
-  Range: 10
+  Speed: 6
+  Cooldown: 1.2
+  Range: 8
   AimRange: 5
   MaxRotation: 360

@@ -18,7 +18,7 @@ MonoBehaviour:
   skillType: 1
   skillDescription: Unleash a concentrated beam of astral energy that blasts through
     enemies, dealing immense damage in its path.
-  skillBehaviour: {fileID: 7777741130337875386, guid: c2c3279344ef7b940bdefccb9d7f1e2d,
+  skillBehaviour: {fileID: 6098613423092608936, guid: c0e5423c4b50487408c2c5ab56114d18,
     type: 3}
   BaseDamage: 15
   BaseSpeed: 20
@@ -53,9 +53,9 @@ MonoBehaviour:
   MaxAimRange: 30
   MaxMaxRotation: 360
   MaxLevel: 3
-  Damage: 25
-  Speed: 10
-  Cooldown: 4.7
+  Damage: 15
+  Speed: 20
+  Cooldown: 9
   Range: 10
   AimRange: 0
   MaxRotation: 0

@@ -121,7 +121,7 @@ PrefabInstance:
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
@@ -133,13 +133,13 @@ PrefabInstance:
         type: 3}
       propertyPath: startingSkills.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: ff7eab64286873b479ea6fda405a0a93,
+      objectReference: {fileID: 11400000, guid: 586361975a4413e4ea74f2fdbb434bce,
         type: 2}
     - target: {fileID: 1130796599156668721, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}
       propertyPath: startingSkills.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 345ffea13485d6647a6fc0211123f4fd,
+      objectReference: {fileID: 11400000, guid: cf1d43652837f734a8c02a45391744c8,
         type: 2}
     - target: {fileID: 3546374202348477930, guid: 2cedd2cec96f8fc42b0ce6ef8c9d93ae,
         type: 3}

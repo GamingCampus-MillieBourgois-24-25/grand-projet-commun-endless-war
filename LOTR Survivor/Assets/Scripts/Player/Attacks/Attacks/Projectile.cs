@@ -13,6 +13,8 @@ public class Projectile : Attack
     {
         direction = newDirection.normalized;
         startPosition = transform.position;
+
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     void Update()
