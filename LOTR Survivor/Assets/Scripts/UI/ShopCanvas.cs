@@ -45,6 +45,9 @@ public class ShopCanvas : MonoBehaviour
     [SerializeField] private TMP_Text header;
     [SerializeField] private TMP_Text slotName;
 
+    [Header("Gold Display")]
+    [SerializeField] private TMP_Text goldText;
+
     private Vector2 topStartPos;
     private Vector2 rightStartPos;
     private Vector2 leftStartPos;
@@ -75,6 +78,8 @@ public class ShopCanvas : MonoBehaviour
     {
         shopCanvas.alpha = 1f;
         shopCanvas.blocksRaycasts = true;
+
+        UpdateGoldDisplay();
 
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
@@ -241,5 +246,17 @@ public class ShopCanvas : MonoBehaviour
         cost.text = "";
         header.text = "";
         slotName.text = "";
+    }
+
+    private void UpdateGoldDisplay()
+    {
+        if (goldText != null)
+        {
+            goldText.text = MoneyManager.Instance.GetCurrentGold().ToString();
+        }
+        else
+        {
+            Debug.LogWarning("Gold Text is not assigned in the ShopCanvas!");
+        }
     }
 }
