@@ -11,14 +11,28 @@ public class ConfettiSpawner : MonoBehaviour
     [SerializeField] private float minInterval = 0.2f;
     [SerializeField] private float maxInterval = 1f;
 
+    [SerializeField] private float spawnTime = 4f;
+
+    private float timer = 0f;
+
     private void Start()
     {
         StartCoroutine(SpawnConfettiLoop());
     }
 
+    private void OnEnable()
+    {
+        timer = 0f;
+    }
+
+    private void Update()
+    {
+        timer += Time.unscaledDeltaTime;
+    }
+
     private IEnumerator SpawnConfettiLoop()
     {
-        while (true)
+        while (timer < spawnTime)
         {
             SpawnConfetti();
 
